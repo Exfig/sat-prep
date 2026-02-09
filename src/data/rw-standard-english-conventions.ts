@@ -1,0 +1,72 @@
+import type { Question } from '../types';
+
+export const rwStandardEnglishConventionsQuestions: Question[] = [
+  {
+    id: 'rw-sec-q1',
+    section: 'reading-writing',
+    domain: 'rw-standard-english-conventions',
+    skill: 'Boundaries',
+    difficulty: 'easy',
+    type: 'multiple-choice',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [
+      'ecosystems, they',
+      'ecosystems; they',
+      'ecosystems they',
+      'ecosystems. They',
+    ],
+    correctAnswer: 'ecosystems; they',
+    explanation: 'Two independent clauses need proper punctuation between them. A semicolon correctly joins two closely related independent clauses. A comma creates a comma splice (incorrect), no punctuation creates a run-on, and while a period works grammatically, the semicolon best shows the close relationship between the ideas.',
+    relatedConcepts: ['Sentence Boundaries', 'Semicolons', 'Run-on Sentences'],
+    passage: {
+      text: 'Wetlands serve as critical _______ filter pollutants and provide habitat for thousands of species.',
+      source: 'Environmental science text',
+    },
+    strategyTip: 'When two independent clauses are closely related, a semicolon is often the best connector.',
+  },
+  {
+    id: 'rw-sec-q2',
+    section: 'reading-writing',
+    domain: 'rw-standard-english-conventions',
+    skill: 'Form, Structure, and Sense',
+    difficulty: 'medium',
+    type: 'multiple-choice',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [
+      'have demonstrated',
+      'has demonstrated',
+      'are demonstrating',
+      'demonstrates',
+    ],
+    correctAnswer: 'has demonstrated',
+    explanation: 'The subject "each" is singular and requires a singular verb form. "Has demonstrated" is the correct singular present perfect form. "Have demonstrated" would be incorrect because "each" takes a singular verb, regardless of the plural noun in the prepositional phrase.',
+    relatedConcepts: ['Subject-Verb Agreement', 'Singular Subjects', 'Verb Tense'],
+    passage: {
+      text: 'Each of the experiments conducted over the past year _______ that the new compound is effective against antibiotic-resistant bacteria.',
+      source: 'Scientific research summary',
+    },
+  },
+  {
+    id: 'rw-sec-q3',
+    section: 'reading-writing',
+    domain: 'rw-standard-english-conventions',
+    skill: 'Boundaries',
+    difficulty: 'hard',
+    type: 'multiple-choice',
+    question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+    options: [
+      'hypothesis—that small, frequent meals improve metabolism—',
+      'hypothesis, that small, frequent meals improve metabolism,',
+      'hypothesis: that small, frequent meals improve metabolism',
+      'hypothesis (that small frequent meals improve metabolism)',
+    ],
+    correctAnswer: 'hypothesis—that small, frequent meals improve metabolism—',
+    explanation: 'Em dashes are used to set off a nonessential appositive or explanatory phrase, especially when the phrase itself contains commas. Since "small, frequent meals" contains a comma, using additional commas to set off the phrase would create confusion. Em dashes provide clear boundaries.',
+    relatedConcepts: ['Em Dashes', 'Appositives', 'Punctuation Boundaries'],
+    passage: {
+      text: 'The nutritionist\'s _______ was challenged by a large-scale study published last month.',
+      source: 'Health science text',
+    },
+    requiresThinkPeriod: true,
+  },
+];

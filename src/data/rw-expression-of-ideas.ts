@@ -1,0 +1,72 @@
+import type { Question } from '../types';
+
+export const rwExpressionOfIdeasQuestions: Question[] = [
+  {
+    id: 'rw-eoi-q1',
+    section: 'reading-writing',
+    domain: 'rw-expression-of-ideas',
+    skill: 'Transitions',
+    difficulty: 'easy',
+    type: 'multiple-choice',
+    question: 'Which choice best connects the two sentences?',
+    options: [
+      'Furthermore,',
+      'However,',
+      'For example,',
+      'Meanwhile,',
+    ],
+    correctAnswer: 'However,',
+    explanation: 'The second sentence presents a contrast to the first (critics disagree with the optimistic view), so a contrasting transition is needed. "However" correctly signals this shift in perspective.',
+    relatedConcepts: ['Transitions', 'Contrast', 'Logical Flow'],
+    passage: {
+      text: 'Many economists believe that automation will ultimately create more jobs than it eliminates. _______ critics argue that the new positions will require skills that displaced workers do not possess.',
+      source: 'Economics discussion',
+    },
+    strategyTip: 'Read both sentences to determine the logical relationship: agreement, contrast, cause-effect, or example.',
+  },
+  {
+    id: 'rw-eoi-q2',
+    section: 'reading-writing',
+    domain: 'rw-expression-of-ideas',
+    skill: 'Rhetorical Synthesis',
+    difficulty: 'medium',
+    type: 'multiple-choice',
+    question: 'While writing a research paper on renewable energy, a student wants to emphasize the rapid growth of solar power adoption. Which choice most effectively uses data from the notes to accomplish this goal?',
+    options: [
+      'Solar energy is one of several renewable energy sources being developed worldwide.',
+      'Between 2010 and 2023, global solar capacity increased from 40 GW to over 1,200 GW—a thirty-fold expansion in just thirteen years.',
+      'Solar panels convert sunlight into electricity and have become less expensive over time.',
+      'Countries around the world are investing in renewable energy to reduce carbon emissions.',
+    ],
+    correctAnswer: 'Between 2010 and 2023, global solar capacity increased from 40 GW to over 1,200 GW—a thirty-fold expansion in just thirteen years.',
+    explanation: 'This choice uses specific data (40 GW to 1,200 GW) and a timeframe (thirteen years) to emphasize the rapid growth, making the dramatic scale of expansion concrete and compelling.',
+    relatedConcepts: ['Rhetorical Synthesis', 'Data Integration', 'Effective Communication'],
+    passage: {
+      text: 'Notes:\n- Global solar capacity in 2010: approximately 40 GW\n- Global solar capacity in 2023: over 1,200 GW\n- Solar panel costs dropped 90% between 2010 and 2023\n- Over 130 countries have set renewable energy targets',
+      source: 'Student research notes',
+    },
+  },
+  {
+    id: 'rw-eoi-q3',
+    section: 'reading-writing',
+    domain: 'rw-expression-of-ideas',
+    skill: 'Transitions',
+    difficulty: 'hard',
+    type: 'multiple-choice',
+    question: 'Which transition most logically connects these ideas?',
+    options: [
+      'In other words,',
+      'Consequently,',
+      'Granted,',
+      'Specifically,',
+    ],
+    correctAnswer: 'Granted,',
+    explanation: '"Granted" is used to acknowledge a point before introducing a counterargument or qualification. The passage acknowledges one benefit of standardized testing before the implied "but" that would introduce limitations, making "Granted" the most logical transition.',
+    relatedConcepts: ['Concession Transitions', 'Argumentation', 'Rhetorical Strategy'],
+    passage: {
+      text: '_______ standardized tests provide a uniform metric for comparing students across diverse educational backgrounds. Yet reducing a student\'s potential to a single score ignores the rich complexity of individual learning styles and intellectual strengths.',
+      source: 'Education policy essay',
+    },
+    requiresThinkPeriod: true,
+  },
+];

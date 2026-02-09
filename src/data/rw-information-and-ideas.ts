@@ -1,0 +1,71 @@
+import type { Question } from '../types';
+
+export const rwInformationAndIdeasQuestions: Question[] = [
+  {
+    id: 'rw-ii-q1',
+    section: 'reading-writing',
+    domain: 'rw-information-and-ideas',
+    skill: 'Central Ideas and Details',
+    difficulty: 'easy',
+    type: 'multiple-choice',
+    question: 'Which choice best states the main idea of the passage?',
+    options: [
+      'Coral reefs are the most biodiverse ecosystems on Earth.',
+      'Climate change poses an existential threat to coral reef ecosystems.',
+      'Scientists are developing innovative methods to protect coral reefs from rising ocean temperatures.',
+      'Coral bleaching events have become more frequent in recent decades.',
+    ],
+    correctAnswer: 'Scientists are developing innovative methods to protect coral reefs from rising ocean temperatures.',
+    explanation: 'While the passage mentions threats to coral reefs, its primary focus is on the innovative scientific approaches being developed to protect them, including heat-resistant coral breeding and artificial reef structures.',
+    relatedConcepts: ['Main Idea', 'Central Claims', 'Supporting Details'],
+    passage: {
+      text: 'As ocean temperatures continue to rise, marine biologists are racing to develop new strategies to protect coral reefs. At the Hawaii Institute of Marine Biology, researchers have begun selectively breeding heat-resistant coral strains that can withstand temperatures up to 2°C above current averages. Meanwhile, engineers in Australia have designed 3D-printed reef structures that provide habitat for marine life while promoting natural coral regrowth.',
+      source: 'Adapted from marine biology research',
+    },
+  },
+  {
+    id: 'rw-ii-q2',
+    section: 'reading-writing',
+    domain: 'rw-information-and-ideas',
+    skill: 'Command of Evidence (Textual)',
+    difficulty: 'medium',
+    type: 'multiple-choice',
+    question: 'Which choice best supports the claim that remote work has increased productivity for some employees?',
+    options: [
+      '"The shift to remote work during the pandemic was sudden and largely unplanned."',
+      '"A Stanford study found that remote workers completed 13.5% more calls per shift than their office-based counterparts."',
+      '"Many employees reported feeling isolated and disconnected from their teams."',
+      '"Companies have invested heavily in collaboration software since 2020."',
+    ],
+    correctAnswer: '"A Stanford study found that remote workers completed 13.5% more calls per shift than their office-based counterparts."',
+    explanation: 'This quote provides direct quantitative evidence (13.5% more calls per shift) supporting the claim about increased productivity, making it the strongest supporting evidence.',
+    relatedConcepts: ['Command of Evidence', 'Textual Evidence', 'Supporting Claims'],
+    passage: {
+      text: 'The shift to remote work during the pandemic was sudden and largely unplanned. Yet research suggests the arrangement has had surprising benefits. A Stanford study found that remote workers completed 13.5% more calls per shift than their office-based counterparts. However, many employees reported feeling isolated and disconnected from their teams. Companies have invested heavily in collaboration software since 2020 to address these challenges.',
+      source: 'Adapted from workplace studies',
+    },
+  },
+  {
+    id: 'rw-ii-q3',
+    section: 'reading-writing',
+    domain: 'rw-information-and-ideas',
+    skill: 'Inferences',
+    difficulty: 'hard',
+    type: 'multiple-choice',
+    question: 'Based on the passage, it can most reasonably be inferred that the author believes',
+    options: [
+      'artificial intelligence will eventually replace all human creative work.',
+      'AI-generated art lacks the intentionality that defines human artistic expression.',
+      'the art world should fully embrace AI as a legitimate creative tool.',
+      'technology has always been a threat to traditional art forms.',
+    ],
+    correctAnswer: 'AI-generated art lacks the intentionality that defines human artistic expression.',
+    explanation: 'The author emphasizes that human art arises from "lived experience, emotional depth, and deliberate choice"—qualities that constitute intentionality. By contrasting this with AI\'s pattern-matching, the author implies AI art lacks this essential quality.',
+    relatedConcepts: ['Inference', 'Author\'s Perspective', 'Implicit Claims'],
+    passage: {
+      text: 'The rise of AI-generated imagery has sparked intense debate in the art world. While these systems can produce visually stunning compositions by analyzing millions of existing works, they fundamentally operate through pattern recognition and statistical probability. Human art, by contrast, arises from lived experience, emotional depth, and deliberate choice—qualities that resist algorithmic replication.',
+      source: 'Adapted from art criticism',
+    },
+    requiresThinkPeriod: true,
+  },
+];

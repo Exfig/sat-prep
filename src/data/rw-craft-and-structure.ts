@@ -1,0 +1,67 @@
+import type { Question } from '../types';
+
+export const rwCraftAndStructureQuestions: Question[] = [
+  {
+    id: 'rw-cs-q1',
+    section: 'reading-writing',
+    domain: 'rw-craft-and-structure',
+    skill: 'Words in Context',
+    difficulty: 'easy',
+    type: 'multiple-choice',
+    question: 'As used in the passage, "sustained" most nearly means',
+    options: ['suffered', 'maintained', 'nourished', 'endured'],
+    correctAnswer: 'maintained',
+    explanation: 'In context, the author describes a "sustained effort," meaning one that is kept up or maintained over time. While "sustained" can mean "suffered" in other contexts (e.g., "sustained injuries"), here it refers to continuity.',
+    relatedConcepts: ['Words in Context', 'Vocabulary', 'Context Clues'],
+    passage: {
+      text: 'The researchers conducted a sustained effort over several decades to catalog every species in the rainforest. Their dedication to this ongoing project yielded remarkable results, with over 2,000 new species identified since the study began.',
+      source: 'Adapted from a scientific journal',
+    },
+    strategyTip: 'Plug each answer choice into the sentence to see which one makes the most sense in context.',
+  },
+  {
+    id: 'rw-cs-q2',
+    section: 'reading-writing',
+    domain: 'rw-craft-and-structure',
+    skill: 'Text Structure and Purpose',
+    difficulty: 'medium',
+    type: 'multiple-choice',
+    question: 'Which choice best describes the function of the underlined sentence in the overall structure of the passage?',
+    options: [
+      'It introduces a counterargument to the main claim.',
+      'It provides a specific example to support a general observation.',
+      'It transitions from one topic to another.',
+      'It summarizes the findings of a study.',
+    ],
+    correctAnswer: 'It provides a specific example to support a general observation.',
+    explanation: 'The passage makes a general claim about urban green spaces improving well-being, then provides a specific study from Portland as evidence. The underlined sentence serves to support the general observation with concrete data.',
+    relatedConcepts: ['Text Structure', 'Purpose', 'Evidence'],
+    passage: {
+      text: 'Urban green spaces have been shown to significantly improve residents\' mental well-being. A 2023 study of Portland neighborhoods found that residents living within a five-minute walk of a park reported 34% lower rates of anxiety and depression compared to those without nearby green spaces.',
+      source: 'Adapted from urban planning research',
+    },
+  },
+  {
+    id: 'rw-cs-q3',
+    section: 'reading-writing',
+    domain: 'rw-craft-and-structure',
+    skill: 'Cross-Text Connections',
+    difficulty: 'hard',
+    type: 'multiple-choice',
+    question: 'Based on the passages, how would the author of Passage 2 most likely respond to the claim made in Passage 1?',
+    options: [
+      'By arguing that the evidence cited is outdated and unreliable.',
+      'By acknowledging the finding but suggesting it oversimplifies a complex issue.',
+      'By rejecting the premise entirely based on contradictory data.',
+      'By expanding on the claim with additional supporting evidence.',
+    ],
+    correctAnswer: 'By acknowledging the finding but suggesting it oversimplifies a complex issue.',
+    explanation: 'Passage 2 acknowledges the correlation between sleep and academic performance but emphasizes that multiple factors—socioeconomic status, nutrition, and stress—also play significant roles. This suggests the author would view Passage 1\'s claim as an oversimplification.',
+    relatedConcepts: ['Cross-Text Analysis', 'Author\'s Perspective', 'Argumentation'],
+    passage: {
+      text: 'Passage 1: Studies consistently show that students who sleep at least eight hours per night achieve significantly higher grades than their sleep-deprived peers. The data is clear: sleep is the single most important factor in academic success.\n\nPassage 2: While sleep undeniably affects cognitive function, attributing academic outcomes primarily to sleep habits ignores the complex web of factors—including socioeconomic background, nutrition, and psychological stress—that collectively shape student performance.',
+      source: 'Adapted from educational research',
+    },
+    requiresThinkPeriod: true,
+  },
+];
