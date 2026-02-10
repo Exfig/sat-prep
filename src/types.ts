@@ -75,6 +75,7 @@ export interface PassageData {
   text: string;
   source?: string;
   lineNumbers?: boolean;
+  underlineText?: string; // exact substring to render underlined
 }
 
 export interface Question {

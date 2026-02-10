@@ -1,7 +1,27 @@
+import type { ReactNode } from 'react';
 import type { PassageData } from '../types';
 
 interface PassageViewerProps {
   passage: PassageData;
+}
+
+/** Split text around an exact substring, returning fragments with the match underlined. */
+function renderWithUnderline(text: string, underlineText?: string): ReactNode {
+  if (!underlineText) return text;
+
+  const idx = text.indexOf(underlineText);
+  if (idx === -1) return text;
+
+  const before = text.slice(0, idx);
+  const after = text.slice(idx + underlineText.length);
+
+  return (
+    <>
+      {before}
+      <span className="underline decoration-2 underline-offset-2">{underlineText}</span>
+      {after}
+    </>
+  );
 }
 
 export default function PassageViewer({ passage }: PassageViewerProps) {
@@ -20,7 +40,7 @@ export default function PassageViewer({ passage }: PassageViewerProps) {
           if (!passage.lineNumbers) {
             return (
               <p key={pIdx} className={pIdx > 0 ? 'mt-4' : ''}>
-                {paragraph}
+                {renderWithUnderline(paragraph, passage.underlineText)}
               </p>
             );
           }
@@ -43,7 +63,9 @@ export default function PassageViewer({ passage }: PassageViewerProps) {
                     >
                       {showNumber ? lineNum : ''}
                     </span>
-                    <span className="flex-1">{line}</span>
+                    <span className="flex-1">
+                      {renderWithUnderline(line, passage.underlineText)}
+                    </span>
                   </div>
                 );
               })}

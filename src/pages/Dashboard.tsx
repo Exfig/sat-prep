@@ -7,7 +7,7 @@ import { getDueCount } from '../utils/sm2';
 import { getLevelForXP, getXPToNextLevel } from '../utils/xp';
 import { calculateCalibration } from '../utils/calibration';
 import { getBossDomain } from '../utils/bossFight';
-import { estimateScore } from '../utils/scoreEstimator';
+
 import type { StudyMode, DomainId, SectionId } from '../types';
 import { DOMAIN_NAMES, ALL_DOMAIN_IDS, getDomainSection } from '../types';
 import StatsCard from '../components/StatsCard';
@@ -35,7 +35,6 @@ export default function Dashboard() {
   const xpToNext = getXPToNextLevel(xp);
   const calibration = calculateCalibration(calibrationData);
   const bossDomain = getBossDomain(questionProgress, useAppStore.getState().bossesDefeated);
-  const estimatedScore = estimateScore(stats.domainStats);
 
   // Section toggle for domain breakdown view
   const [sectionFilter, setSectionFilter] = useState<SectionId | null>(null);
@@ -157,10 +156,12 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Estimated SAT Score */}
-      <div className="mb-8">
-        <ScoreEstimator score={estimatedScore} />
-      </div>
+      {/* Estimated SAT Score — only shown after completing a mock test */}
+      {recentMockTests.length > 0 && (
+        <div className="mb-8">
+          <ScoreEstimator score={recentMockTests[0].score} />
+        </div>
+      )}
 
       {/* Calibration Gauge */}
       {calibration.totalRated >= 10 && (

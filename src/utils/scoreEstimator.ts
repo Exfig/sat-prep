@@ -34,7 +34,8 @@ function accuracyToSectionScore(accuracy: number): number {
 function weightedAccuracy(stats: DomainStats[]): number {
   const totalAttempted = stats.reduce((sum, d) => sum + d.attempted, 0);
   if (totalAttempted === 0) return 0;
-  const weightedSum = stats.reduce((sum, d) => sum + d.accuracy * d.attempted, 0);
+  // DomainStats.accuracy is 0-100 percentage; convert to 0-1 ratio for scoring
+  const weightedSum = stats.reduce((sum, d) => sum + (d.accuracy / 100) * d.attempted, 0);
   return weightedSum / totalAttempted;
 }
 
