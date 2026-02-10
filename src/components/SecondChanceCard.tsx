@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Question } from '../types';
 import MultipleChoiceInput from './MultipleChoiceInput';
 import GridInInput from './GridInInput';
+import PassageViewer from './PassageViewer';
 
 interface SecondChanceCardProps {
   question: Question;
@@ -25,7 +26,7 @@ export default function SecondChanceCard({ question, onSubmit, onSkip }: SecondC
   const handleGridInChange = (val: string) => {
     setGridInVal(val);
     if (val !== '' && val !== '-') {
-      setUserAnswer(Number(val));
+      setUserAnswer(val);
     }
   };
 
@@ -50,6 +51,13 @@ export default function SecondChanceCard({ question, onSubmit, onSkip }: SecondC
         <span className="text-amber-600 font-bold text-sm uppercase tracking-wide">2nd Chance</span>
         <span className="text-xs text-amber-500">Same skill, different question</span>
       </div>
+
+      {/* Passage */}
+      {question.passage && (
+        <div className="mb-4">
+          <PassageViewer passage={question.passage} />
+        </div>
+      )}
 
       {/* Question text */}
       <p className="text-base font-medium text-slate-800 mb-4 leading-relaxed">
