@@ -1,0 +1,39 @@
+import { useState } from 'react';
+import AccountsTab from '../components/admin/AccountsTab';
+import QuestionDataTab from '../components/admin/QuestionDataTab';
+import UsageStatsTab from '../components/admin/UsageStatsTab';
+
+const TABS = ['Accounts', 'Question Data', 'Usage Stats'] as const;
+type TabId = (typeof TABS)[number];
+
+export default function Admin() {
+  const [activeTab, setActiveTab] = useState<TabId>('Accounts');
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold text-slate-900 mb-6">Admin Panel</h1>
+
+      {/* Tab navigation */}
+      <div className="flex gap-1 bg-slate-100 rounded-lg p-1 mb-6 w-fit">
+        {TABS.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              activeTab === tab
+                ? 'bg-indigo-600 text-white shadow-sm'
+                : 'text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab content */}
+      {activeTab === 'Accounts' && <AccountsTab />}
+      {activeTab === 'Question Data' && <QuestionDataTab />}
+      {activeTab === 'Usage Stats' && <UsageStatsTab />}
+    </div>
+  );
+}

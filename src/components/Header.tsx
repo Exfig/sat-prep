@@ -4,7 +4,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useAuth } from '../contexts/AuthContext';
 import { getLevelForXP } from '../utils/xp';
 
-const navItems = [
+const baseNavItems = [
   { to: '/', label: 'Dashboard' },
   { to: '/practice', label: 'Practice' },
   { to: '/mock-test', label: 'Mock Test' },
@@ -17,7 +17,10 @@ const navItems = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { xp } = useAppStore();
-  const { user, signOut } = useAuth();
+  const { user, signOut, role } = useAuth();
+  const navItems = role === 'admin'
+    ? [...baseNavItems, { to: '/admin', label: 'Admin' }]
+    : baseNavItems;
   const level = getLevelForXP(xp);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>

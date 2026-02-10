@@ -6,10 +6,13 @@ import { useAppStore } from '../store/useAppStore';
 import { loadAllUserData, updateProfile } from '../services/database';
 import { startSyncEngine, stopSyncEngine } from '../services/syncEngine';
 
+type UserRole = 'student' | 'admin';
+
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  role: UserRole;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signUp: (email: string, password: string, fullName: string, meta?: SignupMeta) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
@@ -28,6 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState<UserRole>('student');
 
   const hydrateFromSupabase = useAppStore((s) => s.hydrateFromSupabase);
   const clearUserData = useAppStore((s) => s.clearUserData);
@@ -59,8 +63,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function hydrateUser(userId: string) {
     try {
-      const data = await loadAllUserData(userId);
+      const [data, profileRes] = await Promise.all([
+        loadAllUserData(userId),
+        supabase.from('profiles').select('role').eq('id', userId).single(),
+      ]);
       hydrateFromSupabase(userId, data);
+      if (profileRes.data?.role === 'admin') {
+        setRole('admin');
+      }
       startSyncEngine(userId);
     } catch (err) {
       console.error('Failed to hydrate user data:', err);
@@ -110,6 +120,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = async () => {
     stopSyncEngine();
+    setRole('student');
     await supabase.auth.signOut();
     clearUserData();
   };
@@ -123,7 +134,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signIn, signUp, signOut, resetPassword }}>
+    <AuthContext.Provider value={{ user, session, loading, role, signIn, signUp, signOut, resetPassword }}>
       {children}
     </AuthContext.Provider>
   );
@@ -133,4 +144,8 @@ export function useAuth() {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
+}
+
+export function useIsAdmin() {
+  return useAuth().role === 'admin';
 }

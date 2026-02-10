@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
 import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import Practice from './pages/Practice';
@@ -10,6 +11,7 @@ import Profile from './pages/Profile';
 import ActivityLog from './pages/ActivityLog';
 import ExamReview from './pages/ExamReview';
 import MockTest from './pages/MockTest';
+import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ForgotPassword from './pages/ForgotPassword';
@@ -39,6 +41,7 @@ function AppRoutes() {
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/activity" element={<ActivityLog />} />
                   <Route path="/exam-review" element={<ExamReview />} />
+                  <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </main>
