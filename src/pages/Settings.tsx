@@ -15,6 +15,8 @@ export default function Settings() {
     resetProgress,
     thinkPeriodEnabled,
     setThinkPeriodEnabled,
+    metacogEnabled,
+    setMetacogEnabled,
     scaffoldingOverrides,
     setScaffoldingOverride,
     userId,
@@ -92,6 +94,7 @@ export default function Settings() {
           deepDivesCompleted: localData.deepDivesCompleted,
           sessionHistory: localData.sessionHistory,
           thinkPeriodEnabled: localData.thinkPeriodEnabled,
+          metacogEnabled: localData.metacogEnabled,
           scaffoldingOverrides: localData.scaffoldingOverrides,
           hasSeenWelcome: localData.hasSeenWelcome,
         });
@@ -171,6 +174,30 @@ export default function Settings() {
           </div>
           <span className="text-sm font-medium text-slate-700">
             {thinkPeriodEnabled ? 'Enabled' : 'Disabled'}
+          </span>
+        </label>
+      </div>
+
+      {/* Metacognition toggle */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+        <h2 className="text-lg font-semibold text-slate-800 mb-2">Confidence &amp; Self-Rating</h2>
+        <p className="text-sm text-slate-600 mb-4">
+          Show &ldquo;How confident are you?&rdquo; and &ldquo;How well did you know this?&rdquo; prompts after each question.
+          These feed the calibration gauge and spaced-repetition scheduling.
+        </p>
+        <label className="flex items-center gap-3 cursor-pointer">
+          <div className="relative">
+            <input
+              type="checkbox"
+              checked={metacogEnabled}
+              onChange={(e) => setMetacogEnabled(e.target.checked)}
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-slate-200 rounded-full peer-checked:bg-indigo-500 transition-colors" />
+            <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
+          </div>
+          <span className="text-sm font-medium text-slate-700">
+            {metacogEnabled ? 'Enabled' : 'Disabled'}
           </span>
         </label>
       </div>

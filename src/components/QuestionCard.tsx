@@ -30,7 +30,7 @@ export default function QuestionCard({ question, onAnswer, disabled }: QuestionC
   const handleGridInChange = (val: string) => {
     setGridInVal(val);
     if (val !== '' && val !== '-') {
-      onAnswer(Number(val));
+      onAnswer(val);
     }
   };
 

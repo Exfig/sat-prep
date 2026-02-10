@@ -15,7 +15,7 @@ import { getBossDomain, selectBossFightQuestions, checkBossFightResult } from '.
 import { shouldShowHints, shouldUseFreeTextDeepDive } from '../utils/scaffolding';
 import { selectSecondChanceQuestion } from '../utils/secondChance';
 import type { StudyMode, DomainId, SectionId, Difficulty, SM2Rating, ConfidenceRating, Question } from '../types';
-import { DOMAIN_NAMES } from '../types';
+import { DOMAIN_NAMES, SECTION_NAMES } from '../types';
 import QuestionCard from '../components/QuestionCard';
 import FeedbackCard from '../components/FeedbackCard';
 import DomainFilter from '../components/DomainFilter';
@@ -59,6 +59,7 @@ export default function Practice() {
     questionProgress,
     xp,
     thinkPeriodEnabled,
+    metacogEnabled,
     scaffoldingOverrides,
     startSession,
     submitAnswer,
@@ -114,6 +115,7 @@ export default function Practice() {
   const [domainFilter, setDomainFilter] = useState<DomainId | undefined>();
   const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | undefined>();
   const [showDomainFilter, setShowDomainFilter] = useState(false);
+  const [showAllModes, setShowAllModes] = useState(false);
 
   // Handle mode passed via navigation state from Dashboard
   useEffect(() => {
@@ -212,9 +214,11 @@ export default function Practice() {
       return; // Don't show confidence or SM2 -- just "Answer recorded"
     }
 
-    // Normal flow -- show confidence first
-    setShowConfidence(true);
-  }, [userAnswer, currentQuestion, currentSession, submitAnswer, updateStreak, prevXP, checkAndAwardBadges, hintsUsed, isTimedModule, isBossFight]);
+    // Normal flow -- show confidence first (if metacog enabled)
+    if (metacogEnabled) {
+      setShowConfidence(true);
+    }
+  }, [userAnswer, currentQuestion, currentSession, submitAnswer, updateStreak, prevXP, checkAndAwardBadges, hintsUsed, isTimedModule, isBossFight, metacogEnabled]);
 
   const handleConfidenceRate = useCallback((rating: ConfidenceRating) => {
     if (currentQuestion) {
@@ -387,6 +391,7 @@ export default function Practice() {
     endSession();
     resetQuestionState();
     setShowDomainFilter(false);
+    setShowAllModes(false);
     setTimedModuleAnswers([]);
     setBossDomain(null);
     setBossCorrectCount(0);
@@ -398,7 +403,18 @@ export default function Practice() {
     handleEndSession();
   }, [handleEndSession]);
 
+  const handleStartPractice = (section: SectionId) => {
+    const questionIds = selectPracticeQuestions({ section, progress: questionProgress });
+    startSession({ mode: 'practice', sectionFilter: section }, questionIds);
+  };
+
   const handleSelectMode = (mode: StudyMode) => {
+    if (mode === 'practice') {
+      // Go back to default section picker view
+      setShowAllModes(false);
+      return;
+    }
+
     if (mode === 'domain-review') {
       setShowDomainFilter(true);
       return;
@@ -438,9 +454,6 @@ export default function Practice() {
     };
 
     switch (mode) {
-      case 'practice':
-        questionIds = selectPracticeQuestions({ progress: questionProgress });
-        break;
       case 'weak-areas':
         questionIds = selectWeakAreaQuestions({ progress: questionProgress, count: 20 });
         break;
@@ -504,7 +517,7 @@ export default function Practice() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [submitted, userAnswer, showSM2Rating, showConfidence, showDeepDive, showSecondChance, showThinkOverlay, handleSubmit, handleNext]);
 
-  // ─── No active session ── show mode selection ──────────────────────────────
+  // ─── No active session ── show section picker or mode selection ─────────────
 
   if (!currentSession) {
     return (
@@ -539,8 +552,42 @@ export default function Practice() {
               </button>
             </div>
           </div>
+        ) : showAllModes ? (
+          <>
+            <StudyModeSelector onSelectMode={handleSelectMode} />
+            <button
+              onClick={() => setShowAllModes(false)}
+              className="mt-4 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
+                hover:bg-slate-200 transition-all duration-200"
+            >
+              Back
+            </button>
+          </>
         ) : (
-          <StudyModeSelector onSelectMode={handleSelectMode} />
+          <>
+            <div className="max-w-md">
+              <h2 className="text-lg font-semibold text-slate-800 mb-4">Choose a Section</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {(Object.keys(SECTION_NAMES) as SectionId[]).map((id) => (
+                  <button
+                    key={id}
+                    onClick={() => handleStartPractice(id)}
+                    className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 text-center
+                      hover:border-indigo-300 hover:shadow-md transition-all duration-200"
+                  >
+                    <span className="text-3xl block mb-2">{id === 'reading-writing' ? '\uD83D\uDCD6' : '\uD83D\uDCCA'}</span>
+                    <span className="text-lg font-semibold text-slate-800">{SECTION_NAMES[id]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <button
+              onClick={() => setShowAllModes(true)}
+              className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+            >
+              More study modes...
+            </button>
+          </>
         )}
       </div>
     );

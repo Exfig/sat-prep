@@ -119,6 +119,7 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
       state.deepDivesCompleted !== prevState.deepDivesCompleted ||
       state.sessionHistory !== prevState.sessionHistory ||
       state.thinkPeriodEnabled !== prevState.thinkPeriodEnabled ||
+      state.metacogEnabled !== prevState.metacogEnabled ||
       state.scaffoldingOverrides !== prevState.scaffoldingOverrides ||
       state.hasSeenWelcome !== prevState.hasSeenWelcome;
 
@@ -139,6 +140,7 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
         deepDivesCompleted: state.deepDivesCompleted,
         sessionHistory: state.sessionHistory,
         thinkPeriodEnabled: state.thinkPeriodEnabled,
+        metacogEnabled: state.metacogEnabled,
         scaffoldingOverrides: state.scaffoldingOverrides,
         hasSeenWelcome: state.hasSeenWelcome,
       });

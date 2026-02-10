@@ -81,6 +81,7 @@ interface AppState {
 
   // Settings
   thinkPeriodEnabled: boolean;
+  metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
 
   // SAT-specific
@@ -111,6 +112,7 @@ interface AppState {
   defeatBoss: (domainId: DomainId) => void;
   submitSecondChance: (originalQuestionId: string, scQuestionId: string, correct: boolean) => void;
   setThinkPeriodEnabled: (enabled: boolean) => void;
+  setMetacogEnabled: (enabled: boolean) => void;
   setScaffoldingOverride: (domainId: DomainId, enabled: boolean) => void;
   addMockTestResult: (entry: MockTestHistoryEntry) => void;
   updateSectionQuests: () => void;
@@ -141,6 +143,7 @@ const initialState = {
   calibrationData: { recentAttempts: [] } as CalibrationData,
   deepDivesCompleted: 0,
   thinkPeriodEnabled: true,
+  metacogEnabled: true,
   scaffoldingOverrides: {} as Record<string, boolean>,
   mockTestHistory: [] as MockTestHistoryEntry[],
   sectionQuests: {
@@ -174,6 +177,7 @@ export const useAppStore = create<AppState>()(
         deepDivesCompleted: data.deepDivesCompleted,
         sessionHistory: data.sessionHistory,
         thinkPeriodEnabled: data.thinkPeriodEnabled,
+        metacogEnabled: data.metacogEnabled,
         scaffoldingOverrides: data.scaffoldingOverrides,
         hasSeenWelcome: data.hasSeenWelcome,
         examWrappers: data.examWrappers,
@@ -667,6 +671,9 @@ export const useAppStore = create<AppState>()(
 
     setThinkPeriodEnabled: (enabled) =>
       set({ thinkPeriodEnabled: enabled }),
+
+    setMetacogEnabled: (enabled) =>
+      set({ metacogEnabled: enabled }),
 
     setScaffoldingOverride: (domainId, enabled) =>
       set((state) => ({

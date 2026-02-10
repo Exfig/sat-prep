@@ -32,6 +32,7 @@ interface LocalStorageData {
     calibrationData: CalibrationData;
     deepDivesCompleted: number;
     thinkPeriodEnabled: boolean;
+    metacogEnabled: boolean;
     scaffoldingOverrides: Record<string, boolean>;
     mockTestHistory: MockTestHistoryEntry[];
     sectionQuests: SectionQuests;
@@ -68,6 +69,7 @@ export function parseLocalStorageData(): UserData | null {
       deepDivesCompleted: s.deepDivesCompleted ?? 0,
       sessionHistory: s.sessionHistory ?? [],
       thinkPeriodEnabled: s.thinkPeriodEnabled ?? true,
+      metacogEnabled: s.metacogEnabled ?? true,
       scaffoldingOverrides: s.scaffoldingOverrides ?? {},
       hasSeenWelcome: s.hasSeenWelcome ?? false,
       examWrappers: s.examWrappers ?? [],

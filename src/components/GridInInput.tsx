@@ -7,13 +7,12 @@ interface GridInInputProps {
   correctAnswer?: string | number;
 }
 
-/** Pattern allowing digits, at most one decimal point, at most one slash, optional leading negative. */
+/** Pattern allowing digits, at most one decimal point per side, at most one slash, optional leading negative.
+ *  Permits intermediate typing states like "3/", "0.", "-." so users can build up fractions and decimals. */
 function isValidGridInInput(input: string): boolean {
   if (input === '' || input === '-') return true;
-  // Allow: optional negative, then digits with optional decimal OR fraction
-  // Fraction: digits/digits (each side may have decimals is not standard, but digits only for fractions)
-  // Decimal: digits with at most one dot
-  return /^-?(\d+\.?\d*|\d*\.?\d+)(\/(\d+\.?\d*|\d*\.?\d+))?$/.test(input);
+  // Each side of the optional slash: digits with at most one dot, can be partial
+  return /^-?\d*\.?\d*(\/\d*\.?\d*)?$/.test(input);
 }
 
 function normalizeAnswer(val: string | number): string {
@@ -106,7 +105,7 @@ export default function GridInInput({
       </label>
       <input
         type="text"
-        inputMode="decimal"
+        inputMode="text"
         value={value}
         onChange={handleChange}
         disabled={disabled}

@@ -30,6 +30,7 @@ export interface UserData {
   deepDivesCompleted: number;
   sessionHistory: SessionLogEntry[];
   thinkPeriodEnabled: boolean;
+  metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
   hasSeenWelcome: boolean;
   examWrappers: ExamWrapperEntry[];
@@ -92,8 +93,9 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
 
   // Parse gamification_state
   const gam = gamRes.data;
-  const settings = (gam?.settings ?? { thinkPeriodEnabled: true, scaffoldingOverrides: {}, hasSeenWelcome: false }) as {
+  const settings = (gam?.settings ?? { thinkPeriodEnabled: true, metacogEnabled: true, scaffoldingOverrides: {}, hasSeenWelcome: false }) as {
     thinkPeriodEnabled: boolean;
+    metacogEnabled: boolean;
     scaffoldingOverrides: Record<string, boolean>;
     hasSeenWelcome: boolean;
   };
@@ -130,6 +132,7 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
     deepDivesCompleted: (gam?.deep_dives_completed as number) ?? 0,
     sessionHistory: (gam?.session_history as SessionLogEntry[]) ?? [],
     thinkPeriodEnabled: settings.thinkPeriodEnabled ?? true,
+    metacogEnabled: settings.metacogEnabled ?? true,
     scaffoldingOverrides: settings.scaffoldingOverrides ?? {},
     hasSeenWelcome: settings.hasSeenWelcome ?? false,
     examWrappers,
@@ -155,6 +158,7 @@ export async function syncGamificationState(userId: string, data: {
   deepDivesCompleted: number;
   sessionHistory: SessionLogEntry[];
   thinkPeriodEnabled: boolean;
+  metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
   hasSeenWelcome: boolean;
 }) {
@@ -175,6 +179,7 @@ export async function syncGamificationState(userId: string, data: {
     session_history: data.sessionHistory,
     settings: {
       thinkPeriodEnabled: data.thinkPeriodEnabled,
+      metacogEnabled: data.metacogEnabled,
       scaffoldingOverrides: data.scaffoldingOverrides,
       hasSeenWelcome: data.hasSeenWelcome,
     },
