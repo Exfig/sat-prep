@@ -93,8 +93,8 @@ export default function QuestionDataTab() {
   }
 
   const SortArrow = ({ col }: { col: SortKey }) => {
-    if (sortKey !== col) return <span className="text-slate-300 ml-1">&#8693;</span>;
-    return <span className="ml-1">{sortDir === 'asc' ? '&#8593;' : '&#8595;'}</span>;
+    if (sortKey !== col) return <span className="text-slate-300 ml-1">{'\u2195'}</span>;
+    return <span className="ml-1">{sortDir === 'asc' ? '\u2191' : '\u2193'}</span>;
   };
 
   if (loading) {
@@ -158,7 +158,7 @@ export default function QuestionDataTab() {
                   onClick={() => toggleExpand(row.question_id)}
                 >
                   <td className="px-4 py-2 font-medium text-slate-900">
-                    <span className="mr-1 text-slate-400">{expandedId === row.question_id ? '&#9660;' : '&#9654;'}</span>
+                    <span className="mr-1 text-slate-400">{expandedId === row.question_id ? '\u25BC' : '\u25B6'}</span>
                     {row.question?.skill ?? row.question_id}
                   </td>
                   <td className="px-4 py-2 text-slate-500">
