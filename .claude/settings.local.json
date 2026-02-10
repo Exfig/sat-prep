@@ -1,24 +1,22 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "0"
+  },
   "permissions": {
     "allow": [
-      "Bash(dir:*)",
-      "Bash(if not exist \"c:\\\\games\\\\sat-prep\\\\src\\\\components\" mkdir \"c:\\\\games\\\\sat-prep\\\\src\\\\components\")",
+      "Bash(python -c:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm install:*)",
-      "Bash(npx vite build)",
-      "Bash(timeout 8 npx vite:*)",
-      "Bash(netstat:*)",
-      "Bash(ss:*)",
-      "Bash(wmic process:*)",
-      "Bash(tasklist:*)",
-      "Bash(ps:*)",
-      "Bash(findstr:*)",
-      "Bash(taskkill:*)",
-      "Bash(powershell -Command:*)",
-      "Bash(npm run dev:*)",
-      "Bash(git init:*)",
+      "Bash(npx vite build:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh run list:*)",
+      "Bash(grep:*)",
+      "Bash(ping:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm run deploy:*)"
     ]
   }
 }
