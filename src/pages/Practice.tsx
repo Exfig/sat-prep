@@ -32,6 +32,7 @@ import ThinkOverlay from '../components/ThinkOverlay';
 import DeepDiveCard from '../components/DeepDiveCard';
 import BossFightIntro from '../components/BossFightIntro';
 import SecondChanceCard from '../components/SecondChanceCard';
+import DesmosCalculator from '../components/DesmosCalculator';
 
 // ─── Practice page ───────────────────────────────────────────────────────────
 
@@ -937,6 +938,9 @@ export default function Practice() {
           onDone={() => setBadgeToast(null)}
         />
       )}
+
+      {/* Desmos Calculator (math questions only) */}
+      {currentQuestion.section === 'math' && <DesmosCalculator />}
     </div>
   );
 }

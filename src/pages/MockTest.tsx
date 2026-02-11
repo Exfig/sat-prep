@@ -13,6 +13,7 @@ import GridInInput from '../components/GridInInput';
 import PassageViewer from '../components/PassageViewer';
 import FlagQuestionButton from '../components/FlagQuestionButton';
 import { evaluateGridIn } from '../utils/gridIn';
+import DesmosCalculator from '../components/DesmosCalculator';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -567,6 +568,9 @@ export default function MockTest() {
           {isLastQuestion ? 'Finish Module' : 'Next'}
         </button>
       </div>
+
+      {/* Desmos Calculator (math modules only) */}
+      {config.section === 'math' && <DesmosCalculator />}
     </div>
   );
 }
