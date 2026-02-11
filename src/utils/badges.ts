@@ -1,6 +1,6 @@
 import type { DomainId, QuestionProgress, MockTestHistoryEntry } from '../types';
 import { ALL_DOMAIN_IDS, DOMAIN_NAMES } from '../types';
-import { allQuestions } from '../data/questions';
+import { getQuestionsByDomain, getQuestionsByType } from '../data/questions';
 import { LEVELS } from './xp';
 
 // ─── Badge check state ────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ function domainAttempted(
   domainId: DomainId,
   progress: Record<string, QuestionProgress>,
 ): { attempted: number; correct: number; total: number; mastered: number } {
-  const domainQs = allQuestions.filter((q) => q.domain === domainId);
+  const domainQs = getQuestionsByDomain(domainId);
   let attempted = 0;
   let correct = 0;
   let mastered = 0;
@@ -351,7 +351,7 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
     icon: '🔢',
     check: (s) => {
       const gridInIds = new Set(
-        allQuestions.filter((q) => q.type === 'grid-in').map((q) => q.id),
+        getQuestionsByType('grid-in').map((q) => q.id),
       );
       let count = 0;
       for (const [qid, qp] of Object.entries(s.questionProgress)) {

@@ -48,13 +48,16 @@ export default function DeepDiveCard({ prompt, useFreeText, onComplete }: DeepDi
 
       {!answered && useFreeText && (
         <div className="space-y-3">
+          <label htmlFor="deep-dive-explanation" className="sr-only">Your explanation</label>
           <textarea
+            id="deep-dive-explanation"
             value={freeText}
             onChange={(e) => setFreeText(e.target.value)}
             placeholder="Type your explanation..."
             className="w-full h-24 p-3 rounded-lg border border-indigo-200 text-sm
               text-slate-800 placeholder:text-slate-400 resize-none focus:outline-none
               focus:ring-2 focus:ring-indigo-300"
+            aria-label="Type your explanation for this deep dive question"
           />
           <button
             onClick={handleFreeTextSubmit}

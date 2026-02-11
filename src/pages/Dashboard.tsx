@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { calculateOverallStats, getWeakAreas } from '../utils/stats';
@@ -22,49 +22,79 @@ import CalibrationGauge from '../components/CalibrationGauge';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const {
-    questionProgress, studyStreak, lastStudyDate, hasSeenWelcome, setWelcomeSeen,
-    xp, earnedBadges, streakFreezes, questProgress, calibrationData,
-    mockTestHistory, sectionQuests,
-  } = useAppStore();
 
-  const stats = calculateOverallStats(questionProgress, studyStreak, lastStudyDate);
-  const weakAreaIds = getWeakAreas(questionProgress);
-  const dueCount = getDueCount(questionProgress);
-  const level = getLevelForXP(xp);
-  const xpToNext = getXPToNextLevel(xp);
-  const calibration = calculateCalibration(calibrationData);
-  const bossDomain = getBossDomain(questionProgress, useAppStore.getState().bossesDefeated);
+  // Granular Zustand selectors — only re-render when these specific fields change
+  const questionProgress = useAppStore((s) => s.questionProgress);
+  const studyStreak = useAppStore((s) => s.studyStreak);
+  const lastStudyDate = useAppStore((s) => s.lastStudyDate);
+  const hasSeenWelcome = useAppStore((s) => s.hasSeenWelcome);
+  const setWelcomeSeen = useAppStore((s) => s.setWelcomeSeen);
+  const xp = useAppStore((s) => s.xp);
+  const earnedBadges = useAppStore((s) => s.earnedBadges);
+  const streakFreezes = useAppStore((s) => s.streakFreezes);
+  const questProgress = useAppStore((s) => s.questProgress);
+  const calibrationData = useAppStore((s) => s.calibrationData);
+  const mockTestHistory = useAppStore((s) => s.mockTestHistory);
+  const sectionQuests = useAppStore((s) => s.sectionQuests);
+  const bossesDefeated = useAppStore((s) => s.bossesDefeated);
+
+  // Memoize expensive computations — only recalculate when dependencies change
+  const stats = useMemo(
+    () => calculateOverallStats(questionProgress, studyStreak, lastStudyDate),
+    [questionProgress, studyStreak, lastStudyDate],
+  );
+  const weakAreaIds = useMemo(() => getWeakAreas(questionProgress), [questionProgress]);
+  const dueCount = useMemo(() => getDueCount(questionProgress), [questionProgress]);
+  const level = useMemo(() => getLevelForXP(xp), [xp]);
+  const xpToNext = useMemo(() => getXPToNextLevel(xp), [xp]);
+  const calibration = useMemo(() => calculateCalibration(calibrationData), [calibrationData]);
+  const bossDomain = useMemo(
+    () => getBossDomain(questionProgress, bossesDefeated),
+    [questionProgress, bossesDefeated],
+  );
 
   // Section toggle for domain breakdown view
   const [sectionFilter, setSectionFilter] = useState<SectionId | null>(null);
 
-  const filteredDomainStats = sectionFilter
-    ? stats.domainStats.filter((ds) => getDomainSection(ds.domainId) === sectionFilter)
-    : stats.domainStats;
+  const filteredDomainStats = useMemo(
+    () => sectionFilter
+      ? stats.domainStats.filter((ds) => getDomainSection(ds.domainId) === sectionFilter)
+      : stats.domainStats,
+    [stats.domainStats, sectionFilter],
+  );
 
-  const weakAreaStats = weakAreaIds.slice(0, 3).map((domainId) => {
-    const domainStat = stats.domainStats.find((s) => s.domainId === domainId);
-    return { domainId, accuracy: domainStat ? domainStat.accuracy : 0 };
-  });
+  const weakAreaStats = useMemo(
+    () => weakAreaIds.slice(0, 3).map((domainId) => {
+      const domainStat = stats.domainStats.find((s) => s.domainId === domainId);
+      return { domainId, accuracy: domainStat ? domainStat.accuracy : 0 };
+    }),
+    [weakAreaIds, stats.domainStats],
+  );
 
-  const recentBadges = [...earnedBadges].sort((a, b) => b.earnedAt - a.earnedAt).slice(0, 3);
+  const recentBadges = useMemo(
+    () => [...earnedBadges].sort((a, b) => b.earnedAt - a.earnedAt).slice(0, 3),
+    [earnedBadges],
+  );
 
   // Recent activity: last 10 attempted questions
-  const recentActivity = Object.values(questionProgress)
-    .filter((qp) => qp.attempts.length > 0)
-    .sort((a, b) => b.lastAttempted - a.lastAttempted)
-    .slice(0, 10)
-    .map((qp) => ({
-      questionId: qp.questionId,
-      correct: qp.attempts[qp.attempts.length - 1].correct,
-      timestamp: qp.lastAttempted,
-    }));
+  const recentActivity = useMemo(
+    () => Object.values(questionProgress)
+      .filter((qp) => qp.attempts.length > 0)
+      .sort((a, b) => b.lastAttempted - a.lastAttempted)
+      .slice(0, 10)
+      .map((qp) => ({
+        questionId: qp.questionId,
+        correct: qp.attempts[qp.attempts.length - 1].correct,
+        timestamp: qp.lastAttempted,
+      })),
+    [questionProgress],
+  );
 
   // Last 3 mock tests
-  const recentMockTests = [...mockTestHistory]
-    .sort((a, b) => b.timestamp - a.timestamp)
-    .slice(0, 3);
+  const recentMockTests = useMemo(
+    () => [...mockTestHistory].sort((a, b) => b.timestamp - a.timestamp).slice(0, 3),
+    [mockTestHistory],
+  );
 
   const handleSelectMode = (mode: StudyMode) => {
     if (mode === 'adaptive-mock-test') {
@@ -82,14 +112,17 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
+      <h1 className="sr-only">SAT Prep Dashboard</h1>
+
       {/* Welcome message */}
       {!hasSeenWelcome && (
-        <div className="bg-indigo-600 text-white rounded-xl p-6 mb-8 relative">
+        <div className="bg-indigo-600 text-white rounded-xl p-6 mb-8 relative" role="region" aria-label="Welcome message">
           <button
             onClick={() => setWelcomeSeen()}
             className="absolute top-4 right-4 text-indigo-200 hover:text-white"
+            aria-label="Dismiss welcome message"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -103,8 +136,8 @@ export default function Dashboard() {
 
       {/* Streak-at-risk nudge */}
       {isStreakAtRisk && (
-        <div className="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-8 flex items-center gap-3">
-          <span className="text-2xl">&#9888;&#65039;</span>
+        <div className="bg-amber-50 border border-amber-300 rounded-xl p-4 mb-8 flex items-center gap-3" role="alert">
+          <span className="text-2xl" aria-hidden="true">&#9888;&#65039;</span>
           <div>
             <p className="font-semibold text-amber-800">Your streak is at risk!</p>
             <p className="text-sm text-amber-700">
@@ -116,7 +149,7 @@ export default function Dashboard() {
       )}
 
       {/* Stats cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8" role="region" aria-label="Study statistics">
         <StatsCard
           label="Questions Done"
           value={`${stats.totalAttempted}/${stats.totalQuestions}`}
@@ -268,8 +301,8 @@ export default function Dashboard() {
       </div>
 
       {/* Domain breakdown */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
           <h2 className="text-xl font-bold text-slate-800">Domain Performance</h2>
           <SectionToggle selected={sectionFilter} onChange={setSectionFilter} />
         </div>
@@ -284,18 +317,18 @@ export default function Dashboard() {
 
       {/* Boss Fight CTA */}
       {bossDomain && (
-        <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-xl shadow-sm p-6 mb-8">
-          <div className="flex items-center justify-between">
+        <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-xl shadow-sm p-5 sm:p-6 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold text-white mb-1">Boss Fight</h2>
-              <p className="text-red-100">
+              <p className="text-red-100 text-sm sm:text-base">
                 Your weakest area is <span className="font-semibold text-white">{DOMAIN_NAMES[bossDomain]}</span>. Ready to fight?
               </p>
             </div>
             <button
               onClick={() => navigate('/practice', { state: { mode: 'boss-fight' as StudyMode } })}
-              className="px-6 py-3 bg-white text-red-600 rounded-lg font-bold
-                hover:bg-red-50 transition-colors shadow-sm"
+              className="w-full sm:w-auto px-6 py-3 bg-white text-red-600 rounded-lg font-bold
+                hover:bg-red-50 transition-colors shadow-sm min-h-[44px] shrink-0"
             >
               Challenge the Boss
             </button>

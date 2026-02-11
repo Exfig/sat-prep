@@ -12,7 +12,7 @@ const MODE_LABELS: Record<string, string> = {
 };
 
 export default function ActivityLog() {
-  const { sessionHistory } = useAppStore();
+  const sessionHistory = useAppStore((s) => s.sessionHistory);
 
   // Newest first
   const sorted = [...sessionHistory].reverse();

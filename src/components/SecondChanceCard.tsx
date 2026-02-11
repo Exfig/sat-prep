@@ -114,7 +114,7 @@ export default function SecondChanceCard({ question, onSubmit, onSkip }: SecondC
 
       {/* Result */}
       {submitted && (
-        <div className={`mt-4 p-4 rounded-lg ${isCorrect ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'}`}>
+        <div className={`mt-4 p-4 rounded-lg ${isCorrect ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'}`} role="status" aria-live="polite">
           <p className={`font-semibold ${isCorrect ? 'text-emerald-700' : 'text-red-700'}`}>
             {isCorrect ? 'Correct! Nice recovery.' : 'Not quite. Keep studying this skill.'}
           </p>

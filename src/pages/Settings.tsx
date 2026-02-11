@@ -11,17 +11,15 @@ import { syncGamificationState, upsertUserProgress, insertAttempt } from '../ser
 const sections: SectionId[] = ['reading-writing', 'math'];
 
 export default function Settings() {
-  const {
-    resetProgress,
-    thinkPeriodEnabled,
-    setThinkPeriodEnabled,
-    metacogEnabled,
-    setMetacogEnabled,
-    scaffoldingOverrides,
-    setScaffoldingOverride,
-    userId,
-    hydrateFromSupabase,
-  } = useAppStore();
+  const resetProgress = useAppStore((s) => s.resetProgress);
+  const thinkPeriodEnabled = useAppStore((s) => s.thinkPeriodEnabled);
+  const setThinkPeriodEnabled = useAppStore((s) => s.setThinkPeriodEnabled);
+  const metacogEnabled = useAppStore((s) => s.metacogEnabled);
+  const setMetacogEnabled = useAppStore((s) => s.setMetacogEnabled);
+  const scaffoldingOverrides = useAppStore((s) => s.scaffoldingOverrides);
+  const setScaffoldingOverride = useAppStore((s) => s.setScaffoldingOverride);
+  const userId = useAppStore((s) => s.userId);
+  const hydrateFromSupabase = useAppStore((s) => s.hydrateFromSupabase);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
@@ -135,19 +133,19 @@ export default function Settings() {
           <p className="text-sm text-amber-700 mb-4">
             We found study progress saved locally on this browser. Would you like to import it to your account?
           </p>
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={handleMigrate}
               disabled={migrating}
-              className="px-4 py-2 bg-amber-600 text-white rounded-lg font-medium
-                hover:bg-amber-700 transition-colors disabled:opacity-50"
+              className="px-4 py-2.5 bg-amber-600 text-white rounded-lg font-medium
+                hover:bg-amber-700 transition-colors disabled:opacity-50 min-h-[44px]"
             >
               {migrating ? 'Importing...' : 'Import Progress'}
             </button>
             <button
               onClick={handleDeclineMigration}
-              className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
-                hover:bg-slate-200 transition-colors"
+              className="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                hover:bg-slate-200 transition-colors min-h-[44px]"
             >
               No Thanks
             </button>
@@ -243,8 +241,8 @@ export default function Settings() {
         <button
           onClick={handleExport}
           disabled={exporting}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium
-            hover:bg-indigo-700 transition-all duration-200 disabled:opacity-50"
+          className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+            hover:bg-indigo-700 transition-all duration-200 disabled:opacity-50 min-h-[44px]"
         >
           {exporting ? 'Exporting...' : 'Export Data'}
         </button>
@@ -259,8 +257,8 @@ export default function Settings() {
         </p>
         <button
           onClick={() => setShowConfirm(true)}
-          className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium
-            hover:bg-red-700 transition-all duration-200"
+          className="px-4 py-2.5 bg-red-600 text-white rounded-lg font-medium
+            hover:bg-red-700 transition-all duration-200 min-h-[44px]"
         >
           Reset All Progress
         </button>
@@ -274,8 +272,8 @@ export default function Settings() {
         </p>
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium
-            hover:bg-red-700 transition-all duration-200"
+          className="px-4 py-2.5 bg-red-600 text-white rounded-lg font-medium
+            hover:bg-red-700 transition-all duration-200 min-h-[44px]"
         >
           Delete My Account
         </button>
@@ -302,15 +300,15 @@ export default function Settings() {
             <div className="flex gap-3">
               <button
                 onClick={handleReset}
-                className="flex-1 py-2 bg-red-600 text-white rounded-lg font-medium
-                  hover:bg-red-700 transition-all duration-200"
+                className="flex-1 py-2.5 bg-red-600 text-white rounded-lg font-medium
+                  hover:bg-red-700 transition-all duration-200 min-h-[44px]"
               >
                 Yes, Reset
               </button>
               <button
                 onClick={() => setShowConfirm(false)}
-                className="flex-1 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
-                  hover:bg-slate-200 transition-all duration-200"
+                className="flex-1 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                  hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
               >
                 Cancel
               </button>
@@ -332,15 +330,15 @@ export default function Settings() {
               <button
                 onClick={handleDeleteAccount}
                 disabled={deleting}
-                className="flex-1 py-2 bg-red-600 text-white rounded-lg font-medium
-                  hover:bg-red-700 transition-all duration-200 disabled:opacity-50"
+                className="flex-1 py-2.5 bg-red-600 text-white rounded-lg font-medium
+                  hover:bg-red-700 transition-all duration-200 disabled:opacity-50 min-h-[44px]"
               >
                 {deleting ? 'Deleting...' : 'Yes, Delete'}
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="flex-1 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
-                  hover:bg-slate-200 transition-all duration-200"
+                className="flex-1 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                  hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
               >
                 Cancel
               </button>

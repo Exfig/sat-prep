@@ -1,6 +1,6 @@
 import type { DomainId, DomainStats, OverallStats, QuestionProgress } from '../types';
 import { ALL_DOMAIN_IDS } from '../types';
-import { allQuestions } from '../data/questions';
+import { allQuestions, getQuestionsByDomain } from '../data/questions';
 
 // ─── Calculate stats for a single domain ─────────────────────────────────────
 
@@ -8,7 +8,7 @@ export function calculateDomainStats(
   domainId: DomainId,
   progress: Record<string, QuestionProgress>,
 ): DomainStats {
-  const domainQs = allQuestions.filter((q) => q.domain === domainId);
+  const domainQs = getQuestionsByDomain(domainId);
 
   let attempted = 0;
   let correct = 0;
@@ -94,21 +94,25 @@ export function getWeakAreas(
   progress: Record<string, QuestionProgress>,
   threshold: number = 60,
 ): DomainId[] {
+  // Calculate all domain stats once upfront to avoid redundant recalculation
+  const domainStatsMap = new Map<DomainId, DomainStats>();
+  for (const domainId of ALL_DOMAIN_IDS) {
+    domainStatsMap.set(domainId, calculateDomainStats(domainId, progress));
+  }
+
   const weak: DomainId[] = [];
 
   for (const domainId of ALL_DOMAIN_IDS) {
-    const stats = calculateDomainStats(domainId, progress);
+    const stats = domainStatsMap.get(domainId)!;
     // Only consider domains with some attempts
     if (stats.attempted > 0 && stats.accuracy < threshold) {
       weak.push(domainId);
     }
   }
 
-  // Sort by accuracy ascending (weakest first)
+  // Sort by accuracy ascending (weakest first) — uses cached stats, no recalculation
   weak.sort((a, b) => {
-    const aStats = calculateDomainStats(a, progress);
-    const bStats = calculateDomainStats(b, progress);
-    return aStats.accuracy - bStats.accuracy;
+    return domainStatsMap.get(a)!.accuracy - domainStatsMap.get(b)!.accuracy;
   });
 
   return weak;
@@ -180,7 +184,7 @@ export function getSectionAccuracy(
   let totalCorrect = 0;
 
   for (const domainId of sectionDomains) {
-    const domainQs = allQuestions.filter((q) => q.domain === domainId);
+    const domainQs = getQuestionsByDomain(domainId);
     for (const q of domainQs) {
       const qp = progress[q.id];
       if (qp && qp.attempts.length > 0) {

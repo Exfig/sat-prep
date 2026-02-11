@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>TopScore - Free SAT Prep & Test Prep Study Apps</title>
+  <meta name="description" content="Free SAT prep with adaptive practice questions, timed mock tests, score estimation, and detailed progress tracking. Study smarter with TopScore.">
+  <meta name="keywords" content="SAT prep, SAT practice, SAT study app, SAT mock test, SAT score estimator, free SAT prep, test prep, college admissions, SAT reading, SAT math">
+  <meta name="author" content="TopScore">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://topscore.school/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://topscore.school/">
+  <meta property="og:title" content="TopScore - Free SAT Prep & Test Prep Study Apps">
+  <meta property="og:description" content="Free SAT prep with adaptive practice questions, timed mock tests, score estimation, and detailed progress tracking. Study smarter with TopScore.">
+  <meta property="og:site_name" content="TopScore">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://topscore.school/">
+  <meta name="twitter:title" content="TopScore - Free SAT Prep & Test Prep Study Apps">
+  <meta name="twitter:description" content="Free SAT prep with adaptive practice questions, timed mock tests, score estimation, and detailed progress tracking.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/sat-prep/favicon.svg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "TopScore",
+    "url": "https://topscore.school",
+    "description": "Free test prep study apps with adaptive practice, mock tests, and progress tracking.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://topscore.school/sat-prep/",
+      "query-input": "required"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "TopScore SAT Prep",
+    "url": "https://topscore.school/sat-prep/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Free SAT prep app with adaptive practice questions, timed mock tests, score estimation, and detailed progress analytics for Reading & Writing and Math sections.",
+    "featureList": [
+      "Adaptive practice questions",
+      "Timed mock tests",
+      "SAT score estimation",
+      "Progress tracking and analytics",
+      "Spaced repetition review",
+      "Reading & Writing practice",
+      "Math practice with grid-in support"
+    ],
+    "educationalLevel": "High School",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "Student"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+      max-width: 640px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+
+    header p {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 640px;
+      width: 100%;
+    }
+
+    .app-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+
+    .app-card:hover {
+      border-color: #818cf8;
+      box-shadow: 0 0 24px rgba(129, 140, 248, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .app-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      border-radius: 0.75rem;
+    }
+
+    .app-info h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 0.25rem;
+    }
+
+    .app-info p {
+      font-size: 0.925rem;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.375rem;
+      margin-left: 0.5rem;
+      position: relative;
+      top: -1px;
+    }
+
+    .badge-live { background: #065f46; color: #6ee7b7; }
+    .badge-soon { background: #713f12; color: #fde68a; }
+
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TopScore</h1>
+    <p>Free study apps with adaptive practice, mock tests, and progress tracking.</p>
+  </header>
+
+  <main class="apps" role="list">
+    <a href="/sat-prep/" class="app-card" role="listitem" aria-label="SAT Prep - Live. Reading and Writing plus Math practice with timed mock tests, score estimation, and detailed progress analytics.">
+      <div class="app-icon" role="img" aria-hidden="true">&#x1F4DD;</div>
+      <div class="app-info">
+        <h2>SAT Prep <span class="badge badge-live">Live</span></h2>
+        <p>Reading &amp; Writing + Math practice with timed mock tests, score estimation, and detailed progress analytics.</p>
+      </div>
+    </a>
+
+    <div class="app-card" style="opacity: 0.5; cursor: default;" role="listitem" aria-label="AP Chemistry - Coming Soon">
+      <div class="app-icon" role="img" aria-hidden="true">&#x1F9EA;</div>
+      <div class="app-info">
+        <h2>AP Chemistry <span class="badge badge-soon">Coming Soon</span></h2>
+        <p>All 9 units with multi-part questions, lab simulations, and exam-day strategies.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TopScore. Free SAT prep and test preparation tools for students.</p>
+  </footer>
+</body>
+</html>

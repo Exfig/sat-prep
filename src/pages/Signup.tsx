@@ -27,12 +27,21 @@ export default function Signup() {
       setError('Password must be at least 6 characters');
       return;
     }
+    if (fullName.trim().length > 200) {
+      setError('Name must be 200 characters or less');
+      return;
+    }
 
     setLoading(true);
 
-    const { error: err } = await signUp(email, password, fullName, {
-      school: school || undefined,
-      gradeLevel: gradeLevel ? parseInt(gradeLevel) : undefined,
+    const sanitizedName = fullName.trim().slice(0, 200);
+    const sanitizedSchool = school.trim().slice(0, 200);
+    const gradeNum = gradeLevel ? parseInt(gradeLevel) : undefined;
+    const validGrade = gradeNum !== undefined && gradeNum >= 1 && gradeNum <= 13 ? gradeNum : undefined;
+
+    const { error: err } = await signUp(email, password, sanitizedName, {
+      school: sanitizedSchool || undefined,
+      gradeLevel: validGrade,
       targetTestDate: targetTestDate || undefined,
     });
 
@@ -55,7 +64,7 @@ export default function Signup() {
 
         <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
           {error && (
-            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
               {error}
             </div>
           )}
@@ -175,15 +184,15 @@ export default function Signup() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 text-white rounded-lg font-medium
-              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
+              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
           >
             {loading ? 'Creating account...' : 'Create Account'}
           </button>
 
           <p className="text-center text-sm text-slate-500">
             Already have an account?{' '}
-            <Link to="/login" className="text-indigo-600 hover:text-indigo-700">
+            <Link to="/login" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center">
               Sign in
             </Link>
           </p>

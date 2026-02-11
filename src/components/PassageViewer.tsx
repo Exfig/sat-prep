@@ -31,9 +31,9 @@ export default function PassageViewer({ passage }: PassageViewerProps) {
   let globalLineNumber = 0;
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 sm:p-6">
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-5 md:p-6" role="region" aria-label="Reading passage">
       <div
-        className="font-serif text-base leading-[1.8] text-slate-800"
+        className="font-serif text-sm sm:text-base leading-[1.7] sm:leading-[1.8] text-slate-800"
         style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
       >
         {paragraphs.map((paragraph, pIdx) => {

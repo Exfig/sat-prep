@@ -47,10 +47,14 @@ export default function AccountsTab() {
   async function saveEdit() {
     if (!editingId) return;
     try {
+      const sanitizedName = editFields.full_name.slice(0, 200).trim();
+      const sanitizedSchool = (editFields.school || '').slice(0, 200).trim();
+      const gradeNum = editFields.grade_level ? parseInt(editFields.grade_level) : null;
+      const validGrade = gradeNum !== null && gradeNum >= 1 && gradeNum <= 13 ? gradeNum : null;
       await adminUpdateProfile(editingId, {
-        full_name: editFields.full_name,
-        school: editFields.school || undefined,
-        grade_level: editFields.grade_level ? parseInt(editFields.grade_level) : null,
+        full_name: sanitizedName,
+        school: sanitizedSchool || undefined,
+        grade_level: validGrade,
       });
       setUsers((prev) =>
         prev.map((u) =>

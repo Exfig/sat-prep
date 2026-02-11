@@ -58,25 +58,25 @@ const modes: { mode: StudyMode; icon: string; title: string; description: string
 ];
 
 export default function StudyModeSelector({ onSelectMode }: StudyModeSelectorProps) {
-  const { questionProgress } = useAppStore();
+  const questionProgress = useAppStore((s) => s.questionProgress);
   const dueCount = getDueCount(questionProgress);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
       {modes.map(({ mode, icon, title, description }) => (
         <button
           key={mode}
           onClick={() => onSelectMode(mode)}
-          className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 text-left
-            hover:border-indigo-300 hover:shadow-md transition-all duration-200 group relative"
+          className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 text-left
+            hover:border-indigo-300 hover:shadow-md transition-all duration-200 group relative min-h-[44px]"
         >
-          <span className="text-3xl block mb-3">{icon}</span>
-          <h3 className="text-lg font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors duration-200">
+          <span className="text-2xl sm:text-3xl block mb-2 sm:mb-3">{icon}</span>
+          <h3 className="text-base sm:text-lg font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors duration-200">
             {title}
           </h3>
-          <p className="text-sm text-slate-500 mt-1">{description}</p>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">{description}</p>
           {mode === 'spaced-review' && dueCount > 0 && (
-            <span className="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+            <span className="absolute top-4 right-4 bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full" aria-label={`${dueCount} questions due for review`}>
               {dueCount}
             </span>
           )}

@@ -1,6 +1,6 @@
 import type { DomainId, QuestionProgress } from '../types';
 import { ALL_DOMAIN_IDS } from '../types';
-import { allQuestions } from '../data/questions';
+import { getQuestionsByDomain } from '../data/questions';
 
 // ─── Boss fight config ───────────────────────────────────────────────────────
 
@@ -25,7 +25,7 @@ export function getBossDomain(
   for (const domainId of ALL_DOMAIN_IDS) {
     if (defeated.has(domainId)) continue;
 
-    const domainQs = allQuestions.filter((q) => q.domain === domainId);
+    const domainQs = getQuestionsByDomain(domainId);
     if (domainQs.length === 0) continue;
 
     let attempted = 0;
@@ -64,7 +64,7 @@ export function selectBossFightQuestions(
   progress: Record<string, QuestionProgress>,
   count: number = BOSS_FIGHT_SIZE,
 ): string[] {
-  const pool = allQuestions.filter((q) => q.domain === targetDomain);
+  const pool = getQuestionsByDomain(targetDomain);
 
   // Score each question — lower score = more likely to be selected
   const scored = pool.map((q) => {
@@ -135,7 +135,7 @@ export function getWeakAreas(
   const weakDomains: DomainId[] = [];
 
   for (const domainId of ALL_DOMAIN_IDS) {
-    const domainQs = allQuestions.filter((q) => q.domain === domainId);
+    const domainQs = getQuestionsByDomain(domainId);
     let totalAttempts = 0;
     let totalCorrect = 0;
 

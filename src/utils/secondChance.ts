@@ -1,5 +1,5 @@
 import type { Question, QuestionProgress } from '../types';
-import { allQuestions, getQuestionById } from '../data/questions';
+import { allQuestions, getQuestionById, getQuestionsByDomain, getQuestionsByDifficulty } from '../data/questions';
 
 // ─── Shuffle helper ──────────────────────────────────────────────────────────
 
@@ -70,15 +70,15 @@ export function selectSecondChanceQuestion(
   }
 
   // Priority 3: Same domain
-  const sameDomain = allQuestions.filter(
-    (q) => q.domain === original.domain && q.id !== originalQuestionId,
+  const sameDomain = getQuestionsByDomain(original.domain).filter(
+    (q) => q.id !== originalQuestionId,
   );
   const fromDomain = pickBest(sameDomain);
   if (fromDomain) return fromDomain;
 
   // Fallback: random question from any domain at similar difficulty
-  const fallback = allQuestions.filter(
-    (q) => q.difficulty === original.difficulty && q.id !== originalQuestionId,
+  const fallback = getQuestionsByDifficulty(original.difficulty).filter(
+    (q) => q.id !== originalQuestionId,
   );
   if (fallback.length > 0) {
     return shuffle(fallback)[0].id;

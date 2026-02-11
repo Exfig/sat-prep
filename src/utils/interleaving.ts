@@ -1,5 +1,5 @@
 import type { Question, DomainId, QuestionProgress } from '../types';
-import { allQuestions } from '../data/questions';
+import { allQuestions, getQuestionsByDomain } from '../data/questions';
 
 // ─── Shuffle helper ──────────────────────────────────────────────────────────
 
@@ -80,7 +80,7 @@ export function buildHybridQueue(
   progress: Record<string, QuestionProgress>,
   count: number = 10,
 ): string[] {
-  const primaryPool = allQuestions.filter((q) => q.domain === targetDomain);
+  const primaryPool = getQuestionsByDomain(targetDomain);
   const otherPool = allQuestions.filter((q) => q.domain !== targetDomain);
 
   // Score primary questions: prefer unattempted & low-mastery

@@ -35,12 +35,12 @@ export default function ForgotPassword() {
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
           {success ? (
             <div className="text-center space-y-4">
-              <div className="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-lg text-sm" role="status">
                 Check your email for a password reset link.
               </div>
               <Link
                 to="/login"
-                className="inline-block text-indigo-600 hover:text-indigo-700 text-sm font-medium"
+                className="inline-flex items-center text-indigo-600 hover:text-indigo-700 text-sm font-medium py-2 min-h-[44px]"
               >
                 Back to Sign In
               </Link>
@@ -48,7 +48,7 @@ export default function ForgotPassword() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
-                <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
                   {error}
                 </div>
               )}
@@ -71,14 +71,14 @@ export default function ForgotPassword() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-indigo-600 text-white rounded-lg font-medium
-                  hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
+                  hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
               >
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
 
               <p className="text-center text-sm text-slate-500">
-                <Link to="/login" className="text-indigo-600 hover:text-indigo-700">
+                <Link to="/login" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center justify-center">
                   Back to Sign In
                 </Link>
               </p>

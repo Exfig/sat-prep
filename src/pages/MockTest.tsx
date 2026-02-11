@@ -11,6 +11,8 @@ import ScoreEstimator from '../components/ScoreEstimator';
 import MultipleChoiceInput from '../components/MultipleChoiceInput';
 import GridInInput from '../components/GridInInput';
 import PassageViewer from '../components/PassageViewer';
+import FlagQuestionButton from '../components/FlagQuestionButton';
+import { evaluateGridIn } from '../utils/gridIn';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -23,18 +25,6 @@ interface ModuleAnswer {
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function evaluateGridIn(userAnswer: string | number, correctAnswer: string | number): boolean {
-  const parseNum = (v: string | number): number => {
-    const s = String(v);
-    if (s.includes('/')) {
-      const [num, den] = s.split('/');
-      return Number(num) / Number(den);
-    }
-    return Number(s);
-  };
-  return Math.abs(parseNum(userAnswer) - parseNum(correctAnswer)) < 0.01;
-}
 
 function getModuleConfig(phase: Phase): { section: SectionId; moduleNumber: 1 | 2; questionCount: number; durationSeconds: number } | null {
   switch (phase) {
@@ -67,7 +57,8 @@ const BREAK_DURATION_SECONDS = 10 * 60;
 
 export default function MockTest() {
   const navigate = useNavigate();
-  const { addMockTestResult, updateSectionQuests } = useAppStore();
+  const addMockTestResult = useAppStore((s) => s.addMockTestResult);
+  const updateSectionQuests = useAppStore((s) => s.updateSectionQuests);
 
   // Core state
   const [phase, setPhase] = useState<Phase>('intro');
@@ -289,12 +280,12 @@ export default function MockTest() {
   // Intro screen
   if (phase === 'intro') {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2 text-center">
+      <div className="max-w-2xl mx-auto px-4 py-6 sm:py-12">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2 text-center">
             Digital SAT Mock Test
           </h1>
-          <p className="text-slate-500 text-center mb-8">
+          <p className="text-slate-500 text-center mb-6 sm:mb-8 text-sm sm:text-base">
             This test simulates the actual Digital SAT format
           </p>
 
@@ -492,9 +483,9 @@ export default function MockTest() {
   const hasAnswer = currentQuestion.type === 'grid-in' ? gridInValue.trim() !== '' : selectedMC !== null;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-6">
+    <div className="max-w-3xl mx-auto px-4 py-4 sm:py-6">
       {/* Timer */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <MockTestTimer
           key={timerKey}
           duration={config.durationSeconds}
@@ -505,26 +496,44 @@ export default function MockTest() {
       </div>
 
       {/* Question progress */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3 sm:mb-4" aria-live="polite">
         <span className="text-sm font-medium text-slate-600">
-          Question {currentIndex + 1} of {currentQuestionIds.length}
+          Q {currentIndex + 1}/{currentQuestionIds.length}
         </span>
-        <span className="text-xs text-slate-400">
-          {SECTION_NAMES[config.section]} &middot; Module {config.moduleNumber}
+        <span className="text-xs text-slate-500">
+          {SECTION_NAMES[config.section]} <span aria-hidden="true">&middot;</span> Module {config.moduleNumber}
         </span>
       </div>
 
       {/* Question card */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-4 sm:mb-6" role="region" aria-label={`Question ${currentIndex + 1}`}>
+        {/* Flag button */}
+        <div className="flex justify-end mb-2">
+          <FlagQuestionButton questionId={currentQuestion.id} />
+        </div>
+
         {/* Passage (if applicable) */}
         {currentQuestion.passage && (
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <PassageViewer passage={currentQuestion.passage} />
           </div>
         )}
 
+        {/* Visual asset (graph/diagram) */}
+        {currentQuestion.visualAsset && (
+          <div className="mb-4 flex justify-center">
+            <img
+              src={currentQuestion.visualAsset.src}
+              alt={currentQuestion.visualAsset.altText}
+              loading="lazy"
+              decoding="async"
+              className="max-w-full sm:max-w-sm rounded-lg border border-slate-200"
+            />
+          </div>
+        )}
+
         {/* Question text */}
-        <p className="text-base font-medium text-slate-800 mb-6 leading-relaxed">
+        <p className="text-sm sm:text-base font-medium text-slate-800 mb-4 sm:mb-6 leading-relaxed">
           {currentQuestion.question}
         </p>
 
@@ -549,7 +558,7 @@ export default function MockTest() {
       <div className="flex justify-end">
         <button
           onClick={handleNext}
-          className={`py-3 px-8 rounded-lg font-medium transition-colors ${
+          className={`w-full sm:w-auto py-3 px-8 rounded-lg font-medium transition-colors min-h-[44px] ${
             hasAnswer
               ? 'bg-indigo-600 text-white hover:bg-indigo-700'
               : 'bg-slate-200 text-slate-500 hover:bg-slate-300'

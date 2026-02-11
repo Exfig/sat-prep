@@ -1,5 +1,5 @@
 import type { Question, DomainId, SectionId, QuestionProgress, Difficulty } from '../types';
-import { allQuestions } from '../data/questions';
+import { allQuestions, getQuestionsByDomain } from '../data/questions';
 import { getDueQuestions } from './sm2';
 
 // ─── Shuffle helper ──────────────────────────────────────────────────────────
@@ -99,7 +99,7 @@ export function selectDomainReviewQuestions(options: {
 }): string[] {
   const { domain, count = 10, progress = {} } = options;
 
-  const pool = allQuestions.filter((q) => q.domain === domain);
+  const pool = getQuestionsByDomain(domain);
 
   // Prioritise questions with low mastery or not yet attempted
   const scored = pool.map((q) => {

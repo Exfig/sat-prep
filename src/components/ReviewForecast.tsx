@@ -29,12 +29,14 @@ export default function ReviewForecast({ progress }: ReviewForecastProps) {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <h3 className="text-sm font-semibold text-slate-700 mb-4">Review Forecast</h3>
-      <div className="flex gap-2">
+      <div className="flex gap-2" role="list" aria-label="Questions due for review per day">
         {days.map((day, i) => {
           const isToday = i === 0;
           return (
             <div
               key={i}
+              role="listitem"
+              aria-label={`${format(day, 'EEEE')}: ${dueCounts[i]} questions due${isToday ? ' (today)' : ''}`}
               className={`flex-1 flex flex-col items-center p-2 rounded-lg
                 ${isToday ? 'border-2 border-indigo-500 bg-indigo-50' : 'border border-slate-200 bg-slate-50'}`}
             >

@@ -35,7 +35,7 @@ export default function Login() {
 
         <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
           {error && (
-            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
               {error}
             </div>
           )}
@@ -73,17 +73,17 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 text-white rounded-lg font-medium
-              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
+              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
 
           <div className="flex items-center justify-between text-sm">
-            <Link to="/forgot-password" className="text-indigo-600 hover:text-indigo-700">
+            <Link to="/forgot-password" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center">
               Forgot password?
             </Link>
-            <Link to="/signup" className="text-indigo-600 hover:text-indigo-700">
+            <Link to="/signup" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center">
               Create account
             </Link>
           </div>

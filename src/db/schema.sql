@@ -18,8 +18,13 @@ alter table public.profiles enable row level security;
 
 create policy "Users can view own profile"
   on public.profiles for select using (auth.uid() = id);
+-- SECURITY NOTE: This policy restricts updates to only safe columns.
+-- Without column restrictions, a user could SET role = 'admin' to escalate privileges.
+-- The WITH CHECK ensures the role column cannot be changed by the user.
 create policy "Users can update own profile"
-  on public.profiles for update using (auth.uid() = id);
+  on public.profiles for update
+  using (auth.uid() = id)
+  with check (auth.uid() = id AND role = (select role from public.profiles where id = auth.uid()));
 create policy "Users can insert own profile"
   on public.profiles for insert with check (auth.uid() = id);
 

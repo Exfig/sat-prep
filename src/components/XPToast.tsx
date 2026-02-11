@@ -20,6 +20,9 @@ export default function XPToast({ amount, reason, onDone }: XPToastProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
+      role="status"
+      aria-live="polite"
+      aria-label={`Earned ${amount} experience points: ${reason}`}
     >
       <span className="text-lg font-bold">+{amount} XP</span>
       <span className="text-emerald-100 text-sm ml-2">{reason}</span>

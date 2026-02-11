@@ -23,7 +23,7 @@ import { calculateMastery } from '../utils/mastery';
 import { calculateSM2, defaultSM2Data, computeNextReviewDate } from '../utils/sm2';
 import { calculateXPReward } from '../utils/xp';
 import { checkNewBadges, BADGE_DEFINITIONS } from '../utils/badges';
-import { getQuestionById, allQuestions } from '../data/questions';
+import { getQuestionById, getQuestionsByDomain } from '../data/questions';
 import type { UserData } from '../services/database';
 
 interface SessionState {
@@ -580,28 +580,26 @@ export const useAppStore = create<AppState>()(
 
     updateQuestProgress: (domainId) =>
       set((state) => {
-        const domainQuestions = allQuestions.filter((q) => q.domain === domainId);
+        const domainQuestions = getQuestionsByDomain(domainId);
         const progress = state.questionProgress;
 
         let answered = 0;
         let correct = 0;
         let deepDives = 0;
         let masteredCount = 0;
+        let totalAttempts = 0;
 
         for (const q of domainQuestions) {
           const qp = progress[q.id];
           if (qp && qp.attempts.length > 0) {
             answered++;
+            totalAttempts += qp.attempts.length;
             correct += qp.attempts.filter((a) => a.correct).length;
             if (qp.masteryLevel >= 3) masteredCount++;
             const ddAttempts = qp.attempts.filter((a) => a.deepDiveCompleted);
             deepDives += ddAttempts.length;
           }
         }
-
-        const totalAttempts = Object.values(progress)
-          .filter((qp) => domainQuestions.some((q) => q.id === qp.questionId))
-          .reduce((sum, qp) => sum + qp.attempts.length, 0);
 
         const accuracy = totalAttempts > 0 ? Math.round((correct / totalAttempts) * 100) : 0;
         const masteryThresholdMet = masteredCount >= Math.ceil(domainQuestions.length * 0.5);

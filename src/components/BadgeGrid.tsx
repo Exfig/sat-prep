@@ -24,19 +24,21 @@ export default function BadgeGrid({ earnedBadges, allDefinitions }: BadgeGridPro
   });
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" role="list" aria-label="Badges">
       {sorted.map((def) => {
         const earned = earnedMap.get(def.id);
         return (
           <div
             key={def.id}
+            role="listitem"
+            aria-label={`${def.name}: ${earned ? 'Earned' : 'Locked'}. ${def.description}`}
             className={`rounded-xl border p-4 text-center transition-all duration-200 ${
               earned
                 ? 'bg-white border-amber-200 shadow-sm'
                 : 'bg-slate-50 border-slate-200 opacity-50'
             }`}
           >
-            <span className={`text-3xl block mb-2 ${earned ? '' : 'grayscale'}`}>
+            <span className={`text-3xl block mb-2 ${earned ? '' : 'grayscale'}`} aria-hidden="true">
               {def.icon}
             </span>
             <p className="text-sm font-semibold text-slate-800">{def.name}</p>

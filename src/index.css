@@ -1,2 +1,33 @@
 @import "tailwindcss";
-@import "katex/dist/katex.min.css";
+
+/* WCAG 2.2 - Skip link utility (WCAG 2.4.1) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* WCAG 2.3.3 - Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* WCAG 2.4.7 - Enhanced focus indicators */
+:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -24,13 +24,15 @@ export default function HintPanel({
       <button
         onClick={() => setCollapsed(!collapsed)}
         className="flex items-center justify-between w-full text-sm font-semibold text-slate-700"
+        aria-expanded={!collapsed}
+        aria-controls="hint-panel-content"
       >
         <span>Hints</span>
         <span className="text-slate-400 text-xs">{collapsed ? 'Show' : 'Hide'}</span>
       </button>
 
       {!collapsed && (
-        <div className="mt-3 space-y-3">
+        <div id="hint-panel-content" className="mt-3 space-y-3">
           {currentHint === 0 && (
             <button
               onClick={onRequestHint}

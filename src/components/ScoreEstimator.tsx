@@ -58,13 +58,20 @@ function ScoreBar({
         <span className="text-sm font-medium text-slate-700">{label}</span>
         <span className="text-sm font-semibold text-slate-900">{score}</span>
       </div>
-      <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200">
+      <div
+        className="h-3 w-full overflow-hidden rounded-full bg-slate-200"
+        role="progressbar"
+        aria-valuenow={score}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-label={`${label}: ${score} out of ${max}`}
+      >
         <div
           className={`h-full rounded-full transition-all duration-500 ${colorBar}`}
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="mt-0.5 flex justify-between text-xs text-slate-400">
+      <div className="mt-0.5 flex justify-between text-xs text-slate-500" aria-hidden="true">
         <span>{min}</span>
         <span>{max}</span>
       </div>
@@ -98,7 +105,7 @@ export default function ScoreEstimator({ score }: ScoreEstimatorProps) {
                 ? 'Good'
                 : 'Keep Practicing'}
         </span>
-        <span className="mt-1 text-xs text-slate-400">out of 1600</span>
+        <span className="mt-1 text-xs text-slate-500">out of 1600</span>
       </div>
 
       {/* Section scores */}

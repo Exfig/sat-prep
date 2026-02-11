@@ -99,7 +99,7 @@ export default function GridInInput({
   }
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-full sm:max-w-xs">
       <label className="mb-1.5 block text-sm font-medium text-slate-700">
         Your Answer
       </label>
@@ -110,7 +110,7 @@ export default function GridInInput({
         onChange={handleChange}
         disabled={disabled}
         placeholder="e.g. 42, 3.5, 3/4"
-        className={`w-full rounded-lg border ${borderClass} ${bgClass} px-4 py-2.5 font-mono text-lg tracking-wide text-slate-900 shadow-sm transition-colors placeholder:text-slate-400 disabled:cursor-not-allowed disabled:opacity-75`}
+        className={`w-full rounded-lg border ${borderClass} ${bgClass} px-4 py-3 font-mono text-lg tracking-wide text-slate-900 shadow-sm transition-colors placeholder:text-slate-400 disabled:cursor-not-allowed disabled:opacity-75 min-h-[44px]`}
         autoComplete="off"
         spellCheck={false}
       />
@@ -124,6 +124,8 @@ export default function GridInInput({
               ? 'text-emerald-700'
               : 'text-red-700'
           }`}
+          role="status"
+          aria-live="polite"
         >
           {feedbackText}
         </p>

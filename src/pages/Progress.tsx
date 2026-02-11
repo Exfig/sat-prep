@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { calculateOverallStats } from '../utils/stats';
 import { getQuestionById } from '../data/questions';
@@ -11,30 +12,51 @@ import { getLevelForXP, getXPToNextLevel } from '../utils/xp';
 import { BADGE_DEFINITIONS } from '../utils/badges';
 
 export default function Progress() {
-  const { questionProgress, studyStreak, lastStudyDate, xp, earnedBadges, mockTestHistory } = useAppStore();
-  const stats = calculateOverallStats(questionProgress, studyStreak, lastStudyDate);
-  const level = getLevelForXP(xp);
-  const xpToNext = getXPToNextLevel(xp);
+  // Granular Zustand selectors
+  const questionProgress = useAppStore((s) => s.questionProgress);
+  const studyStreak = useAppStore((s) => s.studyStreak);
+  const lastStudyDate = useAppStore((s) => s.lastStudyDate);
+  const xp = useAppStore((s) => s.xp);
+  const earnedBadges = useAppStore((s) => s.earnedBadges);
+  const mockTestHistory = useAppStore((s) => s.mockTestHistory);
 
-  const masteredQuestions = Object.values(questionProgress).filter((p) => p.masteryLevel >= 3);
-  const needsReview = Object.values(questionProgress).filter(
-    (p) => p.attempts.length > 0 && p.masteryLevel < 2
+  const stats = useMemo(
+    () => calculateOverallStats(questionProgress, studyStreak, lastStudyDate),
+    [questionProgress, studyStreak, lastStudyDate],
+  );
+  const level = useMemo(() => getLevelForXP(xp), [xp]);
+  const xpToNext = useMemo(() => getXPToNextLevel(xp), [xp]);
+
+  const masteredQuestions = useMemo(
+    () => Object.values(questionProgress).filter((p) => p.masteryLevel >= 3),
+    [questionProgress],
+  );
+  const needsReview = useMemo(
+    () => Object.values(questionProgress).filter(
+      (p) => p.attempts.length > 0 && p.masteryLevel < 2,
+    ),
+    [questionProgress],
   );
 
   // Generate streak calendar (last 30 days)
   const today = new Date();
-  const last30Days = Array.from({ length: 30 }, (_, i) => {
-    const d = new Date(today);
+  const todayStr = today.toDateString();
+  const last30Days = useMemo(() => Array.from({ length: 30 }, (_, i) => {
+    const d = new Date();
     d.setDate(d.getDate() - (29 - i));
     return d;
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), [todayStr]);
 
-  const activeDates = new Set<string>();
-  for (const progress of Object.values(questionProgress)) {
-    for (const attempt of progress.attempts) {
-      activeDates.add(new Date(attempt.timestamp).toDateString());
+  const activeDates = useMemo(() => {
+    const dates = new Set<string>();
+    for (const progress of Object.values(questionProgress)) {
+      for (const attempt of progress.attempts) {
+        dates.add(new Date(attempt.timestamp).toDateString());
+      }
     }
-  }
+    return dates;
+  }, [questionProgress]);
 
   const sections: SectionId[] = ['reading-writing', 'math'];
 
@@ -145,7 +167,7 @@ export default function Progress() {
 
       {/* Mock Test Score History */}
       {mockTestHistory.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-8">
           <h2 className="text-xl font-bold text-slate-800 mb-4">Mock Test History</h2>
           <div className="space-y-3">
             {mockTestHistory
@@ -156,7 +178,7 @@ export default function Progress() {
                 return (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100"
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-slate-50 rounded-lg border border-slate-100 gap-2"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-slate-500">
@@ -166,7 +188,7 @@ export default function Progress() {
                         {entry.score.total}
                       </span>
                     </div>
-                    <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-3 sm:gap-4 text-sm">
                       <span className="text-slate-600">
                         RW: <span className="font-semibold">{entry.score.readingWriting}</span>
                       </span>
@@ -232,9 +254,9 @@ export default function Progress() {
       </div>
 
       {/* Study streak calendar */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6">
         <h2 className="text-xl font-bold text-slate-800 mb-4">Study Streak</h2>
-        <div className="flex items-center gap-1 flex-wrap">
+        <div className="grid grid-cols-10 sm:flex sm:flex-wrap gap-1" role="group" aria-label="Study activity for the last 30 days">
           {last30Days.map((day) => {
             const isActive = activeDates.has(day.toDateString());
             const isToday = day.toDateString() === today.toDateString();
@@ -242,7 +264,8 @@ export default function Progress() {
               <div
                 key={day.toISOString()}
                 title={day.toLocaleDateString()}
-                className={`w-8 h-8 rounded-md flex items-center justify-center text-xs font-medium transition-all duration-200 ${
+                aria-label={`${day.toLocaleDateString()}: ${isActive ? 'studied' : 'no activity'}${isToday ? ' (today)' : ''}`}
+                className={`aspect-square sm:w-8 sm:h-8 rounded-md flex items-center justify-center text-[0.6rem] sm:text-xs font-medium transition-all duration-200 ${
                   isActive
                     ? 'bg-emerald-500 text-white'
                     : isToday

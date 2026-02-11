@@ -5,6 +5,7 @@ import MultipleChoiceInput from './MultipleChoiceInput';
 import PassageViewer from './PassageViewer';
 import GridInInput from './GridInInput';
 import StrategyTipBanner from './StrategyTipBanner';
+import FlagQuestionButton from './FlagQuestionButton';
 
 interface QuestionCardProps {
   question: Question;
@@ -35,20 +36,24 @@ export default function QuestionCard({ question, onAnswer, disabled }: QuestionC
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6" role="region" aria-label="Question">
       {/* Meta tags */}
-      <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span className="px-2 py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-700">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4" aria-label="Question metadata" role="group">
+        <span className="px-2 py-0.5 sm:py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-700">
           {SECTION_NAMES[question.section]}
         </span>
-        <span className="px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-600">
+        <span className="px-2 py-0.5 sm:py-1 rounded text-xs font-medium bg-slate-100 text-slate-600">
           {DOMAIN_NAMES[question.domain]}
         </span>
-        <span className="px-2 py-1 rounded text-xs font-medium bg-purple-100 text-purple-700">
+        <span className="px-2 py-0.5 sm:py-1 rounded text-xs font-medium bg-purple-100 text-purple-700 max-w-[200px] truncate">
           {question.skill}
         </span>
-        <span className={`px-2 py-1 rounded text-xs font-medium ${difficultyColors[question.difficulty]}`}>
+        <span className={`px-2 py-0.5 sm:py-1 rounded text-xs font-medium ${difficultyColors[question.difficulty]}`}>
           {question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1)}
+        </span>
+        <span className="ml-auto flex items-center gap-2 shrink-0">
+          <span className="text-xs font-mono text-slate-400 hidden sm:inline">{question.id.match(/-cb-([a-f0-9]+)$/)?.[1] ?? question.id}</span>
+          <FlagQuestionButton questionId={question.id} />
         </span>
       </div>
 
@@ -59,8 +64,21 @@ export default function QuestionCard({ question, onAnswer, disabled }: QuestionC
         </div>
       )}
 
+      {/* Visual asset (graph/diagram) */}
+      {question.visualAsset && (
+        <div className="mb-4 flex justify-center">
+          <img
+            src={`${import.meta.env.BASE_URL}${question.visualAsset.src.replace(/^\//, '')}`}
+            alt={question.visualAsset.altText}
+            loading="lazy"
+            decoding="async"
+            className="max-w-full sm:max-w-sm rounded-lg border border-slate-200"
+          />
+        </div>
+      )}
+
       {/* Question text */}
-      <p className="text-lg font-medium text-slate-800 mb-4 leading-relaxed">
+      <p className="text-base sm:text-lg font-medium text-slate-800 mb-4 leading-relaxed">
         {question.question}
       </p>
 

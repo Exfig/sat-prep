@@ -54,12 +54,14 @@ export default function ExamWrapperForm({ missedQuestions, onComplete }: ExamWra
         {missedQuestions.map((q) => (
           <div key={q.questionId} className="p-4 rounded-lg bg-slate-50 border border-slate-200">
             <p className="text-sm font-medium text-slate-700 mb-3">{q.skill}</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2" role="radiogroup" aria-label={`Error type for ${q.skill}`}>
               {errorOptions.map(({ key, label }) => (
                 <button
                   key={key}
                   onClick={() => handleSelect(q.questionId, key)}
-                  className={`py-1.5 px-3 rounded-lg text-xs font-medium transition-colors
+                  role="radio"
+                  aria-checked={selections[q.questionId] === key}
+                  className={`py-2 sm:py-1.5 px-3 rounded-lg text-xs font-medium transition-colors min-h-[36px]
                     ${
                       selections[q.questionId] === key
                         ? 'bg-indigo-500 text-white'

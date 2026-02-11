@@ -19,8 +19,11 @@ export default function BadgeUnlockToast({ badge, onDone }: BadgeUnlockToastProp
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.35 }}
+      role="status"
+      aria-live="polite"
+      aria-label={`Badge unlocked: ${badge.name}. ${badge.description}`}
     >
-      <span className="text-3xl">{badge.icon}</span>
+      <span className="text-3xl" aria-hidden="true">{badge.icon}</span>
       <div>
         <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide">Badge Unlocked!</p>
         <p className="font-bold text-slate-800">{badge.name}</p>

@@ -49,9 +49,11 @@ export default function DomainFilter({
       {/* Section toggle pills */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-2">Section</label>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Section filter">
           <button
             onClick={() => handleSectionChange(undefined)}
+            role="radio"
+            aria-checked={!selectedSection}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 ${
               !selectedSection
                 ? 'bg-indigo-100 text-indigo-700 border-indigo-300'
@@ -64,6 +66,8 @@ export default function DomainFilter({
             <button
               key={id}
               onClick={() => handleSectionChange(id)}
+              role="radio"
+              aria-checked={selectedSection === id}
               className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 ${
                 selectedSection === id
                   ? 'bg-indigo-100 text-indigo-700 border-indigo-300'
@@ -95,9 +99,11 @@ export default function DomainFilter({
       {/* Difficulty selection */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-2">Difficulty</label>
-        <div className="flex gap-2">
+        <div className="flex gap-2" role="radiogroup" aria-label="Difficulty filter">
           <button
             onClick={() => onDifficultyChange(undefined)}
+            role="radio"
+            aria-checked={!selectedDifficulty}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 ${
               !selectedDifficulty
                 ? 'bg-indigo-100 text-indigo-700 border-indigo-300'
@@ -110,6 +116,8 @@ export default function DomainFilter({
             <button
               key={d}
               onClick={() => onDifficultyChange(d)}
+              role="radio"
+              aria-checked={selectedDifficulty === d}
               className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 ${
                 selectedDifficulty === d
                   ? difficultyColors[d]

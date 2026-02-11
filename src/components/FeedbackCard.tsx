@@ -22,10 +22,13 @@ export default function FeedbackCard({
           ? 'border-emerald-500 bg-emerald-50'
           : 'border-red-500 bg-red-50'
       }`}
+      role="region"
+      aria-label={correct ? 'Correct answer feedback' : 'Incorrect answer feedback'}
+      aria-live="polite"
     >
       {/* Result header */}
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-2xl">{correct ? '\u2713' : '\u2717'}</span>
+        <span className="text-2xl" aria-hidden="true">{correct ? '\u2713' : '\u2717'}</span>
         <h3 className={`text-xl font-bold ${correct ? 'text-emerald-700' : 'text-red-700'}`}>
           {correct ? 'Correct!' : 'Incorrect'}
         </h3>

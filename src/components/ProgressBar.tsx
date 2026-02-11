@@ -16,7 +16,14 @@ export default function ProgressBar({ value, max, label, color = 'bg-indigo-600'
           <span className="text-sm text-slate-500">{pct}%</span>
         </div>
       )}
-      <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+      <div
+        className="w-full h-3 bg-slate-200 rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={label ? `${label}: ${pct}%` : `${pct}% complete`}
+      >
         <div
           className={`h-full rounded-full transition-all duration-500 ease-out ${color}`}
           style={{ width: `${pct}%` }}

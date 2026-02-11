@@ -86,3 +86,32 @@ export async function fetchUsageStats(): Promise<UsageStats> {
   if (error) throw error;
   return data as UsageStats;
 }
+
+// ─── Flags ───
+
+export interface FlagRow {
+  id: string;
+  user_id: string;
+  question_id: string;
+  description: string;
+  resolved: boolean;
+  resolved_at: string | null;
+  resolved_by: string | null;
+  created_at: string;
+  user_email: string;
+  user_name: string;
+}
+
+export async function fetchAllFlags(): Promise<FlagRow[]> {
+  const { data, error } = await supabase.rpc('admin_list_flags');
+  if (error) throw error;
+  return data as FlagRow[];
+}
+
+export async function adminResolveFlag(flagId: string, resolve: boolean): Promise<void> {
+  const { error } = await supabase.rpc('admin_resolve_flag', {
+    target_flag_id: flagId,
+    resolve,
+  });
+  if (error) throw error;
+}

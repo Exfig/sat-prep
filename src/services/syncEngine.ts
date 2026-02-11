@@ -79,28 +79,40 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
   const userId = currentUserId;
 
   try {
-    // 1. Flush immediate writes (attempts, exam wrappers, mock tests)
+    // 1. Flush immediate writes in parallel batches
+    const immediateWrites: Promise<void>[] = [];
+
     while (pendingAttempts.length > 0) {
       const item = pendingAttempts.shift()!;
-      await insertAttempt(userId, item.questionId, item.attempt, item.mode);
+      immediateWrites.push(insertAttempt(userId, item.questionId, item.attempt, item.mode));
     }
     while (pendingExamWrappers.length > 0) {
       const wrapper = pendingExamWrappers.shift()!;
-      await insertExamWrapper(userId, wrapper);
+      immediateWrites.push(insertExamWrapper(userId, wrapper));
     }
     while (pendingMockTests.length > 0) {
       const mock = pendingMockTests.shift()!;
-      await insertMockTest(userId, mock);
+      immediateWrites.push(insertMockTest(userId, mock));
     }
 
-    // 2. Upsert changed question progress rows
+    // Wait for all immediate writes to complete in parallel
+    if (immediateWrites.length > 0) {
+      await Promise.all(immediateWrites);
+    }
+
+    // 2. Upsert changed question progress rows (parallel)
+    const progressWrites: Promise<void>[] = [];
     for (const qid of pendingProgressUpserts) {
       const qp: QuestionProgress | undefined = state.questionProgress[qid];
       if (qp) {
-        await upsertUserProgress(userId, qp);
+        progressWrites.push(upsertUserProgress(userId, qp));
       }
     }
     pendingProgressUpserts.clear();
+
+    if (progressWrites.length > 0) {
+      await Promise.all(progressWrites);
+    }
 
     // 3. Sync gamification state (always — it's a single row update)
     const hasGamChanges = !prevState ||

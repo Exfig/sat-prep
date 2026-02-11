@@ -21,6 +21,7 @@ export default function StrategyTipBanner({ tip }: StrategyTipBannerProps) {
           viewBox="0 0 24 24"
           fill="currentColor"
           className="h-5 w-5 shrink-0 text-amber-500"
+          aria-hidden="true"
         >
           <path d="M12 2a7 7 0 0 0-4.5 12.37V16a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-1.63A7 7 0 0 0 12 2Zm2.5 15h-5v1a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1Z" />
         </svg>
@@ -30,6 +31,7 @@ export default function StrategyTipBanner({ tip }: StrategyTipBannerProps) {
           viewBox="0 0 20 20"
           fill="currentColor"
           className={`h-4 w-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
+          aria-hidden="true"
         >
           <path
             fillRule="evenodd"

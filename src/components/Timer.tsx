@@ -16,7 +16,7 @@ export default function Timer({ duration, onTimeUp, isRunning }: TimerProps) {
   }, [duration]);
 
   useEffect(() => {
-    if (!isRunning || remaining <= 0) return;
+    if (!isRunning) return;
 
     const interval = setInterval(() => {
       setRemaining((prev) => {
@@ -30,7 +30,7 @@ export default function Timer({ duration, onTimeUp, isRunning }: TimerProps) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isRunning, remaining]);
+  }, [isRunning]);
 
   const minutes = Math.floor(remaining / 60);
   const seconds = remaining % 60;
@@ -44,8 +44,18 @@ export default function Timer({ duration, onTimeUp, isRunning }: TimerProps) {
   }
 
   return (
-    <div className={`font-mono text-2xl font-bold ${colorClass} transition-colors duration-200`}>
-      {display}
+    <div
+      className={`font-mono text-2xl font-bold ${colorClass} transition-colors duration-200`}
+      role="timer"
+      aria-label={`${minutes} minutes and ${seconds} seconds remaining`}
+    >
+      <span aria-hidden="true">{display}</span>
+      {/* Screen reader announcements at key intervals */}
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        {remaining === 300 && '5 minutes remaining'}
+        {remaining === 60 && '1 minute remaining'}
+        {remaining === 0 && 'Time is up'}
+      </span>
     </div>
   );
 }

@@ -30,22 +30,23 @@ export default function CalibrationGauge({
         <span className="text-xs text-slate-500">{totalRated} rated</span>
       </div>
 
-      <div className="relative mb-2">
+      <div className="relative mb-2" role="img" aria-label={`Calibration gauge: ${label}. Score: ${Math.round(wellCalibratedPercent)}% well-calibrated from ${totalRated} ratings.`}>
         {/* Bar with 3 zones */}
         <div className="flex h-6 rounded-full overflow-hidden">
-          <div className="flex-1 bg-red-200" title="Overconfident" />
-          <div className="flex-1 bg-emerald-200" title="Well-calibrated" />
-          <div className="flex-1 bg-blue-200" title="Underconfident" />
+          <div className="flex-1 bg-red-200" title="Overconfident" aria-hidden="true" />
+          <div className="flex-1 bg-emerald-200" title="Well-calibrated" aria-hidden="true" />
+          <div className="flex-1 bg-blue-200" title="Underconfident" aria-hidden="true" />
         </div>
 
         {/* Marker */}
         <div
           className="absolute top-0 h-6 w-1 bg-slate-800 rounded-full"
           style={{ left: `${Math.min(Math.max(markerPosition, 0), 100)}%`, transform: 'translateX(-50%)' }}
+          aria-hidden="true"
         />
       </div>
 
-      <div className="flex justify-between text-[0.6rem] text-slate-400 mb-3">
+      <div className="flex justify-between text-[0.6rem] text-slate-500 mb-3">
         <span>Overconfident</span>
         <span>Well-calibrated</span>
         <span>Underconfident</span>

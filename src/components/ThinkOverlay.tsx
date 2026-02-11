@@ -38,6 +38,9 @@ export default function ThinkOverlay({ duration, onComplete }: ThinkOverlayProps
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Think period: ${remaining} seconds remaining`}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -46,8 +49,16 @@ export default function ThinkOverlay({ duration, onComplete }: ThinkOverlayProps
             transition={{ duration: 0.3 }}
             className="text-center"
           >
-            <p className="text-2xl font-bold text-white mb-4">Think...</p>
-            <p className="text-6xl font-black text-white tabular-nums">{remaining}</p>
+            <p className="text-2xl font-bold text-white mb-4" id="think-overlay-label">Think...</p>
+            <p
+              className="text-6xl font-black text-white tabular-nums"
+              role="timer"
+              aria-live="assertive"
+              aria-atomic="true"
+              aria-label={`${remaining} seconds remaining`}
+            >
+              {remaining}
+            </p>
           </motion.div>
         </motion.div>
       )}

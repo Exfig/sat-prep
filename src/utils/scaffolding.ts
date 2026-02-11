@@ -1,5 +1,5 @@
 import type { QuestionProgress, DomainId, Question } from '../types';
-import { allQuestions } from '../data/questions';
+import { getQuestionsByDomain } from '../data/questions';
 
 /**
  * Determine if hints should be available for a question based on scaffolding rules.
@@ -27,7 +27,7 @@ export function getFormulaVisibility(
 ): 'show' | 'toggle' | 'hidden' {
   if (scaffoldingOverride) return 'show';
 
-  const domainQs = allQuestions.filter((q) => q.domain === domainId);
+  const domainQs = getQuestionsByDomain(domainId);
   const attempted = domainQs.filter((q) => progress[q.id]?.attempts.length > 0);
 
   if (attempted.length < 3) return 'show'; // Not enough data, show by default
@@ -56,7 +56,7 @@ export function shouldUseFreeTextDeepDive(
   domainId: DomainId,
   progress: Record<string, QuestionProgress>,
 ): boolean {
-  const domainQs = allQuestions.filter((q) => q.domain === domainId);
+  const domainQs = getQuestionsByDomain(domainId);
   let correctDeepDives = 0;
 
   for (const q of domainQs) {

@@ -2,24 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAT Prep Study App</title>
-    <!-- GitHub Pages SPA redirect restore -->
-    <script>
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
+
+    <!-- Primary Meta Tags -->
+    <title>TopScore SAT Prep - Free Adaptive Practice & Mock Tests</title>
+    <meta name="description" content="Free SAT prep with 240+ practice questions, adaptive mock tests, score estimation, spaced repetition review, and progress tracking for Reading & Writing and Math.">
+    <meta name="robots" content="noindex">
+
+    <!-- Preconnect to Supabase for faster API calls -->
+    <link rel="preconnect" href="https://frgacrwgukenptidfrqt.supabase.co" crossorigin>
+    <link rel="dns-prefetch" href="https://frgacrwgukenptidfrqt.supabase.co">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/sat-prep/favicon.svg" />
   </head>
   <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-indigo-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-medium">
+      Skip to main content
+    </a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

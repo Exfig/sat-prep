@@ -14,6 +14,7 @@ import { getLevelForXP } from '../utils/xp';
 import { getBossDomain, selectBossFightQuestions, checkBossFightResult } from '../utils/bossFight';
 import { shouldShowHints, shouldUseFreeTextDeepDive } from '../utils/scaffolding';
 import { selectSecondChanceQuestion } from '../utils/secondChance';
+import { evaluateGridIn } from '../utils/gridIn';
 import type { StudyMode, DomainId, SectionId, Difficulty, SM2Rating, ConfidenceRating, Question } from '../types';
 import { DOMAIN_NAMES, SECTION_NAMES } from '../types';
 import QuestionCard from '../components/QuestionCard';
@@ -32,49 +33,31 @@ import DeepDiveCard from '../components/DeepDiveCard';
 import BossFightIntro from '../components/BossFightIntro';
 import SecondChanceCard from '../components/SecondChanceCard';
 
-// ─── Grid-in evaluation helper ───────────────────────────────────────────────
-
-function evaluateGridIn(userAnswer: string | number, correctAnswer: string | number): boolean {
-  const parseNum = (v: string | number): number => {
-    const s = String(v).trim();
-    if (s.includes('/')) {
-      const [num, den] = s.split('/');
-      return Number(num) / Number(den);
-    }
-    return Number(s);
-  };
-  const userVal = parseNum(userAnswer);
-  const correctVal = parseNum(correctAnswer);
-  if (isNaN(userVal) || isNaN(correctVal)) return false;
-  return Math.abs(userVal - correctVal) < 0.01;
-}
-
 // ─── Practice page ───────────────────────────────────────────────────────────
 
 export default function Practice() {
   const location = useLocation();
   const navigate = useNavigate();
-  const {
-    currentSession,
-    questionProgress,
-    xp,
-    thinkPeriodEnabled,
-    metacogEnabled,
-    scaffoldingOverrides,
-    startSession,
-    submitAnswer,
-    submitConfidence,
-    rateSM2,
-    completeDeepDive,
-    submitSecondChance,
-    defeatBoss,
-    checkAndAwardBadges,
-    nextQuestion,
-    endSession,
-    updateStreak,
-    updateQuestProgress,
-    updateSectionQuests,
-  } = useAppStore();
+  // Granular Zustand selectors — avoid subscribing to entire store
+  const currentSession = useAppStore((s) => s.currentSession);
+  const questionProgress = useAppStore((s) => s.questionProgress);
+  const xp = useAppStore((s) => s.xp);
+  const thinkPeriodEnabled = useAppStore((s) => s.thinkPeriodEnabled);
+  const metacogEnabled = useAppStore((s) => s.metacogEnabled);
+  const scaffoldingOverrides = useAppStore((s) => s.scaffoldingOverrides);
+  const startSession = useAppStore((s) => s.startSession);
+  const submitAnswer = useAppStore((s) => s.submitAnswer);
+  const submitConfidence = useAppStore((s) => s.submitConfidence);
+  const rateSM2 = useAppStore((s) => s.rateSM2);
+  const completeDeepDive = useAppStore((s) => s.completeDeepDive);
+  const submitSecondChance = useAppStore((s) => s.submitSecondChance);
+  const defeatBoss = useAppStore((s) => s.defeatBoss);
+  const checkAndAwardBadges = useAppStore((s) => s.checkAndAwardBadges);
+  const nextQuestion = useAppStore((s) => s.nextQuestion);
+  const endSession = useAppStore((s) => s.endSession);
+  const updateStreak = useAppStore((s) => s.updateStreak);
+  const updateQuestProgress = useAppStore((s) => s.updateQuestProgress);
+  const updateSectionQuests = useAppStore((s) => s.updateSectionQuests);
 
   const [userAnswer, setUserAnswer] = useState<string | number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -538,15 +521,15 @@ export default function Practice() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleStartDomainReview}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium
-                  hover:bg-indigo-700 transition-all duration-200"
+                className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+                  hover:bg-indigo-700 transition-all duration-200 min-h-[44px]"
               >
                 Start
               </button>
               <button
                 onClick={() => setShowDomainFilter(false)}
-                className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
-                  hover:bg-slate-200 transition-all duration-200"
+                className="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                  hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
               >
                 Back
               </button>
@@ -557,8 +540,8 @@ export default function Practice() {
             <StudyModeSelector onSelectMode={handleSelectMode} />
             <button
               onClick={() => setShowAllModes(false)}
-              className="mt-4 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg font-medium
-                hover:bg-slate-200 transition-all duration-200"
+              className="mt-4 px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
             >
               Back
             </button>
@@ -617,8 +600,8 @@ export default function Practice() {
         <p className="text-slate-600 mb-4">No questions available for this selection.</p>
         <button
           onClick={handleEndSession}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium
-            hover:bg-indigo-700 transition-all duration-200"
+          className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+            hover:bg-indigo-700 transition-all duration-200 min-h-[44px]"
         >
           Go Back
         </button>
@@ -630,22 +613,22 @@ export default function Practice() {
   if (!currentQuestion) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-8 text-center">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">Session Complete!</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4">Session Complete!</h2>
 
         {/* Boss fight result */}
         {isBossFight && bossDomain && (
           <div className="mb-6">
             {bossAnsweredCount > 0 && bossCorrectCount / bossAnsweredCount >= 0.75 ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-4">
-                <p className="text-2xl font-bold text-emerald-700 mb-2">Victory!</p>
-                <p className="text-slate-600">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 sm:p-6 mb-4">
+                <p className="text-xl sm:text-2xl font-bold text-emerald-700 mb-2">Victory!</p>
+                <p className="text-sm sm:text-base text-slate-600">
                   You scored {bossCorrectCount}/{bossAnsweredCount} and defeated the {DOMAIN_NAMES[bossDomain]} boss!
                 </p>
               </div>
             ) : (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-4">
-                <p className="text-2xl font-bold text-red-700 mb-2">Defeated...</p>
-                <p className="text-slate-600">
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 sm:p-6 mb-4">
+                <p className="text-xl sm:text-2xl font-bold text-red-700 mb-2">Defeated...</p>
+                <p className="text-sm sm:text-base text-slate-600">
                   You scored {bossCorrectCount}/{bossAnsweredCount}. You need 75% to win. Keep studying and try again!
                 </p>
               </div>
@@ -655,8 +638,8 @@ export default function Practice() {
 
         <button
           onClick={handleEndSession}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium
-            hover:bg-indigo-700 transition-all duration-200"
+          className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+            hover:bg-indigo-700 transition-all duration-200 min-h-[44px]"
         >
           Back to Dashboard
         </button>
@@ -718,18 +701,18 @@ export default function Practice() {
       )}
 
       {/* Top bar: progress + timer + boss score */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
         <span className="text-sm font-medium text-slate-500">
-          Question {currentIdx + 1} of {totalQuestions}
+          Q {currentIdx + 1}/{totalQuestions}
         </span>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           {/* Boss fight live score */}
           {isBossFight && (
-            <span className="text-sm font-semibold text-slate-700">
-              Score: {bossCorrectCount}/{bossAnsweredCount} correct
+            <span className="text-xs sm:text-sm font-semibold text-slate-700">
+              {bossCorrectCount}/{bossAnsweredCount}
               {bossAnsweredCount > 0 && (
                 <span className={`ml-1 ${bossCorrectCount / bossAnsweredCount >= 0.75 ? 'text-emerald-600' : 'text-red-500'}`}>
-                  — need 75%
+                  (need 75%)
                 </span>
               )}
             </span>
@@ -745,7 +728,14 @@ export default function Practice() {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-1.5 bg-slate-200 rounded-full mb-6 overflow-hidden">
+      <div
+        className="w-full h-1.5 bg-slate-200 rounded-full mb-4 sm:mb-6 overflow-hidden"
+        role="progressbar"
+        aria-valuenow={currentIdx + (submitted ? 1 : 0)}
+        aria-valuemin={0}
+        aria-valuemax={totalQuestions}
+        aria-label={`Question ${currentIdx + 1} of ${totalQuestions}`}
+      >
         <div
           className="h-full bg-indigo-600 rounded-full transition-all duration-300"
           style={{ width: `${((currentIdx + (submitted ? 1 : 0)) / totalQuestions) * 100}%` }}
@@ -775,13 +765,13 @@ export default function Practice() {
 
       {/* Submit button */}
       {!submitted && !showThinkOverlay && (
-        <div className="mt-6">
+        <div className="mt-4 sm:mt-6">
           <button
             onClick={handleSubmit}
             disabled={userAnswer === null}
             className="w-full py-3 bg-indigo-600 text-white rounded-lg font-semibold
               hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed
-              transition-all duration-200"
+              transition-all duration-200 min-h-[44px]"
           >
             Submit Answer
           </button>
@@ -831,7 +821,7 @@ export default function Practice() {
           <button
             onClick={handleStartSecondChance}
             className="w-full py-3 bg-amber-500 text-white rounded-lg font-semibold
-              hover:bg-amber-600 transition-all duration-200"
+              hover:bg-amber-600 transition-all duration-200 min-h-[44px]"
           >
             2nd Chance
           </button>
@@ -873,12 +863,12 @@ export default function Practice() {
 
       {/* Next / End buttons */}
       {submitted && !showSM2Rating && !showConfidence && !showDeepDive && !showSecondChance && (
-        <div className="flex gap-3 mt-6">
+        <div className="flex flex-col sm:flex-row gap-3 mt-4 sm:mt-6">
           {!isLastQuestion ? (
             <button
               onClick={handleNext}
               className="flex-1 py-3 bg-indigo-600 text-white rounded-lg font-semibold
-                hover:bg-indigo-700 transition-all duration-200"
+                hover:bg-indigo-700 transition-all duration-200 min-h-[44px]"
             >
               Next Question
             </button>
@@ -908,15 +898,15 @@ export default function Practice() {
                 handleEndSession();
               }}
               className="flex-1 py-3 bg-emerald-600 text-white rounded-lg font-semibold
-                hover:bg-emerald-700 transition-all duration-200"
+                hover:bg-emerald-700 transition-all duration-200 min-h-[44px]"
             >
               Finish Session
             </button>
           )}
           <button
             onClick={handleEndSession}
-            className="px-4 py-3 bg-slate-100 text-slate-700 rounded-lg font-medium
-              hover:bg-slate-200 transition-all duration-200"
+            className="w-full sm:w-auto px-4 py-3 bg-slate-100 text-slate-700 rounded-lg font-medium
+              hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
           >
             End Session
           </button>

@@ -39,15 +39,22 @@ export default function DomainBreakdownChart({ domainStats }: DomainBreakdownCha
             <div className="space-y-3">
               {stats.map((stat) => (
                 <div key={stat.domainId}>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-slate-700">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <span className="text-xs sm:text-sm font-medium text-slate-700 truncate min-w-0">
                       {DOMAIN_NAMES[stat.domainId]}
                     </span>
-                    <span className="text-sm text-slate-500">
+                    <span className="text-xs sm:text-sm text-slate-500 shrink-0">
                       {stat.attempted > 0 ? `${Math.round(stat.accuracy)}%` : 'No data'}
                     </span>
                   </div>
-                  <div className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                  <div
+                    className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden"
+                    role="progressbar"
+                    aria-valuenow={stat.attempted > 0 ? Math.round(stat.accuracy) : 0}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={`${DOMAIN_NAMES[stat.domainId]} accuracy: ${stat.attempted > 0 ? `${Math.round(stat.accuracy)}%` : 'No data'}`}
+                  >
                     {stat.attempted > 0 && (
                       <div
                         className={`h-full rounded-full transition-all duration-500 ease-out ${getBarColor(stat.accuracy)}`}

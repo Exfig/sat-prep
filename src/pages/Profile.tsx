@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from '../contexts/AuthContext';
 import { calculateOverallStats } from '../utils/stats';
@@ -10,11 +10,20 @@ import XPBar from '../components/XPBar';
 import BadgeGrid from '../components/BadgeGrid';
 
 export default function Profile() {
-  const { questionProgress, xp, earnedBadges, sessionsCompleted, studyStreak, longestStreak, lastStudyDate } = useAppStore();
+  const questionProgress = useAppStore((s) => s.questionProgress);
+  const xp = useAppStore((s) => s.xp);
+  const earnedBadges = useAppStore((s) => s.earnedBadges);
+  const sessionsCompleted = useAppStore((s) => s.sessionsCompleted);
+  const studyStreak = useAppStore((s) => s.studyStreak);
+  const longestStreak = useAppStore((s) => s.longestStreak);
+  const lastStudyDate = useAppStore((s) => s.lastStudyDate);
   const { user } = useAuth();
-  const stats = calculateOverallStats(questionProgress, studyStreak, lastStudyDate);
-  const level = getLevelForXP(xp);
-  const xpToNext = getXPToNextLevel(xp);
+  const stats = useMemo(
+    () => calculateOverallStats(questionProgress, studyStreak, lastStudyDate),
+    [questionProgress, studyStreak, lastStudyDate],
+  );
+  const level = useMemo(() => getLevelForXP(xp), [xp]);
+  const xpToNext = useMemo(() => getXPToNextLevel(xp), [xp]);
 
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [editing, setEditing] = useState(false);
@@ -45,10 +54,14 @@ export default function Profile() {
   const handleSave = async () => {
     if (!user) return;
     setSaving(true);
+    const sanitizedName = (editForm.full_name || '').slice(0, 200).trim();
+    const sanitizedSchool = (editForm.school || '').slice(0, 200).trim();
+    const gradeNum = editForm.grade_level ? parseInt(editForm.grade_level) : null;
+    const validGrade = gradeNum !== null && gradeNum >= 1 && gradeNum <= 13 ? gradeNum : null;
     await updateProfile(user.id, {
-      full_name: editForm.full_name || null,
-      school: editForm.school || null,
-      grade_level: editForm.grade_level ? parseInt(editForm.grade_level) : null,
+      full_name: sanitizedName || null,
+      school: sanitizedSchool || null,
+      grade_level: validGrade,
       target_test_date: editForm.target_test_date || null,
     });
     setProfile({
@@ -72,8 +85,8 @@ export default function Profile() {
           {!editing ? (
             <button
               onClick={() => setEditing(true)}
-              className="px-3 py-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700
-                bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors"
+              className="px-3 py-2 text-sm font-medium text-indigo-600 hover:text-indigo-700
+                bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors min-h-[44px]"
             >
               Edit
             </button>
@@ -82,8 +95,8 @@ export default function Profile() {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="px-3 py-1.5 text-sm font-medium text-white bg-indigo-600
-                  hover:bg-indigo-700 rounded-lg transition-colors disabled:opacity-50"
+                className="px-3 py-2 text-sm font-medium text-white bg-indigo-600
+                  hover:bg-indigo-700 rounded-lg transition-colors disabled:opacity-50 min-h-[44px]"
               >
                 {saving ? 'Saving...' : 'Save'}
               </button>
@@ -99,8 +112,8 @@ export default function Profile() {
                     });
                   }
                 }}
-                className="px-3 py-1.5 text-sm font-medium text-slate-600
-                  bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                className="px-3 py-2 text-sm font-medium text-slate-600
+                  bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors min-h-[44px]"
               >
                 Cancel
               </button>
@@ -200,24 +213,24 @@ export default function Profile() {
       </div>
 
       {/* Stats summary */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 text-center">
-          <p className="text-2xl font-bold text-indigo-600">{stats.totalAttempted}</p>
-          <p className="text-sm text-slate-500">Questions Answered</p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 text-center">
+          <p className="text-xl sm:text-2xl font-bold text-indigo-600">{stats.totalAttempted}</p>
+          <p className="text-xs sm:text-sm text-slate-500">Questions Answered</p>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 text-center">
-          <p className="text-2xl font-bold text-emerald-600">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 text-center">
+          <p className="text-xl sm:text-2xl font-bold text-emerald-600">
             {stats.totalAttempted > 0 ? `${stats.overallAccuracy}%` : '--'}
           </p>
-          <p className="text-sm text-slate-500">Accuracy</p>
+          <p className="text-xs sm:text-sm text-slate-500">Accuracy</p>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 text-center">
-          <p className="text-2xl font-bold text-amber-600">{sessionsCompleted}</p>
-          <p className="text-sm text-slate-500">Sessions</p>
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 text-center">
+          <p className="text-xl sm:text-2xl font-bold text-amber-600">{sessionsCompleted}</p>
+          <p className="text-xs sm:text-sm text-slate-500">Sessions</p>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 text-center">
-          <p className="text-2xl font-bold text-red-600">{longestStreak}</p>
-          <p className="text-sm text-slate-500">Longest Streak</p>
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 text-center">
+          <p className="text-xl sm:text-2xl font-bold text-red-600">{longestStreak}</p>
+          <p className="text-xs sm:text-sm text-slate-500">Longest Streak</p>
         </div>
       </div>
 

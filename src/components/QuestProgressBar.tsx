@@ -29,7 +29,14 @@ export default function QuestProgressBar({ quest, domainName }: QuestProgressBar
       </div>
 
       {/* Progress bar */}
-      <div className="relative h-3 bg-slate-100 rounded-full overflow-visible mb-2">
+      <div
+        className="relative h-3 bg-slate-100 rounded-full overflow-visible mb-2"
+        role="progressbar"
+        aria-valuenow={Math.round(progressPercent)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${domainName} quest progress: ${Math.round(progressPercent)}%${quest.completed ? ', completed' : ''}`}
+      >
         <div
           className={`h-full rounded-full transition-all duration-500 ${
             quest.completed ? 'bg-emerald-500' : 'bg-indigo-500'

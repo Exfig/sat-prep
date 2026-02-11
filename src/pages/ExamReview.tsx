@@ -23,7 +23,7 @@ interface ExamReviewState {
 export default function ExamReview() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { submitExamWrapper } = useAppStore();
+  const submitExamWrapper = useAppStore((s) => s.submitExamWrapper);
   const [showWrapper, setShowWrapper] = useState(false);
 
   const state = location.state as ExamReviewState | null;
@@ -69,12 +69,19 @@ export default function ExamReview() {
       )}
 
       {/* Score summary */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8 text-center">
-        <p className="text-4xl font-bold text-slate-800 mb-1">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8 text-center" role="region" aria-label="Score summary">
+        <p className="text-4xl font-bold text-slate-800 mb-1" aria-label={`${correctCount} correct out of ${totalCount}`}>
           {correctCount}/{totalCount}
         </p>
         <p className="text-lg text-slate-600">{percentage}% correct</p>
-        <div className="mt-3 h-3 bg-slate-100 rounded-full overflow-hidden max-w-xs mx-auto">
+        <div
+          className="mt-3 h-3 bg-slate-100 rounded-full overflow-hidden max-w-xs mx-auto"
+          role="progressbar"
+          aria-valuenow={percentage}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`Score: ${percentage}% correct`}
+        >
           <div
             className={`h-full rounded-full transition-all ${
               percentage >= 70 ? 'bg-emerald-500' : percentage >= 50 ? 'bg-amber-500' : 'bg-red-500'

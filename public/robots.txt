@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /sat-prep/admin
+Disallow: /sat-prep/settings
+Disallow: /sat-prep/activity
+
+Sitemap: https://topscore.school/sitemap.xml
