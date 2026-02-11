@@ -6,6 +6,9 @@ import { rwExpressionOfIdeasQuestions } from './rw-expression-of-ideas';
 import { mathAlgebraQuestions } from './math-algebra';
 import { cbAlgebraQuestions } from './cb-algebra';
 import { cbRwInformationAndIdeasQuestions } from './cb-rw-information-and-ideas';
+import { cbRwCraftAndStructureQuestions } from './cb-rw-craft-and-structure';
+import { cbRwExpressionOfIdeasQuestions } from './cb-rw-expression-of-ideas';
+import { cbRwStandardEnglishConventionsQuestions } from './cb-rw-standard-english-conventions';
 import { mathAdvancedMathQuestions } from './math-advanced-math';
 import { mathProblemSolvingDataAnalysisQuestions } from './math-problem-solving-data-analysis';
 import { mathGeometryAndTrigonometryQuestions } from './math-geometry-and-trigonometry';
@@ -18,6 +21,9 @@ export const allQuestions: Question[] = [
   ...mathAlgebraQuestions,
   ...cbAlgebraQuestions,
   ...cbRwInformationAndIdeasQuestions,
+  ...cbRwCraftAndStructureQuestions,
+  ...cbRwExpressionOfIdeasQuestions,
+  ...cbRwStandardEnglishConventionsQuestions,
   ...mathAdvancedMathQuestions,
   ...mathProblemSolvingDataAnalysisQuestions,
   ...mathGeometryAndTrigonometryQuestions,
