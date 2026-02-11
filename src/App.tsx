@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import StrategyGateRoute from './components/StrategyGateRoute';
 import AdminRoute from './components/AdminRoute';
 import Header from './components/Header';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -16,6 +17,7 @@ const ActivityLog = lazy(() => import('./pages/ActivityLog'));
 const ExamReview = lazy(() => import('./pages/ExamReview'));
 const MockTest = lazy(() => import('./pages/MockTest'));
 const Admin = lazy(() => import('./pages/Admin'));
+const StrategyGuide = lazy(() => import('./pages/StrategyGuide'));
 const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
@@ -50,14 +52,18 @@ function AppRoutes() {
                 <main id="main-content" className="pt-16">
                   <Suspense fallback={<PageLoader />}>
                     <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                      <Route path="/practice" element={<ErrorBoundary fallbackTitle="Practice session error"><Practice /></ErrorBoundary>} />
-                      <Route path="/mock-test" element={<ErrorBoundary fallbackTitle="Mock test error"><MockTest /></ErrorBoundary>} />
-                      <Route path="/progress" element={<Progress />} />
-                      <Route path="/settings" element={<Settings />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/activity" element={<ActivityLog />} />
-                      <Route path="/exam-review" element={<ErrorBoundary fallbackTitle="Exam review error"><ExamReview /></ErrorBoundary>} />
+                      {/* Strategy guide — always accessible, not gated */}
+                      <Route path="/strategy-guide" element={<StrategyGuide />} />
+
+                      {/* All other routes gated behind strategy guide completion */}
+                      <Route path="/" element={<StrategyGateRoute><Dashboard /></StrategyGateRoute>} />
+                      <Route path="/practice" element={<StrategyGateRoute><ErrorBoundary fallbackTitle="Practice session error"><Practice /></ErrorBoundary></StrategyGateRoute>} />
+                      <Route path="/mock-test" element={<StrategyGateRoute><ErrorBoundary fallbackTitle="Mock test error"><MockTest /></ErrorBoundary></StrategyGateRoute>} />
+                      <Route path="/progress" element={<StrategyGateRoute><Progress /></StrategyGateRoute>} />
+                      <Route path="/settings" element={<StrategyGateRoute><Settings /></StrategyGateRoute>} />
+                      <Route path="/profile" element={<StrategyGateRoute><Profile /></StrategyGateRoute>} />
+                      <Route path="/activity" element={<StrategyGateRoute><ActivityLog /></StrategyGateRoute>} />
+                      <Route path="/exam-review" element={<StrategyGateRoute><ErrorBoundary fallbackTitle="Exam review error"><ExamReview /></ErrorBoundary></StrategyGateRoute>} />
                       <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
                       <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>

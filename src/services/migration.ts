@@ -74,6 +74,9 @@ export function parseLocalStorageData(): UserData | null {
       hasSeenWelcome: s.hasSeenWelcome ?? false,
       examWrappers: s.examWrappers ?? [],
       mockTestHistory: s.mockTestHistory ?? [],
+      strategyGuideCompleted: false,
+      strategyGuideSectionsCompleted: [],
+      strategyGuideCurrentSection: null,
     };
   } catch {
     return null;

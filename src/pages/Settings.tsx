@@ -95,6 +95,9 @@ export default function Settings() {
           metacogEnabled: localData.metacogEnabled,
           scaffoldingOverrides: localData.scaffoldingOverrides,
           hasSeenWelcome: localData.hasSeenWelcome,
+          strategyGuideCompleted: localData.strategyGuideCompleted,
+          strategyGuideSectionsCompleted: localData.strategyGuideSectionsCompleted,
+          strategyGuideCurrentSection: localData.strategyGuideCurrentSection,
         });
 
         // Write question progress and attempts

@@ -4,26 +4,32 @@ import { useAppStore } from '../store/useAppStore';
 import { useAuth } from '../contexts/AuthContext';
 import { getLevelForXP } from '../utils/xp';
 
-const baseNavItems = [
+const fullNavItems = [
   { to: '/', label: 'Dashboard' },
   { to: '/practice', label: 'Practice' },
   { to: '/mock-test', label: 'Mock Test' },
   { to: '/progress', label: 'Progress' },
+  { to: '/strategy-guide', label: 'Strategy Guide' },
   { to: '/profile', label: 'Profile' },
   { to: '/activity', label: 'Activity' },
   { to: '/settings', label: 'Settings' },
 ];
 
+const onboardingNavItems = [
+  { to: '/strategy-guide', label: 'Strategy Guide' },
+];
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const xp = useAppStore((s) => s.xp);
+  const strategyGuideCompleted = useAppStore((s) => s.strategyGuideCompleted);
   const { user, signOut, role } = useAuth();
-  const navItems = useMemo(
-    () => role === 'admin'
-      ? [...baseNavItems, { to: '/admin', label: 'Admin' }]
-      : baseNavItems,
-    [role],
-  );
+  const navItems = useMemo(() => {
+    if (!strategyGuideCompleted) return onboardingNavItems;
+    return role === 'admin'
+      ? [...fullNavItems, { to: '/admin', label: 'Admin' }]
+      : fullNavItems;
+  }, [role, strategyGuideCompleted]);
   const level = useMemo(() => getLevelForXP(xp), [xp]);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>

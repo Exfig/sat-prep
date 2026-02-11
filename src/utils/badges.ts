@@ -15,6 +15,7 @@ export interface BadgeCheckState {
   deepDivesCompleted: number;
   bossesDefeated: string[];
   mockTestHistory: MockTestHistoryEntry[];
+  strategyGuideCompleted: boolean;
 }
 
 // ─── Badge definition ─────────────────────────────────────────────────────────
@@ -378,6 +379,15 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
     icon: '🏅',
     check: (s) =>
       s.mockTestHistory.some((mt) => mt.score.total >= 1400),
+  },
+
+  // ── Strategy Guide badge ────────────────────────────────────────────────
+  {
+    id: 'strategy-scholar',
+    name: 'Strategy Scholar',
+    description: 'Complete the entire SAT Strategy Guide',
+    icon: '📜',
+    check: (s) => s.strategyGuideCompleted,
   },
 ];
 

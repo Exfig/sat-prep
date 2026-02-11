@@ -37,6 +37,7 @@ export default function Dashboard() {
   const mockTestHistory = useAppStore((s) => s.mockTestHistory);
   const sectionQuests = useAppStore((s) => s.sectionQuests);
   const bossesDefeated = useAppStore((s) => s.bossesDefeated);
+  const strategyGuideCompleted = useAppStore((s) => s.strategyGuideCompleted);
 
   // Memoize expensive computations — only recalculate when dependencies change
   const stats = useMemo(
@@ -188,6 +189,28 @@ export default function Dashboard() {
           color="text-purple-600"
         />
       </div>
+
+      {/* Strategy Guide review card */}
+      {strategyGuideCompleted && (
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl" aria-hidden="true">{'\u{1F4D6}'}</span>
+              <div>
+                <h2 className="text-lg font-bold text-slate-800">SAT Strategy Guide</h2>
+                <p className="text-sm text-slate-500">Review test-taking strategies anytime</p>
+              </div>
+            </div>
+            <button
+              onClick={() => navigate('/strategy-guide')}
+              className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-semibold
+                hover:bg-indigo-200 transition-colors min-h-[40px]"
+            >
+              Review Guide
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Estimated SAT Score — only shown after completing a mock test */}
       {recentMockTests.length > 0 && (

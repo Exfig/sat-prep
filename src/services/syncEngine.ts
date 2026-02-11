@@ -133,7 +133,10 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
       state.thinkPeriodEnabled !== prevState.thinkPeriodEnabled ||
       state.metacogEnabled !== prevState.metacogEnabled ||
       state.scaffoldingOverrides !== prevState.scaffoldingOverrides ||
-      state.hasSeenWelcome !== prevState.hasSeenWelcome;
+      state.hasSeenWelcome !== prevState.hasSeenWelcome ||
+      state.strategyGuideCompleted !== prevState.strategyGuideCompleted ||
+      state.strategyGuideSectionsCompleted !== prevState.strategyGuideSectionsCompleted ||
+      state.strategyGuideCurrentSection !== prevState.strategyGuideCurrentSection;
 
     if (hasGamChanges) {
       await syncGamificationState(userId, {
@@ -155,6 +158,9 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
         metacogEnabled: state.metacogEnabled,
         scaffoldingOverrides: state.scaffoldingOverrides,
         hasSeenWelcome: state.hasSeenWelcome,
+        strategyGuideCompleted: state.strategyGuideCompleted,
+        strategyGuideSectionsCompleted: state.strategyGuideSectionsCompleted,
+        strategyGuideCurrentSection: state.strategyGuideCurrentSection,
       });
     }
 

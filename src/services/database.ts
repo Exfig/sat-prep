@@ -35,6 +35,9 @@ export interface UserData {
   hasSeenWelcome: boolean;
   examWrappers: ExamWrapperEntry[];
   mockTestHistory: MockTestHistoryEntry[];
+  strategyGuideCompleted: boolean;
+  strategyGuideSectionsCompleted: string[];
+  strategyGuideCurrentSection: string | null;
 }
 
 // ─── Load all user data (called on login) ───
@@ -93,11 +96,14 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
 
   // Parse gamification_state
   const gam = gamRes.data;
-  const settings = (gam?.settings ?? { thinkPeriodEnabled: true, metacogEnabled: true, scaffoldingOverrides: {}, hasSeenWelcome: false }) as {
-    thinkPeriodEnabled: boolean;
-    metacogEnabled: boolean;
-    scaffoldingOverrides: Record<string, boolean>;
-    hasSeenWelcome: boolean;
+  const settings = (gam?.settings ?? {}) as {
+    thinkPeriodEnabled?: boolean;
+    metacogEnabled?: boolean;
+    scaffoldingOverrides?: Record<string, boolean>;
+    hasSeenWelcome?: boolean;
+    strategyGuideCompleted?: boolean;
+    strategyGuideSectionsCompleted?: string[];
+    strategyGuideCurrentSection?: string | null;
   };
 
   // Parse exam wrappers
@@ -137,6 +143,9 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
     hasSeenWelcome: settings.hasSeenWelcome ?? false,
     examWrappers,
     mockTestHistory,
+    strategyGuideCompleted: settings.strategyGuideCompleted ?? false,
+    strategyGuideSectionsCompleted: settings.strategyGuideSectionsCompleted ?? [],
+    strategyGuideCurrentSection: settings.strategyGuideCurrentSection ?? null,
   };
 }
 
@@ -161,6 +170,9 @@ export async function syncGamificationState(userId: string, data: {
   metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
   hasSeenWelcome: boolean;
+  strategyGuideCompleted: boolean;
+  strategyGuideSectionsCompleted: string[];
+  strategyGuideCurrentSection: string | null;
 }) {
   const { error } = await supabase.from('gamification_state').update({
     xp: data.xp,
@@ -182,6 +194,9 @@ export async function syncGamificationState(userId: string, data: {
       metacogEnabled: data.metacogEnabled,
       scaffoldingOverrides: data.scaffoldingOverrides,
       hasSeenWelcome: data.hasSeenWelcome,
+      strategyGuideCompleted: data.strategyGuideCompleted,
+      strategyGuideSectionsCompleted: data.strategyGuideSectionsCompleted,
+      strategyGuideCurrentSection: data.strategyGuideCurrentSection,
     },
   }).eq('id', userId);
 

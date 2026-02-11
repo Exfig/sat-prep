@@ -88,6 +88,11 @@ interface AppState {
   mockTestHistory: MockTestHistoryEntry[];
   sectionQuests: SectionQuests;
 
+  // Strategy guide onboarding
+  strategyGuideCompleted: boolean;
+  strategyGuideSectionsCompleted: string[];
+  strategyGuideCurrentSection: string | null;
+
   // Hydration & clear actions
   hydrateFromSupabase: (userId: string, data: UserData) => void;
   clearUserData: () => void;
@@ -116,6 +121,8 @@ interface AppState {
   setScaffoldingOverride: (domainId: DomainId, enabled: boolean) => void;
   addMockTestResult: (entry: MockTestHistoryEntry) => void;
   updateSectionQuests: () => void;
+  completeStrategySection: (sectionId: string) => void;
+  completeStrategyGuide: () => void;
 }
 
 function getTodayString(): string {
@@ -151,13 +158,18 @@ const initialState = {
     mathComplete: false,
     satReady: false,
   } as SectionQuests,
+  strategyGuideCompleted: false,
+  strategyGuideSectionsCompleted: [] as string[],
+  strategyGuideCurrentSection: null as string | null,
 };
 
 export const useAppStore = create<AppState>()(
   (set, get) => ({
     ...initialState,
 
-    hydrateFromSupabase: (userId, data) =>
+    hydrateFromSupabase: (userId, data) => {
+      // Existing users with sessions_completed > 0 auto-complete strategy guide
+      const autoComplete = data.sessionsCompleted > 0 && !data.strategyGuideCompleted;
       set({
         userId,
         isHydrated: true,
@@ -182,7 +194,11 @@ export const useAppStore = create<AppState>()(
         hasSeenWelcome: data.hasSeenWelcome,
         examWrappers: data.examWrappers,
         mockTestHistory: data.mockTestHistory,
-      }),
+        strategyGuideCompleted: autoComplete || data.strategyGuideCompleted,
+        strategyGuideSectionsCompleted: data.strategyGuideSectionsCompleted,
+        strategyGuideCurrentSection: data.strategyGuideCurrentSection,
+      });
+    },
 
     clearUserData: () =>
       set({
@@ -400,6 +416,7 @@ export const useAppStore = create<AppState>()(
           deepDivesCompleted: state.deepDivesCompleted,
           bossesDefeated: state.bossesDefeated,
           mockTestHistory: state.mockTestHistory,
+          strategyGuideCompleted: state.strategyGuideCompleted,
         },
         earnedIds,
       );
@@ -522,6 +539,9 @@ export const useAppStore = create<AppState>()(
           mathComplete: false,
           satReady: false,
         },
+        strategyGuideCompleted: false,
+        strategyGuideSectionsCompleted: [],
+        strategyGuideCurrentSection: null,
         // Keep userId and isHydrated
         userId: state.userId,
         isHydrated: state.isHydrated,
@@ -709,6 +729,23 @@ export const useAppStore = create<AppState>()(
             satReady,
           },
         };
+      }),
+
+    completeStrategySection: (sectionId) =>
+      set((state) => {
+        if (state.strategyGuideSectionsCompleted.includes(sectionId)) {
+          return { strategyGuideCurrentSection: sectionId };
+        }
+        return {
+          strategyGuideSectionsCompleted: [...state.strategyGuideSectionsCompleted, sectionId],
+          strategyGuideCurrentSection: sectionId,
+        };
+      }),
+
+    completeStrategyGuide: () =>
+      set({
+        strategyGuideCompleted: true,
+        strategyGuideCurrentSection: null,
       }),
   }),
 );
