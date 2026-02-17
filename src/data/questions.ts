@@ -12,6 +12,10 @@ import { cbRwStandardEnglishConventionsQuestions } from './cb-rw-standard-englis
 import { mathAdvancedMathQuestions } from './math-advanced-math';
 import { mathProblemSolvingDataAnalysisQuestions } from './math-problem-solving-data-analysis';
 import { mathGeometryAndTrigonometryQuestions } from './math-geometry-and-trigonometry';
+import { cbMathAlgebraQuestions } from './cb-math-algebra';
+import { cbMathAdvancedMathQuestions } from './cb-math-advanced-math';
+import { cbMathProblemSolvingQuestions } from './cb-math-problem-solving';
+import { cbMathGeometryQuestions } from './cb-math-geometry';
 
 export const allQuestions: Question[] = [
   ...rwCraftAndStructureQuestions,
@@ -20,6 +24,10 @@ export const allQuestions: Question[] = [
   ...rwExpressionOfIdeasQuestions,
   ...mathAlgebraQuestions,
   ...cbAlgebraQuestions,
+  ...cbMathAlgebraQuestions,
+  ...cbMathAdvancedMathQuestions,
+  ...cbMathProblemSolvingQuestions,
+  ...cbMathGeometryQuestions,
   ...cbRwInformationAndIdeasQuestions,
   ...cbRwCraftAndStructureQuestions,
   ...cbRwExpressionOfIdeasQuestions,
