@@ -16,6 +16,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/85939da5.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-3c8fdc40",
@@ -100,6 +105,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Probability","Conditional Probability","Two-Way Tables"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/b1b5300b.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-d28c29e1",
@@ -126,6 +136,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/1adb39f0.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-3f5398a6",
@@ -250,6 +265,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/82aaa0a1.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-37930b2a",
@@ -275,6 +295,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/83272c51.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-3310c2ab",
@@ -299,6 +324,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/4c774b00.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-1353b86e",
@@ -323,6 +353,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/29fa7970.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-d89c1513",
@@ -335,6 +370,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Probability","Conditional Probability","Two-Way Tables"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/d89c1513.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-52f9a246",
@@ -384,6 +424,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Probability","Conditional Probability","Two-Way Tables"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/e1ad3d41.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-3726e079",
@@ -408,6 +453,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/8baf2118.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-05195d8a",
@@ -433,6 +483,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/ac5b6558.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-46545dd6",
@@ -445,6 +500,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Probability","Conditional Probability","Two-Way Tables"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/46545dd6.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-58a71e06",
@@ -518,6 +578,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/15d87c0f.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-312ba47c",
@@ -629,6 +694,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/4a2264b3.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-e3d49511",
@@ -663,7 +733,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     question: "A study was done on the weights of different types of fish in pond: A random sample of fish were caught and marked in order to ensure that none were weighed more than once: The sample contained 150 largemouth bass, of which 30% weighed more than 2 pounds. Which of the following conclusions is best supported by the sample data?",
-    options: ["The majority of all fish in the pond weigh less than 2 pounds_","The average weight of all fish in the pond is approximately 2 pounds. C. Approximately 30% of all fish in the pond weigh more than 2 pounds:","Approximately 30% of all largemouth bass in the pond weigh more than pounds_"],
+    options: ["The majority of all fish in the pond weigh less than 2 pounds.","The average weight of all fish in the pond is approximately 2 pounds.","Approximately 30% of all fish in the pond weigh more than 2 pounds.","Approximately 30% of all largemouth bass in the pond weigh more than 2 pounds."],
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
@@ -777,6 +847,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/fe6a49d6.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-d0efc1dd",
@@ -802,6 +877,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/80f1f3a9.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-e9fb7774",
@@ -839,6 +919,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Ratios","Proportions","Unit Conversion","Rates"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/3f236a64.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-8705ecba",
@@ -863,6 +948,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/2e74e403.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-f8f79e11",
@@ -872,8 +962,8 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     question: "A park ranger asked random sample of visitors how far they hiked during their visit: Based on the responses; the estimated mean was found to be 4.5 miles with an associated margin of error of 0.5 miles Which of the following is the best conclusion from these data?",
-    options: ["It is likely that all visitors hiked between and 5 miles","It is likely that most visitors hiked exactly 4.5 miles","It is not possible that any visitor hiked less than 3 miles.","It is plausible that the mean distance hiked for all visitors is between and miles_"],
-    correctAnswer: "It is plausible that the mean distance hiked for all visitors is between and miles_",
+    options: ["It is likely that all visitors hiked between and 5 miles","It is likely that most visitors hiked exactly 4.5 miles","It is not possible that any visitor hiked less than 3 miles.","It is plausible that the mean distance hiked for all visitors is between and miles."],
+    correctAnswer: "It is plausible that the mean distance hiked for all visitors is between and miles.",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
   },
@@ -921,8 +1011,8 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     skill: "Statistical Inference",
     difficulty: "easy",
     type: "multiple-choice",
-    question: "A company designs and makes handbags_ To estimate the mean weight of the handbags made by the company on particular day; sample of the handbags made by the company on that day was selected at random Based on the sample; it is estimated that the mean weight of all handbags made by the company on that day is 27.8 ounces (0z) , with an associated margin of error of 0.02 0z_ Based on this estimate and associated margin of error; which of the following is the most plausible conclusion?",
-    options: ["The mean weight of all handbags made by the company on that day is between 27.78 0z and 27.82 0z_","The actual weights of all handbags made by the company on that day are between 27.78 0z and 27.82 0z. C. The actual weights of all handbags from the sample are between 27.78 0z and 27.82 02.","The mean weight of all handbags made by the company on that day is 27.8 02."],
+    question: "A company designs and makes handbags. To estimate the mean weight of the handbags made by the company on a particular day, a sample of the handbags made by the company on that day was selected at random. Based on the sample, it is estimated that the mean weight of all handbags made by the company on that day is 27.8 ounces (oz), with an associated margin of error of 0.02 oz. Based on this estimate and associated margin of error, which of the following is the most plausible conclusion?",
+    options: ["The mean weight of all handbags made by the company on that day is between 27.78 oz and 27.82 oz.","The actual weights of all handbags made by the company on that day are between 27.78 oz and 27.82 oz.","The actual weights of all handbags from the sample are between 27.78 oz and 27.82 oz.","The mean weight of all handbags made by the company on that day is 27.8 oz."],
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
@@ -988,6 +1078,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: 5,
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/e24765e6.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-47624288",
@@ -1062,6 +1157,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/03a16790.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-60caadfd",
@@ -1124,6 +1224,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/d6af3572.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-2d16d62c",
@@ -1173,6 +1278,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/74dee52b.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-c3d78831",
@@ -1229,11 +1339,16 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     skill: "Scatterplots and Models",
     difficulty: "easy",
     type: "multiple-choice",
-    question: "Theres > Running Speed and Tine J Time (mnutes] Theresa ran on treadmill for thirty minutes, and her time and speed are shown on the graph above. According to the graph; which of the following statements is NOT true concerning Theresa's run?",
-    options: ["Theresa ran at constant speed for five minutes_","Theresa's speed was increasing for longer period of time than it was decreasing","Theresa's speed decreased at constant rate during the last five minutes"],
+    question: "Theresa ran on a treadmill for thirty minutes, and her time and speed are shown on the graph above. According to the graph, which of the following statements is NOT true concerning Theresa's run?",
+    options: ["Theresa ran at a constant speed for five minutes.","Theresa's speed was increasing for a longer period of time than it was decreasing.","Theresa's speed decreased at a constant rate during the last five minutes."],
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/9d88a3e3.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-e03f3477",
@@ -1243,7 +1358,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     question: "A sample consisting of 720 adults who own televisions was selected at random for study: Based on the sample_ it is estimated that 32% of all adults who own televisions use their televisions to watch nature shows, with an associated margin of error of 3.41%_ Which of the following is the most plausible conclusion about all adults who own televisions? More than 35.41% of all adults who own televisions use their televisions to watch nature shows",
-    options: ["Between 28.59% and 35.41% of all adults who own televisions use their televisions to watch nature shows","Since the sample included adults who own televisions and not just those who use their televisions to watch nature shows, no conclusion can be made_","Since the sample did not include all the people who watch nature shows no conclusion can be made_"],
+    options: ["Between 28.59% and 35.41% of all adults who own televisions use their televisions to watch nature shows","Since the sample included adults who own televisions and not just those who use their televisions to watch nature shows, no conclusion can be made.","Since the sample did not include all the people who watch nature shows no conclusion can be made."],
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
@@ -1271,6 +1386,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/f46139df.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-07f2829b",
@@ -1368,6 +1488,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/d230e963.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-181cc4d6",
@@ -1429,6 +1554,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/7fd284ac.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-1fbd3b67",
@@ -1551,6 +1681,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Probability","Conditional Probability","Two-Way Tables"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/ec7b0eb8.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-0700a2d5",
@@ -1587,6 +1722,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/e17babed.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-12dae628",
@@ -1698,6 +1838,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/1e1027a7.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-fe1ec415",
@@ -1807,6 +1952,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/7b65bb28.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-8a714fa1",
@@ -1894,6 +2044,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/3d985614.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-560fab82",
@@ -1915,7 +2070,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     question: "Sample | Percent in favor| Margin of error 52% 4.2% 48% 1.6% The results of two random samples of votes for proposition are shown above. The samples were selected from the same population; and the margins of error were calculated using the same method. Which of the following is the most appropriate reason that the margin of error for sample A is greater than the margin of error for sample B?",
-    options: ["Sample A had smaller number of votes that could not be recorded:","Sample A had higher percent of favorable responses","Sample A had a larger sample size_","Sample A had smaller sample size."],
+    options: ["Sample A had smaller number of votes that could not be recorded.","Sample A had higher percent of favorable responses","Sample A had a larger sample size.","Sample A had smaller sample size."],
     correctAnswer: "Sample A had smaller sample size.",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
@@ -1928,7 +2083,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     question: "Class A Class B 14 15 16 17 18 19 20 Each of the dot plots shown represents the number of glue sticks brought in by each student for two classes, class A and class B_ Which statement best compares the standard deviations of the numbers of glue sticks brought in by each student for these two classes?",
-    options: ["The standard deviation of the number of glue sticks brought in by each student for class A is less than the standard deviation of the number of glue sticks brought in by each student for class B_","The standard deviation of the number of glue sticks brought in by each student for class A is equal to the standard deviation of the number of glue sticks brought in by each student for class B"],
+    options: ["The standard deviation of the number of glue sticks brought in by each student for class A is less than the standard deviation of the number of glue sticks brought in by each student for class B.","The standard deviation of the number of glue sticks brought in by each student for class A is equal to the standard deviation of the number of glue sticks brought in by each student for class B"],
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
@@ -2054,6 +2209,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/c9dd92b1.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-9bf4c545",
@@ -2063,7 +2223,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     question: "The members of a city council wanted to assess the opinions of all city residents about converting an open field into dog park The council surveyed sample of 500 city residents who own dogs. The survey showed that the majority of those sampled were in favor of the dog park Which of the following is true about the city council's survey? It shows that the majority of city residents are in favor of the dog park:",
-    options: ["The survey sample should have included more residents who are dog owners.","The survey sample should have consisted entirely of residents who do not own dogs_","The survey sample is biased because it is not representative of all city residents"],
+    options: ["The survey sample should have included more residents who are dog owners.","The survey sample should have consisted entirely of residents who do not own dogs.","The survey sample is biased because it is not representative of all city residents"],
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Experimental Design","Observational Studies","Causation vs Correlation"],
@@ -2101,7 +2261,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     question: "Data set A 1,2,3,4,5,6,7 Data set B: 1,1,2,2,3,3,4 Which of the following statements correctly compares the means of data set A and data set B?",
-    options: ["The mean of each data set is 2.","The mean of each data set is 4.","The mean of data set A is less than the mean of data set B_","The mean of data set A is greater than the mean of data set B."],
+    options: ["The mean of each data set is 2.","The mean of each data set is 4.","The mean of data set A is less than the mean of data set B.","The mean of data set A is greater than the mean of data set B."],
     correctAnswer: "The mean of data set A is greater than the mean of data set B.",
     explanation: "",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
@@ -2130,6 +2290,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/a6b2fcce.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-f52123e0",
@@ -2268,18 +2433,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "2 : 1",
     explanation: "",
     relatedConcepts: ["Ratios","Proportions","Unit Conversion","Rates"],
-  },
-  {
-    id: "math-ps-cb-7b52985c",
-    section: "math",
-    domain: "math-problem-solving-data-analysis",
-    skill: "Scatterplots and Models",
-    difficulty: "hard",
-    type: "grid-in",
-    question: "The scatterplot shows the relationship between the length of time y, in hours, certain bird spent in flight and the number of days after January 11,€. 16 14 1 12 10 1 1",
-    correctAnswer: "4.5,",
-    explanation: "",
-    relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/7e6c745f.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-7ce2830a",
@@ -2338,9 +2496,9 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     skill: "Statistical Inference",
     difficulty: "easy",
     type: "multiple-choice",
-    question: "At a large high school, 300 students were selected at random and were asked in a survey about menu change in the school cafeteria. All 300 students completed the survey: It was estimated that 38% of the students were in support of menu change, with margin of error of 5.5%_ Which of the following is the best interpretation of the survey results?",
-    options: ["The percent of the students at the school who support menu change is 38%.","The percent of the students at the school who support menu change is greater than 38%_","Plausible values of the percent of the students at the school who support menu change are between 32.5% and 43.5%_","Plausible values of the number of the students at the school who support  menu change are between 295 and 305."],
-    correctAnswer: "Plausible values of the percent of the students at the school who support menu change are between 32.5% and 43.5%_",
+    question: "At a large high school, 300 students were selected at random and were asked in a survey about a menu change in the school cafeteria. All 300 students completed the survey. It was estimated that 38% of the students were in support of the menu change, with a margin of error of 5.5%. Which of the following is the best interpretation of the survey results?",
+    options: ["The percent of the students at the school who support menu change is 38%.","The percent of the students at the school who support menu change is greater than 38%.","Plausible values of the percent of the students at the school who support menu change are between 32.5% and 43.5%.","Plausible values of the number of the students at the school who support  menu change are between 295 and 305."],
+    correctAnswer: "Plausible values of the percent of the students at the school who support menu change are between 32.5% and 43.5%.",
     explanation: "",
     relatedConcepts: ["Sampling","Margin of Error","Confidence Intervals","Statistical Inference"],
   },
@@ -2368,6 +2526,11 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "12",
     explanation: "",
     relatedConcepts: ["Percent Change","Percent of Total","Markup and Discount"],
+    visualAsset: {
+      type: 'table',
+      src: '/graphs/28c6bd8c.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-ps-cb-912cd125",

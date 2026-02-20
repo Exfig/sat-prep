@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function Signup() {
   const { signUp } = useAuth();
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,6 +13,7 @@ export default function Signup() {
   const [targetTestDate, setTargetTestDate] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,9 +49,34 @@ export default function Signup() {
       setError(err);
       setLoading(false);
     } else {
-      navigate('/');
+      setEmailSent(true);
     }
   };
+
+  if (emailSent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-8">
+        <div className="w-full max-w-md text-center">
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
+            <div className="text-5xl mb-4">📧</div>
+            <h1 className="text-2xl font-bold text-slate-800 mb-2">Check Your Email</h1>
+            <p className="text-slate-600 mb-6">
+              We've sent a confirmation link to <span className="font-medium text-slate-800">{email}</span>. Please check your inbox and click the link to verify your account.
+            </p>
+            <p className="text-sm text-slate-500 mb-6">
+              Didn't receive it? Check your spam folder or try signing up again.
+            </p>
+            <Link
+              to="/login"
+              className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors min-h-[44px]"
+            >
+              Go to Sign In
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-8">

@@ -335,6 +335,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/930c2990.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-317e80f9",
@@ -360,6 +365,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/3f5375d9.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-fdee0fbf",
@@ -397,6 +407,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "The team will have moved all the cargo in about 4.8 hours",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/620fe971.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-6a87902f",
@@ -422,6 +437,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/b2845d88.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-f75bd744",
@@ -615,6 +635,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/415ab1d2.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-aff28230",
@@ -723,6 +748,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/5cf1bbc9.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-74c03c21",
@@ -759,6 +789,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/b51c173d.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-68f2cbaf",
@@ -916,6 +951,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/13294295.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-0d5495a6",
@@ -965,6 +1005,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/33e4af6b.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-bbb0359a",
@@ -1014,6 +1059,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "Caleb had approximately 30 fluid ounces of juice when he began to make the popsicles",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/3e9eaffc.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-483d208d",
@@ -1064,6 +1114,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/a775af14.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-9551cd91",
@@ -1100,6 +1155,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: 4,
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/b8fa27db.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-b9835972",
@@ -1172,6 +1232,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/6c5c2a81.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-adf60b28",
@@ -1181,7 +1246,7 @@ export const cbMathAlgebraQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     question: "flz) = 8 +4 The function f gives the estimated height; in feet; of a willow tree € years after its height was first measured. Which statement is the best interpretation of 4 in this context? A. The tree will be measured each year for 4 years",
-    options: ["The tree is estimated to grow to a maximum height of 4 feet","The estimated height of the tree increased by 4 feet each year:","The estimated height of the tree was 4 feet when it was first measured_"],
+    options: ["The tree is estimated to grow to a maximum height of 4 feet.","The estimated height of the tree increased by 4 feet each year.","The estimated height of the tree was 4 feet when it was first measured."],
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
@@ -1295,6 +1360,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/12983c1e.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-aeaba0b6",
@@ -1452,6 +1522,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/3174f07d.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-80da233d",
@@ -1549,18 +1624,6 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: 5,
     explanation: "",
     relatedConcepts: ["Inequalities","Number Line","Constraint Modeling","Solution Sets"],
-  },
-  {
-    id: "math-alg-cb2-0b46bad5",
-    section: "math",
-    domain: "math-algebra",
-    skill: "Linear Equations in Two Variables",
-    difficulty: "hard",
-    type: "grid-in",
-    question: "ax +by = b In the equation above, and b are constants and 0 < 0 < b. Which of the following could represent the graph of the equation in the xy-plane?",
-    correctAnswer: "C",
-    explanation: "",
-    relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
   },
   {
     id: "math-alg-cb2-b31c3117",
@@ -1717,6 +1780,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/94b48cbf.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-c5082ce3",
@@ -1875,6 +1943,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/c651cc56.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-ecca0603",
@@ -1935,6 +2008,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Linear Equations","Solving for Variables","Inverse Operations"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/c22b5f25.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-e4a588ca",
@@ -1983,6 +2061,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/11e1ab81.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-771bd0ca",
@@ -2069,6 +2152,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/979b0b8d.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-789975b7",
@@ -2165,6 +2253,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/bf883fde.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-0d1b1e35",
@@ -2283,7 +2376,7 @@ export const cbMathAlgebraQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     question: "Marisol drove 3 hours from City A to City B. The equation below estimates the distance d, in miles, Marisol traveled after driving for t hours_ d = 45t Which of the following does 45 represent in the equation? A. Marisol took 45 trips from City A to City B.",
-    options: ["The distance between City A and City B is 45 miles_","Marisol drove at an average speed of about 45 miles per hour:","It took Marisol 45 hours to drive from City A to City B"],
+    options: ["The distance between City A and City B is 45 miles.","Marisol drove at an average speed of about 45 miles per hour.","It took Marisol 45 hours to drive from City A to City B."],
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
@@ -2491,6 +2584,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: 9,
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/a91a2b75.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-98d3393a",
@@ -2645,7 +2743,7 @@ export const cbMathAlgebraQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     question: "The function f defined by f(t) = 14t + 9 gives the estimated length, in inches, of vine plant t months after Tavon purchased it: Which of the following is the best interpretation of 9 in this context?",
-    options: ["Tavon will keep the vine plant for 9 months.","The vine plant is expected to grow 9 inches each month:. C. The vine plant is expected to grow to maximum length of 9 inches_","The estimated length of the vine plant was 9 inches when Tavon purchased it:"],
+    options: ["Tavon will keep the vine plant for 9 months.","The vine plant is expected to grow 9 inches each month.","The vine plant is expected to grow to a maximum length of 9 inches.","The estimated length of the vine plant was 9 inches when Tavon purchased it."],
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
@@ -2808,6 +2906,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/868fc236.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-e0177f5f",
@@ -2916,6 +3019,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/946ab892.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-a7e2859a",
@@ -3278,6 +3386,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Systems of Equations","Elimination Method","Substitution","Parallel Lines"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/1006cad7.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-570b5a5d",
@@ -3358,7 +3471,7 @@ export const cbMathAlgebraQuestions: Question[] = [
     skill: "Linear Equations in Two Variables",
     difficulty: "easy",
     type: "grid-in",
-    question: "The graph shows the linear relationship between and . Which table gives three values of and their corresponding values of for this relationship? A. B. C. [PAGE 82] D.",
+    question: "The graph shows the linear relationship between x and y. Which table gives three values of x and their corresponding values of y for this relationship?",
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
@@ -3434,6 +3547,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/b2de69bd.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-aacc834b",
@@ -3495,6 +3613,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Systems of Equations","Elimination Method","Substitution","Parallel Lines"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/f03465dc.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-a35c7164",
@@ -3507,6 +3630,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/a35c7164.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-de6fe450",
@@ -3627,6 +3755,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/d0cb49e8.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-cee5b352",
@@ -3711,6 +3844,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/78391fcc.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-9ff10b3b",
@@ -3858,6 +3996,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: 4,
     explanation: "",
     relatedConcepts: ["Systems of Equations","Elimination Method","Substitution","Parallel Lines"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/4b06557b.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-830120b0",
@@ -3879,8 +4022,8 @@ export const cbMathAlgebraQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     question: "Kaylani used fabric measuring 5 yards in length to make each suit for men's choir The relationship between the number of suits that Kaylani made; €, and the total length of fabric that she purchased y, in yards, is represented by the equation y 5c = 6 What is the best interpretation of 6 in this context?",
-    options: ["Kaylani made 6 suits_","Kaylani purchased total of 6 yards of fabric_","Kaylani used total of 6 yards of fabric to make the suits.","Kaylani purchased 6 yards more fabric than she used to make the suits_"],
-    correctAnswer: "Kaylani purchased 6 yards more fabric than she used to make the suits_",
+    options: ["Kaylani made 6 suits.","Kaylani purchased a total of 6 yards of fabric.","Kaylani used a total of 6 yards of fabric to make the suits.","Kaylani purchased 6 yards more fabric than she used to make the suits."],
+    correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
   },
@@ -3908,6 +4051,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "160",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/c4ea43ef.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-fb5e7f59",
@@ -3990,10 +4138,15 @@ export const cbMathAlgebraQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     question: "Figure A and figure B are both regular polygons. The sum of the perimeter of figure A and the perimeter of figure B is 63 inches The equation 32 + 6y 63 represents this situation; where € is the number of sides of figure A and yis the number of sides of figure B Which statement is the best interpretation of 6 in this context? A. Each side of figure B has length of 6 inches",
-    options: ["The number of sides of figure B is 6.","Each side of figure A has length of 6 inches_","The number of sides of figure A is 6."],
+    options: ["The number of sides of figure B is 6.","Each side of figure A has a length of 6 inches.","The number of sides of figure A is 6."],
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/2e1a7f66.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-5e422ff9",
@@ -4197,10 +4350,15 @@ export const cbMathAlgebraQuestions: Question[] = [
     skill: "Linear Functions",
     difficulty: "medium",
     type: "grid-in",
-    question: "The graph ofy = f(z) 11 is shown_",
+    question: "The graph of y = f(x) - 11 is shown.",
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/295a41f0.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-a71b1bc1",
@@ -4554,6 +4712,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Systems of Equations","Elimination Method","Substitution","Parallel Lines"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/75012ee7.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-1f0966db",
@@ -4590,6 +4753,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Systems of Equations","Elimination Method","Substitution","Parallel Lines"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/ccc3ad6b.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-1fe778dc",
@@ -4760,6 +4928,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/2eef7e61.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-e3bbde69",
@@ -4784,6 +4957,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/f0773a55.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-8da536c6",
@@ -4820,6 +4998,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "C",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/0ea7ef01.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-0df106df",
@@ -4882,6 +5065,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/1993561d.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-b64e2c7f",
@@ -4906,6 +5094,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "D",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/49800634.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-7d6928bd",
@@ -4950,8 +5143,8 @@ export const cbMathAlgebraQuestions: Question[] = [
     skill: "Linear Functions",
     difficulty: "easy",
     type: "grid-in",
-    question: "Which of the following is the graph of the equation y = 2x-5 in the xy-plane?",
-    correctAnswer: "[PAGE",
+    question: "Which of the following is the graph of the equation y = 2x - 5 in the xy-plane?",
+    correctAnswer: "A",
     explanation: "",
     relatedConcepts: ["Function Notation","Linear Models","Rate of Change","Y-intercept"],
   },
@@ -4978,6 +5171,11 @@ export const cbMathAlgebraQuestions: Question[] = [
     correctAnswer: "B",
     explanation: "",
     relatedConcepts: ["Slope","Linear Functions","Coordinate Geometry","Slope-Intercept Form"],
+    visualAsset: {
+      type: 'graph',
+      src: '/graphs/00b9bd37.png',
+      altText: 'Figure for this question',
+    },
   },
   {
     id: "math-alg-cb2-73b3b7d8",

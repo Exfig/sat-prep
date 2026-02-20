@@ -33,6 +33,7 @@ import DeepDiveCard from '../components/DeepDiveCard';
 import BossFightIntro from '../components/BossFightIntro';
 import SecondChanceCard from '../components/SecondChanceCard';
 import DesmosCalculator from '../components/DesmosCalculator';
+import PassageViewer from '../components/PassageViewer';
 
 // ─── Practice page ───────────────────────────────────────────────────────────
 
@@ -99,13 +100,17 @@ export default function Practice() {
   const [domainFilter, setDomainFilter] = useState<DomainId | undefined>();
   const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | undefined>();
   const [showDomainFilter, setShowDomainFilter] = useState(false);
-  const [showAllModes, setShowAllModes] = useState(false);
+  const [showTimedSectionPicker, setShowTimedSectionPicker] = useState(false);
+  const [showAllModes, setShowAllModes] = useState(true);
+  const [bossUnavailableMsg, setBossUnavailableMsg] = useState(false);
 
-  // Handle mode passed via navigation state from Dashboard
+  // Handle mode passed via navigation state from Dashboard / Onboarding
   useEffect(() => {
-    const state = location.state as { mode?: StudyMode } | null;
+    const state = location.state as { mode?: StudyMode; sectionFilter?: SectionId } | null;
     if (state?.mode && !currentSession) {
-      if (state.mode === 'domain-review') {
+      if (state.mode === 'practice' && state.sectionFilter) {
+        handleStartPractice(state.sectionFilter);
+      } else if (state.mode === 'domain-review') {
         setShowDomainFilter(true);
       } else {
         handleSelectMode(state.mode);
@@ -331,8 +336,12 @@ export default function Practice() {
         return;
       }
 
+      const wasSpacedReview = currentSession.mode === 'spaced-review';
       endSession();
       resetQuestionState();
+      if (wasSpacedReview) {
+        navigate('/dashboard');
+      }
       return;
     }
     nextQuestion();
@@ -362,6 +371,7 @@ export default function Practice() {
       endSession();
       resetQuestionState();
       setShowDomainFilter(false);
+      setShowTimedSectionPicker(false);
       setTimedModuleAnswers([]);
       setBossDomain(null);
       setBossCorrectCount(0);
@@ -372,14 +382,22 @@ export default function Practice() {
       return;
     }
 
+    // Spaced review -- navigate to dashboard so user sees updated due counts
+    const wasSpacedReview = currentSession.mode === 'spaced-review';
+
     endSession();
     resetQuestionState();
     setShowDomainFilter(false);
+    setShowTimedSectionPicker(false);
     setShowAllModes(false);
     setTimedModuleAnswers([]);
     setBossDomain(null);
     setBossCorrectCount(0);
     setBossAnsweredCount(0);
+
+    if (wasSpacedReview) {
+      navigate('/dashboard');
+    }
   }, [endSession, resetQuestionState, isBossFight, isTimedModule, bossDomain, defeatBoss, currentSession, timedModuleAnswers, navigate]);
 
   const handleTimeUp = useCallback(() => {
@@ -404,6 +422,11 @@ export default function Practice() {
       return;
     }
 
+    if (mode === 'timed-module') {
+      setShowTimedSectionPicker(true);
+      return;
+    }
+
     // Adaptive mock test goes to its own page
     if (mode === 'adaptive-mock-test') {
       navigate('/mock-test');
@@ -414,9 +437,10 @@ export default function Practice() {
     if (mode === 'boss-fight') {
       const domain = getBossDomain(questionProgress, useAppStore.getState().bossesDefeated);
       if (!domain) {
-        // No weak areas -- nothing to boss fight
+        setBossUnavailableMsg(true);
         return;
       }
+      setBossUnavailableMsg(false);
       const questionIds = selectBossFightQuestions(domain, questionProgress);
       setBossDomain(domain);
       setBossCorrectCount(0);
@@ -441,13 +465,6 @@ export default function Practice() {
       case 'weak-areas':
         questionIds = selectWeakAreaQuestions({ progress: questionProgress, count: 20 });
         break;
-      case 'timed-module':
-        questionIds = selectTimedModuleQuestions({
-          section: sectionFilter ?? 'reading-writing',
-          progress: questionProgress,
-        });
-        session.timerDuration = 32;
-        break;
       case 'mixed-practice':
         questionIds = selectMixedPracticeQuestions({ progress: questionProgress, count: 20 });
         break;
@@ -459,10 +476,17 @@ export default function Practice() {
     }
 
     startSession(session, questionIds);
-    if (mode === 'timed-module') {
-      setTimerRunning(true);
-      setTimedModuleAnswers([]);
-    }
+  };
+
+  const handleStartTimedModule = (section: SectionId) => {
+    const questionIds = selectTimedModuleQuestions({
+      section,
+      progress: questionProgress,
+    });
+    startSession({ mode: 'timed-module', sectionFilter: section, timerDuration: 32 }, questionIds);
+    setTimerRunning(true);
+    setTimedModuleAnswers([]);
+    setShowTimedSectionPicker(false);
   };
 
   const handleStartDomainReview = () => {
@@ -536,11 +560,49 @@ export default function Practice() {
               </button>
             </div>
           </div>
+        ) : showTimedSectionPicker ? (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 max-w-md">
+            <h2 className="text-lg font-semibold text-slate-800 mb-2">Timed Module</h2>
+            <p className="text-sm text-slate-500 mb-5">Choose a section for your 32-minute timed module.</p>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                onClick={() => handleStartTimedModule('reading-writing')}
+                className="bg-slate-50 rounded-xl border border-slate-200 p-5 text-center
+                  hover:border-indigo-300 hover:shadow-md transition-all duration-200 min-h-[44px]"
+              >
+                <span className="text-2xl block mb-2">📖</span>
+                <span className="font-medium text-slate-800">Reading & Writing</span>
+              </button>
+              <button
+                onClick={() => handleStartTimedModule('math')}
+                className="bg-slate-50 rounded-xl border border-slate-200 p-5 text-center
+                  hover:border-indigo-300 hover:shadow-md transition-all duration-200 min-h-[44px]"
+              >
+                <span className="text-2xl block mb-2">🔢</span>
+                <span className="font-medium text-slate-800">Math</span>
+              </button>
+            </div>
+            <button
+              onClick={() => setShowTimedSectionPicker(false)}
+              className="mt-5 px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
+            >
+              Back
+            </button>
+          </div>
         ) : showAllModes ? (
           <>
             <StudyModeSelector onSelectMode={handleSelectMode} />
+            {bossUnavailableMsg && (
+              <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4 max-w-md" role="alert">
+                <p className="text-sm font-semibold text-amber-800">Boss Fight not available yet</p>
+                <p className="text-xs text-amber-700 mt-1">
+                  Answer at least 10 questions in a domain with 50%+ accuracy to unlock Boss Fight.
+                </p>
+              </div>
+            )}
             <button
-              onClick={() => setShowAllModes(false)}
+              onClick={() => { setShowAllModes(false); setBossUnavailableMsg(false); }}
               className="mt-4 px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
                 hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
             >
@@ -691,64 +753,18 @@ export default function Practice() {
 
   // ─── Render active session ─────────────────────────────────────────────────
 
-  return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      {/* Think Overlay */}
-      {showThinkOverlay && (
-        <ThinkOverlay
-          duration={4}
-          onComplete={() => setShowThinkOverlay(false)}
-        />
-      )}
+  const hasPassage = !!currentQuestion.passage;
 
-      {/* Top bar: progress + timer + boss score */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
-        <span className="text-sm font-medium text-slate-500">
-          Q {currentIdx + 1}/{totalQuestions}
-        </span>
-        <div className="flex items-center gap-3 sm:gap-4">
-          {/* Boss fight live score */}
-          {isBossFight && (
-            <span className="text-xs sm:text-sm font-semibold text-slate-700">
-              {bossCorrectCount}/{bossAnsweredCount}
-              {bossAnsweredCount > 0 && (
-                <span className={`ml-1 ${bossCorrectCount / bossAnsweredCount >= 0.75 ? 'text-emerald-600' : 'text-red-500'}`}>
-                  (need 75%)
-                </span>
-              )}
-            </span>
-          )}
-          {currentSession.mode === 'timed-module' && currentSession.timerDuration && (
-            <Timer
-              duration={currentSession.timerDuration * 60}
-              onTimeUp={handleTimeUp}
-              isRunning={timerRunning}
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Progress bar */}
-      <div
-        className="w-full h-1.5 bg-slate-200 rounded-full mb-4 sm:mb-6 overflow-hidden"
-        role="progressbar"
-        aria-valuenow={currentIdx + (submitted ? 1 : 0)}
-        aria-valuemin={0}
-        aria-valuemax={totalQuestions}
-        aria-label={`Question ${currentIdx + 1} of ${totalQuestions}`}
-      >
-        <div
-          className="h-full bg-indigo-600 rounded-full transition-all duration-300"
-          style={{ width: `${((currentIdx + (submitted ? 1 : 0)) / totalQuestions) * 100}%` }}
-        />
-      </div>
-
+  // Shared content: everything below the question card (hints, submit, feedback, etc.)
+  const questionContent = (
+    <>
       {/* Question */}
       <QuestionCard
         key={currentQuestion.id}
         question={currentQuestion}
         onAnswer={handleAnswer}
         disabled={submitted || showThinkOverlay}
+        hidePassage={hasPassage}
       />
 
       {/* Hint Panel (shown before submit, non-timed, non-boss) */}
@@ -912,6 +928,83 @@ export default function Practice() {
             End Session
           </button>
         </div>
+      )}
+    </>
+  );
+
+  return (
+    <div className={`mx-auto px-4 py-8 ${hasPassage ? 'max-w-7xl' : 'max-w-3xl'}`}>
+      {/* Think Overlay */}
+      {showThinkOverlay && (
+        <ThinkOverlay
+          duration={4}
+          onComplete={() => setShowThinkOverlay(false)}
+        />
+      )}
+
+      {/* Top bar: progress + timer + boss score */}
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
+        <span className="text-sm font-medium text-slate-500">
+          Q {currentIdx + 1}/{totalQuestions}
+        </span>
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Boss fight live score */}
+          {isBossFight && (
+            <span className="text-xs sm:text-sm font-semibold text-slate-700">
+              {bossCorrectCount}/{bossAnsweredCount}
+              {bossAnsweredCount > 0 && (
+                <span className={`ml-1 ${bossCorrectCount / bossAnsweredCount >= 0.75 ? 'text-emerald-600' : 'text-red-500'}`}>
+                  (need 75%)
+                </span>
+              )}
+            </span>
+          )}
+          {currentSession.mode === 'timed-module' && currentSession.timerDuration && (
+            <Timer
+              duration={currentSession.timerDuration * 60}
+              onTimeUp={handleTimeUp}
+              isRunning={timerRunning}
+            />
+          )}
+          <button
+            onClick={handleEndSession}
+            className="px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-slate-700
+              hover:bg-slate-100 rounded-lg transition-colors min-h-[36px]"
+          >
+            Exit
+          </button>
+        </div>
+      </div>
+
+      {/* Progress bar */}
+      <div
+        className="w-full h-1.5 bg-slate-200 rounded-full mb-4 sm:mb-6 overflow-hidden"
+        role="progressbar"
+        aria-valuenow={currentIdx + (submitted ? 1 : 0)}
+        aria-valuemin={0}
+        aria-valuemax={totalQuestions}
+        aria-label={`Question ${currentIdx + 1} of ${totalQuestions}`}
+      >
+        <div
+          className="h-full bg-indigo-600 rounded-full transition-all duration-300"
+          style={{ width: `${((currentIdx + (submitted ? 1 : 0)) / totalQuestions) * 100}%` }}
+        />
+      </div>
+
+      {/* Side-by-side layout for passage questions (lg+), stacked on mobile */}
+      {hasPassage ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left: Passage */}
+          <div className="lg:sticky lg:top-4 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+            <PassageViewer passage={currentQuestion.passage!} />
+          </div>
+          {/* Right: Question + controls */}
+          <div>
+            {questionContent}
+          </div>
+        </div>
+      ) : (
+        questionContent
       )}
 
       {/* XP Toast */}
