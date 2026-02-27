@@ -205,7 +205,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Sam Maloof (1916�2009) was an American woodworker and furniture designer. He was the son of Lebanese immigrants. He received a \"genius grant\" from the John D. and Catherine T. MacArthur Foundation in 1985. The Museum of Fine Arts in Boston, Massachusetts, owns a rocking chair that Maloof made from walnut wood. The armrests and the seat of the chair are sleek and contoured, and the back consists of seven spindle-like slats.",
+      text: "While researching a topic, a student has taken the following notes: Sam Maloof (1916–2009) was an American woodworker and furniture designer. He was the son of Lebanese immigrants. He received a \"genius grant\" from the John D. and Catherine T. MacArthur Foundation in 1985. The Museum of Fine Arts in Boston, Massachusetts, owns a rocking chair that Maloof made from walnut wood. The armrests and the seat of the chair are sleek and contoured, and the back consists of seven spindle-like slats.",
     },
     question: "The student wants to describe the rocking chair to an audience unfamiliar with Sam Maloof. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -226,16 +226,16 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Species belonging to the Orchidaceae (orchid) family can be found in both tropical and temperate environments. Orchidaceae species diversity has not been well studied in temperate forests, such as those in Oaxaca, Mexico. Arelee Estefan�a Mu�oz-Hern�ndez led a study to determine how many different Orchidaceae species are present in the forests of Oaxaca. Mu�oz-Hern�ndez and her team collected orchids each month for a year at a site in Oaxaca. Seventy-four Orchidaceae species were present at the site.",
+      text: "While researching a topic, a student has taken the following notes: Species belonging to the Orchidaceae (orchid) family can be found in both tropical and temperate environments. Orchidaceae species diversity has not been well studied in temperate forests, such as those in Oaxaca, Mexico. Arelee Estefanía Muñoz-Hernández led a study to determine how many different Orchidaceae species are present in the forests of Oaxaca. Muñoz-Hernández and her team collected orchids each month for a year at a site in Oaxaca. Seventy-four Orchidaceae species were present at the site.",
     },
     question: "The student wants to present the study and its findings. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "A study led by Arelee Estefan�a Mu�oz-Hern�ndez identified a total of 74 Orchidaceae species in the temperate forests of",
+      "A study led by Arelee Estefanía Muñoz-Hernández identified a total of 74 Orchidaceae species in the temperate forests of",
       "There are orchids in many environments, but there are 74 Orchidaceae species in Oaxaca, Mexico.",
       "Oaxaca, Mexico, is home to temperate forests containing 74 Orchidaceae species.",
-      "Arelee Estefan�a Mu�oz-Hern�ndez and her team wanted to know how many different Orchidaceae species are present in the",
+      "Arelee Estefanía Muñoz-Hernández and her team wanted to know how many different Orchidaceae species are present in the",
     ],
-    correctAnswer: "A study led by Arelee Estefan�a Mu�oz-Hern�ndez identified a total of 74 Orchidaceae species in the temperate forests of",
+    correctAnswer: "A study led by Arelee Estefanía Muñoz-Hernández identified a total of 74 Orchidaceae species in the temperate forests of",
     explanation: "Choice A is the best answer. This choice most effectively presents the study and its findings. It opens with the study and names its lead researcher, then tells us its finding: that they identified 74 Orchidaceae species in the temperate forests of Oaxaca, Mexico.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
@@ -289,7 +289,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In a heated debate in biogeography, the field is divided between dispersalists and vicariancists. ______ there are those who argue that dispersal is the most crucial determining factor in a species' distribution, and those who insist that vicariance (separation due to geographic barriers) is. Biogeographer Isabel Sanmart�n counts herself among neither.",
+      text: "In a heated debate in biogeography, the field is divided between dispersalists and vicariancists. ______ there are those who argue that dispersal is the most crucial determining factor in a species' distribution, and those who insist that vicariance (separation due to geographic barriers) is. Biogeographer Isabel Sanmartín counts herself among neither.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -353,12 +353,12 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: In World War I, US soldiers who were members of the Choctaw Nation in Oklahoma participated in the Choctaw Code Talkers program. The Choctaw Code Talkers were trained to relay coded military information in their native language. In World War II, the US Army recruited Navajo (Din�) soldiers to transmit coded messages in their native language. These soldiers were known as the Navajo Code Talkers.",
+      text: "While researching a topic, a student has taken the following notes: In World War I, US soldiers who were members of the Choctaw Nation in Oklahoma participated in the Choctaw Code Talkers program. The Choctaw Code Talkers were trained to relay coded military information in their native language. In World War II, the US Army recruited Navajo (Diné) soldiers to transmit coded messages in their native language. These soldiers were known as the Navajo Code Talkers.",
     },
     question: "The student wants to emphasize a similarity between the Choctaw Code Talkers and the Navajo Code Talkers. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "US soldiers who were members of the Choctaw Nation in Oklahoma used their native language to relay coded information.",
-      "In World War II, one group of Navajo (Din�) soldiers was known as the Navajo Code Talkers.",
+      "In World War II, one group of Navajo (Diné) soldiers was known as the Navajo Code Talkers.",
       "Both the Choctaw Code Talkers and the Navajo Code Talkers transmitted coded military messages in the soldiers' native",
       "The Choctaw Code Talkers, not the Navajo Code Talkers, served in World War I.",
     ],
@@ -374,7 +374,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In 1815, while in exile in Jamaica, Venezuelan revolutionary Sim�n Bol�var penned a letter praising England's republican government and expressing hope that Latin American nations seeking independence from Spain might achieve something similar. The letter was addressed to a local merchant, Henry Cullen; ______ though, Bol�var's goal was to persuade political leaders from England and Europe to support his cause.",
+      text: "In 1815, while in exile in Jamaica, Venezuelan revolutionary Simón Bolívar penned a letter praising England's republican government and expressing hope that Latin American nations seeking independence from Spain might achieve something similar. The letter was addressed to a local merchant, Henry Cullen; ______ though, Bolívar's goal was to persuade political leaders from England and Europe to support his cause.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -384,7 +384,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
       "consequently,",
     ],
     correctAnswer: "ultimately,",
-    explanation: "Choice B is the best answer. \"Ultimately\" means \"in the long run\" or \"at the highest level.\" Although Bol�var wrote to a local merchant, his ultimate goal was to send a message to political leaders in Europe. Therefore, \"ultimately\" fits perfectly in this context.",
+    explanation: "Choice B is the best answer. \"Ultimately\" means \"in the long run\" or \"at the highest level.\" Although Bolívar wrote to a local merchant, his ultimate goal was to send a message to political leaders in Europe. Therefore, \"ultimately\" fits perfectly in this context.",
     relatedConcepts: ["Transitions","Logical Connections","Coherence"],
     requiresThinkPeriod: true,
   },
@@ -417,14 +417,14 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: The International Center for the Arts of the Americas (ICAA) is directed by Mari Carmen Ram�rez. Ram�rez oversaw an initiative to create an online archive of historical documents related to the history of Latin American and Latino visual art. The ICAA digitized over 10,000 documents, including the writings of Latin American and Latino artists and critics. The creation of the archive didn't require historical documents to be removed from their countries of origin. Scholars now have more access to these documents.",
+      text: "While researching a topic, a student has taken the following notes: The International Center for the Arts of the Americas (ICAA) is directed by Mari Carmen Ramírez. Ramírez oversaw an initiative to create an online archive of historical documents related to the history of Latin American and Latino visual art. The ICAA digitized over 10,000 documents, including the writings of Latin American and Latino artists and critics. The creation of the archive didn't require historical documents to be removed from their countries of origin. Scholars now have more access to these documents.",
     },
     question: "The student wants to explain an advantage of the ICAA's archive being digital. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "Over 10,000 documents related to the history of Latin American and Latino visual art are part of the ICAA archive.",
       "By offering online versions of historical documents, the ICAA's archive provides more access to these materials without",
       "Among the historical documents in the ICAA's archive are the writings of Latin American and Latino artists and critics.",
-      "The ICAA's director, Mari Carmen Ram�rez, oversaw the creation of an online archive of historical documents related to Latin",
+      "The ICAA's director, Mari Carmen Ramírez, oversaw the creation of an online archive of historical documents related to Latin",
     ],
     correctAnswer: "By offering online versions of historical documents, the ICAA's archive provides more access to these materials without",
     explanation: "Choice B is the best answer. The sentence explains an advantage of the ICAA's archive being digital, noting that the archive provides more access to historical documents since they don't have to be removed from their countries of origin.",
@@ -586,7 +586,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "In 1873, Spanish scientist Santiago Ram�n y Cajal observed that brain fibers have distinct boundaries with clear end points, a finding that went against earlier assumptions about the brain. ______ scientists had assumed that the brain was a continuous web of fused fibers, not a vast network of distinct, individual cells.",
+      text: "In 1873, Spanish scientist Santiago Ramón y Cajal observed that brain fibers have distinct boundaries with clear end points, a finding that went against earlier assumptions about the brain. ______ scientists had assumed that the brain was a continuous web of fused fibers, not a vast network of distinct, individual cells.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -596,7 +596,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
       "Likewise,",
     ],
     correctAnswer: "Previously,",
-    explanation: "Choice B is the best answer. \"Previously\" logically signals that the fused fiber theory came before Ram�n y Cajal's discovery.",
+    explanation: "Choice B is the best answer. \"Previously\" logically signals that the fused fiber theory came before Ramón y Cajal's discovery.",
     relatedConcepts: ["Transitions","Logical Connections","Coherence"],
   },
   {
@@ -840,7 +840,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Alexander Lawrence Posey (1873�1908) varied his focus and tone depending on the genre in which he was writing. In his poetry, he used heartfelt language to evoke the beauty and peacefulness of his natural surroundings; in his journalism, ______ he employed humor and satire to comment on political issues affecting his Muskogee Creek community.",
+      text: "Alexander Lawrence Posey (1873\u20131908) varied his focus and tone depending on the genre in which he was writing. In his poetry, he used heartfelt language to evoke the beauty and peacefulness of his natural surroundings; in his journalism, ______ he employed humor and satire to comment on political issues affecting his Muskogee Creek community.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -886,12 +886,12 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     },
     question: "The student wants to specify who may have first populated the Azores, according to the 2015 study. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "Historians have long believed that the first humans to populate the Azores, a group of islands about 870 miles off the coast of",
+      "Historians have long believed that the first humans to populate the Azores, a group of islands about 870 miles off the coast of Portugal, arrived in the fifteenth century.",
       "Portuguese mariners may not have been the first humans to populate the Azores.",
       "In their 2015 study, the researchers found a genetic connection between house mice in the Azores and those in Scandinavia.",
-      "According to a 2015 study, the first humans to populate the Azores may have been Vikings from Scandinavia, not mariners",
+      "According to a 2015 study, the first humans to populate the Azores may have been Vikings from Scandinavia, not mariners from Portugal as previously believed.",
     ],
-    correctAnswer: "According to a 2015 study, the first humans to populate the Azores may have been Vikings from Scandinavia, not mariners",
+    correctAnswer: "According to a 2015 study, the first humans to populate the Azores may have been Vikings from Scandinavia, not mariners from Portugal as previously believed.",
     explanation: "Choice D is the best answer. This choice effectively specifies who may have first populated the Azores, according to the 2015 study: the Vikings.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
@@ -903,7 +903,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Geoscientists have long considered Hawaii's Mauna Loa volcano to be Earth's largest shield volcano by volume, measuring approximately 74,000 cubic kilometers. ______ according to a 2020 study by local geoscientist Michael Garcia, Hawaii's Phhonu shield volcano is significantly larger, boasting a volume of about 148,000 cubic kilometers.",
+      text: "Geoscientists have long considered Hawaii's Mauna Loa volcano to be Earth's largest shield volcano by volume, measuring approximately 74,000 cubic kilometers. ______ according to a 2020 study by local geoscientist Michael Garcia, Hawaii's Pūhāhonu shield volcano is significantly larger, boasting a volume of about 148,000 cubic kilometers.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -913,7 +913,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
       "However,",
     ],
     correctAnswer: "However,",
-    explanation: "Choice D is the best answer. \"However\" logically signals that this sentence, which indicates that the Phhonu volcano may be larger than the Mauna Loa volcano, offers a contrast to or refutation of the previous assumption that Mauna Loa is the largest shield volcano.",
+    explanation: "Choice D is the best answer. \"However\" logically signals that this sentence, which indicates that the Pūhāhonu volcano may be larger than the Mauna Loa volcano, offers a contrast to or refutation of the previous assumption that Mauna Loa is the largest shield volcano.",
     relatedConcepts: ["Transitions","Logical Connections","Coherence"],
   },
   {
@@ -1031,16 +1031,16 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Digital Light Synthesis (DLS) is a form of additive manufacturing that utilizes light to rapidly cure liquid resin into high- quality, 3D objects. Step 1: Ultraviolet (UV) light images are projected up into a pool of liquid resin, where the object's first layer takes shape. Step 2: The partially cured resin object is raised, leaving a thin space (a \"dead zone\") beneath it for oxygen and liquid resin to flow through. Step 3: The UV light passes through the dead zone--maintaining the flow of resin--and partially cures additional layers of the object. Step 4: When the resin object is complete, it is baked in an oven to complete the curing.",
+      text: "While researching a topic, a student has taken the following notes: Digital Light Synthesis (DLS) is a form of additive manufacturing that utilizes light to rapidly cure liquid resin into high-quality, 3D objects. Step 1: Ultraviolet (UV) light images are projected up into a pool of liquid resin, where the object's first layer takes shape. Step 2: The partially cured resin object is raised, leaving a thin space (a \"dead zone\") beneath it for oxygen and liquid resin to flow through. Step 3: The UV light passes through the dead zone--maintaining the flow of resin--and partially cures additional layers of the object. Step 4: When the resin object is complete, it is baked in an oven to complete the curing.",
     },
     question: "The student wants to describe how DLS cures 3D objects. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "DLS is a form of additive manufacturing that creates a \"dead zone\" in which UV light solidifies layer by layer before being baked",
       "DLS cures 3D objects by passing through a \"dead zone,\" adding layers to the object, then curing the object in an oven.",
-      "In DLS, UV light images are projected into a liquid resin pool to cure a 3D object layer by layer; once solidified, the object is",
-      "In DLS, UV light is projected into layers of liquid resin until the resin solidifies and passes through a \"dead zone,\" wherein the",
+      "In DLS, UV light images are projected into a liquid resin pool to cure a 3D object layer by layer; once solidified, the object is baked in an oven to complete the curing.",
+      "In DLS, UV light is projected into layers of liquid resin until the resin solidifies and passes through a \"dead zone,\" wherein the object is baked to finalize production.",
     ],
-    correctAnswer: "In DLS, UV light images are projected into a liquid resin pool to cure a 3D object layer by layer; once solidified, the object is",
+    correctAnswer: "In DLS, UV light images are projected into a liquid resin pool to cure a 3D object layer by layer; once solidified, the object is baked in an oven to complete the curing.",
     explanation: "Choice C is the best answer. The sentence describes how DLS cures 3D objects, noting that UV light is projected into resin to cure the object in layers, after which the object is baked to complete the curing process.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
     requiresThinkPeriod: true,
@@ -1116,7 +1116,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Celebrated Tewa potter Maria Martinez (1887�1980) made her signature all-black ceramic vessels using a heating technique called reduction firing. This technique involves smothering the flame surrounding the clay vessel. ______ the vessel takes on a shiny, black hue.",
+      text: "Celebrated Tewa potter Maria Martinez (1887–1980) made her signature all-black ceramic vessels using a heating technique called reduction firing. This technique involves smothering the flame surrounding the clay vessel. ______ the vessel takes on a shiny, black hue.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -1243,7 +1243,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Most conifers (trees belonging to the phylum Coniferophyta) are evergreen. That is, they keep their green leaves or needles year- round. However, not all conifer species are evergreen. Larch trees, ______ lose their needles every fall.",
+      text: "Most conifers (trees belonging to the phylum Coniferophyta) are evergreen. That is, they keep their green leaves or needles year-round. However, not all conifer species are evergreen. Larch trees, ______ lose their needles every fall.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -1581,7 +1581,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "In her 2012 analysis of tree rings from Japan's Yaku Island, cosmic ray physicist Fusa Miyake noted an anomalous carbon-14 spike dating to 774�775 CE, indicating that a massive burst of radiation reached Earth during that time. ______ this unprecedented radiocarbon surge was dubbed a \"Miyake event\" in honor of its discoverer.",
+      text: "In her 2012 analysis of tree rings from Japan's Yaku Island, cosmic ray physicist Fusa Miyake noted an anomalous carbon-14 spike dating to 774–775 CE, indicating that a massive burst of radiation reached Earth during that time. ______ this unprecedented radiocarbon surge was dubbed a \"Miyake event\" in honor of its discoverer.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -1602,7 +1602,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Neuroscientist Karen Konkoly wanted to determine whether individuals can understand and respond to questions during REM sleep. She first taught volunteers eye movements they would use to respond to basic math problems while asleep (a single left- right eye movement indicated the number one). ______ she attached electrodes to the volunteers' faces to record their eye movements during sleep.",
+      text: "Neuroscientist Karen Konkoly wanted to determine whether individuals can understand and respond to questions during REM sleep. She first taught volunteers eye movements they would use to respond to basic math problems while asleep (a single left-right eye movement indicated the number one). ______ she attached electrodes to the volunteers' faces to record their eye movements during sleep.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -1623,17 +1623,17 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Novelist Willa Cather grew up in Nebraska and attended the University of Nebraska-Lincoln. Some of Cather's best-known novels are set in Nebraska. Two such novels are O Pioneers! (1913) and My �ntonia (1918). Cather's novels describe the experiences of immigrants who settled in the Great Plains.",
+      text: "While researching a topic, a student has taken the following notes: Novelist Willa Cather grew up in Nebraska and attended the University of Nebraska-Lincoln. Some of Cather's best-known novels are set in Nebraska. Two such novels are O Pioneers! (1913) and My Ántonia (1918). Cather's novels describe the experiences of immigrants who settled in the Great Plains.",
     },
-    question: "The student wants to identify the setting of Cather's novel My �ntonia. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    question: "The student wants to identify the setting of Cather's novel My Ántonia. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "My �ntonia is set in Nebraska, where Cather grew up.",
-      "Cather, author of My �ntonia, described the experiences of immigrants in her novels.",
-      "Among Cather's best-known novels are O Pioneers! (1913) and My �ntonia (1918).",
+      "My Ántonia is set in Nebraska, where Cather grew up.",
+      "Cather, author of My Ántonia, described the experiences of immigrants in her novels.",
+      "Among Cather's best-known novels are O Pioneers! (1913) and My Ántonia (1918).",
       "Cather attended the University of Nebraska-Lincoln and set some of her novels in Nebraska.",
     ],
-    correctAnswer: "My �ntonia is set in Nebraska, where Cather grew up.",
-    explanation: "Choice A is the best answer. This choice directly identifies the setting of Cather's novel My �ntonia as Nebraska.",
+    correctAnswer: "My Ántonia is set in Nebraska, where Cather grew up.",
+    explanation: "Choice A is the best answer. This choice directly identifies the setting of Cather's novel My Ántonia as Nebraska.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
   {
@@ -1644,16 +1644,16 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Muckrakers were journalists who sought to expose corruption in US institutions during the Progressive Era (1897�1920). Ida Tarbell was a muckraker who investigated the Standard Oil Company. She interviewed Standard Oil Company executives, oil industry workers, and public officials. She examined thousands of pages of the company's internal communications, including letters and financial records. Her book The History of the Standard Oil Company (1904) exposed the company's unfair business practices.",
+      text: "While researching a topic, a student has taken the following notes: Muckrakers were journalists who sought to expose corruption in US institutions during the Progressive Era (1897\u20131920). Ida Tarbell was a muckraker who investigated the Standard Oil Company. She interviewed Standard Oil Company executives, oil industry workers, and public officials. She examined thousands of pages of the company's internal communications, including letters and financial records. Her book The History of the Standard Oil Company (1904) exposed the company's unfair business practices.",
     },
     question: "The student wants to emphasize the thoroughness of Ida Tarbell's investigation of the Standard Oil Company. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "Ida Tarbell not only interviewed Standard Oil executives, oil industry workers, and public officials but also examined thousands",
-      "Ida Tarbell, who investigated the Standard Oil Company, was a muckraker (a journalist who sought to expose corruption in US",
+      "Ida Tarbell not only interviewed Standard Oil executives, oil industry workers, and public officials but also examined thousands of pages of the company's internal communications.",
+      "Ida Tarbell, who investigated the Standard Oil Company, was a muckraker (a journalist who sought to expose corruption in US institutions during the Progressive Era, 1897\u20131920).",
       "As part of her investigation of the Standard Oil Company, muckraker Ida Tarbell conducted interviews.",
-      "Published in 1904, muckraker Ida Tarbell's book The History of the Standard Oil Company exposed the company's unfair",
+      "Published in 1904, muckraker Ida Tarbell's book The History of the Standard Oil Company exposed the company's unfair business practices.",
     ],
-    correctAnswer: "Ida Tarbell not only interviewed Standard Oil executives, oil industry workers, and public officials but also examined thousands",
+    correctAnswer: "Ida Tarbell not only interviewed Standard Oil executives, oil industry workers, and public officials but also examined thousands of pages of the company's internal communications.",
     explanation: "Choice A is the best answer. It describes Tarbell's investigation and the lengths she went to complete it.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
@@ -1687,7 +1687,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Two opposing theories of vision divided scholars for many centuries. The ancient Greek mathematician Euclid (circa 300 BCE) supported the extramission theory. This theory held that the eyes emit a form of radiation that illuminates objects in its range. The ancient Greek philosopher Aristotle (384�322 BCE) supported the intromission theory. This theory held that objects emit a form of radiation that reaches the eyes. In the eleventh century, Arab mathematician Ibn al-Haytham (965�1040 CE) largely settled the debate with the first conclusive experiments supporting intromission.",
+      text: "While researching a topic, a student has taken the following notes: Two opposing theories of vision divided scholars for many centuries. The ancient Greek mathematician Euclid (circa 300 BCE) supported the extramission theory. This theory held that the eyes emit a form of radiation that illuminates objects in its range. The ancient Greek philosopher Aristotle (384–322 BCE) supported the intromission theory. This theory held that objects emit a form of radiation that reaches the eyes. In the eleventh century, Arab mathematician Ibn al-Haytham (965–1040 CE) largely settled the debate with the first conclusive experiments supporting intromission.",
     },
     question: "The student wants to provide a historical overview of the two theories. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -1962,7 +1962,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In 2009, the Craft and Folk Art Museum in Los Angeles hosted a special exhibition, Sue�os/Yume, showcasing the works of local sculptor Dora de Larios. As suggested by the show's title (sue�os and yume mean \"dreams\" in Spanish and Japanese, respectively), de Larios's art reflects a mix of cultural influences. ______ her work is grounded in the artistic traditions of both Mexico and Japan.",
+      text: "In 2009, the Craft and Folk Art Museum in Los Angeles hosted a special exhibition, Sueños/Yume, showcasing the works of local sculptor Dora de Larios. As suggested by the show's title (sueños and yume mean \"dreams\" in Spanish and Japanese, respectively), de Larios's art reflects a mix of cultural influences. ______ her work is grounded in the artistic traditions of both Mexico and Japan.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -2048,7 +2048,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Modernista architects championed nature in their designs. ______ the wavy staircase and ornate floral tilework of Hospital de Sant Pau, a Modernista hospital designed by Llu�s Dom�nech i Montaner, couldn't exactly grow in a forest. Still, one sees natural influences in Dom�nech i Montaner's penchant for curves (rather than right angles) and plant- and animal-inspired flourishes.",
+      text: "Modernista architects championed nature in their designs. ______ the wavy staircase and ornate floral tilework of Hospital de Sant Pau, a Modernista hospital designed by Lluís Domènech i Montaner, couldn't exactly grow in a forest. Still, one sees natural influences in Domènech i Montaner's penchant for curves (rather than right angles) and plant- and animal-inspired flourishes.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -2220,7 +2220,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "When sculptor Fr�d�ric Auguste Bartholdi was designing the Statue of Liberty, he sought the advice of engineer Gustave Eiffel. Eiffel suggested that he make the statue's arm thick and position it straight above the figure's head. ______ Bartholdi decided to slim the arm and tilt it out at an angle.",
+      text: "When sculptor Frédéric Auguste Bartholdi was designing the Statue of Liberty, he sought the advice of engineer Gustave Eiffel. Eiffel suggested that he make the statue's arm thick and position it straight above the figure's head. ______ Bartholdi decided to slim the arm and tilt it out at an angle.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -2305,7 +2305,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "When Chinese director Chlo� Zhao accepted the Oscar in 2021 for her film Nomadland, she made Academy Award history. ______ only one other woman, Kathryn Bigelow of the United States, had been named best director at the Oscars, making Zhao the second woman and the first Asian woman to win the award.",
+      text: "When Chinese director Chloé Zhao accepted the Oscar in 2021 for her film Nomadland, she made Academy Award history. ______ only one other woman, Kathryn Bigelow of the United States, had been named best director at the Oscars, making Zhao the second woman and the first Asian woman to win the award.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -2431,12 +2431,12 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Freddie Wong (born 1985) is a director and special effects artist from the United States. He is best known for the action-comedy web series Video Game High School (VGHS). VGHS premiered in 2012 on RocketJump, a YouTube channel that Wong cocreated. The series was celebrated for its inventive video game�centric world and high-quality special effects. VGHS was nominated for a Producers Guild Award for Outstanding Digital Series.",
+      text: "While researching a topic, a student has taken the following notes: Freddie Wong (born 1985) is a director and special effects artist from the United States. He is best known for the action-comedy web series Video Game High School (VGHS). VGHS premiered in 2012 on RocketJump, a YouTube channel that Wong cocreated. The series was celebrated for its inventive video game–centric world and high-quality special effects. VGHS was nominated for a Producers Guild Award for Outstanding Digital Series.",
     },
     question: "The student wants to begin a narrative about Wong's award-nominated web series. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "In 2012, director and visual effects artist Freddie Wong launched a new action-comedy web series: Video Game High School.",
-      "Video Game High School was celebrated for its inventive video game�centric world and high-quality special effects, and it was",
+      "Video Game High School was celebrated for its inventive video game–centric world and high-quality special effects, and it was",
       "Wong, cocreator of the YouTube channel RocketJump, would go on to see his web series be nominated for a Producers Guild",
       "In 2012, Video Game High School premiered on RocketJump; it would later be nominated for an award.",
     ],
@@ -2559,7 +2559,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "When following musical scores, professional opera singers like soprano Ana Mar�a Mart�nez take vocal directions from descriptive notations, typically in Italian, that appear alongside the musical notes. ______ these descriptive terms might guide the performer to sing giocoso (playfully) or lento (at a slow tempo).",
+      text: "When following musical scores, professional opera singers like soprano Ana María Martínez take vocal directions from descriptive notations, typically in Italian, that appear alongside the musical notes. ______ these descriptive terms might guide the performer to sing giocoso (playfully) or lento (at a slow tempo).",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -2792,7 +2792,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Texture analysis and historical analysis are two approaches to art criticism. Texture analysis examines how surfaces are visually represented in an artwork. Such an analysis of Giorgione's Youth Holding an Arrow might consider how the painting's blended colors make the subject's skin appear smooth in texture. Historical analysis considers the historical context in which a work was created. Such an analysis of Diego Vel�zquez's Las Meninas might consider how the painting's depiction of the artist with King Philip IV symbolizes art's historical ties to power.",
+      text: "While researching a topic, a student has taken the following notes: Texture analysis and historical analysis are two approaches to art criticism. Texture analysis examines how surfaces are visually represented in an artwork. Such an analysis of Giorgione's Youth Holding an Arrow might consider how the painting's blended colors make the subject's skin appear smooth in texture. Historical analysis considers the historical context in which a work was created. Such an analysis of Diego Velázquez's Las Meninas might consider how the painting's depiction of the artist with King Philip IV symbolizes art's historical ties to power.",
     },
     question: "The student wants to present historical analysis to an audience unfamiliar with the concept. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -2939,9 +2939,9 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: In astronomy, the mass of stars can be described in units called solar masses. One solar mass is roughly equal to the mass of the Sun. The mass of the star Proxima Centauri is 0.122 solar masses. The mass of the star Sirius A is 2.063 solar masses. The student wants to emphasize the mass of Sirius",
+      text: "While researching a topic, a student has taken the following notes: In astronomy, the mass of stars can be described in units called solar masses. One solar mass is roughly equal to the mass of the Sun. The mass of the star Proxima Centauri is 0.122 solar masses. The mass of the star Sirius A is 2.063 solar masses.",
     },
-    question: "Which choice best completes the text?",
+    question: "The student wants to emphasize the mass of Sirius A. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "The mass of stars, like Proxima Centauri, can be described in units called solar masses.",
       "In astronomy, the mass of stars can be described in units called solar masses, and one solar mass is roughly equal to the",
@@ -3087,17 +3087,17 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: In 1999, astronomer Todd Henry studied the differences in surface temperature between the Sun and nearby stars. His team mapped all stars within 10 parsecs (approximately 200 trillion miles) of the Sun. The surface temperature of the Sun is around 9,800�F, which classifies it as a G star. 327 of the 357 stars in the study were classified as K or M stars, with surface temperatures under 8,900�F (cooler than the Sun). 11 of the 357 stars in the study were classified as A or F stars, with surface temperatures greater than 10,300�F (hotter than the Sun).",
+      text: "While researching a topic, a student has taken the following notes: In 1999, astronomer Todd Henry studied the differences in surface temperature between the Sun and nearby stars. His team mapped all stars within 10 parsecs (approximately 200 trillion miles) of the Sun. The surface temperature of the Sun is around 9,800°F, which classifies it as a G star. 327 of the 357 stars in the study were classified as K or M stars, with surface temperatures under 8,900°F (cooler than the Sun). 11 of the 357 stars in the study were classified as A or F stars, with surface temperatures greater than 10,300°F (hotter than the Sun).",
     },
     question: "The student wants to emphasize how hot the Sun is relative to nearby stars. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "At around 9,800�F, which classifies it as a G star, the Sun is hotter than most but not all of the stars within 10 parsecs of it.",
-      "Astronomer Todd Henry determined that the Sun, at around 9,800�F, is a G star, and several other stars within a 10-parsec",
-      "Of the 357 stars within ten parsecs of the Sun, 327 are classified as K or M stars, with surface temperatures under 8,900�F.",
+      "At around 9,800°F, which classifies it as a G star, the Sun is hotter than most but not all of the stars within 10 parsecs of it.",
+      "Astronomer Todd Henry determined that the Sun, at around 9,800°F, is a G star, and several other stars within a 10-parsec",
+      "Of the 357 stars within ten parsecs of the Sun, 327 are classified as K or M stars, with surface temperatures under 8,900°F.",
       "While most of the stars within 10 parsecs of the Sun are classified as K, M, A, or F stars, the Sun is classified as a G star due to",
     ],
-    correctAnswer: "At around 9,800�F, which classifies it as a G star, the Sun is hotter than most but not all of the stars within 10 parsecs of it.",
-    explanation: "Choice A is the best answer. Noting that the Sun (9,800�F) is hotter than most stars within 10 parsecs of it, the sentence emphasizes how hot the Sun is relative to nearby stars.",
+    correctAnswer: "At around 9,800°F, which classifies it as a G star, the Sun is hotter than most but not all of the stars within 10 parsecs of it.",
+    explanation: "Choice A is the best answer. Noting that the Sun (9,800°F) is hotter than most stars within 10 parsecs of it, the sentence emphasizes how hot the Sun is relative to nearby stars.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
   {
@@ -3129,17 +3129,17 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: In 1851, German American artist Emanuel Leutze painted Washington Crossing the Delaware. His huge painting (149 � 255 inches) depicts the first US president crossing a river with soldiers in the Revolutionary War. In 2019, Cree artist Kent Monkman painted mistik�siwak (Wooden Boat People): Resurgence of the People. Monkman's huge painting (132 � 264 inches) was inspired by Leutze's. It portrays Indigenous people in a boat rescuing refugees.",
+      text: "While researching a topic, a student has taken the following notes: In 1851, German American artist Emanuel Leutze painted Washington Crossing the Delaware. His huge painting (149 × 255 inches) depicts the first US president crossing a river with soldiers in the Revolutionary War. In 2019, Cree artist Kent Monkman painted mistikôsiwak (Wooden Boat People): Resurgence of the People. Monkman's huge painting (132 × 264 inches) was inspired by Leutze's. It portrays Indigenous people in a boat rescuing refugees.",
     },
     question: "The student wants to emphasize a similarity between the two paintings. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "Monkman, a Cree artist, finished his painting in 2019; Leutze, a German American artist, completed his in 1851.",
       "Although Monkman's painting was inspired by Leutze's, the people and actions the two paintings portray are very different.",
-      "Leutze's and Monkman's paintings are both huge, measuring 149 � 255 inches and 132 � 264 inches, respectively.",
+      "Leutze's and Monkman's paintings are both huge, measuring 149 × 255 inches and 132 × 264 inches, respectively.",
       "Leutze's painting depicts Revolutionary War soldiers, while Monkman's depicts Indigenous people and refugees.",
     ],
-    correctAnswer: "Leutze's and Monkman's paintings are both huge, measuring 149 � 255 inches and 132 � 264 inches, respectively.",
-    explanation: "Choice C is the best answer. The sentence emphasizes a similarity between the two paintings, noting that Leutze's painting (which measures 149 � 255 inches) and Monkman's painting (which measures 132 � 264 inches) are both very large.",
+    correctAnswer: "Leutze's and Monkman's paintings are both huge, measuring 149 × 255 inches and 132 × 264 inches, respectively.",
+    explanation: "Choice C is the best answer. The sentence emphasizes a similarity between the two paintings, noting that Leutze's painting (which measures 149 × 255 inches) and Monkman's painting (which measures 132 × 264 inches) are both very large.",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
   {
@@ -3172,12 +3172,12 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Georeferencing is the process of assigning geographic coordinates to an image. This process enables mapping software to place the image in its real-world location. A 2017 project by Tania L�pez Marrero and colleagues georeferenced a set of aerial photographs of Puerto Rico's coastline taken in 1930. These photographs are the earliest known aerial photographs of Puerto Rico. L�pez Marrero's project provided data that can help researchers analyze changes in Puerto Rico's coastline.",
+      text: "While researching a topic, a student has taken the following notes: Georeferencing is the process of assigning geographic coordinates to an image. This process enables mapping software to place the image in its real-world location. A 2017 project by Tania López Marrero and colleagues georeferenced a set of aerial photographs of Puerto Rico's coastline taken in 1930. These photographs are the earliest known aerial photographs of Puerto Rico. López Marrero's project provided data that can help researchers analyze changes in Puerto Rico's coastline.",
     },
     question: "The student wants to define the term \"georeferencing.\" Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "A 2017 project by Tania L�pez Marrero and colleagues assigned geographic coordinates to photographs of Puerto Rico's",
-      "Tania L�pez Marrero and colleagues used georeferencing in their analysis of the earliest known aerial photographs of Puerto",
+      "A 2017 project by Tania López Marrero and colleagues assigned geographic coordinates to photographs of Puerto Rico's",
+      "Tania López Marrero and colleagues used georeferencing in their analysis of the earliest known aerial photographs of Puerto",
       "Georeferenced aerial photographs from 1930 can help researchers analyze changes in Puerto Rico's coastline.",
       "Georeferencing is the process of assigning geographic coordinates to an image so that mapping software can place it in its",
     ],
@@ -3214,9 +3214,9 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: In the early 1960s, the US had a strict national-origins quota system for immigrants. The number of new immigrants allowed from a country each year was based on how many people from that country lived in the US in 1890. This system favored immigrants from northern Europe. Almost 70% of slots were reserved for immigrants from Great Britain, Ireland, and Germany. The 1965 Hart-Celler Act abolished the national-origins quota system. The student wants to present the significance of the Hart-Celler Act to an audience unfamiliar with the history of US immigration.",
+      text: "While researching a topic, a student has taken the following notes: In the early 1960s, the US had a strict national-origins quota system for immigrants. The number of new immigrants allowed from a country each year was based on how many people from that country lived in the US in 1890. This system favored immigrants from northern Europe. Almost 70% of slots were reserved for immigrants from Great Britain, Ireland, and Germany. The 1965 Hart-Celler Act abolished the national-origins quota system.",
     },
-    question: "Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+    question: "The student wants to present the significance of the Hart-Celler Act to an audience unfamiliar with the history of US immigration. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "Almost 70% of slots were reserved for immigrants from Great Britain, Ireland, and Germany at the time the Hart-Celler Act was",
       "Prior to the Hart-Celler Act, new immigration quotas were based on how many people from each country lived in the US in",
@@ -3256,7 +3256,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: A wok is a cooking pan that originated in China during the Han dynasty (206 BCE�220 CE). The wok's round, wide base helps to cook food evenly. The wok's high, angled sides help to contain oil splatters. Grace Young is a cook and culinary historian. Her book The Breath of a Wok (2004) traces the history of the wok.",
+      text: "While researching a topic, a student has taken the following notes: A wok is a cooking pan that originated in China during the Han dynasty (206 BCE–220 CE). The wok's round, wide base helps to cook food evenly. The wok's high, angled sides help to contain oil splatters. Grace Young is a cook and culinary historian. Her book The Breath of a Wok (2004) traces the history of the wok.",
     },
     question: "The student wants to describe the wok's shape. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -3431,11 +3431,11 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     question: "The student wants to present the conclusion of Zhen Wang and colleagues' 2016 study. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
       "Like Tibetan mastiffs, Tibetan wolves can withstand hypoxic conditions at high altitudes.",
-      "Both Tibetan mastiffs and Tibetan wolves have mutations in their EPAS1 and HBB genes, which prevent excess hemoglobin",
-      "In addition to preventing excess hemoglobin production, a mutation in Tibetan mastiffs' HBB gene boosts hemoglobin's",
-      "By interbreeding with Tibetan wolves around 24,000 years ago, Tibetan mastiffs acquired the genetic mutations that enable",
+      "Both Tibetan mastiffs and Tibetan wolves have mutations in their EPAS1 and HBB genes, which prevent excess hemoglobin production and boost hemoglobin's oxygen-carrying ability.",
+      "In addition to preventing excess hemoglobin production, a mutation in Tibetan mastiffs' HBB gene boosts hemoglobin's oxygen-carrying ability at high altitudes.",
+      "By interbreeding with Tibetan wolves around 24,000 years ago, Tibetan mastiffs acquired the genetic mutations that enable them to withstand hypoxic conditions at high altitudes.",
     ],
-    correctAnswer: "By interbreeding with Tibetan wolves around 24,000 years ago, Tibetan mastiffs acquired the genetic mutations that enable",
+    correctAnswer: "By interbreeding with Tibetan wolves around 24,000 years ago, Tibetan mastiffs acquired the genetic mutations that enable them to withstand hypoxic conditions at high altitudes.",
     explanation: "Choice D is the best answer. The sentence presents the conclusion of Zhen Wang and colleagues' 2016 study: Tibetan mastiffs are able to withstand hypoxic conditions due to their interbreeding with Tibetan wolves 24,000 years ago (which allowed the mastiffs to acquire the necessary genetic mutations).",
     relatedConcepts: ["Rhetorical Synthesis","Source Integration","Writing Purpose"],
   },
@@ -3960,7 +3960,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: A small number of US Navy sailors of Filipino descent served during the US Civil War (1861�1865). Stephen Amos was born in the Philippines around 1830. He enlisted in the US Navy in November 1863. Raphael Ignases was born in the Philippines around 1834. He enlisted in the US Navy in July 1861.",
+      text: "While researching a topic, a student has taken the following notes: A small number of US Navy sailors of Filipino descent served during the US Civil War (1861–1865). Stephen Amos was born in the Philippines around 1830. He enlisted in the US Navy in November 1863. Raphael Ignases was born in the Philippines around 1834. He enlisted in the US Navy in July 1861.",
     },
     question: "The student wants to emphasize the historical significance of Stephen Amos's enlistment date. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -4046,7 +4046,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Claude McKay (1889�1948) was a Jamaican American writer. Songs of Jamaica (1912) and Constab Ballads (1912) are two acclaimed poetry collections that McKay published while living in Jamaica. McKay moved to Harlem in New York City in 1914. He is best known as a poet and novelist of the Harlem Renaissance, a literary and cultural movement of the 1920s and 1930s. His most famous works include the poetry collection Harlem Shadows (1922) and the novel Home to Harlem (1928).",
+      text: "While researching a topic, a student has taken the following notes: Claude McKay (1889–1948) was a Jamaican American writer. Songs of Jamaica (1912) and Constab Ballads (1912) are two acclaimed poetry collections that McKay published while living in Jamaica. McKay moved to Harlem in New York City in 1914. He is best known as a poet and novelist of the Harlem Renaissance, a literary and cultural movement of the 1920s and 1930s. His most famous works include the poetry collection Harlem Shadows (1922) and the novel Home to Harlem (1928).",
     },
     question: "The student wants to emphasize Claude McKay's accomplishments before moving to Harlem. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
@@ -4109,7 +4109,7 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "With his room-sized installation Unicorn/My Private Sky, Norwegian artist B�rre S�thre succeeds in creating a whimsical yet perplexing experience. ______ when visitors set foot inside the fantastically blue room and encounter the life-sized stuffed unicorn preening at the far end of it, they are both dazzled and confused--as if stepping into a strange and enchanting new world.",
+      text: "With his room-sized installation Unicorn/My Private Sky, Norwegian artist Børre Sæthre succeeds in creating a whimsical yet perplexing experience. ______ when visitors set foot inside the fantastically blue room and encounter the life-sized stuffed unicorn preening at the far end of it, they are both dazzled and confused--as if stepping into a strange and enchanting new world.",
     },
     question: "Which choice completes the text with the most logical transition?",
     options: [
@@ -4130,11 +4130,11 @@ export const cbRwExpressionOfIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While researching a topic, a student has taken the following notes: Marcela Guerrero is a curator at the Whitney Museum of American Art in New York. She curated the Whitney's 2018 exhibition Pacha, Llaqta, Wasichay: Indigenous Space, Modern Architecture, New Art. This exhibition featured works by seven emerging Latino artists. She curated the Whitney's 2020 exhibition Vida Americana: Mexican Muralists Remake American Art, 1925�1945. This exhibition included nearly 200 works by twentieth-century Latino and Mexican artists.",
+      text: "While researching a topic, a student has taken the following notes: Marcela Guerrero is a curator at the Whitney Museum of American Art in New York. She curated the Whitney's 2018 exhibition Pacha, Llaqta, Wasichay: Indigenous Space, Modern Architecture, New Art. This exhibition featured works by seven emerging Latino artists. She curated the Whitney's 2020 exhibition Vida Americana: Mexican Muralists Remake American Art, 1925–1945. This exhibition included nearly 200 works by twentieth-century Latino and Mexican artists.",
     },
     question: "The student wants to describe the exhibition that Guerrero curated in 2018. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
     options: [
-      "Held at the Whitney Museum of American Art, the exhibition Vida Americana: Mexican Muralists Remake American Art, 1925�",
+      "Held at the Whitney Museum of American Art, the exhibition Vida Americana: Mexican Muralists Remake American Art, 1925–",
       "Pacha, Llaqta, Wasichay: Indigenous Space, Modern Architecture, New Art, an exhibition at the Whitney Museum of American",
       "In both 2018 and 2020, Marcela Guerrero curated exhibitions at the Whitney Museum of American Art in New York.",
       "While one exhibition that Marcela Guerrero curated featured works by emerging artists, another included works by twentieth-",

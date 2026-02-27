@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+const IS_CALIBER = import.meta.env.VITE_THEME === 'caliber';
+
 export default function Login() {
   const { signIn } = useAuth();
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ export default function Login() {
       setError(err);
       setLoading(false);
     } else {
-      navigate('/');
+      navigate('/dashboard');
     }
   };
 
@@ -28,9 +30,12 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-4xl">📝</span>
-          <h1 className="text-2xl font-bold text-slate-800 mt-2">SAT Prep</h1>
-          <p className="text-slate-500 mt-1">Sign in to your account</p>
+          {IS_CALIBER
+            ? <img src={`${import.meta.env.BASE_URL}caliber-icon.png`} className="w-24 h-24 mx-auto rounded-2xl" alt="Caliber" />
+            : <span className="text-4xl">📝</span>
+          }
+          {!IS_CALIBER && <h1 className="text-2xl font-bold text-slate-800 mt-2">SAT Prep</h1>}
+          <p className="text-slate-500 mt-1">{IS_CALIBER ? 'Sign in to your Caliber account' : 'Sign in to your account'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
@@ -73,18 +78,18 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
-              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
+            className={`w-full py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] ${
+              IS_CALIBER
+                ? 'bg-gradient-to-r from-[#c8a24e] to-[#e4c36e] text-[#08090d] hover:shadow-[0_4px_20px_rgba(200,162,78,0.35)]'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700'
+            }`}
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
 
-          <div className="flex items-center justify-between text-sm">
+          <div className="text-sm">
             <Link to="/forgot-password" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center">
               Forgot password?
-            </Link>
-            <Link to="/signup" className="text-indigo-600 hover:text-indigo-700 py-2 min-h-[44px] inline-flex items-center">
-              Create account
             </Link>
           </div>
         </form>

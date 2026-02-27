@@ -38,7 +38,9 @@ export default function MockTestTimer({
   const onTimeUpRef = useRef(onTimeUp);
 
   // Keep the callback ref up to date
-  onTimeUpRef.current = onTimeUp;
+  useEffect(() => {
+    onTimeUpRef.current = onTimeUp;
+  });
 
   // Reset remaining when duration changes (new module)
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { calculateOverallStats } from '../utils/stats';
 import { getQuestionById } from '../data/questions';
@@ -19,6 +19,9 @@ export default function Progress() {
   const xp = useAppStore((s) => s.xp);
   const earnedBadges = useAppStore((s) => s.earnedBadges);
   const mockTestHistory = useAppStore((s) => s.mockTestHistory);
+  const markProgressVisited = useAppStore((s) => s.markProgressVisited);
+
+  useEffect(() => { markProgressVisited(); }, [markProgressVisited]);
 
   const stats = useMemo(
     () => calculateOverallStats(questionProgress, studyStreak, lastStudyDate),

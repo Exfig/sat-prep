@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="300" viewBox="0 0 360 300">
+  <rect width="360" height="300" fill="white"/>
+
+  <!-- Triangle ABC: right angle at A -->
+  <!-- A at bottom-left, B at bottom-right, C at top-left -->
+  <!-- tan B = 3/4, BC = 15, so AC = 9, AB = 12 -->
+  <!-- Scale: AB = 12 → 240px, AC = 9 → 180px -->
+  <polygon points="60,260 300,260 60,80" fill="none" stroke="black" stroke-width="2"/>
+
+  <!-- Right angle square at A -->
+  <polyline points="80,260 80,240 60,240" fill="none" stroke="black" stroke-width="1.5"/>
+
+  <!-- Point D on AB: DA = 4, so DB = 8. D is 4/12 of the way from A to B = 80px from A -->
+  <!-- D at (140, 260) -->
+  <!-- Point E on BC: triangle DBE similar to 3-4-5 with DB=8 as the "4" side -->
+  <!-- DE = 6, BE = 10. E is on line from B(300,260) to C(60,80) -->
+  <!-- BC direction: (-240, -180), length 300px for 15 units → 20px/unit -->
+  <!-- BE = 10 → 200px along BC from B -->
+  <!-- E = B + (200/300)*(-240,-180) = (300-160, 260-120) = (140, 140) -->
+
+  <!-- Line DE -->
+  <line x1="140" y1="260" x2="140" y2="140" stroke="black" stroke-width="2"/>
+
+  <!-- Right angle square at D -->
+  <polyline points="140,240 160,240 160,260" fill="none" stroke="black" stroke-width="1.5"/>
+
+  <!-- Labels -->
+  <text x="40" y="275" font-family="Times, serif" font-size="18" font-style="italic" fill="black">A</text>
+  <text x="305" y="275" font-family="Times, serif" font-size="18" font-style="italic" fill="black">B</text>
+  <text x="40" y="72" font-family="Times, serif" font-size="18" font-style="italic" fill="black">C</text>
+  <text x="130" y="290" font-family="Times, serif" font-size="18" font-style="italic" fill="black">D</text>
+  <text x="145" y="135" font-family="Times, serif" font-size="18" font-style="italic" fill="black">E</text>
+</svg>

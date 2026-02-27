@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="300" viewBox="0 0 340 300">
+  <rect width="340" height="300" fill="white"/>
+
+  <!-- Right triangle RST: right angle at S -->
+  <!-- S at bottom-left, T at bottom-right, R at top-left -->
+  <polygon points="60,260 300,260 60,40" fill="none" stroke="black" stroke-width="2"/>
+
+  <!-- Right angle square at S -->
+  <polyline points="80,260 80,240 60,240" fill="none" stroke="black" stroke-width="1.5"/>
+
+  <!-- Labels -->
+  <text x="38" y="275" font-family="Times, serif" font-size="18" font-style="italic" fill="black">S</text>
+  <text x="305" y="275" font-family="Times, serif" font-size="18" font-style="italic" fill="black">T</text>
+  <text x="38" y="32" font-family="Times, serif" font-size="18" font-style="italic" fill="black">R</text>
+
+  <!-- Side labels -->
+  <!-- RS = 12 (left side) -->
+  <text x="28" y="155" font-family="Times, serif" font-size="16" fill="black">12</text>
+
+  <!-- ST = 5 (bottom side) -->
+  <text x="170" y="280" font-family="Times, serif" font-size="16" fill="black">5</text>
+</svg>

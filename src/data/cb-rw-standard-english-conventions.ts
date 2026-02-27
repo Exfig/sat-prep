@@ -12,7 +12,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Generations of mystery and horror ______ have been influenced by the dark, gothic stories of celebrated American author Edgar Allan Poe (1809�1849).",
+      text: "Generations of mystery and horror ______ have been influenced by the dark, gothic stories of celebrated American author Edgar Allan Poe (1809–1849).",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -182,7 +182,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "French philosopher Ren� Descartes doubted whether he could prove his own existence. Eventually, he found proof in his famous phrase \"I think, therefore I am.\" The ______ complexity: only those who exist would be able to ponder their existence.",
+      text: "French philosopher René Descartes doubted whether he could prove his own existence. Eventually, he found proof in his famous phrase \"I think, therefore I am.\" The ______ complexity: only those who exist would be able to ponder their existence.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -245,7 +245,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "A study led by scientist Rebecca Kirby at the University of Wisconsin�Madison found that black bears that eat human food before hibernation have increased levels of a rare carbon isotope, ______ due to the higher 13C levels in corn and cane sugar. Bears with these elevated levels were also found to have much shorter hibernation periods on average.",
+      text: "A study led by scientist Rebecca Kirby at the University of Wisconsin–Madison found that black bears that eat human food before hibernation have increased levels of a rare carbon isotope, ______ due to the higher 13C levels in corn and cane sugar. Bears with these elevated levels were also found to have much shorter hibernation periods on average.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -309,7 +309,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The Lim�n technique, developed by Mexican-born dancer and choreographer Jose Lim�n, is known for its emphasis on breath control and its interplay of weight and ______ dancers may explore, for example, the moment of mid-air suspension at the top of a jump.",
+      text: "The Limón technique, developed by Mexican-born dancer and choreographer Jose Limón, is known for its emphasis on breath control and its interplay of weight and ______ dancers may explore, for example, the moment of mid-air suspension at the top of a jump.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -319,7 +319,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "weightlessness;",
     ],
     correctAnswer: "weightlessness;",
-    explanation: "Choice D is the best answer. The convention being tested is the use of punctuation within a sentence. This choice uses a semicolon in a conventional way to join the first main clause (\"The Lim�n...weightlessness\") and the second main clause (\"dancers...jump\").",
+    explanation: "Choice D is the best answer. The convention being tested is the use of punctuation within a sentence. This choice uses a semicolon in a conventional way to join the first main clause (\"The Limón...weightlessness\") and the second main clause (\"dancers...jump\").",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -331,7 +331,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The haiku-like poems of Tomas Transtr�mer, which present nature- and dream-influenced images in crisp, spare language, have earned the Swedish poet praise from leading contemporary ______ them Nigerian American essayist and novelist Teju Cole, who has written that Transtr�mer's works \"contain a luminous simplicity.\"",
+      text: "The haiku-like poems of Tomas Tranströmer, which present nature- and dream-influenced images in crisp, spare language, have earned the Swedish poet praise from leading contemporary ______ them Nigerian American essayist and novelist Teju Cole, who has written that Tranströmer's works \"contain a luminous simplicity.\"",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -341,7 +341,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "writers, among",
     ],
     correctAnswer: "writers, among",
-    explanation: "Choice D is the best answer. The convention being tested is punctuation use between a main clause and a supplementary phrase. This choice correctly uses a comma to mark the boundary between the main clause (\"The haiku-like...writers\") and the supplementary phrase (\"among...Cole\") that specifies a contemporary writer who has praised Tomas Transtr�mer's haiku-like poems.",
+    explanation: "Choice D is the best answer. The convention being tested is punctuation use between a main clause and a supplementary phrase. This choice correctly uses a comma to mark the boundary between the main clause (\"The haiku-like...writers\") and the supplementary phrase (\"among...Cole\") that specifies a contemporary writer who has praised Tomas Tranströmer's haiku-like poems.",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -396,7 +396,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In 2021, Mexican biologist Martha Lydia Mac�as-Rubalcava led a review of the scientific literature related to endophytic fungi (i.e., fungi that live inside a host ______ researching 120 endophytic fungi�produced compounds, she found that their phytotoxicity can make them viable alternatives to chemical herbicides for controlling weeds.",
+      text: "In 2021, Mexican biologist Martha Lydia Macías-Rubalcava led a review of the scientific literature related to endophytic fungi (i.e., fungi that live inside a host ______ researching 120 endophytic fungi-produced compounds, she found that their phytotoxicity can make them viable alternatives to chemical herbicides for controlling weeds.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -406,7 +406,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "plant) by",
     ],
     correctAnswer: "plant). By",
-    explanation: "Choice A is the best answer. The convention being tested is punctuation use between sentences. In this choice, the period is used correctly to mark the boundary between one sentence (\"In...plant\") and another (\"By...weeds\"). The prepositional phrase beginning with \"by\" modifies the subject of the next sentence, \"she,\" which refers to Mac�as-Rubalcava.",
+    explanation: "Choice A is the best answer. The convention being tested is punctuation use between sentences. In this choice, the period is used correctly to mark the boundary between one sentence (\"In...plant\") and another (\"By...weeds\"). The prepositional phrase beginning with \"by\" modifies the subject of the next sentence, \"she,\" which refers to Macías-Rubalcava.",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -504,7 +504,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In a recent analysis of lyrical trends in 350,000 songs, researchers cite increases in certain measures, such as the ratio of choruses to verses, as evidence music lyrics are becoming more repetitive. For instance, from 1970 to 2020, ______ chorus-to- verse ratios trended similarly, with each genre's data indicating that relative to the number of unique verses, the number of repeated choruses in songs increased.",
+      text: "In a recent analysis of lyrical trends in 350,000 songs, researchers cite increases in certain measures, such as the ratio of choruses to verses, as evidence music lyrics are becoming more repetitive. For instance, from 1970 to 2020, ______ chorus-to-verse ratios trended similarly, with each genre's data indicating that relative to the number of unique verses, the number of repeated choruses in songs increased.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -545,7 +545,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "To serve local families during the Great Depression, innovative New York City librarian Pura Belpr� offered storytelling in both English and Spanish, an uncommon ______ celebrated el D�a de los Tres Reyes Magos, an important community holiday; and put on puppet shows dramatizing Puerto Rican folktales.",
+      text: "To serve local families during the Great Depression, innovative New York City librarian Pura Belpré offered storytelling in both English and Spanish, an uncommon ______ celebrated el Día de los Tres Reyes Magos, an important community holiday; and put on puppet shows dramatizing Puerto Rican folktales.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -555,7 +555,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "practice at the time,",
     ],
     correctAnswer: "practice at the time;",
-    explanation: "Choice B is the best answer. The convention being tested is the punctuation of elements in a complex series. It's conventional to use a semicolon to separate items in a complex series with internal punctuation, and in this choice, the semicolon after \"time\" is conventionally used to separate the first item (\"offered...time\") and the second (\"celebrated...holiday\") in the series of activities that librarian Pura Belpr� offered. Moreover, the semicolon after \"time\" matches the semicolon used later to separate the second item (\"celebrated...holiday\") and the third (\"and...folktales\") in the se...",
+    explanation: "Choice B is the best answer. The convention being tested is the punctuation of elements in a complex series. It's conventional to use a semicolon to separate items in a complex series with internal punctuation, and in this choice, the semicolon after \"time\" is conventionally used to separate the first item (\"offered...time\") and the second (\"celebrated...holiday\") in the series of activities that librarian Pura Belpré offered. Moreover, the semicolon after \"time\" matches the semicolon used later to separate the second item (\"celebrated...holiday\") and the third (\"and...folktales\") in the se...",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -635,12 +635,12 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     },
     question: "Knowing that flying insects keep their backs pointed toward sunlight during the day, ______ Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
-      "the researchers theorize that moths, mistaking nighttime lights for the Sun, continually try to reorient their bodies while flying",
-      "the researchers' theory is that moths mistake nighttime lights for the Sun, continually trying to reorient their bodies while flying",
-      "moths mistake nighttime lights for the Sun and continually try to reorient their bodies while flying near such lights, the",
-      "moths continually try to reorient their bodies while flying near nighttime lights, the researchers theorize, mistaking such lights",
+      "the researchers theorize that moths, mistaking nighttime lights for the Sun, continually try to reorient their bodies while flying near such lights.",
+      "the researchers' theory is that moths mistake nighttime lights for the Sun, continually trying to reorient their bodies while flying near such lights.",
+      "moths mistake nighttime lights for the Sun and continually try to reorient their bodies while flying near such lights, the researchers theorize.",
+      "moths continually try to reorient their bodies while flying near nighttime lights, the researchers theorize, mistaking such lights for the Sun.",
     ],
-    correctAnswer: "the researchers theorize that moths, mistaking nighttime lights for the Sun, continually try to reorient their bodies while flying",
+    correctAnswer: "the researchers theorize that moths, mistaking nighttime lights for the Sun, continually try to reorient their bodies while flying near such lights.",
     explanation: "Choice A is the best answer. The convention being tested is subject-modifier placement. This choice makes the noun phrase \"the researchers\" the subject of the sentence and places it immediately after the modifying phrase \"knowing...day.\" In doing so, this choice clearly establishes that the researchers--and not another noun in the sentence--know that flying insects keep their backs pointed toward sunlight during the day.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
     requiresThinkPeriod: true,
@@ -696,7 +696,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Each night in Gij�n, Spain, a section of the city's marina is bathed in a soft green glow. The source of the glow is the �rbol de la Sidra, a large sculpture made up of 3,200 recycled glass bottles. A lamp inside the tree-shaped structure ______ the green glass.",
+      text: "Each night in Gijón, Spain, a section of the city's marina is bathed in a soft green glow. The source of the glow is the Árbol de la Sidra, a large sculpture made up of 3,200 recycled glass bottles. A lamp inside the tree-shaped structure ______ the green glass.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -739,17 +739,17 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Rabinal Ach� is a precolonial Maya dance drama performed annually in Rabinal, a town in the Guatemalan highlands. Based on events that occurred when Rabinal was a city-state ruled by a king, ______ had once been an ally of the king but was later captured while leading an invading force against him.",
+      text: "Rabinal Achí is a precolonial Maya dance drama performed annually in Rabinal, a town in the Guatemalan highlands. Based on events that occurred when Rabinal was a city-state ruled by a king, ______ had once been an ally of the king but was later captured while leading an invading force against him.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
-      "Rabinal Ach� tells the story of K'iche' Ach�, a military leader who",
-      "K'iche' Ach�, the military leader in the story of Rabinal Ach�,",
-      "the military leader whose story is told in Rabinal Ach�, K'iche' Ach�,",
-      "there was a military leader, K'iche' Ach�, who in Rabinal Ach�",
+      "Rabinal Achí tells the story of K'iche' Achí, a military leader who",
+      "K'iche' Achí, the military leader in the story of Rabinal Achí,",
+      "the military leader whose story is told in Rabinal Achí, K'iche' Achí,",
+      "there was a military leader, K'iche' Achí, who in Rabinal Achí",
     ],
-    correctAnswer: "Rabinal Ach� tells the story of K'iche' Ach�, a military leader who",
-    explanation: "Choice A is the best answer. The modifier \"Based on events...by a king,\" is describing the drama \"Rabinal Ach�.\" Modifiers need to be next to the subjects they describe, so \"Rabinal Ach�\" needs to be the first word after the comma.",
+    correctAnswer: "Rabinal Achí tells the story of K'iche' Achí, a military leader who",
+    explanation: "Choice A is the best answer. The modifier \"Based on events...by a king,\" is describing the drama \"Rabinal Achí.\" Modifiers need to be next to the subjects they describe, so \"Rabinal Achí\" needs to be the first word after the comma.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -1033,7 +1033,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In the list \"Adorable Things\" from Sei Shnagon's Pillow Book, the author delights in baby sparrows, a face drawn on a melon, and a young courtier in ceremonial garb. So shrewd an observer is Shnagon, a lady-in-waiting to Empress Teishi, that her book's musings on tenth-century Japanese courtly life ______ readers a thousand years later.",
+      text: "In the list \"Adorable Things\" from Sei Shōnagon's Pillow Book, the author delights in baby sparrows, a face drawn on a melon, and a young courtier in ceremonial garb. So shrewd an observer is Shōnagon, a lady-in-waiting to Empress Teishi, that her book's musings on tenth-century Japanese courtly life ______ readers a thousand years later.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -1150,7 +1150,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "to include",
     ],
     correctAnswer: "to include",
-    explanation: "Choice D is the best answer. The convention being tested is the use of verb forms within a sentence. The nonfinite to-infinitive verb \"to include\" is correctly used to form a subordinate clause that indicates what the Olympic committee decided (to include tug-of- war as an Olympic event).",
+    explanation: "Choice D is the best answer. The convention being tested is the use of verb forms within a sentence. The nonfinite to-infinitive verb \"to include\" is correctly used to form a subordinate clause that indicates what the Olympic committee decided (to include tug-of-war as an Olympic event).",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
   },
   {
@@ -1309,7 +1309,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In addition to advocating for South America's independence in two political treatises, the Cartagena Manifesto and the Letter from Jamaica, Sim�n Bol�var personally led armies against the Spanish, liberating three South American territories--New Granada (present-day Colombia and Panama), Venezuela, and Quito (present-day ______ from colonial rule.",
+      text: "In addition to advocating for South America's independence in two political treatises, the Cartagena Manifesto and the Letter from Jamaica, Simón Bolívar personally led armies against the Spanish, liberating three South American territories--New Granada (present-day Colombia and Panama), Venezuela, and Quito (present-day ______ from colonial rule.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -1319,7 +1319,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "Ecuador)--",
     ],
     correctAnswer: "Ecuador)--",
-    explanation: "Choice D is the best answer. The convention being tested is the punctuation of a supplementary element within a sentence. The dash after \"Ecuador\" and the closing parenthesis pairs with the dash after \"territories\" to separate the supplementary element (\"New...Ecuador\") from the rest of the sentence. The supplementary element specifies the three South American territories that Sim�n Bol�var liberated, and the pair of dashes indicates that this element could be removed without affecting the grammatical coherence of the sentence.",
+    explanation: "Choice D is the best answer. The convention being tested is the punctuation of a supplementary element within a sentence. The dash after \"Ecuador\" and the closing parenthesis pairs with the dash after \"territories\" to separate the supplementary element (\"New...Ecuador\") from the rest of the sentence. The supplementary element specifies the three South American territories that Simón Bolívar liberated, and the pair of dashes indicates that this element could be removed without affecting the grammatical coherence of the sentence.",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -1449,7 +1449,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "it",
     ],
     correctAnswer: "they",
-    explanation: "Choice A is the best answer. The convention being tested is pronoun�antecedent agreement. The plural pronoun \"they\" agrees in number with the plural antecedent \"customers.\"",
+    explanation: "Choice A is the best answer. The convention being tested is pronoun–antecedent agreement. The plural pronoun \"they\" agrees in number with the plural antecedent \"customers.\"",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
   },
   {
@@ -1887,7 +1887,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Solarpunk is an art movement that imagines renewable energy�powered technology infused complementarily into nature. In Paolo Bacigalupi's solarpunk short story \"Efficiency,\" an artificial intelligence that absorbs sustainable energies, redistributing them through intricate networks of weights and generators, ______ Chicago's energy grid.",
+      text: "Solarpunk is an art movement that imagines renewable energy-powered technology infused complementarily into nature. In Paolo Bacigalupi's solarpunk short story \"Efficiency,\" an artificial intelligence that absorbs sustainable energies, redistributing them through intricate networks of weights and generators, ______ Chicago's energy grid.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -1993,7 +1993,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "English poet and Shakespeare contemporary John Donne's ______ much admired during his lifetime (1572�1631) and in the decades that followed, had, at the time of their enthusiastic rediscovery by the early twentieth-century modernists, been essentially gathering dust for the intervening 250 years.",
+      text: "English poet and Shakespeare contemporary John Donne's ______ much admired during his lifetime (1572–1631) and in the decades that followed, had, at the time of their enthusiastic rediscovery by the early twentieth-century modernists, been essentially gathering dust for the intervening 250 years.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -2285,7 +2285,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "On sunny days, dark rooftops absorb solar energy and convert it to unwanted heat, raising the surrounding air ______ a light- colored covering to an existing dark roof, either by attaching prefabricated reflective sheets or spraying on a paint-like coating, helps combat this effect.",
+      text: "On sunny days, dark rooftops absorb solar energy and convert it to unwanted heat, raising the surrounding air ______ a light-colored covering to an existing dark roof, either by attaching prefabricated reflective sheets or spraying on a paint-like coating, helps combat this effect.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -2372,7 +2372,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Featuring works by the photographers Lola �lvarez Bravo and Else \"Yva\" Neul�nder-Simon, the 2021 exhibition The New Woman Behind the Camera set out to provide a wide-ranging overview of photography by women in the 1920s through the ______ given the collection's breadth of more than 120 photos, its efforts were largely successful.",
+      text: "Featuring works by the photographers Lola Álvarez Bravo and Else \"Yva\" Neuländer-Simon, the 2021 exhibition The New Woman Behind the Camera set out to provide a wide-ranging overview of photography by women in the 1920s through the ______ given the collection's breadth of more than 120 photos, its efforts were largely successful.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -2444,7 +2444,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "a recent study has estimated that these crusts reduce global dust emissions by 60 percent each year.",
     ],
     correctAnswer: "these crusts reduce global dust emissions by an estimated 60 percent each year, according to a recent study.",
-    explanation: "Choice C is the best answer. The subject of the modifier \"fortifying soil in arid ecosystems against erosion\" is \"biocrusts.\" Subject- modifier placement requires a modifier and its subject to be next to each other, so \"biocrusts\" or some variant meaning \"biocrusts\" (in this case, \"these crusts\") must begin the missing clause.",
+    explanation: "Choice C is the best answer. The subject of the modifier \"fortifying soil in arid ecosystems against erosion\" is \"biocrusts.\" Subject-modifier placement requires a modifier and its subject to be next to each other, so \"biocrusts\" or some variant meaning \"biocrusts\" (in this case, \"these crusts\") must begin the missing clause.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -2477,7 +2477,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "In her two major series \"Memory Test\" and \"Autobiography,\" painter Howardena Pindell explored themes ______ healing, self- discovery, and memory by cutting and sewing back together pieces of canvas and inserting personal artifacts, such as postcards, into some of the paintings.",
+      text: "In her two major series \"Memory Test\" and \"Autobiography,\" painter Howardena Pindell explored themes ______ healing, self-discovery, and memory by cutting and sewing back together pieces of canvas and inserting personal artifacts, such as postcards, into some of the paintings.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -2742,7 +2742,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "allow",
     ],
     correctAnswer: "allows",
-    explanation: "Choice A is the best answer. The convention being tested is subject�verb agreement. The singular verb \"allows\" agrees in number with the singular subject \"landing.\"",
+    explanation: "Choice A is the best answer. The convention being tested is subject–verb agreement. The singular verb \"allows\" agrees in number with the singular subject \"landing.\"",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
   },
   {
@@ -2795,7 +2795,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Several advantages--the ability to react strongly with chip components, to avoid interference from other waves, and to be confined within tiny circuits--______ acoustic waves as a promising alternative to electrical waves for transmitting data on computer chips; as a result, researchers are invested in developing more acoustic wave�based chips.",
+      text: "Several advantages--the ability to react strongly with chip components, to avoid interference from other waves, and to be confined within tiny circuits--______ acoustic waves as a promising alternative to electrical waves for transmitting data on computer chips; as a result, researchers are invested in developing more acoustic wave-based chips.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -2838,7 +2838,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "In the early twentieth century, Joseph Kekuku and other Hawaiian ______ in the mainland United States to the bright and lilting sound of the kk kila, or Hawaiian steel guitar. The instrument soon became a fixture in American blues and country music.",
+      text: "In the early twentieth century, Joseph Kekuku and other Hawaiian ______ in the mainland United States to the bright and lilting sound of the kika kila, or Hawaiian steel guitar. The instrument soon became a fixture in American blues and country music.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -3214,7 +3214,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "Swentzell--",
     ],
     correctAnswer: "Swentzell,",
-    explanation: "Choice B is the best answer. The phrase \"according to Swentzell\" is an aside that interrupts the flow of the sentence, so it needs to be separated from the sentence with a pair of matching punctuation marks: two commas, two dashes, or a pair of parentheses. We already have a comma before \"according,\" so we must add a comma after \"Swentzell.\" .",
+    explanation: "Choice B is the best answer. The phrase \"according to Swentzell\" is an aside that interrupts the flow of the sentence, so it needs to be separated from the sentence with a pair of matching punctuation marks: two commas, two dashes, or a pair of parentheses. We already have a comma before \"according,\" so we must add a comma after \"Swentzell.\"",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
   },
   {
@@ -3415,7 +3415,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The Arctic-Alpine Botanic Garden in Norway and the Jardim Bot�nico of Rio de Janeiro in Brazil are two of many botanical gardens around the world dedicated to growing diverse plant ______ fostering scientific research; and educating the public about plant conservation.",
+      text: "The Arctic-Alpine Botanic Garden in Norway and the Jardim Botânico of Rio de Janeiro in Brazil are two of many botanical gardens around the world dedicated to growing diverse plant ______ fostering scientific research; and educating the public about plant conservation.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -3480,7 +3480,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "F�lix Gonz�lez-Torres debuted his sculpture \"Untitled\" (USA Today) in New York City in 1990. The work consists of piled candy, a material Gonz�lez-Torres became known for. ______ created additional installations using a variety of sweets, like bubblegum, lollipops, and chocolates.",
+      text: "Félix González-Torres debuted his sculpture \"Untitled\" (USA Today) in New York City in 1990. The work consists of piled candy, a material González-Torres became known for. ______ created additional installations using a variety of sweets, like bubblegum, lollipops, and chocolates.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -3490,7 +3490,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "He",
     ],
     correctAnswer: "He",
-    explanation: "Choice D is the best answer. The convention being tested is pronoun-antecedent agreement. The singular pronoun \"he\" agrees in number with the singular antecedent \"F�lix Gonz�lez-Torres,\" and it clearly indicates that Gonz�lez-Torres created the additional installations.",
+    explanation: "Choice D is the best answer. The convention being tested is pronoun-antecedent agreement. The singular pronoun \"he\" agrees in number with the singular antecedent \"Félix González-Torres,\" and it clearly indicates that González-Torres created the additional installations.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
   },
   {
@@ -3522,7 +3522,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "A study showed that a solar park caused nearby land to cool, though the ecological impact of this temperature decrease isn't yet known. Before the park's construction, the surface temperature 30 meters outside of the park boundary was 0.1�C cooler than that of a control ______ construction, the temperature 30 meters outside of the boundary was 1.7�C cooler than that of the control area.",
+      text: "A study showed that a solar park caused nearby land to cool, though the ecological impact of this temperature decrease isn't yet known. Before the park's construction, the surface temperature 30 meters outside of the park boundary was 0.1°C cooler than that of a control ______ construction, the temperature 30 meters outside of the boundary was 1.7°C cooler than that of the control area.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -3926,17 +3926,17 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "In the canon of North African literature, Moroccan author Driss Chra�bi's 1954 novel The Simple Past (Le Pass� simple) looms large. A coming-of-age story, a social meditation, and a sober gaze into the dark maw of French colonialism, ______ interrogates systemic power with memorable intensity.",
+      text: "In the canon of North African literature, Moroccan author Driss Chraïbi's 1954 novel The Simple Past (Le Passé simple) looms large. A coming-of-age story, a social meditation, and a sober gaze into the dark maw of French colonialism, ______ interrogates systemic power with memorable intensity.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
-      "Morocco gained its independence two years before the publication of Chra�bi's debut novel, which",
-      "Chra�bi's debut novel, published two years before Morocco gained its independence,",
-      "Chra�bi wrote a debut novel that, published two years before Morocco gained its independence,",
-      "published two years before Morocco gained its independence, Chra�bi wrote a debut novel that",
+      "Morocco gained its independence two years before the publication of Chraïbi's debut novel, which",
+      "Chraïbi's debut novel, published two years before Morocco gained its independence,",
+      "Chraïbi wrote a debut novel that, published two years before Morocco gained its independence,",
+      "published two years before Morocco gained its independence, Chraïbi wrote a debut novel that",
     ],
-    correctAnswer: "Chra�bi's debut novel, published two years before Morocco gained its independence,",
-    explanation: "Choice B is the best answer. Subject-modifier placement requires a modifier and its subject to be next to each other. The subject of the modifier \"a coming-of-age story...colonialism\" is Chra�bi's novel The Simple Past, so the subject \"Chra�bi's debut novel\" fits perfectly after this introductory modifying phrase.",
+    correctAnswer: "Chraïbi's debut novel, published two years before Morocco gained its independence,",
+    explanation: "Choice B is the best answer. Subject-modifier placement requires a modifier and its subject to be next to each other. The subject of the modifier \"a coming-of-age story...colonialism\" is Chraïbi's novel The Simple Past, so the subject \"Chraïbi's debut novel\" fits perfectly after this introductory modifying phrase.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
     requiresThinkPeriod: true,
   },
@@ -4063,7 +4063,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "falling",
     ],
     correctAnswer: "falling",
-    explanation: "Choice D is the best answer. The word \"falling\" occurs in the middle of a clause and isn't part of a supplement, so we don't need any punctuation after it. We can see this more clearly if we simplify the rest of the sentence: \"The reason seeds appear to float while falling is that their plumes enhance drag.\" .",
+    explanation: "Choice D is the best answer. The word \"falling\" occurs in the middle of a clause and isn't part of a supplement, so we don't need any punctuation after it. We can see this more clearly if we simplify the rest of the sentence: \"The reason seeds appear to float while falling is that their plumes enhance drag.\"",
     relatedConcepts: ["Sentence Boundaries","Punctuation","Standard English"],
   },
   {
@@ -4160,7 +4160,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "L� Lng Minh became the thirteenth secretary-general of the Association of Southeast Asian Nations (ASEAN) in January 2013, making ______ the first time the organization would appoint a Vietnamese leader.",
+      text: "Lê Lương Minh became the thirteenth secretary-general of the Association of Southeast Asian Nations (ASEAN) in January 2013, making ______ the first time the organization would appoint a Vietnamese leader.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [
@@ -4170,7 +4170,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
       "some",
     ],
     correctAnswer: "this",
-    explanation: "Choice C is the best answer. The convention being tested is pronoun-antecedent agreement. The singular pronoun \"this\" agrees in number with the singular antecedent \"L� Lng Minh became the thirteenth secretary-general of the Association of Southeast Asian Nations (ASEAN) in January 2013.\" The pronoun \"this\" is referring back to the singular event described earlier in the sentence in which Minh became secretary-general of ASEAN.",
+    explanation: "Choice C is the best answer. The convention being tested is pronoun-antecedent agreement. The singular pronoun \"this\" agrees in number with the singular antecedent \"Lê Lương Minh became the thirteenth secretary-general of the Association of Southeast Asian Nations (ASEAN) in January 2013.\" The pronoun \"this\" is referring back to the singular event described earlier in the sentence in which Minh became secretary-general of ASEAN.",
     relatedConcepts: ["Grammar","Sentence Structure","Standard English"],
   },
   {
@@ -4202,7 +4202,7 @@ export const cbRwStandardEnglishConventionsQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Mathematician Grigori Perelman, sometimes in conjunction with mathematicians Richard S. Hamilton and Shing-Tung Yau, ______ credited with proving the Poincar� conjecture. Having built on Hamilton's previous work to solve the proof, Perelman has insisted that Hamilton receive credit. Yau later found and closed gaps in Perelman's proof, persuading some mathematicians that he deserves credit as well.",
+      text: "Mathematician Grigori Perelman, sometimes in conjunction with mathematicians Richard S. Hamilton and Shing-Tung Yau, ______ credited with proving the Poincaré conjecture. Having built on Hamilton's previous work to solve the proof, Perelman has insisted that Hamilton receive credit. Yau later found and closed gaps in Perelman's proof, persuading some mathematicians that he deserves credit as well.",
     },
     question: "Which choice completes the text so that it conforms to the conventions of Standard English?",
     options: [

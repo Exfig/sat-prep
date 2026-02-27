@@ -71,12 +71,17 @@ export function parseLocalStorageData(): UserData | null {
       thinkPeriodEnabled: s.thinkPeriodEnabled ?? true,
       metacogEnabled: s.metacogEnabled ?? true,
       scaffoldingOverrides: s.scaffoldingOverrides ?? {},
+      themeMode: 'dark',
       hasSeenWelcome: s.hasSeenWelcome ?? false,
       examWrappers: s.examWrappers ?? [],
       mockTestHistory: s.mockTestHistory ?? [],
       strategyGuideCompleted: false,
       strategyGuideSectionsCompleted: [],
       strategyGuideCurrentSection: null,
+      hasVisitedProgress: false,
+      onboardingDismissed: false,
+      psatScores: null,
+      dismissedNotifications: [],
     };
   } catch {
     return null;

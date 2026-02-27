@@ -5,23 +5,31 @@ interface PassageViewerProps {
   passage: PassageData;
 }
 
-/** Split text around an exact substring, returning fragments with the match underlined. */
-function renderWithUnderline(text: string, underlineText?: string): ReactNode {
+/** Split text around exact substring(s), returning fragments with matches underlined. */
+function renderWithUnderline(text: string, underlineText?: string | string[]): ReactNode {
   if (!underlineText) return text;
 
-  const idx = text.indexOf(underlineText);
-  if (idx === -1) return text;
+  const terms = Array.isArray(underlineText) ? underlineText : [underlineText];
+  // Build segments: find all occurrences, sort by position
+  const matches: { start: number; end: number }[] = [];
+  for (const term of terms) {
+    const idx = text.indexOf(term);
+    if (idx !== -1) matches.push({ start: idx, end: idx + term.length });
+  }
+  if (matches.length === 0) return text;
+  matches.sort((a, b) => a.start - b.start);
 
-  const before = text.slice(0, idx);
-  const after = text.slice(idx + underlineText.length);
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  for (let i = 0; i < matches.length; i++) {
+    const { start, end } = matches[i];
+    if (start > cursor) parts.push(text.slice(cursor, start));
+    parts.push(<span key={i} className="underline decoration-2 underline-offset-2">{text.slice(start, end)}</span>);
+    cursor = end;
+  }
+  if (cursor < text.length) parts.push(text.slice(cursor));
 
-  return (
-    <>
-      {before}
-      <span className="underline decoration-2 underline-offset-2">{underlineText}</span>
-      {after}
-    </>
-  );
+  return <>{parts}</>;
 }
 
 export default function PassageViewer({ passage }: PassageViewerProps) {
@@ -31,7 +39,7 @@ export default function PassageViewer({ passage }: PassageViewerProps) {
   let globalLineNumber = 0;
 
   return (
-    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-5 md:p-6" role="region" aria-label="Reading passage">
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 sm:p-5 md:p-6" role="region" aria-label="Reading passage" data-question-content>
       <div
         className="font-serif text-sm sm:text-base leading-[1.7] sm:leading-[1.8] text-slate-800"
         style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}

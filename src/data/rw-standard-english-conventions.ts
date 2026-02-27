@@ -134,7 +134,7 @@ export const rwStandardEnglishConventionsQuestions: Question[] = [
     explanation: 'A colon is used to introduce a list that follows an independent clause. "The conference featured presentations in three languages" is a complete independent clause, so the colon correctly introduces the list. A comma, no punctuation, or a semicolon would be incorrect here.',
     relatedConcepts: ['Colons', 'Lists', 'Punctuation'],
     passage: {
-      text: 'The conference featured presentations in three _______ ',
+      text: 'The conference featured presentations in three _______',
       source: 'Linguistics textbook',
     },
   },
@@ -268,7 +268,7 @@ export const rwStandardEnglishConventionsQuestions: Question[] = [
     explanation: 'A colon is appropriate here because it introduces a list that elaborates on the preceding independent clause. The sentence before the colon can stand alone as a complete thought, which is required for colon usage.',
     relatedConcepts: ['Colons', 'Lists', 'Sentence Structure'],
     passage: {
-      text: 'The luthier specialized in crafting three types of stringed _______ ',
+      text: 'The luthier specialized in crafting three types of stringed _______',
       source: 'Music history text',
     },
   },
@@ -506,13 +506,13 @@ export const rwStandardEnglishConventionsQuestions: Question[] = [
     type: 'multiple-choice',
     question: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
     options: [
-      'to have completed',
-      'completing',
-      'having completed',
-      'to complete',
+      'To have completed',
+      'Completing',
+      'Having completed',
+      'To complete',
     ],
-    correctAnswer: 'having completed',
-    explanation: '"Having completed" is a participial phrase that correctly modifies the subject ("the researchers") and indicates that the action of completing the survey occurred before the next action (publishing). "To have completed" would create an awkward infinitive construction, and "completing" could be ambiguous about timing.',
+    correctAnswer: 'Having completed',
+    explanation: '"Having completed" is a participial phrase that correctly modifies the subject ("the researchers") and indicates that the action of completing the survey occurred before the next action (publishing). "To have completed" would create an awkward infinitive construction, and "Completing" could be ambiguous about timing.',
     relatedConcepts: ['Participial Phrases', 'Dangling Modifiers', 'Verb Forms'],
     passage: {
       text: '_______ a comprehensive survey of the region\'s water sources, the researchers published their findings in an open-access journal.',
@@ -626,7 +626,7 @@ export const rwStandardEnglishConventionsQuestions: Question[] = [
     explanation: 'Two coordinate adverbs joined by "and" do not require a comma between them. The correct form is simply "quickly and efficiently." A comma before "and" with only two items is unnecessary.',
     relatedConcepts: ['Commas', 'Coordinate Elements', 'Unnecessary Punctuation'],
     passage: {
-      text: 'The new software allows researchers to process large datasets _______ ',
+      text: 'The new software allows researchers to process large datasets _______',
       source: 'Technology review',
     },
   },

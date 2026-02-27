@@ -3,8 +3,12 @@ import AccountsTab from '../components/admin/AccountsTab';
 import QuestionDataTab from '../components/admin/QuestionDataTab';
 import UsageStatsTab from '../components/admin/UsageStatsTab';
 import FlaggedQuestionsTab from '../components/admin/FlaggedQuestionsTab';
+import QuestionViewerTab from '../components/admin/QuestionViewerTab';
+import WaitlistTab from '../components/admin/WaitlistTab';
+import EmailSequencesTab from '../components/admin/EmailSequencesTab';
+import ReviewsTab from '../components/admin/ReviewsTab';
 
-const TABS = ['Accounts', 'Question Data', 'Usage Stats', 'Flagged Questions'] as const;
+const TABS = ['Accounts', 'Question Data', 'Question Viewer', 'Usage Stats', 'Flagged Questions', 'Waitlist', 'Email Sequences', 'Reviews'] as const;
 type TabId = (typeof TABS)[number];
 
 export default function Admin() {
@@ -36,8 +40,12 @@ export default function Admin() {
       {/* Tab content */}
       {activeTab === 'Accounts' && <AccountsTab />}
       {activeTab === 'Question Data' && <QuestionDataTab />}
+      {activeTab === 'Question Viewer' && <QuestionViewerTab />}
       {activeTab === 'Usage Stats' && <UsageStatsTab />}
       {activeTab === 'Flagged Questions' && <FlaggedQuestionsTab />}
+      {activeTab === 'Waitlist' && <WaitlistTab />}
+      {activeTab === 'Email Sequences' && <EmailSequencesTab />}
+      {activeTab === 'Reviews' && <ReviewsTab />}
     </div>
   );
 }

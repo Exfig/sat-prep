@@ -17,11 +17,25 @@ export default function DesmosCalculator() {
   const containerRef = useRef<HTMLDivElement>(null);
   const calcRef = useRef<{ destroy: () => void } | null>(null);
 
-  // Drag state
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [initialized, setInitialized] = useState(false);
+  // Drag state — compute initial position/size eagerly to avoid setState in effect
+  const [pos, setPos] = useState(() => {
+    const w = Math.min(520, window.innerWidth - 32);
+    const h = Math.min(420, window.innerHeight - 120);
+    return {
+      x: Math.max(16, (window.innerWidth - w) / 2),
+      y: Math.max(72, (window.innerHeight - h) / 2),
+    };
+  });
+  const [size, setSize] = useState(() => ({
+    w: Math.min(520, window.innerWidth - 32),
+    h: Math.min(420, window.innerHeight - 120),
+  }));
   const dragOffset = useRef({ x: 0, y: 0 });
   const dragging = useRef(false);
+
+  // Resize state
+  const resizing = useRef(false);
+  const resizeStart = useRef({ x: 0, y: 0, w: 0, h: 0 });
 
   // Initialize calculator when opened
   useEffect(() => {
@@ -53,19 +67,6 @@ export default function DesmosCalculator() {
     }
   }, [open]);
 
-  // Set initial position centered on screen
-  useEffect(() => {
-    if (open && !initialized) {
-      const w = Math.min(520, window.innerWidth - 32);
-      const h = Math.min(420, window.innerHeight - 120);
-      setPos({
-        x: Math.max(16, (window.innerWidth - w) / 2),
-        y: Math.max(72, (window.innerHeight - h) / 2),
-      });
-      setInitialized(true);
-    }
-  }, [open, initialized]);
-
   // Mouse drag handlers
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     dragging.current = true;
@@ -73,10 +74,24 @@ export default function DesmosCalculator() {
     e.preventDefault();
   }, [pos]);
 
+  // Resize drag handler
+  const handleResizeMouseDown = useCallback((e: React.MouseEvent) => {
+    resizing.current = true;
+    resizeStart.current = { x: e.clientX, y: e.clientY, w: size.w, h: size.h };
+    e.preventDefault();
+    e.stopPropagation();
+  }, [size]);
+
   useEffect(() => {
     if (!open) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (resizing.current) {
+        const newW = Math.max(320, Math.min(window.innerWidth - pos.x, resizeStart.current.w + e.clientX - resizeStart.current.x));
+        const newH = Math.max(250, Math.min(window.innerHeight - pos.y, resizeStart.current.h + e.clientY - resizeStart.current.y));
+        setSize({ w: newW, h: newH });
+        return;
+      }
       if (!dragging.current) return;
       setPos({
         x: Math.max(0, Math.min(window.innerWidth - 200, e.clientX - dragOffset.current.x)),
@@ -86,6 +101,7 @@ export default function DesmosCalculator() {
 
     const handleMouseUp = () => {
       dragging.current = false;
+      resizing.current = false;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -94,7 +110,7 @@ export default function DesmosCalculator() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [open]);
+  }, [open, pos.x, pos.y]);
 
   // Toggle button
   if (!open) {
@@ -144,7 +160,7 @@ export default function DesmosCalculator() {
               </svg>
             </button>
             <button
-              onClick={() => { setOpen(false); setMinimized(false); setInitialized(false); }}
+              onClick={() => { setOpen(false); setMinimized(false); }}
               className="p-1 hover:bg-indigo-600 rounded transition-colors"
               aria-label="Close calculator"
             >
@@ -164,9 +180,9 @@ export default function DesmosCalculator() {
     );
   }
 
-  // Desktop: draggable floating panel
-  const panelWidth = Math.min(520, window.innerWidth - 32);
-  const panelHeight = minimized ? 40 : Math.min(420, window.innerHeight - 120);
+  // Desktop: draggable, resizable floating panel
+  const panelWidth = size.w;
+  const panelHeight = minimized ? 40 : size.h;
 
   return (
     <div
@@ -198,7 +214,7 @@ export default function DesmosCalculator() {
             </svg>
           </button>
           <button
-            onClick={() => { setOpen(false); setMinimized(false); setInitialized(false); }}
+            onClick={() => { setOpen(false); setMinimized(false); }}
             className="p-1 hover:bg-indigo-600 rounded transition-colors"
             aria-label="Close calculator"
           >
@@ -213,6 +229,19 @@ export default function DesmosCalculator() {
       {/* Calculator body */}
       {!minimized && (
         <div ref={containerRef} style={{ width: '100%', height: panelHeight - 40 }} />
+      )}
+
+      {/* Resize handle (bottom-right corner) */}
+      {!minimized && (
+        <div
+          onMouseDown={handleResizeMouseDown}
+          className="absolute bottom-0 right-0 w-5 h-5 cursor-nwse-resize"
+          aria-label="Resize calculator"
+        >
+          <svg className="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M14 16l2-2M10 16l6-6M6 16l10-10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          </svg>
+        </div>
       )}
     </div>
   );

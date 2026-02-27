@@ -34,6 +34,7 @@ import BossFightIntro from '../components/BossFightIntro';
 import SecondChanceCard from '../components/SecondChanceCard';
 import DesmosCalculator from '../components/DesmosCalculator';
 import PassageViewer from '../components/PassageViewer';
+import TableViewer from '../components/TableViewer';
 
 // ─── Practice page ───────────────────────────────────────────────────────────
 
@@ -64,7 +65,9 @@ export default function Practice() {
   const [userAnswer, setUserAnswer] = useState<string | number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [timerRunning, setTimerRunning] = useState(false);
+  const [timerRunning, setTimerRunning] = useState(
+    () => currentSession?.mode === 'timed-module',
+  );
   const [showSM2Rating, setShowSM2Rating] = useState(false);
 
   // Flow state
@@ -104,22 +107,6 @@ export default function Practice() {
   const [showAllModes, setShowAllModes] = useState(true);
   const [bossUnavailableMsg, setBossUnavailableMsg] = useState(false);
 
-  // Handle mode passed via navigation state from Dashboard / Onboarding
-  useEffect(() => {
-    const state = location.state as { mode?: StudyMode; sectionFilter?: SectionId } | null;
-    if (state?.mode && !currentSession) {
-      if (state.mode === 'practice' && state.sectionFilter) {
-        handleStartPractice(state.sectionFilter);
-      } else if (state.mode === 'domain-review') {
-        setShowDomainFilter(true);
-      } else {
-        handleSelectMode(state.mode);
-      }
-      // Clear the location state
-      window.history.replaceState({}, document.title);
-    }
-  }, [location.state]);
-
   const currentQuestion = currentSession
     ? getQuestionById(currentSession.currentQuestionIds[currentSession.currentIndex])
     : undefined;
@@ -139,6 +126,13 @@ export default function Practice() {
 
   const isTimedModule = currentSession?.mode === 'timed-module';
   const isBossFight = currentSession?.mode === 'boss-fight';
+
+  // Compute timer initial value from session start time (survives remounts)
+  const [timerInitialRemaining] = useState(() => {
+    if (!currentSession || currentSession.mode !== 'timed-module' || !currentSession.timerDuration) return 0;
+    const elapsed = Math.floor((Date.now() - currentSession.startedAt) / 1000);
+    return Math.max(0, currentSession.timerDuration * 60 - elapsed);
+  });
 
   const handleAnswer = useCallback((answer: string | number) => {
     setUserAnswer(answer);
@@ -389,7 +383,7 @@ export default function Practice() {
     resetQuestionState();
     setShowDomainFilter(false);
     setShowTimedSectionPicker(false);
-    setShowAllModes(false);
+    setShowAllModes(true);
     setTimedModuleAnswers([]);
     setBossDomain(null);
     setBossCorrectCount(0);
@@ -478,6 +472,23 @@ export default function Practice() {
     startSession(session, questionIds);
   };
 
+  // Handle mode passed via navigation state from Dashboard / Onboarding
+  // (placed after handler declarations to satisfy declaration-order lint rules)
+  useEffect(() => {
+    const state = location.state as { mode?: StudyMode; sectionFilter?: SectionId } | null;
+    if (state?.mode && !currentSession) {
+      if (state.mode === 'practice' && state.sectionFilter) {
+        handleStartPractice(state.sectionFilter);
+      } else if (state.mode === 'domain-review') {
+        setShowDomainFilter(true);
+      } else {
+        handleSelectMode(state.mode);
+      }
+      // Clear the location state
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
   const handleStartTimedModule = (section: SectionId) => {
     const questionIds = selectTimedModuleQuestions({
       section,
@@ -530,7 +541,7 @@ export default function Practice() {
   if (!currentSession) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-slate-800 mb-6">Start a Practice Session</h1>
+        <h1 className="text-2xl font-bold text-slate-800 mb-6">Practice</h1>
 
         {showDomainFilter ? (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 max-w-md">
@@ -601,39 +612,31 @@ export default function Practice() {
                 </p>
               </div>
             )}
+          </>
+        ) : (
+          <div className="max-w-md">
+            <h2 className="text-lg font-semibold text-slate-800 mb-4">Choose a Section</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {(Object.keys(SECTION_NAMES) as SectionId[]).map((id) => (
+                <button
+                  key={id}
+                  onClick={() => handleStartPractice(id)}
+                  className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 text-center
+                    hover:border-indigo-300 hover:shadow-md transition-all duration-200"
+                >
+                  <span className="text-3xl block mb-2">{id === 'reading-writing' ? '\uD83D\uDCD6' : '\uD83D\uDCCA'}</span>
+                  <span className="text-lg font-semibold text-slate-800">{SECTION_NAMES[id]}</span>
+                </button>
+              ))}
+            </div>
             <button
-              onClick={() => { setShowAllModes(false); setBossUnavailableMsg(false); }}
-              className="mt-4 px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+              onClick={() => setShowAllModes(true)}
+              className="mt-5 px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
                 hover:bg-slate-200 transition-all duration-200 min-h-[44px]"
             >
               Back
             </button>
-          </>
-        ) : (
-          <>
-            <div className="max-w-md">
-              <h2 className="text-lg font-semibold text-slate-800 mb-4">Choose a Section</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {(Object.keys(SECTION_NAMES) as SectionId[]).map((id) => (
-                  <button
-                    key={id}
-                    onClick={() => handleStartPractice(id)}
-                    className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 text-center
-                      hover:border-indigo-300 hover:shadow-md transition-all duration-200"
-                  >
-                    <span className="text-3xl block mb-2">{id === 'reading-writing' ? '\uD83D\uDCD6' : '\uD83D\uDCCA'}</span>
-                    <span className="text-lg font-semibold text-slate-800">{SECTION_NAMES[id]}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            <button
-              onClick={() => setShowAllModes(true)}
-              className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
-            >
-              More study modes...
-            </button>
-          </>
+          </div>
         )}
       </div>
     );
@@ -765,6 +768,7 @@ export default function Practice() {
         onAnswer={handleAnswer}
         disabled={submitted || showThinkOverlay}
         hidePassage={hasPassage}
+        hideGraphics={hasPassage}
       />
 
       {/* Hint Panel (shown before submit, non-timed, non-boss) */}
@@ -961,7 +965,7 @@ export default function Practice() {
           )}
           {currentSession.mode === 'timed-module' && currentSession.timerDuration && (
             <Timer
-              duration={currentSession.timerDuration * 60}
+              duration={timerInitialRemaining}
               onTimeUp={handleTimeUp}
               isRunning={timerRunning}
             />
@@ -994,9 +998,26 @@ export default function Practice() {
       {/* Side-by-side layout for passage questions (lg+), stacked on mobile */}
       {hasPassage ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left: Passage */}
+          {/* Left: Passage + table/graphic */}
           <div className="lg:sticky lg:top-4 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <PassageViewer passage={currentQuestion.passage!} />
+            {currentQuestion.tableData && (
+              <div className="mt-4" data-question-content>
+                <TableViewer tableData={currentQuestion.tableData} />
+              </div>
+            )}
+            {currentQuestion.visualAsset && (
+              <div className="mt-4 flex justify-center" data-question-content>
+                <img
+                  src={`${import.meta.env.BASE_URL}${currentQuestion.visualAsset.src.replace(/^\//, '')}?v=4`}
+                  alt={currentQuestion.visualAsset.altText}
+                  loading="lazy"
+                  decoding="async"
+                  style={currentQuestion.visualAsset?.maxWidth ? { maxWidth: currentQuestion.visualAsset.maxWidth } : undefined}
+                  className={`max-w-full ${currentQuestion.visualAsset?.maxWidth ? '' : 'sm:max-w-sm'} rounded-lg border border-slate-200`}
+                />
+              </div>
+            )}
           </div>
           {/* Right: Question + controls */}
           <div>

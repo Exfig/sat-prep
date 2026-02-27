@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { User, Session } from '@supabase/supabase-js';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAppStore } from '../store/useAppStore';
 import { loadAllUserData, updateProfile } from '../services/database';
@@ -23,6 +24,7 @@ interface SignupMeta {
   school?: string;
   gradeLevel?: number;
   targetTestDate?: string;
+  referredBy?: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -32,9 +34,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState<UserRole>('student');
+  const navigate = useNavigate();
 
   const hydrateFromSupabase = useAppStore((s) => s.hydrateFromSupabase);
   const clearUserData = useAppStore((s) => s.clearUserData);
+
+  // Use a ref so navigate is always fresh without re-running the effect on route changes
+  const navigateRef = useRef(navigate);
+  navigateRef.current = navigate;
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session: s } }) => {
@@ -47,10 +54,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, s) => {
       setSession(s);
       setUser(s?.user ?? null);
-      if (!s?.user) {
+      if (event === 'PASSWORD_RECOVERY') {
+        navigateRef.current('/reset-password');
+      } else if (!s?.user) {
         stopSyncEngine();
         clearUserData();
         setLoading(false);
@@ -96,7 +105,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       email,
       password,
       options: {
-        data: { full_name: fullName },
+        data: {
+          full_name: fullName,
+          ...(meta?.referredBy ? { referred_by: meta.referredBy } : {}),
+        },
         emailRedirectTo: `${window.location.origin}/`,
       },
     });

@@ -25,6 +25,7 @@ export default function FeedbackCard({
       role="region"
       aria-label={correct ? 'Correct answer feedback' : 'Incorrect answer feedback'}
       aria-live="polite"
+      data-question-content
     >
       {/* Result header */}
       <div className="flex items-center gap-2 mb-4">
@@ -36,7 +37,7 @@ export default function FeedbackCard({
 
       {/* Show correct answer when wrong */}
       {!correct && (
-        <div className="mb-4 p-3 bg-white/60 rounded-lg">
+        <div className="mb-4 p-3 bg-slate-100 rounded-lg">
           <p className="text-sm text-slate-500">Your answer</p>
           <p className="font-medium text-red-700">{String(userAnswer)}</p>
           <p className="text-sm text-slate-500 mt-2">Correct answer</p>
@@ -52,7 +53,7 @@ export default function FeedbackCard({
 
       {/* Formula */}
       {formula && (
-        <div className="bg-white/60 border border-slate-200 rounded-lg px-4 py-3 mb-4 font-mono text-sm text-slate-700">
+        <div className="bg-slate-100 border border-slate-200 rounded-lg px-4 py-3 mb-4 font-mono text-sm text-slate-700">
           {formula}
         </div>
       )}
@@ -65,7 +66,7 @@ export default function FeedbackCard({
             {relatedConcepts.map((concept) => (
               <span
                 key={concept}
-                className="px-2 py-1 rounded-full bg-white/80 text-xs font-medium text-slate-600 border border-slate-200"
+                className="px-2 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-600 border border-slate-200"
               >
                 {concept}
               </span>

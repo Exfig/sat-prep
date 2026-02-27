@@ -16,7 +16,25 @@
       "Bash(grep:*)",
       "Bash(ping:*)",
       "Bash(npx tsx:*)",
-      "Bash(npm run deploy:*)"
+      "Bash(npm run deploy:*)",
+      "mcp__vercel__list_teams",
+      "mcp__vercel__list_projects",
+      "mcp__vercel__deploy_to_vercel",
+      "Bash(npx vercel:*)",
+      "Bash(npm run build:*)",
+      "mcp__vercel__web_fetch_vercel_url",
+      "mcp__vercel__get_project",
+      "Bash(npx vercel@50.15.1 build:*)",
+      "Bash(npx vercel@50.15.1 deploy:*)",
+      "Bash(powershell -c \"\\(New-Object Media.SoundPlayer ''c:\\\\games\\\\sat-prep\\\\done.mp3''\\).PlaySync\\(\\)\")",
+      "Bash(powershell -c \"Add-Type -AssemblyName presentationCore; $player = New-Object System.Windows.Media.MediaPlayer; $player.Open\\([Uri]::new\\(''c:\\\\games\\\\sat-prep\\\\done.mp3''\\)\\); Start-Sleep -Milliseconds 500; $player.Play\\(\\); Start-Sleep -Seconds 3\")",
+      "Bash(powershell -File:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:/games/sat-prep/play-sound.ps1\")",
+      "Bash(powershell -NoProfile -Command \"Start-Process ''C:\\\\games\\\\sat-prep\\\\done.mp3''\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"c:\\\\games\\\\sat-prep\\\\play-sound.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)",
+      "Bash(powershell:*)",
+      "Bash(powershell.exe:*)"
     ]
   }
 }

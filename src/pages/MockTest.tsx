@@ -4,8 +4,8 @@ import { useAppStore } from '../store/useAppStore';
 import { getQuestionById } from '../data/questions';
 import { selectModule1Questions, selectModule2Questions, getModule2Difficulty } from '../utils/adaptiveMockTest';
 import { estimateScoreFromMockTest } from '../utils/scoreEstimator';
-import type { SectionId, ModuleResult, SATScore } from '../types';
-import { SECTION_NAMES } from '../types';
+import type { SectionId, DomainId, ModuleResult, SATScore } from '../types';
+import { SECTION_NAMES, DOMAIN_NAMES, SECTION_DOMAINS } from '../types';
 import MockTestTimer from '../components/MockTestTimer';
 import ScoreEstimator from '../components/ScoreEstimator';
 import MultipleChoiceInput from '../components/MultipleChoiceInput';
@@ -66,18 +66,66 @@ export default function MockTest() {
   const [modules, setModules] = useState<ModuleResult[]>([]);
   const [currentQuestionIds, setCurrentQuestionIds] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<ModuleAnswer[]>([]);
-  const [startedAt, setStartedAt] = useState<number>(Date.now());
+  const [answerMap, setAnswerMap] = useState<Record<string, { userAnswer: string | number; correct: boolean }>>({});
+  const [markedQuestions, setMarkedQuestions] = useState<Set<string>>(new Set());
+  const [startedAt, setStartedAt] = useState<number>(() => Date.now());
 
   // Per-question answer state
   const [selectedMC, setSelectedMC] = useState<string | null>(null);
   const [gridInValue, setGridInValue] = useState('');
 
-  // Computed final score (set when results are reached)
+  // Computed final score and duration (set when results are reached)
   const [finalScore, setFinalScore] = useState<SATScore | null>(null);
+  const [totalMinutes, setTotalMinutes] = useState(0);
 
   // Timer key forces re-mount when phase changes
   const [timerKey, setTimerKey] = useState(0);
+
+  // ─── Answer helpers ────────────────────────────────────────────────────────
+
+  const saveCurrentAnswer = useCallback(() => {
+    const qId = currentQuestionIds[currentIndex];
+    if (!qId) return;
+    const question = getQuestionById(qId);
+    if (!question) return;
+
+    if (question.type === 'grid-in') {
+      if (gridInValue.trim() === '') return;
+      const correct = question.correctAnswer !== undefined
+        ? evaluateGridIn(gridInValue, question.correctAnswer)
+        : false;
+      setAnswerMap((prev) => ({ ...prev, [qId]: { userAnswer: gridInValue, correct } }));
+    } else {
+      if (selectedMC === null) return;
+      const correct = selectedMC === question.correctAnswer;
+      setAnswerMap((prev) => ({ ...prev, [qId]: { userAnswer: selectedMC, correct } }));
+    }
+  }, [currentQuestionIds, currentIndex, selectedMC, gridInValue]);
+
+  const restoreAnswer = useCallback((index: number) => {
+    const qId = currentQuestionIds[index];
+    const saved = qId ? answerMap[qId] : undefined;
+    if (saved) {
+      const question = getQuestionById(qId);
+      if (question?.type === 'grid-in') {
+        setSelectedMC(null);
+        setGridInValue(String(saved.userAnswer));
+      } else {
+        setSelectedMC(String(saved.userAnswer));
+        setGridInValue('');
+      }
+    } else {
+      setSelectedMC(null);
+      setGridInValue('');
+    }
+  }, [currentQuestionIds, answerMap]);
+
+  const navigateTo = useCallback((index: number) => {
+    if (index === currentIndex) return;
+    saveCurrentAnswer();
+    setCurrentIndex(index);
+    restoreAnswer(index);
+  }, [currentIndex, saveCurrentAnswer, restoreAnswer]);
 
   // ─── Phase transitions ──────────────────────────────────────────────────────
 
@@ -85,7 +133,8 @@ export default function MockTest() {
     const questionIds = selectModule1Questions('reading-writing');
     setCurrentQuestionIds(questionIds);
     setCurrentIndex(0);
-    setAnswers([]);
+    setAnswerMap({});
+    setMarkedQuestions(new Set());
     setSelectedMC(null);
     setGridInValue('');
     setStartedAt(Date.now());
@@ -99,7 +148,8 @@ export default function MockTest() {
     const questionIds = selectModule1Questions('math');
     setCurrentQuestionIds(questionIds);
     setCurrentIndex(0);
-    setAnswers([]);
+    setAnswerMap({});
+    setMarkedQuestions(new Set());
     setSelectedMC(null);
     setGridInValue('');
     setTimerKey((k) => k + 1);
@@ -107,38 +157,6 @@ export default function MockTest() {
   }, []);
 
   // ─── Question navigation ───────────────────────────────────────────────────
-
-  // Handle the "Next" button press
-  const handleNext = useCallback(() => {
-    const questionId = currentQuestionIds[currentIndex];
-    const question = getQuestionById(questionId);
-    if (!question) return;
-
-    let userAnswer: string | number;
-    let correct: boolean;
-
-    if (question.type === 'grid-in') {
-      userAnswer = gridInValue;
-      correct = question.correctAnswer !== undefined
-        ? evaluateGridIn(gridInValue, question.correctAnswer)
-        : false;
-    } else {
-      userAnswer = selectedMC ?? '';
-      correct = selectedMC === question.correctAnswer;
-    }
-
-    const updatedAnswers = [...answers, { questionId, userAnswer, correct }];
-    setAnswers(updatedAnswers);
-
-    if (currentIndex + 1 < currentQuestionIds.length) {
-      setCurrentIndex((prev) => prev + 1);
-      setSelectedMC(null);
-      setGridInValue('');
-    } else {
-      // Module is complete; build result and transition
-      completeModuleWith(updatedAnswers);
-    }
-  }, [currentIndex, currentQuestionIds, selectedMC, gridInValue, answers]);
 
   // Complete a module with a specific set of answers (avoids stale closure)
   const completeModuleWith = useCallback((finalAnswers: ModuleAnswer[]) => {
@@ -174,7 +192,8 @@ export default function MockTest() {
         const m2Ids = selectModule2Questions('reading-writing', moduleResult);
         setCurrentQuestionIds(m2Ids);
         setCurrentIndex(0);
-        setAnswers([]);
+        setAnswerMap({});
+        setMarkedQuestions(new Set());
         setSelectedMC(null);
         setGridInValue('');
         setTimerKey((k) => k + 1);
@@ -190,7 +209,8 @@ export default function MockTest() {
         const m2Ids = selectModule2Questions('math', moduleResult);
         setCurrentQuestionIds(m2Ids);
         setCurrentIndex(0);
-        setAnswers([]);
+        setAnswerMap({});
+        setMarkedQuestions(new Set());
         setSelectedMC(null);
         setGridInValue('');
         setTimerKey((k) => k + 1);
@@ -202,6 +222,7 @@ export default function MockTest() {
         setFinalScore(satScore);
 
         const durationMs = Date.now() - startedAt;
+        setTotalMinutes(Math.round(durationMs / 60000));
         addMockTestResult({
           timestamp: Date.now(),
           score: satScore,
@@ -218,51 +239,76 @@ export default function MockTest() {
     }
   }, [phase, modules, currentQuestionIds, startedAt, addMockTestResult, updateSectionQuests]);
 
-  // Handle time expiration: auto-submit remaining unanswered questions as blank
+  // Handle the "Next" button press
+  const handleNext = useCallback(() => {
+    saveCurrentAnswer();
+
+    if (currentIndex + 1 < currentQuestionIds.length) {
+      const nextIdx = currentIndex + 1;
+      setCurrentIndex(nextIdx);
+      restoreAnswer(nextIdx);
+    } else {
+      // Module is complete — save current answer inline for immediate use
+      const qId = currentQuestionIds[currentIndex];
+      const question = qId ? getQuestionById(qId) : null;
+      let updatedMap = { ...answerMap };
+      if (question && qId) {
+        if (question.type === 'grid-in') {
+          if (gridInValue.trim() !== '') {
+            const correct = question.correctAnswer !== undefined
+              ? evaluateGridIn(gridInValue, question.correctAnswer) : false;
+            updatedMap = { ...updatedMap, [qId]: { userAnswer: gridInValue, correct } };
+          }
+        } else if (selectedMC !== null) {
+          const correct = selectedMC === question.correctAnswer;
+          updatedMap = { ...updatedMap, [qId]: { userAnswer: selectedMC, correct } };
+        }
+      }
+      // Build final answers from the updated map
+      const finalAnswers = currentQuestionIds.map((id) => {
+        const saved = updatedMap[id];
+        if (saved) return { questionId: id, ...saved };
+        return { questionId: id, userAnswer: '', correct: false };
+      });
+      completeModuleWith(finalAnswers);
+    }
+  }, [currentIndex, currentQuestionIds, saveCurrentAnswer, restoreAnswer, answerMap, selectedMC, gridInValue, completeModuleWith]);
+
+  // Handle time expiration: save current answer and auto-submit
   const handleTimeUp = useCallback(() => {
     const config = getModuleConfig(phase);
     if (!config) {
-      // If we're on break, move to Math
       if (phase === 'break') {
         handleBreakEnd();
       }
       return;
     }
 
-    // Submit remaining questions with blank answers
-    const remaining: ModuleAnswer[] = [];
-    for (let i = currentIndex; i < currentQuestionIds.length; i++) {
-      const qId = currentQuestionIds[i];
-      // Check if this question has already been answered
-      if (answers.some((a) => a.questionId === qId)) continue;
-
-      const question = getQuestionById(qId);
-      if (!question) continue;
-
-      // For the current question, use whatever answer is in progress
-      if (i === currentIndex) {
-        let userAnswer: string | number;
-        let correct: boolean;
-        if (question.type === 'grid-in') {
-          userAnswer = gridInValue;
-          correct = question.correctAnswer !== undefined
-            ? evaluateGridIn(gridInValue, question.correctAnswer)
-            : false;
-        } else {
-          userAnswer = selectedMC ?? '';
-          correct = selectedMC === question.correctAnswer;
+    // Save whatever is on-screen right now
+    const qId = currentQuestionIds[currentIndex];
+    const question = qId ? getQuestionById(qId) : null;
+    const updatedMap = { ...answerMap };
+    if (question && qId) {
+      if (question.type === 'grid-in') {
+        if (gridInValue.trim() !== '') {
+          const correct = question.correctAnswer !== undefined
+            ? evaluateGridIn(gridInValue, question.correctAnswer) : false;
+          updatedMap[qId] = { userAnswer: gridInValue, correct };
         }
-        remaining.push({ questionId: qId, userAnswer, correct });
-      } else {
-        // Unanswered questions are marked incorrect
-        remaining.push({ questionId: qId, userAnswer: '', correct: false });
+      } else if (selectedMC !== null) {
+        const correct = selectedMC === question.correctAnswer;
+        updatedMap[qId] = { userAnswer: selectedMC, correct };
       }
     }
 
-    const finalAnswers = [...answers, ...remaining];
-    setAnswers(finalAnswers);
+    // Build final answers from map — unanswered get blank
+    const finalAnswers: ModuleAnswer[] = currentQuestionIds.map((id) => {
+      const saved = updatedMap[id];
+      if (saved) return { questionId: id, ...saved };
+      return { questionId: id, userAnswer: '', correct: false };
+    });
     completeModuleWith(finalAnswers);
-  }, [phase, currentIndex, currentQuestionIds, answers, selectedMC, gridInValue, handleBreakEnd, completeModuleWith]);
+  }, [phase, currentIndex, currentQuestionIds, answerMap, selectedMC, gridInValue, handleBreakEnd, completeModuleWith]);
 
   // ─── Collect all answers across modules for review ──────────────────────────
 
@@ -421,10 +467,57 @@ export default function MockTest() {
           </div>
         </div>
 
+        {/* Domain breakdown per section */}
+        {(['reading-writing', 'math'] as SectionId[]).map((sectionId) => {
+          const sectionModules = modules.filter((m) => m.section === sectionId);
+          if (sectionModules.length === 0) return null;
+          const sectionAnswers = sectionModules.flatMap((m) => m.answers);
+
+          // Tally correct/total per domain
+          const domainStats = SECTION_DOMAINS[sectionId].map((domainId) => {
+            let correct = 0;
+            let total = 0;
+            for (const a of sectionAnswers) {
+              const q = getQuestionById(a.questionId);
+              if (q && q.domain === domainId) {
+                total++;
+                if (a.correct) correct++;
+              }
+            }
+            return { domainId, correct, total };
+          }).filter((d) => d.total > 0);
+
+          if (domainStats.length === 0) return null;
+
+          return (
+            <div key={sectionId} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+              <h3 className="text-lg font-semibold text-slate-800 mb-4">
+                {SECTION_NAMES[sectionId]} — By Domain
+              </h3>
+              <div className="space-y-3">
+                {domainStats.map(({ domainId, correct, total }) => {
+                  const pct = Math.round((correct / total) * 100);
+                  return (
+                    <div key={domainId} className="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200">
+                      <p className="text-sm font-medium text-slate-800">
+                        {DOMAIN_NAMES[domainId as DomainId]}
+                      </p>
+                      <div className="text-right">
+                        <p className="text-sm font-bold text-slate-800">{correct}/{total}</p>
+                        <p className="text-xs text-slate-500">{pct}%</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+
         {/* Duration */}
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 text-center">
           <p className="text-sm text-slate-500">
-            Total time: {Math.round((Date.now() - startedAt) / 60000)} minutes
+            Total time: {totalMinutes} minutes
           </p>
         </div>
 
@@ -480,8 +573,67 @@ export default function MockTest() {
     );
   }
 
-  const isLastQuestion = currentIndex === currentQuestionIds.length - 1;
   const hasAnswer = currentQuestion.type === 'grid-in' ? gridInValue.trim() !== '' : selectedMC !== null;
+  const isMarked = markedQuestions.has(currentQuestionId);
+  const allAnswered = currentQuestionIds.every((qId) => {
+    if (qId === currentQuestionId) return hasAnswer;
+    return !!answerMap[qId];
+  });
+  const isLastQuestion = currentIndex === currentQuestionIds.length - 1;
+  const showFinish = isLastQuestion || allAnswered;
+
+  // Mark for Review handler
+  const handleMarkForReview = () => {
+    setMarkedQuestions((prev) => {
+      const next = new Set(prev);
+      next.add(currentQuestionId);
+      return next;
+    });
+    saveCurrentAnswer();
+    // Skip to next unanswered/marked question, or next in sequence
+    for (let offset = 1; offset < currentQuestionIds.length; offset++) {
+      const nextIdx = (currentIndex + offset) % currentQuestionIds.length;
+      const nextId = currentQuestionIds[nextIdx];
+      if (!answerMap[nextId] || markedQuestions.has(nextId)) {
+        setCurrentIndex(nextIdx);
+        restoreAnswer(nextIdx);
+        return;
+      }
+    }
+    // All answered — just go next
+    const nextIdx = Math.min(currentIndex + 1, currentQuestionIds.length - 1);
+    if (nextIdx !== currentIndex) {
+      setCurrentIndex(nextIdx);
+      restoreAnswer(nextIdx);
+    }
+  };
+
+  // Finish Module handler (for when "Finish Module" is pressed not on last question)
+  const handleFinishModule = () => {
+    saveCurrentAnswer();
+    // Build final answers inline (same pattern as handleNext last-question path)
+    const qId = currentQuestionIds[currentIndex];
+    const question = qId ? getQuestionById(qId) : null;
+    let updatedMap = { ...answerMap };
+    if (question && qId) {
+      if (question.type === 'grid-in') {
+        if (gridInValue.trim() !== '') {
+          const correct = question.correctAnswer !== undefined
+            ? evaluateGridIn(gridInValue, question.correctAnswer) : false;
+          updatedMap = { ...updatedMap, [qId]: { userAnswer: gridInValue, correct } };
+        }
+      } else if (selectedMC !== null) {
+        const correct = selectedMC === question.correctAnswer;
+        updatedMap = { ...updatedMap, [qId]: { userAnswer: selectedMC, correct } };
+      }
+    }
+    const finalAnswers = currentQuestionIds.map((id) => {
+      const saved = updatedMap[id];
+      if (saved) return { questionId: id, ...saved };
+      return { questionId: id, userAnswer: '', correct: false };
+    });
+    completeModuleWith(finalAnswers);
+  };
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-4 sm:py-6">
@@ -497,20 +649,51 @@ export default function MockTest() {
       </div>
 
       {/* Question progress */}
-      <div className="flex items-center justify-between mb-3 sm:mb-4" aria-live="polite">
+      <div className="flex items-center justify-between mb-2" aria-live="polite">
         <span className="text-sm font-medium text-slate-600">
           Q {currentIndex + 1}/{currentQuestionIds.length}
+          {isMarked && <span className="ml-2 text-xs text-amber-600 font-medium">Marked for Review</span>}
         </span>
         <span className="text-xs text-slate-500">
           {SECTION_NAMES[config.section]} <span aria-hidden="true">&middot;</span> Module {config.moduleNumber}
         </span>
       </div>
 
+      {/* Question navigator strip */}
+      <div className="flex flex-wrap gap-1.5 mb-4" role="navigation" aria-label="Question navigator">
+        {currentQuestionIds.map((qId, idx) => {
+          const isCurrent = idx === currentIndex;
+          const isAnswered = idx === currentIndex ? hasAnswer : !!answerMap[qId];
+          const isQMarked = markedQuestions.has(qId);
+
+          let bgClass = 'bg-slate-100 text-slate-500'; // default: unanswered
+          if (isAnswered && !isQMarked) bgClass = 'bg-indigo-100 border-indigo-300 text-indigo-700';
+          if (isQMarked) bgClass = 'bg-amber-100 border-amber-300 text-amber-700';
+
+          return (
+            <button
+              key={qId}
+              onClick={() => navigateTo(idx)}
+              className={`relative w-8 h-8 text-xs font-medium rounded border transition-colors ${bgClass} ${
+                isCurrent ? 'ring-2 ring-indigo-500 ring-offset-1' : ''
+              }`}
+              aria-label={`Question ${idx + 1}${isAnswered ? ', answered' : ''}${isQMarked ? ', marked for review' : ''}`}
+              aria-current={isCurrent ? 'true' : undefined}
+            >
+              {idx + 1}
+              {isQMarked && (
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-amber-500 rounded-full" />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Question card */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-4 sm:mb-6" role="region" aria-label={`Question ${currentIndex + 1}`}>
         {/* Flag button */}
         <div className="flex justify-end mb-2">
-          <FlagQuestionButton questionId={currentQuestion.id} />
+          <FlagQuestionButton key={currentQuestion.id} questionId={currentQuestion.id} />
         </div>
 
         {/* Passage (if applicable) */}
@@ -556,17 +739,34 @@ export default function MockTest() {
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-end">
+      <div className="flex gap-3">
         <button
-          onClick={handleNext}
-          className={`w-full sm:w-auto py-3 px-8 rounded-lg font-medium transition-colors min-h-[44px] ${
-            hasAnswer
-              ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-              : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
-          }`}
+          onClick={handleMarkForReview}
+          className="flex-1 sm:flex-none py-3 px-5 rounded-lg font-medium transition-colors min-h-[44px]
+            bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200"
         >
-          {isLastQuestion ? 'Finish Module' : 'Next'}
+          Mark for Review
         </button>
+        {showFinish ? (
+          <button
+            onClick={isLastQuestion ? handleNext : handleFinishModule}
+            className="flex-1 sm:flex-none py-3 px-8 rounded-lg font-medium transition-colors min-h-[44px]
+              bg-indigo-600 text-white hover:bg-indigo-700"
+          >
+            Finish Module
+          </button>
+        ) : (
+          <button
+            onClick={handleNext}
+            className={`flex-1 sm:flex-none py-3 px-8 rounded-lg font-medium transition-colors min-h-[44px] ${
+              hasAnswer
+                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
+            }`}
+          >
+            Next
+          </button>
+        )}
       </div>
 
       {/* Desmos Calculator (math modules only) */}

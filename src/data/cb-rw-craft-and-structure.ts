@@ -96,7 +96,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Rejecting the premise that the literary magazine Ebony and Topaz (1927) should present a unified vision of Black American identity, editor Charles S. Johnson fostered his contributors' diverse perspectives by promoting their authorial autonomy. Johnson's self- effacement diverged from the editorial stances of W.E.B. Du Bois and Alain Locke, whose decisions for their publications were more ______.",
+      text: "Rejecting the premise that the literary magazine Ebony and Topaz (1927) should present a unified vision of Black American identity, editor Charles S. Johnson fostered his contributors' diverse perspectives by promoting their authorial autonomy. Johnson's self-effacement diverged from the editorial stances of W.E.B. Du Bois and Alain Locke, whose decisions for their publications were more ______.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -119,12 +119,13 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "\"How lifelike are they?\" Many computer animators prioritize this question as they strive to create ever more realistic environments and lighting. Generally, while characters in computer-animated films appear highly exaggerated, environments and lighting are carefully engineered to mimic reality. But some animators, such as Pixar's Sanjay Patel, are focused on a different question. Rather than asking first whether the environments and lighting they're creating are convincingly lifelike, Patel and others are asking whether these elements reflect their films' unique stories.",
+      underlineText: "\"How lifelike are they?\"",
     },
     question: "Which choice best describes the function of the underlined question in the text as a whole?",
     options: [
       "It reflects a primary goal that many computer animators have for certain components of the animations they produce.",
-      "It represents a concern of computer animators who are more interested in creating unique backgrounds and lighting effects",
-      "It conveys the uncertainty among many computer animators about how to create realistic animations using current",
+      "It represents a concern of computer animators who are more interested in creating unique backgrounds and lighting effects than realistic ones.",
+      "It conveys the uncertainty among many computer animators about how to create realistic animations using current technology.",
       "It illustrates a reaction that audiences typically have to the appearance of characters created by computer animators.",
     ],
     correctAnswer: "It reflects a primary goal that many computer animators have for certain components of the animations they produce.",
@@ -146,10 +147,10 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     options: [
       "It describes an experimental method of measuring the strength of physiological responses in humans.",
       "It illustrates processes by which certain insects can express how they are feeling.",
-      "It summarizes a finding suggesting that some mechanisms in the brains of certain insects resemble mechanisms in",
-      "It presents research showing that certain insects and mammals behave similarly when there is a possibility of a reward for",
+      "It summarizes a finding suggesting that some mechanisms in the brains of certain insects resemble mechanisms in mammalian brains.",
+      "It presents research showing that certain insects and mammals behave similarly when there is a possibility of a reward for their actions.",
     ],
-    correctAnswer: "It summarizes a finding suggesting that some mechanisms in the brains of certain insects resemble mechanisms in",
+    correctAnswer: "It summarizes a finding suggesting that some mechanisms in the brains of certain insects resemble mechanisms in mammalian brains.",
     explanation: "Choice C is the best answer because it most accurately describes the main purpose of the text, which is to summarize a finding suggesting that some mechanisms in the brains of certain insects resemble mechanisms in mammalian brains. The text begins by explaining that feelings such as pleasure and displeasure are linked to chemical processes in the brain, such as the release of dopamine when one receives a reward. The text then indicates that such processes have been seen in mammals but that researchers have recently observed similar processes involving dopamine in honeybees. Taken together,...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -290,9 +291,10 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Srimati Svarna Kumari Devi's 1894 novel The Fatal Garland (translated by",
+      text: "The following text is from Srimati Svarna Kumari Devi's 1894 novel The Fatal Garland (translated by A. Christina Albers in 1910). Shakti is walking near a riverbank that she visited frequently during her childhood.\n\nShe crossed the woods she knew so well. The trees seemed to extend their branches like welcoming arms. They greeted her as an old friend. Soon she reached the river-side.",
+      underlineText: "The trees seemed to extend their branches like welcoming arms.",
     },
-    question: "Which choice best completes the text?",
+    question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
       "It suggests that Shakti feels uncomfortable near the river.",
       "It indicates that Shakti has lost her sense of direction in the woods.",
@@ -333,6 +335,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Text 1 Imagine you and your friend are trying to decide where to eat lunch. When people try to make joint decisions like this, they often don't reveal their true preferences. Instead, they say they would be happy with all options because they think this response will help them appear more easygoing and likable to the other person. Text 2 Research shows that people who don't state their preferences when making a decision with others aren't more likable in the eyes of others. In fact, stating that you have no preference actually makes the decision more difficult for other people. It can also cause them to feel less happy with their ultimate decision and with you.",
+      underlineText: "Imagine you and your friend are trying to decide where to eat lunch.",
     },
     question: "Based on the texts, what response would the author of Text 2 most likely suggest for someone in the situation described in the underlined sentence in Text 1?",
     options: [
@@ -374,7 +377,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Early in the Great Migration of 1910�1970, which involved the mass migration of Black people from the southern to the northern United States, political activist and Chicago Defender writer Fannie Barrier Williams was instrumental in helping other Black women establish themselves in the North. Many women hoped for better employment opportunities in the North because, in the South, they faced much competition for domestic employment and men tended to get agricultural work. To aid with this transition, Barrier Williams helped secure job placement in the North for many women before they even began their journey.",
+      text: "Early in the Great Migration of 1910–1970, which involved the mass migration of Black people from the southern to the northern United States, political activist and Chicago Defender writer Fannie Barrier Williams was instrumental in helping other Black women establish themselves in the North. Many women hoped for better employment opportunities in the North because, in the South, they faced much competition for domestic employment and men tended to get agricultural work. To aid with this transition, Barrier Williams helped secure job placement in the North for many women before they even began their journey.",
     },
     question: "Which choice best states the main purpose of the text?",
     options: [
@@ -395,7 +398,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 In 1916, H. Dugdale Sykes disputed claims that The Two Noble Kinsmen was coauthored by William Shakespeare and John Fletcher. Sykes felt Fletcher's contributions to the play were obvious--Fletcher had a distinct style in his other plays, so much so that lines with that style were considered sufficient evidence of Fletcher's authorship. But for the lines not deemed to be by Fletcher, Sykes felt that their depiction of women indicated that their author was not Shakespeare but Philip Massinger. Text 2 Scholars have accepted The Two Noble Kinsmen as coauthored by Shakespeare since the 1970s: it appears in all major one- volume editions of Shakespeare's complete works. Though scholars disagree about who wrote what exactly, it is generally held that on the basis of style, Shakespeare wrote all of the first act and most of the last, while John Fletcher authored most of the three middle acts.",
+      text: "Text 1 In 1916, H. Dugdale Sykes disputed claims that The Two Noble Kinsmen was coauthored by William Shakespeare and John Fletcher. Sykes felt Fletcher's contributions to the play were obvious--Fletcher had a distinct style in his other plays, so much so that lines with that style were considered sufficient evidence of Fletcher's authorship. But for the lines not deemed to be by Fletcher, Sykes felt that their depiction of women indicated that their author was not Shakespeare but Philip Massinger. Text 2 Scholars have accepted The Two Noble Kinsmen as coauthored by Shakespeare since the 1970s: it appears in all major one-volume editions of Shakespeare's complete works. Though scholars disagree about who wrote what exactly, it is generally held that on the basis of style, Shakespeare wrote all of the first act and most of the last, while John Fletcher authored most of the three middle acts.",
     },
     question: "Based on the texts, both Sykes in Text 1 and the scholars in Text 2 would most likely agree with which statement?",
     options: [
@@ -632,7 +635,8 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Archeological excavation of Market Street Chinatown, a nineteenth-century Chinese American community in San Jose, California, provided the first evidence that Asian food products were imported to the United States in the 1800s: bones from a freshwater fish species native to Southeast Asia. Jinshanzhuang--Hong Kong�based import/export firms--likely coordinated the fish's transport from Chinese-operated fisheries in Vietnam and Malaysia to North American markets. This route reveals the (often overlooked) multinational dimensions of the trade networks linking Chinese diaspora communities.",
+      text: "Archeological excavation of Market Street Chinatown, a nineteenth-century Chinese American community in San Jose, California, provided the first evidence that Asian food products were imported to the United States in the 1800s: bones from a freshwater fish species native to Southeast Asia. Jinshanzhuang--Hong Kong–based import/export firms--likely coordinated the fish's transport from Chinese-operated fisheries in Vietnam and Malaysia to North American markets. This route reveals the (often overlooked) multinational dimensions of the trade networks linking Chinese diaspora communities.",
+      underlineText: "Jinshanzhuang--Hong Kong–based import/export firms--likely coordinated the fish's transport from Chinese-operated fisheries in Vietnam and Malaysia to North American markets.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -697,7 +701,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     passage: {
       text: "The following text is from Anita Desai's 2011 novella Translator Translated. While working on her translation of a novel written in Odia (a language of India) into English, the narrator looks out her window at night to clear her mind. I tried to distract myself with these sights of the ordinary world, but in my mind it was the lines I had been translating and the lines that I had been writing that remained in the forefront. I longed for sleep to obliterate them but it eluded me. Perhaps everything would be normal again once I had sent off the manuscript, I thought, and looked forward to completing the work.",
     },
-    question: "�2011 by Anita Desai As used in the text, what does the word \"completing\" most nearly mean?",
+    question: "As used in the text, what does the word \"completing\" most nearly mean?",
     options: [
       "Destroying",
       "Finishing",
@@ -722,10 +726,10 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     options: [
       "Only countries of a certain population size should implement mandatory voting.",
       "People who are forced to vote are likely to become politically engaged in other ways, such as volunteering or running for office.",
-      "Requiring people to vote does not necessarily lead to election outcomes that better represent the preferences of the country as",
+      "Requiring people to vote does not necessarily lead to election outcomes that better represent the preferences of the country as a whole.",
       "Countries that require voting must also make the process of voting easier for their citizens.",
     ],
-    correctAnswer: "Requiring people to vote does not necessarily lead to election outcomes that better represent the preferences of the country as",
+    correctAnswer: "Requiring people to vote does not necessarily lead to election outcomes that better represent the preferences of the country as a whole.",
     explanation: "Choice C is the best answer. Text 1 claims that mandatory voting results in elections that \"better reflect the preferences of the country.\" Singh and Roy disagree. They claim that more voters doesn't equal more quality votes--instead, they argue that forced voting may lead to less-informed votes that \"may not reflect [voters'] actual preferences.\"",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
   },
@@ -825,7 +829,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     passage: {
       text: "The following text is from Yann Martel's 2001 novel Life of Pi. The narrator's family owned a zoo when he was a child. It was a huge zoo, spread over numberless acres, big enough to require a train to explore it, though it seemed to get smaller as I grew older, train included.",
     },
-    question: "�2001 by Yann Martel As used in the text, what does the word \"spread\" most nearly mean?",
+    question: "As used in the text, what does the word \"spread\" most nearly mean?",
     options: [
       "Hidden",
       "Discussed",
@@ -866,6 +870,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The Bayeux Tapestry, from eleventh-century France, depicts 75 scenes over 250 feet of fabric. It was likely produced by workers embroidering in sections and then joining the resulting panels together. It's plausible that the workshop that produced the tapestry had never produced one so large, and some researchers claim that a close examination of the joins--the places where the panels are stitched together--suggests that the workers developed and refined their joining process over the course of production. For example, the first join the workers completed exhibits a clear misalignment of the borders of the two panels, whereas the later joins are virtually invisible.",
+      underlineText: "For example, the first join the workers completed exhibits a clear misalignment of the borders of the two panels, whereas the later joins are virtually invisible.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -928,7 +933,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is adapted from George Eliot's 1871�72 novel Middlemarch. [Mr. Brooke] had travelled in his younger years, and was held in this part of the country to have contracted a too rambling habit of mind. Mr. Brooke's conclusions were as difficult to predict as the weather.",
+      text: "The following text is adapted from George Eliot's 1871–72 novel Middlemarch. [Mr. Brooke] had travelled in his younger years, and was held in this part of the country to have contracted a too rambling habit of mind. Mr. Brooke's conclusions were as difficult to predict as the weather.",
     },
     question: "As used in the text, what does the word \"contracted\" most nearly mean?",
     options: [
@@ -973,6 +978,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Ordinary soap bubbles usually exist for a minute or less before popping due to either a rupture forced by gravity-induced drainage or the evaporation of the liquid from which the bubble is composed. But physicist Aymeric Roux and colleagues discovered ways to mitigate these factors, resulting in bubbles that can last for a year or more. For example, glycerol tends to adhere to water molecules, so a bubble with a shell that contains both water and glycerol is able to draw additional water molecules from the surrounding air and thereby compensate for evaporation.",
+      underlineText: "a bubble with a shell that contains both water and glycerol is able to draw additional water molecules from the surrounding air and thereby compensate for evaporation",
     },
     question: "Which choice best states the purpose of the underlined portion in the text as a whole?",
     options: [
@@ -1036,6 +1042,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Text 1 Growth in the use of novel nanohybrids--materials created from the conjugation of multiple distinct nanomaterials, such as iron oxide and gold nanomaterials conjugated for use in magnetic imaging--has outpaced studies of nanohybrids' environmental risks. Unfortunately, risk evaluations based on nanohybrids' constituents are not reliable: conjugation may alter constituents' physiochemical properties such that innocuous nanomaterials form a nanohybrid that is anything but. Text 2 The potential for enhanced toxicity of nanohybrids relative to the toxicity of constituent nanomaterials has drawn deserved attention, but the effects of nanomaterial conjugation vary by case. For instance, it was recently shown that a nanohybrid of silicon dioxide and zinc oxide preserved the desired optical transparency of zinc oxide nanoparticles while mitigating the nanoparticles' potential to damage DNA.",
+      underlineText: "conjugation may alter constituents' physiochemical properties such that innocuous nanomaterials form a nanohybrid that is anything but",
     },
     question: "Based on the texts, how would the author of Text 2 most likely respond to the assertion in the underlined portion of Text 1?",
     options: [
@@ -1100,7 +1107,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Using NASA's powerful James Webb Space Telescope (JWST), Mercedes L�pez-Morales and colleagues measured the wavelengths of light traveling through the atmosphere of WASP-39b, an exoplanet, or planet outside our solar system. Different molecules absorb different wavelengths of light, and the wavelength measurements showed the presence of carbon dioxide (CO) in WASP-39b's atmosphere. This finding not only offers the first decisive evidence of CO in the atmosphere of an exoplanet but also illustrates the potential for future scientific breakthroughs held by the JWST.",
+      text: "Using NASA's powerful James Webb Space Telescope (JWST), Mercedes López-Morales and colleagues measured the wavelengths of light traveling through the atmosphere of WASP-39b, an exoplanet, or planet outside our solar system. Different molecules absorb different wavelengths of light, and the wavelength measurements showed the presence of carbon dioxide (CO) in WASP-39b's atmosphere. This finding not only offers the first decisive evidence of CO in the atmosphere of an exoplanet but also illustrates the potential for future scientific breakthroughs held by the JWST.",
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
@@ -1122,6 +1129,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Researchers have found a nearly 164,000-year-old molar from a member of the archaic human species known as Denisovans in a cave in Laos, suggesting that Denisovans lived in a wider range of environments than indicated by earlier evidence. Before the discovery, Denisovans were thought to have lived only at high altitudes in relatively cold climates in what are now Russia and China, but the discovery of the tooth in Laos suggests that they may have lived at low altitudes in relatively warm climates in Southeast Asia as well.",
+      underlineText: "Before the discovery, Denisovans were thought to have lived only at high altitudes in relatively cold climates in what are now Russia and China",
     },
     question: "Which choice best states the function of the underlined portion in the text as a whole?",
     options: [
@@ -1143,11 +1151,12 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "According to historian Vicki L. Ruiz, Mexican American women made crucial contributions to the labor movement during World War II. At the time, food processing companies entered into contracts to supply United States armed forces with canned goods. Increased production quotas conferred greater bargaining power on the companies' employees, many of whom were Mexican American women: employees insisted on more favorable benefits, and employers, who were anxious to fulfill the contracts, complied. Thus, labor activism became a platform for Mexican American women to assert their agency.",
+      underlineText: "employees insisted on more favorable benefits, and employers, who were anxious to fulfill the contracts, complied",
     },
     question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
       "It elaborates on a claim about labor relations in a particular industry made earlier in the text.",
-      "It offers an example of a trend in the World War II�era economy discussed earlier in the text.",
+      "It offers an example of a trend in the World War II–era economy discussed earlier in the text.",
       "It notes a possible exception to the historical narrative of labor activism sketched earlier in the text.",
       "It provides further details about the identities of the workers discussed earlier in the text.",
     ],
@@ -1164,7 +1173,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Charlotte Bront�'s 1847 novel Jane Eyre. Jane, the narrator, works as a governess at Thornfield Hall. I went on with my day's business tranquilly; but ever and anon vague suggestions kept wandering across my brain of reasons why I should quit Thornfield; and I kept involuntarily framing advertisements and pondering conjectures about new situations: these thoughts I did not think to check; they might germinate and bear fruit if they could.",
+      text: "The following text is from Charlotte Brontë's 1847 novel Jane Eyre. Jane, the narrator, works as a governess at Thornfield Hall. I went on with my day's business tranquilly; but ever and anon vague suggestions kept wandering across my brain of reasons why I should quit Thornfield; and I kept involuntarily framing advertisements and pondering conjectures about new situations: these thoughts I did not think to check; they might germinate and bear fruit if they could.",
     },
     question: "Which choice best states the main purpose of the text?",
     options: [
@@ -1208,15 +1217,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "In response to concerns that some recent financial crises were exacerbated by consumers misunderstanding risks associated with credit cards, loans, and other financial products, policymakers in many countries have instituted risk-disclosure requirements on sellers of those products. Enrique Seira et al. investigated a variety of risk-disclosure messages sent to thousands of credit card customers and found that the messages had only small and short-lived effects on behavior. Seira et al. asserted that such effects may nevertheless be worth pursuing, given the negligible cost of messaging.",
+      underlineText: "given the negligible cost of messaging",
     },
     question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
-      "It notes a factor that led Seira et al. to not dismiss risk-disclosure messaging altogether despite their evidence of its limited",
+      "It notes a factor that led Seira et al. to not dismiss risk-disclosure messaging altogether despite their evidence of its limited utility.",
       "It acknowledges a type of risk-disclosure messaging that Seira et al. may not have fully accounted for in their study.",
-      "It describes a consideration that explains why Seira et al. recommended risk-disclosure messaging even though its effects",
-      "It points out a circumstance that Seira et al. conceded may make risk-disclosure messaging more effective than their study",
+      "It describes a consideration that explains why Seira et al. recommended risk-disclosure messaging even though its effects may be small relative to its costs.",
+      "It points out a circumstance that Seira et al. conceded may make risk-disclosure messaging more effective than their study suggests.",
     ],
-    correctAnswer: "It notes a factor that led Seira et al. to not dismiss risk-disclosure messaging altogether despite their evidence of its limited",
+    correctAnswer: "It notes a factor that led Seira et al. to not dismiss risk-disclosure messaging altogether despite their evidence of its limited utility.",
     explanation: "Choice A is the best answer because it most accurately describes the function of the underlined portion in the text as a whole. The text establishes that many countries have adopted risk-disclosure requirements for financial products due to concerns that consumers don't understand the risks associated with the products. According to the text, Seira et al. found that the effects of such messaging on consumer behavior were small and temporary. The text then adds that the researchers assert that because the cost of the messaging is negligible, the approach may be worth doing even if the effect...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -1315,17 +1325,17 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 Soy sauce, made from fermented soybeans, is noted for its umami flavor. Umami--one of the five basic tastes along with sweet, bitter, salty, and sour--was formally classified when its taste receptors were discovered in the 2000s. In 2007, to define the pure umami flavor scientists Rie Ishii and Michael O'Mahony used broths made from shiitake mushrooms and kombu seaweed, and two panels of Japanese and US judges closely agreed on a description of the taste. Text 2 A 2022 experiment by Manon J�nger et al. led to a greater understanding of soy sauce's flavor profile. The team initially presented a mixture of compounds with low molecular weights to taste testers who found it was not as salty or bitter as real soy sauce. Further analysis of soy sauce identified proteins, including dipeptides, that enhanced umami flavor and also contributed to saltiness. The team then made a mix of 50 chemical compounds that re-created soy sauce's flavor.",
+      text: "Text 1 Soy sauce, made from fermented soybeans, is noted for its umami flavor. Umami--one of the five basic tastes along with sweet, bitter, salty, and sour--was formally classified when its taste receptors were discovered in the 2000s. In 2007, to define the pure umami flavor scientists Rie Ishii and Michael O'Mahony used broths made from shiitake mushrooms and kombu seaweed, and two panels of Japanese and US judges closely agreed on a description of the taste. Text 2 A 2022 experiment by Manon Jünger et al. led to a greater understanding of soy sauce's flavor profile. The team initially presented a mixture of compounds with low molecular weights to taste testers who found it was not as salty or bitter as real soy sauce. Further analysis of soy sauce identified proteins, including dipeptides, that enhanced umami flavor and also contributed to saltiness. The team then made a mix of 50 chemical compounds that re-created soy sauce's flavor.",
     },
-    question: "Based on the texts, if Ishii and O'Mahony (Text 1) and J�nger et al. (Text 2) were aware of the findings of both experiments, they would most likely agree with which statement?",
+    question: "Based on the texts, if Ishii and O'Mahony (Text 1) and Jünger et al. (Text 2) were aware of the findings of both experiments, they would most likely agree with which statement?",
     options: [
-      "On average, the diets of people in the United States tend to have fewer foods that contain certain dipeptides than the diets of",
-      "Chemical compounds that activate both the umami and salty taste receptors tend to have a higher molecular weight than",
-      "Fermentation introduces proteins responsible for the increase of umami flavor in soy sauce, and those proteins also increase",
-      "The broths in the 2007 experiment most likely did not have a substantial amount of the dipeptides that played a key part in the",
+      "On average, the diets of people in the United States tend to have fewer foods that contain certain dipeptides than the diets of people in Japan have.",
+      "Chemical compounds that activate both the umami and salty taste receptors tend to have a higher molecular weight than those that only activate umami taste receptors.",
+      "Fermentation introduces proteins responsible for the increase of umami flavor in soy sauce, and those proteins also increase the perception of saltiness.",
+      "The broths in the 2007 experiment most likely did not have a substantial amount of the dipeptides that played a key part in the 2022 experiment.",
     ],
-    correctAnswer: "The broths in the 2007 experiment most likely did not have a substantial amount of the dipeptides that played a key part in the",
-    explanation: "Choice D is the best answer. Ishii and O'Mahony were trying to isolate the pure umami flavor, while J�nger was trying to recreate soy sauce, which has a mix of flavors that includes umami. Accordingly, the broths from Text 1 are not described as having any soy sauce in them--just \"shiitake mushrooms and kombu seaweed.\" So they probably don't have as much of the dipeptides described in Text 2, which were found to be a key part of soy sauce's umami-ness and its saltiness.",
+    correctAnswer: "The broths in the 2007 experiment most likely did not have a substantial amount of the dipeptides that played a key part in the 2022 experiment.",
+    explanation: "Choice D is the best answer. Ishii and O'Mahony were trying to isolate the pure umami flavor, while Jünger was trying to recreate soy sauce, which has a mix of flavors that includes umami. Accordingly, the broths from Text 1 are not described as having any soy sauce in them--just \"shiitake mushrooms and kombu seaweed.\" So they probably don't have as much of the dipeptides described in Text 2, which were found to be a key part of soy sauce's umami-ness and its saltiness.",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
     requiresThinkPeriod: true,
   },
@@ -1405,9 +1415,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     },
     question: "Based on the texts, Fierer's team and the author of Text 2 would most likely agree with which statement about microbes?",
     options: [
-      "Most microbes are better able to survive in environments with extremely dry conditions than in environments with harsh",
+      "Most microbes are better able to survive in environments with extremely dry conditions than in environments with harsh temperatures.",
       "A much higher number of microbes would probably be found if another sample of soil were taken from the Antarctic study site.",
-      "Microbes are likely difficult to detect in the soil at the Antarctic study site because they tend to be smaller than microbes found",
+      "Microbes are likely difficult to detect in the soil at the Antarctic study site because they tend to be smaller than microbes found in typical soil elsewhere.",
       "Most microbes are probably unable to withstand the soil conditions at the Antarctic study site.",
     ],
     correctAnswer: "Most microbes are probably unable to withstand the soil conditions at the Antarctic study site.",
@@ -1443,16 +1453,17 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 Historians studying pre-Inca Peru have looked to ceramic vessels to understand daily life among the Moche people. These mold- made sculptures present plants, animals, and human faces in precise ways--vessels representing human faces are so detailed that scholars have interpreted facial markings to represent scars and other skin irregularities. Some historians have even used these objects to identify potential skin diseases that may have afflicted people at the time. Text 2 Art historian and archaeologist Lisa Trever has argued that the interpretation of Moche \"portrait\" vessels as hyper-realistic portrayals of identifiable people may inadvertently disregard the creativity of the objects' creators. Moche ceramic vessels, Trever argues, are artworks in which sculptors could free their imagination, using realistic objects and people around them as inspiration to explore more abstract concepts.",
+      text: "Text 1 Historians studying pre-Inca Peru have looked to ceramic vessels to understand daily life among the Moche people. These mold-made sculptures present plants, animals, and human faces in precise ways--vessels representing human faces are so detailed that scholars have interpreted facial markings to represent scars and other skin irregularities. Some historians have even used these objects to identify potential skin diseases that may have afflicted people at the time. Text 2 Art historian and archaeologist Lisa Trever has argued that the interpretation of Moche \"portrait\" vessels as hyper-realistic portrayals of identifiable people may inadvertently disregard the creativity of the objects' creators. Moche ceramic vessels, Trever argues, are artworks in which sculptors could free their imagination, using realistic objects and people around them as inspiration to explore more abstract concepts.",
+      underlineText: "scholars have interpreted facial markings to represent scars and other skin irregularities",
     },
     question: "Based on the texts, what would Lisa Trever (Text 2) most likely say about the interpretation presented in the underlined portion of Text 1?",
     options: [
       "Depictions of human faces are significantly more realistic than depictions of plants and other animals are.",
       "It is likely that some depictions of human faces with extensive markings are intended to portray the same historical individual.",
       "Some vessels may have been damaged during their excavation and thus provide little insight into Moche culture.",
-      "Markings on depictions of human faces are not necessarily intended to portray particular details about the physical",
+      "Markings on depictions of human faces are not necessarily intended to portray particular details about the physical appearance of individuals.",
     ],
-    correctAnswer: "Markings on depictions of human faces are not necessarily intended to portray particular details about the physical",
+    correctAnswer: "Markings on depictions of human faces are not necessarily intended to portray particular details about the physical appearance of individuals.",
     explanation: "Choice D is the best answer. Trever thinks that the \"hyper-realistic portrayal of identifiable people\" interpretation ignores the sculptors' imagination and creativity. We can infer that Trevor thinks the facial markings on the sculptures may not have represented real skin blemishes on real people.",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
   },
@@ -1508,12 +1519,13 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "On painter William H. Johnson's return to the United States in 1938 after a decade in Europe, his style underwent an abrupt transformation. Turning away from landscapes painted in an expressionist style--a style that often involves using fluid, distorted shapes and thick, textured brushstrokes to express the artist's subjective experience of reality--Johnson began painting portraits of Black Americans in a bold new way. Evocative of African sculpture and American and Scandinavian folk art, these portraits feature flat, deliberately oversimplified figures in a vibrant but limited color palette.",
+      underlineText: "Turning away from landscapes painted in an expressionist style--a style that often involves using fluid, distorted shapes and thick, textured brushstrokes to express the artist's subjective experience of reality--Johnson began painting portraits of Black Americans in a bold new way.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
       "It elaborates on the previous sentence's statement about a transitional moment in Johnson's artistic career.",
-      "It provides information about Johnson's travels in support of a claim about his artistic influences, which is advanced in the",
-      "It recounts a moment in Johnson's personal life that enabled the success of his subsequent career, which is summarized in the",
+      "It provides information about Johnson's travels in support of a claim about his artistic influences, which is advanced in the following sentence.",
+      "It recounts a moment in Johnson's personal life that enabled the success of his subsequent career, which is summarized in the following sentence.",
       "It presents evidence that calls into question the previous sentence's characterization of Johnson's artistic development.",
     ],
     correctAnswer: "It elaborates on the previous sentence's statement about a transitional moment in Johnson's artistic career.",
@@ -1529,15 +1541,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is adapted from Herman Melville's 1855 novel Israel Potter. Israel is a young man wandering through New England during the late eighteenth century. He hired himself out for three months; at the end of that time to receive for his wages two hundred acres of land lying in New Hampshire. [...] His employer proving false to the contract in the matter of the land, and there being no law in the country to force him to fulfil it, Israel--who, however brave-hearted, and even much of a dare-devil upon a pinch, seems nevertheless to have evinced, throughout many parts of his career, a singular patience and mildness--was obliged to look round for other means of livelihood than clearing out a farm for himself in the wilderness.",
+      underlineText: "who, however brave-hearted, and even much of a dare-devil upon a pinch, seems nevertheless to have evinced, throughout many parts of his career, a singular patience and mildness",
     },
     question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
-      "It implies that Israel treasures a particular characteristic of his personality when that characteristic should usually be regarded",
-      "It suggests that if not for a certain aspect of his character, Israel might not have been as easily thwarted in his ambition to",
-      "It shows why Israel would not have been able to undertake the enormous amount of labor necessary to run a farm even if he",
+      "It implies that Israel treasures a particular characteristic of his personality when that characteristic should usually be regarded as a flaw.",
+      "It suggests that if not for a certain aspect of his character, Israel might not have been as easily thwarted in his ambition to establish a farm.",
+      "It shows why Israel would not have been able to undertake the enormous amount of labor necessary to run a farm even if he had owned the necessary property.",
       "It explains why, when the situation requires it, Israel is able to undertake courageous acts that others would generally avoid.",
     ],
-    correctAnswer: "It suggests that if not for a certain aspect of his character, Israel might not have been as easily thwarted in his ambition to",
+    correctAnswer: "It suggests that if not for a certain aspect of his character, Israel might not have been as easily thwarted in his ambition to establish a farm.",
     explanation: "Choice B is the best answer because it best describes the function of the underlined portion in the text as a whole. The text describes the failed attempt of Israel Potter to establish a farm in New England during the late eighteenth century: according to his contract, he was to receive two hundred acres in exchange for three months' work, but his employer then refused to fulfill the bargain and Israel had no recourse to law to obtain the land he was owed. Israel was therefore forced to find another means of supporting himself. To explain why Israel was particularly susceptible to his emplo...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -1575,8 +1588,8 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
-      "It discusses several recent innovations in product manufacturing and then suggests some potential applications of those",
-      "It describes a company's recent success with new products and then explains multiple factors that may have contributed to",
+      "It discusses several recent innovations in product manufacturing and then suggests some potential applications of those innovations.",
+      "It describes a company's recent success with new products and then explains multiple factors that may have contributed to that success.",
       "It introduces a trend in consumer products and then explains how the trend both benefits and poses a challenge to companies.",
       "It presents two contrasting product-marketing techniques and then provides examples of one of those techniques.",
     ],
@@ -1593,6 +1606,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Text 1 Italian painters in the 1500s rarely depicted themselves in their work. Even more rare were self-portrait paintings that portrayed the artist as a painter. At the time, painting was not yet respected as a profession, so painters mostly chose to emphasize other qualities in their self-portraits, like their intellect or social status. In the city of Bologna, the first artist to depict themself painting was a man named Annibale Carracci. A painting of his from around 1585 shows Carracci in front of an easel holding a palette. Text 2 In their self-portraits, Bolognese artists typically avoided referring to the act of painting until the mid-1600s. However, Lavinia Fontana's 1577 painting, Self-Portrait at the Keyboard, stands out as the earliest example of such a work by an artist from Bologna. Although the artist is depicted playing music, in the background, one can spot a painting easel by a window.",
+      underlineText: "In the city of Bologna, the first artist to depict themself painting was a man named Annibale Carracci.",
     },
     question: "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
     options: [
@@ -1614,6 +1628,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Very little is known about the role nocturnal insects, such as moths, play in flower pollination because it is difficult to monitor insects at night. To address this problem, a team of scientists used time-lapse cameras to record pollinator visits to red clover all day and night. The recordings showed that while most pollinator visits were by bumblebees, one-third of visits were by moths. Additionally, flowers that were visited by both moths and bees produced more seeds than flowers that were only visited by bees.",
+      underlineText: "To address this problem, a team of scientists used time-lapse cameras to record pollinator visits to red clover all day and night.",
     },
     question: "Which choice best states the function of the underlined sentence?",
     options: [
@@ -1655,14 +1670,15 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Historians Tiya Miles and Roy E. Finkenbine have both documented the assistance Indigenous peoples gave to Black freedom seekers leaving the South before the US Civil War. Much of the historical evidence of this help comes from Indigenous oral traditions and from autobiographies written by the freedom seekers. One such narrative is Jermain Loguen's autobiography, which tells about how Neshnab� (Potawatomi) villagers offered him food, lodging, and directions during his 1835 journey from Tennessee to Canada.",
+      text: "Historians Tiya Miles and Roy E. Finkenbine have both documented the assistance Indigenous peoples gave to Black freedom seekers leaving the South before the US Civil War. Much of the historical evidence of this help comes from Indigenous oral traditions and from autobiographies written by the freedom seekers. One such narrative is Jermain Loguen's autobiography, which tells about how Neshnabé (Potawatomi) villagers offered him food, lodging, and directions during his 1835 journey from Tennessee to Canada.",
+      underlineText: "One such narrative is Jermain Loguen's autobiography, which tells about how Neshnabé (Potawatomi) villagers offered him food, lodging, and directions during his 1835 journey from Tennessee to Canada.",
     },
     question: "Which choice best describes the function of the underlined sentence?",
     options: [
       "It provides an example of an autobiography that describes help given by an Indigenous people to a Black freedom seeker.",
-      "It shows why Loguen decided to write in great detail about his experiences traveling from Tennessee to Canada in his",
-      "It argues that autobiographies are particularly important sources of information about geography in the United States before",
-      "It suggests that most historians believe that Neshnab� villagers were more successful in assisting freedom seekers than other",
+      "It shows why Loguen decided to write in great detail about his experiences traveling from Tennessee to Canada in his autobiography.",
+      "It argues that autobiographies are particularly important sources of information about geography in the United States before the Civil War.",
+      "It suggests that most historians believe that Neshnabé villagers were more successful in assisting freedom seekers than other people were.",
     ],
     correctAnswer: "It provides an example of an autobiography that describes help given by an Indigenous people to a Black freedom seeker.",
     explanation: "Choice A is the best answer. The previous sentence broadly mentions \"autobiographies written by the freedom seekers.\" This sentence identifies Loguen's autobiography as a specific example.",
@@ -1707,7 +1723,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "exemplifies",
     ],
     correctAnswer: "exemplifies",
-    explanation: "Choice D is the best answer because it most logically completes the text's discussion of the collaboration between the Crow Tribe and Montana State University. As used in this context, \"exemplifies\" means demonstrates. The text conveys how the Crow Tribe� Montana State University collaboration serves to illustrate the model of community-based participatory research introduced earlier in the text and expanded on later in the text.",
+    explanation: "Choice D is the best answer because it most logically completes the text's discussion of the collaboration between the Crow Tribe and Montana State University. As used in this context, \"exemplifies\" means demonstrates. The text conveys how the Crow Tribe– Montana State University collaboration serves to illustrate the model of community-based participatory research introduced earlier in the text and expanded on later in the text.",
     relatedConcepts: ["Vocabulary","Context Clues","Word Choice"],
   },
   {
@@ -1718,7 +1734,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The equipment from the Apollo Moon landings (1969�1972), such as radiation detectors and temperature probes, remains there to this day, but the data from these missions were mostly inaccessible until a recent data-transfer project made them ______. This project has allowed researcher Seiichi Nagihara to make use of the information in investigating temperature changes on the Moon.",
+      text: "The equipment from the Apollo Moon landings (1969–1972), such as radiation detectors and temperature probes, remains there to this day, but the data from these missions were mostly inaccessible until a recent data-transfer project made them ______. This project has allowed researcher Seiichi Nagihara to make use of the information in investigating temperature changes on the Moon.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -1846,6 +1862,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is from Joseph Conrad's 1907 novel The Secret Agent: A Simple Tale. Mr. Verloc is navigating the London streets on his way to a meeting. Before reaching Knightsbridge, Mr. Verloc took a turn to the left out of the busy main thoroughfare, uproarious with the traffic of swaying omnibuses and trotting vans, in the almost silent, swift flow of hansoms [horse-drawn carriages]. Under his hat, worn with a slight backward tilt, his hair had been carefully brushed into respectful sleekness; for his business was with an Embassy. And Mr. Verloc, steady like a rock--a soft kind of rock--marched now along a street which could with every propriety be described as private.",
+      underlineText: "a soft kind of rock",
     },
     question: "Which choice best describes the function of the underlined phrase in the text as a whole?",
     options: [
@@ -1887,7 +1904,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The g�iro, a musical instrument traditionally made from a dried and hollowed gourd, is thought to have originated with the Ta�no people of Puerto Rico. Players use a wooden stick to scrape along ridges cut into the side of the gourd, creating sounds that are highly ______: the sounds produced by g�iros can differ based on the distance between the ridges, the types of strokes the player uses, and the thickness of the gourd.",
+      text: "The güiro, a musical instrument traditionally made from a dried and hollowed gourd, is thought to have originated with the Taíno people of Puerto Rico. Players use a wooden stick to scrape along ridges cut into the side of the gourd, creating sounds that are highly ______: the sounds produced by güiros can differ based on the distance between the ridges, the types of strokes the player uses, and the thickness of the gourd.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -1897,7 +1914,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "variable",
     ],
     correctAnswer: "variable",
-    explanation: "Choice D is the best answer because it most logically completes the text's discussion of the sounds made by g�iros. In this context, \"variable\" means able to change. The text begins by explaining that g�iros are instruments made out of hollowed gourds with ridges cut into their sides and that players scrape the ridges with wooden sticks to produce sounds. The text goes on to say that g�iros' sounds can change depending on gourd thickness, the distance between ridges, and the types of strokes the player uses, thus supporting the idea that the sounds created by these instruments are variable.",
+    explanation: "Choice D is the best answer because it most logically completes the text's discussion of the sounds made by güiros. In this context, \"variable\" means able to change. The text begins by explaining that güiros are instruments made out of hollowed gourds with ridges cut into their sides and that players scrape the ridges with wooden sticks to produce sounds. The text goes on to say that güiros' sounds can change depending on gourd thickness, the distance between ridges, and the types of strokes the player uses, thus supporting the idea that the sounds created by these instruments are variable.",
     relatedConcepts: ["Vocabulary","Context Clues","Word Choice"],
     requiresThinkPeriod: true,
   },
@@ -1930,7 +1947,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Visual artist Gabriela Alem�n states that the bold colors of comics, pop art, and Latinx culture have always fascinated her. This passion for the rich history and colors of her Latinx community translates into the ______ artworks she produces.",
+      text: "Visual artist Gabriela Alemán states that the bold colors of comics, pop art, and Latinx culture have always fascinated her. This passion for the rich history and colors of her Latinx community translates into the ______ artworks she produces.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -1940,7 +1957,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "reserved",
     ],
     correctAnswer: "vivid",
-    explanation: "Choice A is the best answer. \"Vivid\" can mean \"colorful\" or \"bright-colored.\" This definition fits the context clues about Alem�n's fascination with and passion for bold colors.",
+    explanation: "Choice A is the best answer. \"Vivid\" can mean \"colorful\" or \"bright-colored.\" This definition fits the context clues about Alemán's fascination with and passion for bold colors.",
     relatedConcepts: ["Vocabulary","Context Clues","Word Choice"],
   },
   {
@@ -1951,11 +1968,11 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "In 1973, poet Miguel Algar�n started inviting other writers who, like him, were Nuyorican--a term for New Yorkers of Puerto Rican heritage--to gather in his apartment to present their work. The gatherings were so well attended that Algar�n soon had to rent space in a cafe to accommodate them. Thus, the Nuyorican Poets Cafe was born. Moving to a permanent location in 1981, the Nuyorican Poets Cafe expanded its original scope beyond the written word, hosting art exhibitions and musical performances as well. Half a century since its inception, it continues to foster emerging Nuyorican talent.",
+      text: "In 1973, poet Miguel Algarín started inviting other writers who, like him, were Nuyorican--a term for New Yorkers of Puerto Rican heritage--to gather in his apartment to present their work. The gatherings were so well attended that Algarín soon had to rent space in a cafe to accommodate them. Thus, the Nuyorican Poets Cafe was born. Moving to a permanent location in 1981, the Nuyorican Poets Cafe expanded its original scope beyond the written word, hosting art exhibitions and musical performances as well. Half a century since its inception, it continues to foster emerging Nuyorican talent.",
     },
     question: "Which choice best describes the overall purpose of the text?",
     options: [
-      "To explain what motivated Algar�n to found the Nuyorican Poets Cafe",
+      "To explain what motivated Algarín to found the Nuyorican Poets Cafe",
       "To situate the Nuyorican Poets Cafe within the cultural life of New York as a whole",
       "To discuss why the Nuyorican Poets Cafe expanded its scope to include art and music",
       "To provide an overview of the founding and mission of the Nuyorican Poets Cafe",
@@ -1976,12 +1993,12 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     },
     question: "Which choice best states the main purpose of the text?",
     options: [
-      "It argues that research findings about the effects of posture on cognition are often misunderstood, as in the case of O'Brien",
-      "It presents the study by O'Brien and Ahmed to critique the methods and results reported in previous studies of the effects of",
-      "It explains a significant problem in the emerging understanding of posture's effects on cognition and how O'Brien and Ahmed",
-      "It discusses the study by O'Brien and Ahmed to illustrate why caution is needed when making claims about the effects of",
+      "It argues that research findings about the effects of posture on cognition are often misunderstood, as in the case of O'Brien and Ahmed's study.",
+      "It presents the study by O'Brien and Ahmed to critique the methods and results reported in previous studies of the effects of posture on cognition.",
+      "It explains a significant problem in the emerging understanding of posture's effects on cognition and how O'Brien and Ahmed tried to solve that problem.",
+      "It discusses the study by O'Brien and Ahmed to illustrate why caution is needed when making claims about the effects of posture on cognition.",
     ],
-    correctAnswer: "It discusses the study by O'Brien and Ahmed to illustrate why caution is needed when making claims about the effects of",
+    correctAnswer: "It discusses the study by O'Brien and Ahmed to illustrate why caution is needed when making claims about the effects of posture on cognition.",
     explanation: "Choice D is the best answer because it most accurately describes the main purpose of the text. The text notes that although some studies have suggested that posture may have an effect on cognition, this phenomenon should not be overstated. In other words, the text begins by urging caution and restraint when discussing the effects of posture on cognition, implying that even though some studies have shown posture to affect cognition, we should not assume that posture always affects cognition or does so in a strong way. The text goes on to discuss O'Brien and Ahmed's study as a \"case in point\"...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -2016,15 +2033,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Individual elephants and Arctic herbivores such as caribou tend to have fixed geographic ranges throughout their lifetimes, which had prompted some researchers to speculate that the Arctic woolly mammoth, an extinct elephantid, might have exhibited similar behavior. Mammoth tusks grew in sequential layers, incorporating ingested minerals and organics, and so each ivory stratum reflects the ratio of strontium isotopes (87Sr/86Sr) in the local environment; thus, the sequence of strata shows where the animal roamed during life. Recent analysis of the strontium ratios in the strata of one Arctic woolly mammoth tusk in relation to the geographic distribution of strontium ratios in the environment shows the animal's range begin to expand as it reached sexual maturity, only to contract again in its final 1.5 years.",
+      underlineText: "Individual elephants and Arctic herbivores such as caribou tend to have fixed geographic ranges throughout their lifetimes",
     },
     question: "Which choice best describes the function of the underlined statement in the text as a whole?",
     options: [
-      "It discusses a characteristic shared by certain animals in order to explain why researchers raised a possibility that turned out",
-      "It illustrates a pattern of behavior among certain animals in order to present a theory about exceptions to that pattern that is",
-      "It describes a similarity in the behavior of certain animals in order to show why a method described later in the text did not",
-      "It introduces a trait shared by certain animals in order to contextualize a hypothesis about the origin of that trait that is",
+      "It discusses a characteristic shared by certain animals in order to explain why researchers raised a possibility that turned out not to be supported by data described later in the text.",
+      "It illustrates a pattern of behavior among certain animals in order to present a theory about exceptions to that pattern that is weakened by a finding described later in the text.",
+      "It describes a similarity in the behavior of certain animals in order to show why a method described later in the text did not reveal whether another animal also showed that behavior.",
+      "It introduces a trait shared by certain animals in order to contextualize a hypothesis about the origin of that trait that is advanced later in the text.",
     ],
-    correctAnswer: "It discusses a characteristic shared by certain animals in order to explain why researchers raised a possibility that turned out",
+    correctAnswer: "It discusses a characteristic shared by certain animals in order to explain why researchers raised a possibility that turned out not to be supported by data described later in the text.",
     explanation: "Choice A is the best answer because it most accurately describes how the underlined statement functions in the text as a whole. The underlined statement mentions a category of animals that have a feature in common: they tend to have fixed geographic ranges throughout their lifetimes. The text then presents the speculation of some researchers that the Arctic woolly mammoth might also share this characteristic. However, an examination of the content of strontium in the strata (or layers) of a woolly mammoth tusk indicated that contrary to the researchers' hypothesis, the mammoth had an expand...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -2059,7 +2077,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from the 1923 poem \"Black Finger\" by Angelina Weld Grimk�, a Black American writer. A cypress is a type of evergreen tree. I have just seen a most beautiful thing, Slim and still, Against a gold, gold sky, A straight black cypress, Sensitive, Exquisite, A black finger Pointing upwards. Why, beautiful still finger, are you black? And why are you pointing upwards?",
+      text: "The following text is from the 1923 poem \"Black Finger\" by Angelina Weld Grimké, a Black American writer. A cypress is a type of evergreen tree. I have just seen a most beautiful thing, Slim and still, Against a gold, gold sky, A straight black cypress, Sensitive, Exquisite, A black finger Pointing upwards. Why, beautiful still finger, are you black? And why are you pointing upwards?",
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
@@ -2145,15 +2163,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "In Jane Austen's novel Mansfield Park, an almost imperceptible smile from potential suitor Henry Crawford causes the protagonist Fanny Price to blush; her embarrassment grows when she suspects that he is aware of it. This moment--in which Fanny not only infers Henry's mental state through his gestures, but also infers that he is drawing inferences about her mental state--illustrates what literary scholar George Butte calls \"deep intersubjectivity,\" a technique for representing interactions between consciousnesses through which Austen's novels derive much of their social and psychological drama.",
+      underlineText: "In Jane Austen's novel Mansfield Park, an almost imperceptible smile from potential suitor Henry Crawford causes the protagonist Fanny Price to blush; her embarrassment grows when she suspects that he is aware of it.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
-      "It states a claim about Austen's skill at representing psychological complexity that is reinforced by an example presented in the",
-      "It advances an interpretation of an Austen protagonist who is contrasted with protagonists from other Austen novels cited in",
-      "It describes a recurring theme in Austen's novels that is the focus of a literary scholar's analysis summarized in the following",
-      "It provides a synopsis of an interaction in an Austen novel that illustrates a literary concept discussed in the following",
+      "It states a claim about Austen's skill at representing psychological complexity that is reinforced by an example presented in the following sentence.",
+      "It advances an interpretation of an Austen protagonist who is contrasted with protagonists from other Austen novels cited in the following sentence.",
+      "It describes a recurring theme in Austen's novels that is the focus of a literary scholar's analysis summarized in the following sentence.",
+      "It provides a synopsis of an interaction in an Austen novel that illustrates a literary concept discussed in the following sentence.",
     ],
-    correctAnswer: "It provides a synopsis of an interaction in an Austen novel that illustrates a literary concept discussed in the following",
+    correctAnswer: "It provides a synopsis of an interaction in an Austen novel that illustrates a literary concept discussed in the following sentence.",
     explanation: "Choice D is the best answer. The underlined sentence provides a concrete example to ground readers' understanding of the \"deep intersubjectivity\" described in the next sentence as central to Austen's work.",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -2166,7 +2185,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "Beginning in the 1950s, Navajo Nation legislator Annie Dodge Wauneka continuously worked to promote public health; this ______ effort involved traveling throughout the vast Navajo homeland and writing a medical dictionary for speakers of Din� bizaad, the Navajo language.",
+      text: "Beginning in the 1950s, Navajo Nation legislator Annie Dodge Wauneka continuously worked to promote public health; this ______ effort involved traveling throughout the vast Navajo homeland and writing a medical dictionary for speakers of Diné bizaad, the Navajo language.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -2187,16 +2206,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "medium",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 The idea that time moves in only one direction is instinctively understood, yet it puzzles physicists. According to the second law of thermodynamics, at a macroscopic level some processes of heat transfer are irreversible due to the production of entropy--after a transfer we cannot rewind time and place molecules back exactly where they were before, just as we cannot unbreak dropped eggs. But laws of physics at a microscopic or quantum level hold that those processes should be reversible. Text 2 In 2015, physicists Tiago Batalh�o et al. performed an experiment in which they confirmed the irreversibility of thermodynamic processes at a quantum level, producing entropy by applying a rapidly oscillating magnetic field to a system of carbon-13 atoms in liquid chloroform. But the experiment \"does not pinpoint ... what causes [irreversibility] at the microscopic level,\" coauthor Mauro Paternostro said.",
+      text: "Text 1 The idea that time moves in only one direction is instinctively understood, yet it puzzles physicists. According to the second law of thermodynamics, at a macroscopic level some processes of heat transfer are irreversible due to the production of entropy--after a transfer we cannot rewind time and place molecules back exactly where they were before, just as we cannot unbreak dropped eggs. But laws of physics at a microscopic or quantum level hold that those processes should be reversible. Text 2 In 2015, physicists Tiago Batalhão et al. performed an experiment in which they confirmed the irreversibility of thermodynamic processes at a quantum level, producing entropy by applying a rapidly oscillating magnetic field to a system of carbon-13 atoms in liquid chloroform. But the experiment \"does not pinpoint ... what causes [irreversibility] at the microscopic level,\" coauthor Mauro Paternostro said.",
     },
     question: "Based on the texts, what would the author of Text 1 most likely say about the experiment described in Text 2?",
     options: [
-      "It would suggest an interesting direction for future research were it not the case that two of the physicists who conducted the",
-      "It provides empirical evidence that the current understanding of an aspect of physics at a microscopic level must be",
+      "It would suggest an interesting direction for future research were it not the case that two of the physicists who conducted the experiment disagree on the significance of its findings.",
+      "It provides empirical evidence that the current understanding of an aspect of physics at a microscopic level must be incomplete.",
       "It is consistent with the current understanding of physics at a microscopic level but not at a macroscopic level.",
-      "It supports a claim about an isolated system of atoms in a laboratory, but that claim should not be extrapolated to a general",
+      "It supports a claim about an isolated system of atoms in a laboratory, but that claim should not be extrapolated to a general claim about the universe.",
     ],
-    correctAnswer: "It provides empirical evidence that the current understanding of an aspect of physics at a microscopic level must be",
+    correctAnswer: "It provides empirical evidence that the current understanding of an aspect of physics at a microscopic level must be incomplete.",
     explanation: "Choice B is the best answer. Author 1 describes the puzzle that physicists still can't solve: at a microscopic level, the \"laws of physics\" suggest that we should be able to reverse processes that are not reversible at a macroscopic level (and, maybe, turn back time!). The experiment confirmed that those processes are not reversible even on the microscopic level, but it didn't explain why. This supports Author 1's point that physicists still don't fully understand how things work at a microscopic level--maybe the laws need to be revised.",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
   },
@@ -2293,8 +2312,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is adapted from Cynthia Kadohata's 2004 novel Kira-Kira. [Uncle Katsuhisa] was as loud as my father was quiet. Even when he wasn't talking, he made a lot of noise, clearing his throat and sniffing and tapping his fingers.",
+      underlineText: "[Uncle Katsuhisa] was as loud as my father was quiet.",
     },
-    question: "�2004 by Cynthia Kadohata Which choice best describes the function of the underlined sentence?",
+    question: "Which choice best describes the function of the underlined sentence?",
     options: [
       "It lists the kinds of topics Uncle Katsuhisa enjoys discussing.",
       "It suggests that Uncle Katsuhisa dislikes meeting new people.",
@@ -2334,7 +2354,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "In recommending Bao Phi's collection S�ng I Sing, a librarian noted that pieces by the spoken-word poet don't lose their ______ nature when printed: the language has the same pleasant musical quality on the page as it does when performed by Phi.",
+      text: "In recommending Bao Phi's collection Sông I Sing, a librarian noted that pieces by the spoken-word poet don't lose their ______ nature when printed: the language has the same pleasant musical quality on the page as it does when performed by Phi.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -2357,7 +2377,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     passage: {
       text: "The following text is adapted from James Baldwin's 1956 novel Giovanni's Room. The narrator is riding in a taxi down a street lined with food vendors and shoppers in Paris, France. The multitude of Paris seems to be dressed in blue every day but Sunday, when, for the most part, they put on an unbelievably festive black. Here they were now, in blue, disputing, every inch, our passage, with their wagons, handtrucks, their bursting baskets carried at an angle steeply self-confident on the back.",
     },
-    question: "�1956 by James Baldwin As used in the text, what does the word \"disputing\" most nearly mean?",
+    question: "As used in the text, what does the word \"disputing\" most nearly mean?",
     options: [
       "Arguing about",
       "Disapproving of",
@@ -2377,9 +2397,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 What factors influence the abundance of species in a given ecological community? Some theorists have argued that historical diversity is a major driver of how diverse an ecological community eventually becomes: differences in community diversity across otherwise similar habitats, in this view, are strongly affected by the number of species living in those habitats at earlier times. Text 2 In 2010, a group of researchers including biologist Carla C�ceres created artificial pools in a New York forest. They stocked some pools with a diverse mix of zooplankton species and others with a single zooplankton species and allowed the pool communities to develop naturally thereafter. Over the course of four years, C�ceres and colleagues periodically measured the species diversity of the pools, finding--contrary to their expectations--that by the end of the study there was little to no difference in the pools' species diversity.",
+      text: "Text 1 What factors influence the abundance of species in a given ecological community? Some theorists have argued that historical diversity is a major driver of how diverse an ecological community eventually becomes: differences in community diversity across otherwise similar habitats, in this view, are strongly affected by the number of species living in those habitats at earlier times. Text 2 In 2010, a group of researchers including biologist Carla Cáceres created artificial pools in a New York forest. They stocked some pools with a diverse mix of zooplankton species and others with a single zooplankton species and allowed the pool communities to develop naturally thereafter. Over the course of four years, Cáceres and colleagues periodically measured the species diversity of the pools, finding--contrary to their expectations--that by the end of the study there was little to no difference in the pools' species diversity.",
     },
-    question: "Based on the texts, how would C�ceres and colleagues (Text 2) most likely describe the view of the theorists presented in Text 1?",
+    question: "Based on the texts, how would Cáceres and colleagues (Text 2) most likely describe the view of the theorists presented in Text 1?",
     options: [
       "It is largely correct, but it requires a minor refinement in light of the research team's results.",
       "It is not compelling as a theory regardless of any experimental data collected by the research team.",
@@ -2387,7 +2407,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "It probably holds true only in conditions like those in the research team's study.",
     ],
     correctAnswer: "It may seem plausible, but it is not supported by the research team's findings.",
-    explanation: "Choice C is the best answer. This is how C�ceres and co. would most likely describe the view presented in Text 1. The view in Text 1 is that historical diversity affects how diverse an ecological community eventually becomes. But C�ceres and co. did not get this result: they found no difference in eventual diversity between a zooplankton pool that started out diverse and a zooplankton pool that started out with only a single species.",
+    explanation: "Choice C is the best answer. This is how Cáceres and co. would most likely describe the view presented in Text 1. The view in Text 1 is that historical diversity affects how diverse an ecological community eventually becomes. But Cáceres and co. did not get this result: they found no difference in eventual diversity between a zooplankton pool that started out diverse and a zooplankton pool that started out with only a single species.",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
     requiresThinkPeriod: true,
   },
@@ -2420,7 +2440,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Text 1 Mycoprotein is a fungal biomass that can be eaten as an alternative to meat. Studies of the environmental impact of its manufacture generally agree it is lower than that of beef and closer to that of chicken or pork. But the expense of producing mycoprotein restricts its availability to a few countries with postindustrial economies. Knowing that cost reductions would expand access to mycoprotein, biochemists are exploring solutions, such as a cheaper substrate to feed the mycoprotein as it grows. Text 2 Cattle farming is a principal cause of global deforestation, and a study by Florian Humpen�der and his colleagues found that replacing 20% of beef consumption worldwide with consumption of mycoprotein would cut deforestation by half if accomplished over the next thirty years. However, this would likely involve only a small change in agricultural water consumption, since water once dedicated to raising cattle would be diverted to raising crops instead.",
+      text: "Text 1 Mycoprotein is a fungal biomass that can be eaten as an alternative to meat. Studies of the environmental impact of its manufacture generally agree it is lower than that of beef and closer to that of chicken or pork. But the expense of producing mycoprotein restricts its availability to a few countries with postindustrial economies. Knowing that cost reductions would expand access to mycoprotein, biochemists are exploring solutions, such as a cheaper substrate to feed the mycoprotein as it grows. Text 2 Cattle farming is a principal cause of global deforestation, and a study by Florian Humpenöder and his colleagues found that replacing 20% of beef consumption worldwide with consumption of mycoprotein would cut deforestation by half if accomplished over the next thirty years. However, this would likely involve only a small change in agricultural water consumption, since water once dedicated to raising cattle would be diverted to raising crops instead.",
     },
     question: "Based on the texts, how would the author of Text 1 most likely respond to the study findings mentioned in Text 2?",
     options: [
@@ -2430,7 +2450,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "By pointing out that some countries are responsible for greater deforestation than others and thus, to have any significant",
     ],
     correctAnswer: "By asserting that the development of a more inexpensive substrate for mycoprotein production would contribute to the goal of",
-    explanation: "Choice B is the best answer because it reflects how the author of Text 1 would most likely respond to the study findings described in Text 2. The author of Text 2 discusses a study by Florian Humpen�der and his colleagues that found that deforestation would be reduced by half over the next thirty years if 20% of the beef consumed worldwide were replaced with mycoprotein. The author of Text 1 points out that mycoprotein is not widely available because of its high production cost, but goes on to note that this problem could be addressed by the creation of a cheaper substrate to feed mycoprote...",
+    explanation: "Choice B is the best answer because it reflects how the author of Text 1 would most likely respond to the study findings described in Text 2. The author of Text 2 discusses a study by Florian Humpenöder and his colleagues that found that deforestation would be reduced by half over the next thirty years if 20% of the beef consumed worldwide were replaced with mycoprotein. The author of Text 1 points out that mycoprotein is not widely available because of its high production cost, but goes on to note that this problem could be addressed by the creation of a cheaper substrate to feed mycoprote...",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
     requiresThinkPeriod: true,
   },
@@ -2505,7 +2525,8 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Edith Wharton's 1905 novel The House of Mirth. Lily Bart and a companion are walking through a park. Lily had no real intimacy with nature, but she had a passion for the appropriate and could be keenly sensitive to a scene which was the fitting background of her own sensations. The landscape outspread below her seemed an enlargement of her present mood, and she found something of herself in its calmness, its breadth, its long free reaches. On the nearer slopes the sugar- maples wavered like pyres of light; lower down was a massing of grey orchards, and here and there the lingering green of an oak-grove.",
+      text: "The following text is from Edith Wharton's 1905 novel The House of Mirth. Lily Bart and a companion are walking through a park. Lily had no real intimacy with nature, but she had a passion for the appropriate and could be keenly sensitive to a scene which was the fitting background of her own sensations. The landscape outspread below her seemed an enlargement of her present mood, and she found something of herself in its calmness, its breadth, its long free reaches. On the nearer slopes the sugar-maples wavered like pyres of light; lower down was a massing of grey orchards, and here and there the lingering green of an oak-grove.",
+      underlineText: "The landscape outspread below her seemed an enlargement of her present mood, and she found something of herself in its calmness, its breadth, its long free reaches.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -2515,7 +2536,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "It illustrates an idea that is introduced in the previous sentence.",
     ],
     correctAnswer: "It illustrates an idea that is introduced in the previous sentence.",
-    explanation: "Choice D is the best answer because it best describes how the underlined sentence functions in the text as a whole. The first sentence of the text establishes that Lily can be \"keenly sensitive to\" scenes that serve as a \"fitting background\" for her feelings-- that is, she's very aware of when a setting seems to reflect her mood. The next sentence, which is underlined, then demonstrates this awareness: Lily views the landscape she's in as a large-scale reflection of her current mood, identifying with elements such as its calmness. Thus, the function of the underlined sentence is to illustra...",
+    explanation: "Choice D is the best answer because it best describes how the underlined sentence functions in the text as a whole. The first sentence of the text establishes that Lily can be \"keenly sensitive to\" scenes that serve as a \"fitting background\" for her feelings-- that is, she's very aware of when a setting seems to reflect her mood. The next sentence, which is underlined, then demonstrates this awareness: Lily views the landscape she's in as a large-scale reflection of her current mood, identifying with elements such as its calmness. Thus, the function of the underlined sentence is to illustrate an idea that is introduced in the previous sentence.",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
   },
@@ -2570,6 +2591,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Some bird species don't raise their own chicks. Instead, adult females lay their eggs in other nests, next to another bird species' own eggs. Female cuckoos have been seen quickly laying eggs in the nests of other bird species when those birds are out looking for food. After the eggs hatch, the noncuckoo parents will typically raise the cuckoo chicks as if they were their own offspring, even if the cuckoos look very different from the other chicks.",
+      underlineText: "Female cuckoos have been seen quickly laying eggs in the nests of other bird species when those birds are out looking for food.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -2590,16 +2612,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Changes to vegetation cover and other human activities influence carbon and nitrogen levels in soil, though how deep these effects extend is unclear. Hypothesizing that differences in land use lead to differences in carbon and nitrogen levels that are not restricted to the topsoil layer (0�30 cm deep), Chukwuebuka Okolo and colleagues sampled soils across multiple land-use types (e.g., grazing land, cropland, forest) within each of several Ethiopian locations. They found, though, that across land-use types, carbon and nitrogen decreased to comparably low levels beyond depths of 30 cm.",
+      text: "Changes to vegetation cover and other human activities influence carbon and nitrogen levels in soil, though how deep these effects extend is unclear. Hypothesizing that differences in land use lead to differences in carbon and nitrogen levels that are not restricted to the topsoil layer (0–30 cm deep), Chukwuebuka Okolo and colleagues sampled soils across multiple land-use types (e.g., grazing land, cropland, forest) within each of several Ethiopian locations. They found, though, that across land-use types, carbon and nitrogen decreased to comparably low levels beyond depths of 30 cm.",
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
-      "It describes a phenomenon that scientists do not fully understand, explains a research team's hypothesis about that",
-      "It introduces an unresolved scientific question, presents a research team's hypothesis pertaining to that question, and then",
-      "It discusses a process that scientists are somewhat unclear about, introduces competing hypotheses about that process, and",
-      "It explains a hypothesis that has been the subject of scientific debate, discusses how a research team tested that hypothesis,",
+      "It describes a phenomenon that scientists do not fully understand, explains a research team's hypothesis about that phenomenon, and then describes a finding that led the team to refine the hypothesis.",
+      "It introduces an unresolved scientific question, presents a research team's hypothesis pertaining to that question, and then describes an observation made by the team that conflicts with that hypothesis.",
+      "It discusses a process that scientists are somewhat unclear about, introduces competing hypotheses about that process, and then explains how a research team concluded that one of those hypotheses is likely correct.",
+      "It explains a hypothesis that has been the subject of scientific debate, discusses how a research team tested that hypothesis, and then presents data the team collected that validate the hypothesis.",
     ],
-    correctAnswer: "It introduces an unresolved scientific question, presents a research team's hypothesis pertaining to that question, and then",
+    correctAnswer: "It introduces an unresolved scientific question, presents a research team's hypothesis pertaining to that question, and then describes an observation made by the team that conflicts with that hypothesis.",
     explanation: "Choice B is the best answer because it most accurately describes the overall structure of the text. The text begins by explaining that human activities influence carbon and nitrogen levels in soil, but how deeply these effects are seen in the soil remains an unresolved question. Next, the text summarizes Okolo and colleagues' hypothesis regarding this question--which is that the different effects on carbon and nitrogen levels associated with different types of land use would also be observed below the topsoil layer--and then briefly explains the methods they used to test this hypothesis. Fi...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -2612,7 +2634,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "While scholars believe many Mesoamerican cities influenced each other, direct evidence of such influence is difficult to ascertain. However, recent excavations in a sector of Tikal (Guatemala) unearthed a citadel that shows ______ Teotihuac�n (Mexico) architecture--including a near replica of a famed Teotihuac�n temple--providing tangible evidence of outside influence in portions of Tikal.",
+      text: "While scholars believe many Mesoamerican cities influenced each other, direct evidence of such influence is difficult to ascertain. However, recent excavations in a sector of Tikal (Guatemala) unearthed a citadel that shows ______ Teotihuacán (Mexico) architecture--including a near replica of a famed Teotihuacán temple--providing tangible evidence of outside influence in portions of Tikal.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -2622,7 +2644,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
       "animosities toward",
     ],
     correctAnswer: "commonalities with",
-    explanation: "Choice C is the best answer because it most logically completes the text's discussion of architectural influences among Mesoamerican cities. In this context, \"commonalities with\" means similarities to or shared attributes with. The text indicates that a recently discovered citadel in Tikal includes a close imitation of a famous temple in Teotihuac�n (another Mesoamerican city) and other evidence of Teotihuac�n influence, which suggests that the citadel possesses features that resemble architectural features found in Teotihuac�n. This context thus indicates that the Tikal citadel shows commo...",
+    explanation: "Choice C is the best answer because it most logically completes the text's discussion of architectural influences among Mesoamerican cities. In this context, \"commonalities with\" means similarities to or shared attributes with. The text indicates that a recently discovered citadel in Tikal includes a close imitation of a famous temple in Teotihuacán (another Mesoamerican city) and other evidence of Teotihuacán influence, which suggests that the citadel possesses features that resemble architectural features found in Teotihuacán. This context thus indicates that the Tikal citadel shows commo...",
     relatedConcepts: ["Vocabulary","Context Clues","Word Choice"],
     requiresThinkPeriod: true,
   },
@@ -2634,9 +2656,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is adapted from Jos� Mart�'s 1891 poem \"At the Salon\" (translated by Cecil Charles in 1898). The speaker describes a painting featuring a female figure. From the sterile soil no ray Of hope in a blade of green, Nor sheltering roof is seen-- Though the skies are heavy and gray.",
+      text: "The following text is adapted from José Martí's 1891 poem \"At the Salon\" (translated by Cecil Charles in 1898). The speaker describes a painting featuring a female figure. From the sterile soil no ray Of hope in a blade of green, Nor sheltering roof is seen-- Though the skies are heavy and gray. Ah, this is the woman fair Who stole away my heart In the splendid halls of art Yester-e'en as I wandered there!",
     },
-    question: "Ah, this is the woman fair Who stole away my heart In the splendid halls of art Yester-e'en as I wandered there! As used in the text, what does the word \"sheltering\" most nearly mean?",
+    question: "As used in the text, what does the word \"sheltering\" most nearly mean?",
     options: [
       "Protective",
       "Restrictive",
@@ -2698,12 +2720,13 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Historians have argued that a crucial component of the Civil Rights Movement's success in the 1960s was the Southern Christian Leadership Conference's Citizen Education Program (CEP), which invited promising activists from across the South to its one-week training sessions in Dorchester, Georgia. Led by experienced organizers such as Dorothy Cotton and Septima Clark, CEP attendees --more than 7,000 in all--participated in workshops on topics ranging from public speaking to legal doctrine before returning home and using their newly acquired knowledge to spearhead local civil rights initiatives.",
+      underlineText: "more than 7,000 in all",
     },
     question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
       "It underscores the extent of the CEP's impact on the Civil Rights Movement of the 1960s.",
       "It illustrates the CEP organizers' efforts to educate participants on a wide variety of topics.",
-      "It suggests that CEP attendees held a diverse array of opinions about the Southern Christian Leadership Conference's political",
+      "It suggests that CEP attendees held a diverse array of opinions about the Southern Christian Leadership Conference's political philosophy.",
       "It establishes that criticism of the CEP was limited to a few individuals in the Southern Christian Leadership Conference.",
     ],
     correctAnswer: "It underscores the extent of the CEP's impact on the Civil Rights Movement of the 1960s.",
@@ -2828,9 +2851,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
-      "It presents a theoretical concept, illustrates how the name of the concept has changed, and shows how the name has entered",
+      "It presents a theoretical concept, illustrates how the name of the concept has changed, and shows how the name has entered common usage.",
       "It introduces a respected researcher, describes an aspect of his work, and suggests why the work is historically significant.",
-      "It names the company where an important mathematician worked, details the mathematician's career at the company, and",
+      "It names the company where an important mathematician worked, details the mathematician's career at the company, and provides an example of the recognition he received there.",
       "It mentions a paper, offers a summary of the paper's findings, and presents a researcher's commentary on the paper.",
     ],
     correctAnswer: "It introduces a respected researcher, describes an aspect of his work, and suggests why the work is historically significant.",
@@ -2868,6 +2891,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Chile's Atacama Desert is one of the driest places on Earth. Mary Beth Wilhelm and other astrobiologists search for life, or its remains, in this harsh place because the desert closely mirrors the extreme environment on Mars. The algae and bacteria found in Atacama's driest regions may offer clues about Martian life. By studying how these and other microorganisms survive such extreme conditions on Earth, Wilhelm's team hopes to determine whether similar life might have existed on Mars and to develop the best tools to look for evidence of it.",
+      underlineText: "Mary Beth Wilhelm and other astrobiologists search for life, or its remains, in this harsh place because the desert closely mirrors the extreme environment on Mars.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -2888,9 +2912,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from the 1989 novel The Ancient Child by Kiowa writer N. Scott Momaday. The main character has achieved tremendous commercial success as a painter. More and more often he was asked to compromise his art or himself in one way or another, and more often than not he did so, for he was inclined to be passive and na�ve; it was difficult for him to say no. Those who exhibited his work, who praised and purchased it, and who demanded its proliferation began to determine it.",
+      text: "The following text is from the 1989 novel The Ancient Child by Kiowa writer N. Scott Momaday. The main character has achieved tremendous commercial success as a painter. More and more often he was asked to compromise his art or himself in one way or another, and more often than not he did so, for he was inclined to be passive and naïve; it was difficult for him to say no. Those who exhibited his work, who praised and purchased it, and who demanded its proliferation began to determine it.",
     },
-    question: "�1989 by N. Scott Momaday As used in the text, what does the word \"determine\" most nearly mean?",
+    question: "As used in the text, what does the word \"determine\" most nearly mean?",
     options: [
       "Conclude",
       "Dictate",
@@ -2910,7 +2934,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "M�nica Lopes-Ferreira and others at Brazil's Butantan Institute are studying the freshwater stingray species Potamotrygon rex to determine whether biological characteristics such as the rays' age and sex have ______ effect on the toxicity of their venom--that is, to see if differences in these traits are associated with considerable variations in venom potency.",
+      text: "Mônica Lopes-Ferreira and others at Brazil's Butantan Institute are studying the freshwater stingray species Potamotrygon rex to determine whether biological characteristics such as the rays' age and sex have ______ effect on the toxicity of their venom--that is, to see if differences in these traits are associated with considerable variations in venom potency.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -2932,6 +2956,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The majority of plastics today wind up in landfills or are, at best, recycled into materials that have a very limited range of applications. To address this problem, chemist Guoliang Liu and colleagues designed a reactor that melts polyethylene and polypropylene--two widely used plastics--into a wax. The wax can then be transformed into a surfactant (a chemical compound usable as a detergent). With this promising new method, plastic waste could be turned into a range of useful cleaning products.",
+      underlineText: "(a chemical compound usable as a detergent)",
     },
     question: "Which choice best states the function of the underlined portion of the text?",
     options: [
@@ -2954,7 +2979,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     passage: {
       text: "The following text is from Jhumpa Lahiri's 2003 novel The Namesake. Gogol, a child, is at a beach in Massachusetts with his father. On the beach Gogol collects rocks, digs tunnels in the sand. He and his father wander barefoot, their pant legs rolled halfway up their calves.",
     },
-    question: "�2003 by Jhumpa Lahiri As used in the text, what does the word \"collects\" most nearly mean?",
+    question: "As used in the text, what does the word \"collects\" most nearly mean?",
     options: [
       "Increases",
       "Makes",
@@ -2995,6 +3020,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "A study by a team including finance professor Madhu Veeraraghavan suggests that exposure to sunshine during the workday can lead to overly optimistic behavior. Using data spanning from 1994 to 2010 for a set of US companies, the team compared over 29,000 annual earnings forecasts to the actual earnings later reported by those companies. The team found that the greater the exposure to sunshine at work in the two weeks before a manager submitted an earnings forecast, the more the manager's forecast exceeded what the company actually earned that year.",
+      underlineText: "Using data spanning from 1994 to 2010 for a set of US companies, the team compared over 29,000 annual earnings forecasts to the actual earnings later reported by those companies.",
     },
     question: "Which choice best states the function of the underlined sentence in the overall structure of the text?",
     options: [
@@ -3017,15 +3043,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Text 1 Fossils of the hominin Australopithecus africanus have been found in the Sterkfontein Caves of South Africa, but assigning an age to the fossils is challenging because of the unreliability of dating methods in this context. The geology of Sterkfontein has caused soil layers from different periods to mix, impeding stratigraphic dating, and dates cannot be reliably imputed from those of nearby animal bones since the bones may have been relocated by flooding. Text 2 Archaeologists used new cosmogenic nuclide dating techniques to reevaluate the ages of A. africanus fossils found in the Sterkfontein Caves. This technique involves analyzing the cosmogenic nucleotides in the breccia--the matrix of rock fragments immediately surrounding the fossils. The researchers assert that this approach avoids the potential for misdating associated with assigning ages based on Sterkfontein's soil layers or animal bones.",
+      underlineText: "assigning an age to the fossils is challenging because of the unreliability of dating methods in this context",
     },
     question: "Based on the texts, how would the researchers in Text 2 most likely respond to the underlined portion in Text 1?",
     options: [
-      "They would emphasize the fact that the A. africanus fossils found in the Sterkfontein Caves may have been corrupted in some",
-      "They would contend that if analyses of surrounding layers and bones in the Sterkfontein Caves were combined, then the dating",
-      "They would argue that their techniques are better suited than other methods to the unique challenges posed by the",
-      "They would claim that cosmogenic nuclide dating is reliable in the context of the Sterkfontein Caves because it is applied to",
+      "They would emphasize the fact that the A. africanus fossils found in the Sterkfontein Caves may have been corrupted in some way over the years.",
+      "They would contend that if analyses of surrounding layers and bones in the Sterkfontein Caves were combined, then the dating of the fossils there would be more accurate.",
+      "They would argue that their techniques are better suited than other methods to the unique challenges posed by the Sterkfontein Caves.",
+      "They would claim that cosmogenic nuclide dating is reliable in the context of the Sterkfontein Caves because it is applied to the fossils directly.",
     ],
-    correctAnswer: "They would argue that their techniques are better suited than other methods to the unique challenges posed by the",
+    correctAnswer: "They would argue that their techniques are better suited than other methods to the unique challenges posed by the Sterkfontein Caves.",
     explanation: "Choice C is the best answer. Text 2 states that the researchers used cosmogenic nuclide dating to \"avoid the potential for misdating\" caused by the geology of Sterkfontein, which Text 1 describes as \"challenging\" and unreliable.",
     relatedConcepts: ["Cross-Text Analysis","Comparing Arguments","Synthesis"],
     requiresThinkPeriod: true,
@@ -3101,7 +3128,8 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is adapted from Zora Neale Hurston's 1921 short story \"John Redding Goes to Sea.\" John is a child who lives in a town in the woods. Perhaps ten-year-old John was puzzling to the folk there in the Florida woods for he was an imaginative child and fond of day- dreams. The St. John River flowed a scarce three hundred feet from his back door. On its banks at this point grow numerous palms, luxuriant magnolias and bay trees. On the bosom of the stream float millions of delicately colored hyacinths. [John Redding] loved to wander down to the water's edge, and, casting in dry twigs, watch them sail away down stream to Jacksonville, the sea, the wide world and [he] wanted to follow them.",
+      text: "The following text is adapted from Zora Neale Hurston's 1921 short story \"John Redding Goes to Sea.\" John is a child who lives in a town in the woods. Perhaps ten-year-old John was puzzling to the folk there in the Florida woods for he was an imaginative child and fond of day-dreams. The St. John River flowed a scarce three hundred feet from his back door. On its banks at this point grow numerous palms, luxuriant magnolias and bay trees. On the bosom of the stream float millions of delicately colored hyacinths. [John Redding] loved to wander down to the water's edge, and, casting in dry twigs, watch them sail away down stream to Jacksonville, the sea, the wide world and [he] wanted to follow them.",
+      underlineText: "[John Redding] loved to wander down to the water's edge, and, casting in dry twigs, watch them sail away down stream to Jacksonville, the sea, the wide world and [he] wanted to follow them.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [
@@ -3318,6 +3346,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is from Ameen Rihani's 1921 poem \"The Wanderer.\" I wander among the hills of alien lands Where Nature her prerogative resigns To Man; where Comfort in her shack reclines And all the arts and sciences commands. But in my soul The eastern billows roll-- I hear the voices of my native strands.",
+      underlineText: "But in my soul The eastern billows roll-- I hear the voices of my native strands.",
     },
     question: "Which choice best describes the function of the underlined lines in the text as a whole?",
     options: [
@@ -3464,7 +3493,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Critics have asserted that fine art and fashion rarely ______ in a world where artists create timeless works for exhibition and designers periodically produce new styles for the public to buy. Luise�o/Shoshone-Bannock beadwork artist and designer Jamie Okuma challenges this view: her work can be seen in the Metropolitan Museum of Art and purchased through her online boutique.",
+      text: "Critics have asserted that fine art and fashion rarely ______ in a world where artists create timeless works for exhibition and designers periodically produce new styles for the public to buy. Luiseño/Shoshone-Bannock beadwork artist and designer Jamie Okuma challenges this view: her work can be seen in the Metropolitan Museum of Art and purchased through her online boutique.",
     },
     question: "Which choice completes the text with the most logical and precise word or phrase?",
     options: [
@@ -3507,16 +3536,16 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "Vadamalai Elangovan and Ganapathi Marimuthu showed that high moonlight intensity inhibits the activity of the greater short- nosed fruit bat (Cynopterus sphinx), a result explicable in terms of benefits and costs: greater lunar intensity may not enable the bats to increase foraging success enough to offset the higher chance of detection by predatory owls or hawks. Most other nocturnal mammals respond to lunar intensity variations similarly to greater short-nosed fruit bats, but mongoose lemurs (Eulemur mongoz) display the opposite pattern, as their heavy reliance on visual foraging results in a different balance of reward and risk.",
+      text: "Vadamalai Elangovan and Ganapathi Marimuthu showed that high moonlight intensity inhibits the activity of the greater short-nosed fruit bat (Cynopterus sphinx), a result explicable in terms of benefits and costs: greater lunar intensity may not enable the bats to increase foraging success enough to offset the higher chance of detection by predatory owls or hawks. Most other nocturnal mammals respond to lunar intensity variations similarly to greater short-nosed fruit bats, but mongoose lemurs (Eulemur mongoz) display the opposite pattern, as their heavy reliance on visual foraging results in a different balance of reward and risk.",
     },
     question: "Which choice best describes the overall structure of the text?",
     options: [
-      "It discusses two different responses to the same natural phenomenon, explains why one of those responses occurs, and then",
-      "It describes and accounts for a finding, characterizes the finding as representative of a general pattern, and then describes and",
-      "It presents and explains a study result, indicates that the result is similar to the results of many other studies, and then",
-      "It introduces an observation of a behavioral pattern, presents an explanation for the pattern, and then describes an exception",
+      "It discusses two different responses to the same natural phenomenon, explains why one of those responses occurs, and then suggests that the other response still needs to be explained.",
+      "It describes and accounts for a finding, characterizes the finding as representative of a general pattern, and then describes and accounts for an exception to that pattern.",
+      "It presents and explains a study result, indicates that the result is similar to the results of many other studies, and then attributes a conflicting study result to a difference in that study's methods.",
+      "It introduces an observation of a behavioral pattern, presents an explanation for the pattern, and then describes an exception to the pattern that casts doubt on that explanation.",
     ],
-    correctAnswer: "It describes and accounts for a finding, characterizes the finding as representative of a general pattern, and then describes and",
+    correctAnswer: "It describes and accounts for a finding, characterizes the finding as representative of a general pattern, and then describes and accounts for an exception to that pattern.",
     explanation: "Choice B is the best answer because it most accurately describes the overall structure of the text. The text begins by describing a study's finding about greater short-nosed fruit bats--namely, that high moonlight intensity inhibits the bats' activity--and also accounts for that finding, stating that this occurs because the potential increase in foraging success that greater lunar intensity enables doesn't offset these bats' increased vulnerability to predators (whose vision is also implied to become more acute under intense moonlight). The text goes on to characterize this finding as repre...",
     relatedConcepts: ["Text Structure","Author's Purpose","Rhetorical Analysis"],
     requiresThinkPeriod: true,
@@ -3764,8 +3793,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is from Joan Didion's memoir The Year of Magical Thinking. In the text, the author discusses her home life. [I]n California we heated our houses by building fires. We built fires even on summer evenings, because the fog came in. Fires said we were home, we had drawn the circle, we were safe through the night.",
+      underlineText: "Fires said we were home, we had drawn the circle, we were safe through the night.",
     },
-    question: "�2005 by Joan Didion Which choice best describes the function of the underlined portion in the text as a whole?",
+    question: "Which choice best describes the function of the underlined portion in the text as a whole?",
     options: [
       "It illustrates that a fire provides comfort beyond physical warmth.",
       "It summarizes the information that came before it in the text.",
@@ -3826,9 +3856,9 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Georgia Douglas Johnson's 1922 poem \"Benediction.\" Go forth, my son, Winged by my heart's desire! Great reaches, yet unknown, Await For your possession.",
+      text: "The following text is from Georgia Douglas Johnson's 1922 poem \"Benediction.\" Go forth, my son, Winged by my heart's desire! Great reaches, yet unknown, Await For your possession. I may not, if I would, Retrace the way with you, My pilgrimage is through, But life is calling you!",
     },
-    question: "I may not, if I would, Retrace the way with you, My pilgrimage is through, But life is calling you! Which choice best states the main purpose of the text?",
+    question: "Which choice best states the main purpose of the text?",
     options: [
       "To express hope that a child will have the same accomplishments as his parent did",
       "To suggest that raising a child involves many struggles",
@@ -3932,6 +3962,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is from Virginia Woolf's 1919 novel Night and Day. The text describes a gathering of young artists and intellectuals. One person after another rose, and, as with an ill-balanced axe, attempted to hew out his conception of art a little more clearly, and sat down with the feeling that, for some reason which he could not grasp, his strokes had gone awry. As they sat down they turned almost invariably to the person sitting next them, and rectified and continued what they had just said in public.",
+      underlineText: ["as with an ill-balanced axe", "his strokes had gone awry"],
     },
     question: "Which choice best describes the function of the underlined portions in the text as a whole?",
     options: [
@@ -4038,6 +4069,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "The following text is adapted from Oscar Wilde's 1897 nonfiction work De Profundis. People whose desire is solely for self-realisation never know where they are going. They can't know. In one sense of the word it is of course necessary to know oneself: that is the first achievement of knowledge. But to recognise that the soul of a man is unknowable, is the ultimate achievement of wisdom. The final mystery is oneself. When one has weighed the sun in the balance, and measured the steps of the moon, and mapped out the seven heavens star by star, there still remains oneself. Who can calculate the orbit of his own soul?",
+      underlineText: "Who can calculate the orbit of his own soul?",
     },
     question: "Which choice best describes the function of the underlined question in the text as a whole?",
     options: [
@@ -4080,6 +4112,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "Generally it takes Tule geese about four days to migrate south for the winter. From their summer breeding grounds in Cook Inlet, Alaska, the birds begin by flying over the Gulf of Alaska, keeping about 100 miles from the Canadian shore. They pause to rest on the Pacific Ocean, then fly toward Summer Lake, Oregon, before finally arriving at their winter destination of Sacramento Valley, California. In 2020, however, it took the geese over twice as long to make their way from Cook Inlet to Sacramento Valley. According to researchers, the reason was airborne pollutants.",
+      underlineText: "the birds begin by flying over the Gulf of Alaska, keeping about 100 miles from the Canadian shore",
     },
     question: "Which choice best states the function of the underlined portion in the text as a whole?",
     options: [
@@ -4143,6 +4176,7 @@ export const cbRwCraftAndStructureQuestions: Question[] = [
     type: "multiple-choice",
     passage: {
       text: "For his 1986 album Keyboard Fantasies, Beverly Glenn-Copeland wrote songs grounded in traditional soul and folk music, then accompanied them with futuristic synthesizer arrangements featuring ambient sounds and complex rhythms. The result was so strange, so unprecedented, that the album attracted little attention when first released. In recent years, however, a younger generation of musicians has embraced the stylistic experimentation of Keyboard Fantasies. Alternative R&B musicians Blood Orange and Moses Sumney, among other contemporary recording artists, cite the album as an influence.",
+      underlineText: "Alternative R&B musicians Blood Orange and Moses Sumney, among other contemporary recording artists, cite the album as an influence.",
     },
     question: "Which choice best describes the function of the underlined sentence in the text as a whole?",
     options: [

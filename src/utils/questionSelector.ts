@@ -25,7 +25,7 @@ export function selectPracticeQuestions(options: {
 }): string[] {
   const { domain, section, difficulty, count = 10, progress = {}, excludeIds = [] } = options;
 
-  let pool = allQuestions.filter((q) => {
+  const pool = allQuestions.filter((q) => {
     if (domain && q.domain !== domain) return false;
     if (section && q.section !== section) return false;
     if (difficulty && q.difficulty !== difficulty) return false;
@@ -55,7 +55,7 @@ export function selectTimedModuleQuestions(options: {
   const { section, difficulty } = options;
   const MODULE_SIZE = 27;
 
-  let pool = allQuestions.filter((q) => {
+  const pool = allQuestions.filter((q) => {
     if (q.section !== section) return false;
     if (difficulty && q.difficulty !== difficulty) return false;
     return true;

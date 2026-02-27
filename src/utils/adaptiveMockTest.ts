@@ -62,6 +62,61 @@ function defaultModuleCount(section: SectionId): number {
 }
 
 /**
+ * Enforces ~25% grid-in ratio for math modules (matches real SAT).
+ * Swaps questions with same-difficulty replacements from the pool when possible.
+ *
+ * @param selected  Currently selected questions.
+ * @param pool      Full available pool (may include selected questions).
+ * @param total     Target total question count.
+ * @returns Adjusted array with ~25% grid-in questions.
+ */
+function enforceGridInRatio(selected: Question[], pool: Question[], total: number): Question[] {
+  const targetGridIn = Math.round(total * 0.25);
+  const gridIns = selected.filter((q) => q.type === 'grid-in');
+  const mcqs = selected.filter((q) => q.type === 'multiple-choice');
+
+  const selectedIds = new Set(selected.map((q) => q.id));
+  const available = pool.filter((q) => !selectedIds.has(q.id));
+
+  if (gridIns.length < targetGridIn) {
+    // Need more grid-ins — swap out some MC questions
+    const deficit = targetGridIn - gridIns.length;
+    const gridInPool = shuffle(available.filter((q) => q.type === 'grid-in'));
+    const toSwap = Math.min(deficit, gridInPool.length, mcqs.length);
+
+    for (let i = 0; i < toSwap; i++) {
+      // Prefer swapping an MC with same difficulty
+      const replacement = gridInPool[i];
+      const matchIdx = mcqs.findIndex((q) => q.difficulty === replacement.difficulty);
+      const removeIdx = matchIdx >= 0 ? matchIdx : mcqs.length - 1 - i;
+      if (removeIdx >= 0) {
+        const removed = mcqs.splice(removeIdx, 1)[0];
+        selectedIds.delete(removed.id);
+        gridIns.push(replacement);
+        selectedIds.add(replacement.id);
+      }
+    }
+  } else if (gridIns.length > targetGridIn) {
+    // Too many grid-ins — swap out some for MC
+    const excess = gridIns.length - targetGridIn;
+    const mcPool = shuffle(available.filter((q) => q.type === 'multiple-choice'));
+    const toSwap = Math.min(excess, mcPool.length);
+
+    for (let i = 0; i < toSwap; i++) {
+      const replacement = mcPool[i];
+      const matchIdx = gridIns.findIndex((q) => q.difficulty === replacement.difficulty);
+      const removeIdx = matchIdx >= 0 ? matchIdx : gridIns.length - 1;
+      if (removeIdx >= 0) {
+        gridIns.splice(removeIdx, 1);
+        mcqs.push(replacement);
+      }
+    }
+  }
+
+  return [...gridIns, ...mcqs];
+}
+
+/**
  * Selects questions for Module 1 (the non-adaptive module).
  *
  * - Difficulty distribution: 30% easy, 50% medium, 20% hard
@@ -90,6 +145,11 @@ export function selectModule1Questions(section: SectionId, count?: number): stri
     const domainCount = perDomain + (i < remainder ? 1 : 0);
     const picked = selectByDifficulty(domainPool, distribution, domainCount);
     selected.push(...picked);
+  }
+
+  // Math modules: enforce ~25% grid-in (matches real SAT)
+  if (section === 'math') {
+    selected = enforceGridInRatio(selected, sectionQuestions, total);
   }
 
   return shuffle(selected).map((q) => q.id);
@@ -148,6 +208,11 @@ export function selectModule2Questions(
     const domainCount = perDomain + (i < remainder ? 1 : 0);
     const picked = selectByDifficulty(domainPool, distribution, domainCount);
     selected.push(...picked);
+  }
+
+  // Math modules: enforce ~25% grid-in (matches real SAT)
+  if (section === 'math') {
+    selected = enforceGridInRatio(selected, sectionQuestions, total);
   }
 
   return shuffle(selected).map((q) => q.id);

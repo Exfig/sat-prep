@@ -8,9 +8,11 @@ interface GridInInputProps {
 }
 
 /** Pattern allowing digits, at most one decimal point per side, at most one slash, optional leading negative.
+ *  Also allows a single letter A-D for multiple-choice-style grid-in questions.
  *  Permits intermediate typing states like "3/", "0.", "-." so users can build up fractions and decimals. */
 function isValidGridInInput(input: string): boolean {
   if (input === '' || input === '-') return true;
+  if (/^[A-Da-d]$/.test(input)) return true;
   // Each side of the optional slash: digits with at most one dot, can be partial
   return /^-?\d*\.?\d*(\/\d*\.?\d*)?$/.test(input);
 }
@@ -73,7 +75,9 @@ export default function GridInInput({
         return;
       }
       // Only accept valid partial input characters
-      if (/^-?[\d./]*$/.test(raw) && isValidGridInInput(raw)) {
+      if (/^[A-Da-d]$/.test(raw)) {
+        onChange(raw.toUpperCase());
+      } else if (/^-?[\d./]*$/.test(raw) && isValidGridInInput(raw)) {
         onChange(raw);
       }
     },

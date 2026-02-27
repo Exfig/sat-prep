@@ -143,11 +143,14 @@ function QuizQuestionCard({
           const isCorrectOption = oi === question.correctIndex;
 
           let optionClass = 'border-slate-200 bg-white hover:bg-slate-50';
+          let textClass = 'text-slate-800';
           if (submitted) {
             if (isCorrectOption) {
               optionClass = 'border-emerald-400 bg-emerald-100';
+              textClass = 'text-emerald-900';
             } else if (isSelected && !isCorrectOption) {
               optionClass = 'border-red-400 bg-red-100';
+              textClass = 'text-red-900';
             } else {
               optionClass = 'border-slate-200 bg-white opacity-60';
             }
@@ -160,7 +163,7 @@ function QuizQuestionCard({
               key={oi}
               onClick={() => onSelect(oi)}
               disabled={submitted}
-              className={`w-full text-left px-4 py-3 rounded-lg border text-sm transition-all min-h-[44px] ${optionClass}`}
+              className={`w-full text-left px-4 py-3 rounded-lg border text-sm ${textClass} transition-all min-h-[44px] ${optionClass}`}
             >
               <span className="font-semibold text-slate-500 mr-2">
                 {String.fromCharCode(65 + oi)}.

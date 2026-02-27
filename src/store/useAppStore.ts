@@ -17,6 +17,7 @@ import type {
   CalibrationData,
   MockTestHistoryEntry,
   SectionQuests,
+  PSATScoreData,
 } from '../types';
 import { SECTION_DOMAINS } from '../types';
 import { calculateMastery } from '../utils/mastery';
@@ -83,6 +84,7 @@ interface AppState {
   thinkPeriodEnabled: boolean;
   metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
+  themeMode: 'dark' | 'light';
 
   // SAT-specific
   mockTestHistory: MockTestHistoryEntry[];
@@ -92,6 +94,16 @@ interface AppState {
   strategyGuideCompleted: boolean;
   strategyGuideSectionsCompleted: string[];
   strategyGuideCurrentSection: string | null;
+
+  // Onboarding checklist
+  hasVisitedProgress: boolean;
+  onboardingDismissed: boolean;
+
+  // PSAT score import
+  psatScores: PSATScoreData | null;
+
+  // Notifications
+  dismissedNotifications: string[];
 
   // Hydration & clear actions
   hydrateFromSupabase: (userId: string, data: UserData) => void;
@@ -119,10 +131,16 @@ interface AppState {
   setThinkPeriodEnabled: (enabled: boolean) => void;
   setMetacogEnabled: (enabled: boolean) => void;
   setScaffoldingOverride: (domainId: DomainId, enabled: boolean) => void;
+  setThemeMode: (mode: 'dark' | 'light') => void;
   addMockTestResult: (entry: MockTestHistoryEntry) => void;
   updateSectionQuests: () => void;
   completeStrategySection: (sectionId: string) => void;
   completeStrategyGuide: () => void;
+  markProgressVisited: () => void;
+  dismissOnboarding: () => void;
+  setPSATScores: (data: PSATScoreData) => void;
+  clearPSATScores: () => void;
+  dismissNotification: (id: string) => void;
 }
 
 function getTodayString(): string {
@@ -152,6 +170,7 @@ const initialState = {
   thinkPeriodEnabled: true,
   metacogEnabled: true,
   scaffoldingOverrides: {} as Record<string, boolean>,
+  themeMode: 'dark' as 'dark' | 'light',
   mockTestHistory: [] as MockTestHistoryEntry[],
   sectionQuests: {
     readingWritingComplete: false,
@@ -161,6 +180,10 @@ const initialState = {
   strategyGuideCompleted: false,
   strategyGuideSectionsCompleted: [] as string[],
   strategyGuideCurrentSection: null as string | null,
+  hasVisitedProgress: false,
+  onboardingDismissed: false,
+  psatScores: null as PSATScoreData | null,
+  dismissedNotifications: [] as string[],
 };
 
 export const useAppStore = create<AppState>()(
@@ -191,12 +214,17 @@ export const useAppStore = create<AppState>()(
         thinkPeriodEnabled: data.thinkPeriodEnabled,
         metacogEnabled: data.metacogEnabled,
         scaffoldingOverrides: data.scaffoldingOverrides,
+        themeMode: data.themeMode,
         hasSeenWelcome: data.hasSeenWelcome,
         examWrappers: data.examWrappers,
         mockTestHistory: data.mockTestHistory,
         strategyGuideCompleted: autoComplete || data.strategyGuideCompleted,
         strategyGuideSectionsCompleted: data.strategyGuideSectionsCompleted,
         strategyGuideCurrentSection: data.strategyGuideCurrentSection,
+        hasVisitedProgress: data.hasVisitedProgress,
+        onboardingDismissed: data.onboardingDismissed,
+        psatScores: data.psatScores,
+        dismissedNotifications: data.dismissedNotifications,
       });
     },
 
@@ -542,6 +570,10 @@ export const useAppStore = create<AppState>()(
         strategyGuideCompleted: false,
         strategyGuideSectionsCompleted: [],
         strategyGuideCurrentSection: null,
+        hasVisitedProgress: false,
+        onboardingDismissed: false,
+        psatScores: null,
+        dismissedNotifications: [],
         // Keep userId and isHydrated
         userId: state.userId,
         isHydrated: state.isHydrated,
@@ -701,6 +733,9 @@ export const useAppStore = create<AppState>()(
         },
       })),
 
+    setThemeMode: (mode) =>
+      set({ themeMode: mode }),
+
     addMockTestResult: (entry) =>
       set((state) => ({
         mockTestHistory: [...state.mockTestHistory, entry],
@@ -747,5 +782,24 @@ export const useAppStore = create<AppState>()(
         strategyGuideCompleted: true,
         strategyGuideCurrentSection: null,
       }),
+
+    markProgressVisited: () =>
+      set({ hasVisitedProgress: true }),
+
+    dismissOnboarding: () =>
+      set({ onboardingDismissed: true }),
+
+    setPSATScores: (data) =>
+      set({ psatScores: data }),
+
+    clearPSATScores: () =>
+      set({ psatScores: null }),
+
+    dismissNotification: (id) =>
+      set((state) => ({
+        dismissedNotifications: state.dismissedNotifications.includes(id)
+          ? state.dismissedNotifications
+          : [...state.dismissedNotifications, id],
+      })),
   }),
 );

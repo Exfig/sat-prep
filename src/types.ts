@@ -68,6 +68,14 @@ export interface VisualAsset {
   src: string;
   altText: string;
   caption?: string;
+  maxWidth?: string;
+}
+
+// Table data for structured data rendering
+export interface TableData {
+  headers: string[];
+  rows: string[][];
+  caption?: string;
 }
 
 // SAT Reading & Writing passage data
@@ -75,7 +83,7 @@ export interface PassageData {
   text: string;
   source?: string;
   lineNumbers?: boolean;
-  underlineText?: string; // exact substring to render underlined
+  underlineText?: string | string[]; // exact substring(s) to render underlined
 }
 
 export interface Question {
@@ -100,6 +108,7 @@ export interface Question {
   deepDivePrompt?: DeepDivePrompt;
   hints?: [string, string];
   visualAsset?: VisualAsset;
+  tableData?: TableData;
   formulaDisplay?: string;
   requiresThinkPeriod?: boolean;
 }
@@ -278,4 +287,13 @@ export interface MockTestHistoryEntry {
   score: SATScore;
   modules: ModuleResult[];
   duration: number; // minutes
+}
+
+// PSAT/NMSQT Score Import
+export interface PSATScoreData {
+  totalScore: number;
+  readingWritingScore: number;
+  mathScore: number;
+  domainPerformance: Partial<Record<DomainId, { low: number; high: number }>>;
+  importedAt: number;
 }

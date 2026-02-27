@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { useAuth } from '../contexts/AuthContext';
 import { DOMAIN_NAMES, SECTION_NAMES, SECTION_DOMAINS } from '../types';
 import type { SectionId } from '../types';
-import { exportAllUserData, deleteUserAccount } from '../services/database';
+import { exportAllUserData, deleteUserAccount, loadEmailPreferences, updateEmailPreferences } from '../services/database';
+import type { EmailPreferences } from '../services/database';
 import { hasLocalStorageData, parseLocalStorageData, clearLocalStorageData } from '../services/migration';
 import { syncGamificationState, upsertUserProgress, insertAttempt } from '../services/database';
+import { rankDomainsByWeakness } from '../utils/psatParser';
+import PSATImportModal from '../components/PSATImportModal';
 
 const sections: SectionId[] = ['reading-writing', 'math'];
 
 export default function Settings() {
   const resetProgress = useAppStore((s) => s.resetProgress);
+  const themeMode = useAppStore((s) => s.themeMode);
+  const setThemeMode = useAppStore((s) => s.setThemeMode);
   const thinkPeriodEnabled = useAppStore((s) => s.thinkPeriodEnabled);
   const setThinkPeriodEnabled = useAppStore((s) => s.setThinkPeriodEnabled);
   const metacogEnabled = useAppStore((s) => s.metacogEnabled);
@@ -20,9 +25,12 @@ export default function Settings() {
   const setScaffoldingOverride = useAppStore((s) => s.setScaffoldingOverride);
   const userId = useAppStore((s) => s.userId);
   const hydrateFromSupabase = useAppStore((s) => s.hydrateFromSupabase);
+  const psatScores = useAppStore((s) => s.psatScores);
+  const clearPSATScores = useAppStore((s) => s.clearPSATScores);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
+  const [showPSATModal, setShowPSATModal] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [exporting, setExporting] = useState(false);
@@ -31,6 +39,29 @@ export default function Settings() {
   // localStorage migration
   const [showMigration, setShowMigration] = useState(() => hasLocalStorageData());
   const [migrating, setMigrating] = useState(false);
+
+  // Email preferences
+  const [emailPrefs, setEmailPrefs] = useState<EmailPreferences>({
+    digest_enabled: true,
+    digest_frequency: 'weekly',
+    streak_reminders: true,
+    milestone_emails: true,
+  });
+  const [emailPrefsLoaded, setEmailPrefsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+    loadEmailPreferences(user.id).then((prefs) => {
+      if (prefs) setEmailPrefs(prefs);
+      setEmailPrefsLoaded(true);
+    });
+  }, [user]);
+
+  const handleEmailPrefChange = (updates: Partial<EmailPreferences>) => {
+    const next = { ...emailPrefs, ...updates };
+    setEmailPrefs(next);
+    if (user) updateEmailPreferences(user.id, updates);
+  };
 
   const handleReset = () => {
     resetProgress();
@@ -94,10 +125,13 @@ export default function Settings() {
           thinkPeriodEnabled: localData.thinkPeriodEnabled,
           metacogEnabled: localData.metacogEnabled,
           scaffoldingOverrides: localData.scaffoldingOverrides,
+          themeMode: 'dark',
           hasSeenWelcome: localData.hasSeenWelcome,
           strategyGuideCompleted: localData.strategyGuideCompleted,
           strategyGuideSectionsCompleted: localData.strategyGuideSectionsCompleted,
           strategyGuideCurrentSection: localData.strategyGuideCurrentSection,
+          hasVisitedProgress: localData.hasVisitedProgress,
+          onboardingDismissed: localData.onboardingDismissed,
         });
 
         // Write question progress and attempts
@@ -156,6 +190,94 @@ export default function Settings() {
         </div>
       )}
 
+      {/* Appearance */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+        <h2 className="text-lg font-semibold text-slate-800 mb-2">Appearance</h2>
+        <p className="text-sm text-slate-600 mb-4">
+          Switch between dark and light mode.
+        </p>
+        <label className="flex items-center gap-3 cursor-pointer">
+          <span className={`text-sm font-medium ${themeMode === 'dark' ? 'text-slate-800' : 'text-slate-400'}`}>
+            Dark Mode
+          </span>
+          <div className="relative">
+            <input
+              type="checkbox"
+              checked={themeMode === 'light'}
+              onChange={(e) => setThemeMode(e.target.checked ? 'light' : 'dark')}
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-slate-200 rounded-full peer-checked:bg-indigo-500 transition-colors" />
+            <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
+          </div>
+          <span className={`text-sm font-medium ${themeMode === 'light' ? 'text-slate-800' : 'text-slate-400'}`}>
+            Light Mode
+          </span>
+        </label>
+      </div>
+
+      {/* PSAT/NMSQT Score Import */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+        <h2 className="text-lg font-semibold text-slate-800 mb-2">PSAT/NMSQT Scores</h2>
+        {psatScores ? (
+          <>
+            <div className="bg-slate-50 rounded-lg p-4 mb-4">
+              <div className="grid grid-cols-3 gap-3 text-center mb-3">
+                <div>
+                  <p className="text-xs text-slate-500">Total</p>
+                  <p className="text-xl font-bold text-slate-800">{psatScores.totalScore}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500">R&amp;W</p>
+                  <p className="text-xl font-bold text-indigo-600">{psatScores.readingWritingScore}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500">Math</p>
+                  <p className="text-xl font-bold text-indigo-600">{psatScores.mathScore}</p>
+                </div>
+              </div>
+              {Object.keys(psatScores.domainPerformance).length > 0 && (
+                <div>
+                  <p className="text-xs text-slate-500 mb-1">Weakest domain:</p>
+                  <p className="text-sm font-semibold text-amber-700">
+                    {DOMAIN_NAMES[rankDomainsByWeakness(psatScores)[0]]}
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowPSATModal(true)}
+                className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+                  hover:bg-indigo-700 transition-colors min-h-[44px]"
+              >
+                Re-import
+              </button>
+              <button
+                onClick={clearPSATScores}
+                className="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-lg font-medium
+                  hover:bg-slate-200 transition-colors min-h-[44px]"
+              >
+                Clear Scores
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="text-sm text-slate-600 mb-4">
+              Import your PSAT/NMSQT scores to get personalized study recommendations based on your performance.
+            </p>
+            <button
+              onClick={() => setShowPSATModal(true)}
+              className="px-4 py-2.5 bg-indigo-600 text-white rounded-lg font-medium
+                hover:bg-indigo-700 transition-colors min-h-[44px]"
+            >
+              Import Scores
+            </button>
+          </>
+        )}
+      </div>
+
       {/* Think Period toggle */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
         <h2 className="text-lg font-semibold text-slate-800 mb-2">Think Period</h2>
@@ -202,6 +324,97 @@ export default function Settings() {
           </span>
         </label>
       </div>
+
+      {/* Email Notifications */}
+      {emailPrefsLoaded && (
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+          <h2 className="text-lg font-semibold text-slate-800 mb-2">Email Notifications</h2>
+          <p className="text-sm text-slate-600 mb-4">
+            Choose which emails you'd like to receive from TopScore.
+          </p>
+          <div className="space-y-4">
+            {/* Digest toggle */}
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-700">Progress Digest</p>
+                <p className="text-xs text-slate-500">Summary of your study stats and streak</p>
+              </div>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={emailPrefs.digest_enabled}
+                    onChange={(e) => handleEmailPrefChange({ digest_enabled: e.target.checked })}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-slate-200 rounded-full peer-checked:bg-indigo-500 transition-colors" />
+                  <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
+                </div>
+              </label>
+            </div>
+
+            {/* Frequency selector (only shown when digest is enabled) */}
+            {emailPrefs.digest_enabled && (
+              <div className="flex items-center justify-between pl-4 border-l-2 border-indigo-200">
+                <p className="text-sm text-slate-600">Frequency</p>
+                <select
+                  value={emailPrefs.digest_frequency}
+                  onChange={(e) =>
+                    handleEmailPrefChange({
+                      digest_frequency: e.target.value as 'daily' | 'weekly',
+                    })
+                  }
+                  className="text-sm border border-slate-200 rounded-lg px-3 py-1.5 text-slate-700
+                    focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value="weekly">Weekly</option>
+                  <option value="daily">Daily</option>
+                </select>
+              </div>
+            )}
+
+            {/* Streak reminders */}
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-700">Streak Reminders</p>
+                <p className="text-xs text-slate-500">Get notified when your streak is at risk</p>
+              </div>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={emailPrefs.streak_reminders}
+                    onChange={(e) => handleEmailPrefChange({ streak_reminders: e.target.checked })}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-slate-200 rounded-full peer-checked:bg-indigo-500 transition-colors" />
+                  <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
+                </div>
+              </label>
+            </div>
+
+            {/* Milestone emails */}
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-700">Milestone Emails</p>
+                <p className="text-xs text-slate-500">Celebrate level-ups, badges, and achievements</p>
+              </div>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={emailPrefs.milestone_emails}
+                    onChange={(e) => handleEmailPrefChange({ milestone_emails: e.target.checked })}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-slate-200 rounded-full peer-checked:bg-indigo-500 transition-colors" />
+                  <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Scaffolding Overrides grouped by section */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
@@ -319,6 +532,9 @@ export default function Settings() {
           </div>
         </div>
       )}
+
+      {/* PSAT import modal */}
+      {showPSATModal && <PSATImportModal onClose={() => setShowPSATModal(false)} />}
 
       {/* Delete account confirmation modal */}
       {showDeleteConfirm && (

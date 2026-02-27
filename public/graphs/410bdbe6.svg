@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="260" viewBox="0 0 340 260">
+  <rect width="340" height="260" fill="white"/>
+
+  <!-- Triangle with angles: 31° (bottom-left), 2b° (bottom-right), a° (top) -->
+  <polygon points="40,220 300,220 170,40" fill="none" stroke="black" stroke-width="2"/>
+
+  <!-- Angle labels -->
+  <!-- 31° at bottom-left -->
+  <text x="62" y="210" font-family="Times, serif" font-size="16" fill="black">31°</text>
+
+  <!-- 2b° at bottom-right -->
+  <text x="238" y="210" font-family="Times, serif" font-size="16" font-style="italic" fill="black">2b°</text>
+
+  <!-- a° at top -->
+  <text x="162" y="72" font-family="Times, serif" font-size="16" font-style="italic" fill="black">a°</text>
+</svg>

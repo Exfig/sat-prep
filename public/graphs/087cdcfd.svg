@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="320" viewBox="0 0 500 320">
+  <rect width="500" height="320" fill="white"/>
+
+  <!-- Two parallel horizontal-ish lines crossed by a transversal -->
+  <!-- Upper line (slightly angled up-right) -->
+  <line x1="40" y1="110" x2="460" y2="90" stroke="black" stroke-width="2"/>
+
+  <!-- Lower line (slightly angled up-right) -->
+  <line x1="40" y1="210" x2="460" y2="190" stroke="black" stroke-width="2"/>
+
+  <!-- Transversal crossing both lines -->
+  <line x1="190" y1="30" x2="290" y2="270" stroke="black" stroke-width="2"/>
+
+  <!-- Angle labels at upper intersection (~235, 98) -->
+  <!-- x° above-left of intersection -->
+  <text x="195" y="88" font-family="Times, serif" font-size="20" font-style="italic" fill="black">x°</text>
+  <!-- z° above-right of intersection -->
+  <text x="260" y="88" font-family="Times, serif" font-size="20" font-style="italic" fill="black">z°</text>
+
+  <!-- y° at lower intersection (~255, 202) -->
+  <!-- y° below-left of intersection -->
+  <text x="220" y="225" font-family="Times, serif" font-size="20" font-style="italic" fill="black">y°</text>
+
+  <!-- Note -->
+  <text x="130" y="300" font-family="Times, serif" font-size="16" fill="black">Note: Figure not drawn to scale.</text>
+</svg>

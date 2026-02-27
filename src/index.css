@@ -1,5 +1,100 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-obsidian: #0D0D12;
+  --color-brand-champagne: #C9A84C;
+  --color-brand-ivory: #FAF8F5;
+  --color-brand-slate: #2A2A35;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-drama: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --ease-magnetic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@font-face {
+  font-family: "Bruno Ace SC";
+  src: url("./fonts/BrunoAceSC-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Michroma";
+  src: url("./fonts/Michroma-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+
+  html,
+  body {
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-charcoal);
+  }
+
+  /* Global Noise Overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+  }
+}
+
+@layer utilities {
+  .btn-magnetic {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--ease-magnetic), box-shadow 0.4s var(--ease-magnetic);
+  }
+
+  .btn-magnetic:hover {
+    transform: scale(1.03);
+  }
+
+  .btn-magnetic::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: left 0.4s var(--ease-magnetic);
+    z-index: 0;
+  }
+
+  .btn-magnetic:hover::before {
+    left: 0;
+  }
+
+  .btn-magnetic>* {
+    position: relative;
+    z-index: 1;
+  }
+
+  .link-lift {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .link-lift:hover {
+    transform: translateY(-1px);
+  }
+}
+
+
 /* WCAG 2.2 - Skip link utility (WCAG 2.4.1) */
 .sr-only {
   position: absolute;
@@ -15,6 +110,7 @@
 
 /* WCAG 2.3.3 - Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -30,4 +126,360 @@
   outline: 3px solid #4f46e5;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Claymorphism Utilities */
+.clay-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  box-shadow:
+    35px 35px 70px #d1d9e6,
+    -35px -35px 70px #ffffff,
+    inset 10px 10px 20px rgba(255, 255, 255, 0.5),
+    inset -10px -10px 20px rgba(166, 180, 200, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.clay-button {
+  background: #6366f1;
+  color: white;
+  border-radius: 1.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.1),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.3),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.clay-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    12px 12px 24px rgba(0, 0, 0, 0.15),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.clay-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clay-input {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  padding: 0.75rem 1.25rem;
+  box-shadow:
+    inset 4px 4px 8px rgba(166, 180, 200, 0.2),
+    inset -4px -4px 8px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════
+   Caliber Theme — Dark + Gold
+   Matches the caliber landing page design system
+   ═══════════════════════════════════════════════ */
+
+[data-theme="caliber"] {
+  /* Slate: light grays → dark backgrounds */
+  --color-slate-50: #08090d;
+  --color-slate-100: #0d0e14;
+  --color-slate-200: #1a1c24;
+  --color-slate-300: #2a2c36;
+  --color-slate-400: #8a8a96;
+  --color-slate-500: rgba(255,255,255,0.55);
+  --color-slate-600: rgba(255,255,255,0.7);
+  --color-slate-700: rgba(255,255,255,0.85);
+  --color-slate-800: #f0f0f5;
+  --color-slate-900: #ffffff;
+  --color-slate-950: #ffffff;
+
+  /* Indigo → Gold accent (inverted: high numbers = light for dark theme) */
+  --color-indigo-50: rgba(200,162,78,0.10);
+  --color-indigo-100: rgba(200,162,78,0.14);
+  --color-indigo-200: rgba(200,162,78,0.22);
+  --color-indigo-300: rgba(200,162,78,0.35);
+  --color-indigo-400: #b89844;
+  --color-indigo-500: #c8a24e;
+  --color-indigo-600: #c8a24e;
+  --color-indigo-700: #e4c36e;
+  --color-indigo-800: #e4c36e;
+  --color-indigo-900: #f0e6c8;
+  --color-indigo-950: #faf6eb;
+
+  /* Status colors (dark-friendly) */
+  --color-red-50: rgba(248,113,113,0.08);
+  --color-red-100: rgba(248,113,113,0.12);
+  --color-red-200: rgba(248,113,113,0.18);
+  --color-red-400: #f87171;
+  --color-red-600: #f87171;
+  --color-red-700: #f87171;
+  --color-red-800: #fca5a5;
+  --color-red-900: #fecaca;
+  --color-emerald-50: rgba(52,211,153,0.08);
+  --color-emerald-100: rgba(52,211,153,0.12);
+  --color-emerald-200: rgba(52,211,153,0.18);
+  --color-emerald-400: #34d399;
+  --color-emerald-600: #34d399;
+  --color-emerald-700: #34d399;
+  --color-emerald-800: #6ee7b7;
+  --color-emerald-900: #a7f3d0;
+  --color-green-50: rgba(52,211,153,0.08);
+  --color-green-200: rgba(52,211,153,0.15);
+  --color-green-700: #34d399;
+
+  /* Amber/yellow (used in some components) */
+  --color-amber-50: rgba(251,191,36,0.08);
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fbbf24;
+  --color-yellow-400: #fbbf24;
+  --color-yellow-500: #eab308;
+
+  /* Blue (info states) */
+  --color-blue-50: rgba(96,165,250,0.08);
+  --color-blue-600: #60a5fa;
+  --color-blue-700: #60a5fa;
+
+  /* Purple (used in some gamification) */
+  --color-purple-50: rgba(168,85,247,0.08);
+  --color-purple-600: #a855f7;
+  --color-purple-700: #a855f7;
+
+  /* Focus ring */
+  --color-focus: #c8a24e;
+}
+
+/* Focus indicator override */
+[data-theme="caliber"] :focus-visible {
+  outline-color: #c8a24e;
+}
+
+/* Card backgrounds: bg-white → dark card */
+[data-theme="caliber"] :is(.bg-white) {
+  background-color: #111318;
+}
+
+/* Shadows for dark theme */
+[data-theme="caliber"] :is(.shadow-sm) {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+}
+[data-theme="caliber"] :is(.shadow-md) {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+[data-theme="caliber"] :is(.shadow-lg) {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+/* Form inputs */
+[data-theme="caliber"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="caliber"] select,
+[data-theme="caliber"] textarea {
+  background-color: #0d0e14;
+  color: #f0f0f5;
+  border-color: #2a2c36;
+}
+[data-theme="caliber"] input::placeholder,
+[data-theme="caliber"] textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+/* Claymorphism → dark glassmorphism */
+[data-theme="caliber"] .clay-card {
+  background: rgba(17,19,24,0.85);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+[data-theme="caliber"] .clay-button {
+  background: linear-gradient(135deg, #c8a24e, #e4c36e);
+  color: #08090d;
+}
+[data-theme="caliber"] .clay-input {
+  background: #0d0e14;
+  border-color: #2a2c36;
+  box-shadow: none;
+  color: #f0f0f5;
+}
+
+/* Text gradient → gold */
+[data-theme="caliber"] .text-gradient {
+  background: linear-gradient(135deg, #c8a24e 0%, #e4c36e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Noise overlay — lighter for dark bg */
+[data-theme="caliber"] body::after {
+  opacity: 0.025;
+}
+
+/* Michroma for UI chrome (not question content) */
+[data-theme="caliber"] {
+  font-family: "Michroma", ui-sans-serif, system-ui, sans-serif;
+}
+/* Gold buttons: black text for contrast */
+[data-theme="caliber"] :is(.bg-indigo-600, .bg-indigo-700, .bg-amber-500, .bg-amber-600, .bg-emerald-600, .bg-emerald-700):is(.text-white) {
+  color: #08090d;
+}
+
+/* Question content: light theme to match real SAT appearance */
+[data-theme="caliber"] [data-question-content] {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+  --color-indigo-950: #1e1b4b;
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-green-50: #f0fdf4;
+  --color-green-200: #bbf7d0;
+  --color-green-700: #15803d;
+  --color-amber-50: #fffbeb;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-blue-50: #eff6ff;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-purple-50: #faf5ff;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+}
+[data-theme="caliber"] [data-question-content]:is(.bg-white),
+[data-theme="caliber"] [data-question-content] :is(.bg-white) {
+  background-color: #ffffff;
+}
+[data-theme="caliber"] [data-question-content]:is(.shadow-sm),
+[data-theme="caliber"] [data-question-content] :is(.shadow-sm) {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Scrollbar styling */
+[data-theme="caliber"] ::-webkit-scrollbar {
+  width: 8px;
+}
+[data-theme="caliber"] ::-webkit-scrollbar-track {
+  background: #08090d;
+}
+[data-theme="caliber"] ::-webkit-scrollbar-thumb {
+  background: #2a2c36;
+  border-radius: 4px;
+}
+[data-theme="caliber"] ::-webkit-scrollbar-thumb:hover {
+  background: #3a3c46;
+}
+
+/* ═══════════════════════════════════════════════
+   Caliber Light Theme — Light + Gold
+   Keeps gold accent + Michroma font with standard light backgrounds.
+   Sidebar stays dark via its own hardcoded colors.
+   ═══════════════════════════════════════════════ */
+
+[data-theme="caliber-light"] {
+  font-family: "Michroma", ui-sans-serif, system-ui, sans-serif;
+
+  /* Gold accent mapped to indigo slots (dark enough for light backgrounds) */
+  --color-indigo-50: #faf6eb;
+  --color-indigo-100: #f3ebd3;
+  --color-indigo-200: #e6d4a0;
+  --color-indigo-300: #d4b86e;
+  --color-indigo-400: #c8a24e;
+  --color-indigo-500: #a68a30;
+  --color-indigo-600: #8B6914;
+  --color-indigo-700: #725612;
+  --color-indigo-800: #5a4410;
+  --color-indigo-900: #3d2e0b;
+  --color-indigo-950: #221a06;
+
+  --color-focus: #8B6914;
+}
+
+[data-theme="caliber-light"] :focus-visible {
+  outline-color: #8B6914;
+}
+
+/* Text gradient → gold */
+[data-theme="caliber-light"] .text-gradient {
+  background: linear-gradient(135deg, #8B6914 0%, #c8a24e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Clay button → gold */
+[data-theme="caliber-light"] .clay-button {
+  background: linear-gradient(135deg, #8B6914, #c8a24e);
+}
+
+/* Diced Hero Grid - Warped corner masks */
+.diced-image {
+  --r: 20px;
+  --s: 40px;
+  --x: 25px;
+  --y: 5px;
+}
+.diced-image.diced-br {
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask: calc(100% - var(--_d) - var(--x)) 100% var(--_m), 100% calc(100% - var(--_d) - var(--y)) var(--_m), radial-gradient(var(--s) at 100% 100%,#0000 99%,#000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)), var(--_g) calc(-1*var(--_d) - var(--x)) 0, var(--_g) 0 calc(-1*var(--_d) - var(--y));
+  mask-repeat: no-repeat;
+}
+.diced-image.diced-bl {
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(from 180deg at var(--r) calc(100% - var(--r)),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask: calc(var(--_d) + var(--x)) 100% var(--_m), 0 calc(100% - var(--_d) - var(--y)) var(--_m), radial-gradient(var(--s) at 0 100%,#0000 99%,#000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(-1*var(--r) - var(--y)), var(--_g) calc(var(--_d) + var(--x)) 0, var(--_g) 0 calc(-1*var(--_d) - var(--y));
+  mask-repeat: no-repeat;
+}
+.diced-image.diced-tr {
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(at calc(100% - var(--r)) var(--r),#0000 25%,#000 0);
+  --_d:(var(--s) + var(--r));
+  mask: calc(100% - var(--_d) - var(--x)) 0 var(--_m), 100% calc(var(--_d) + var(--y)) var(--_m), radial-gradient(var(--s) at 100% 0,#0000 99%,#000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)), var(--_g) calc(-1*var(--_d) - var(--x)) 0, var(--_g) 0 calc(var(--_d) + var(--y));
+  mask-repeat: no-repeat;
+}
+.diced-image.diced-tl {
+  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
+  --_g:conic-gradient(at var(--r) var(--r),#000 75%,#0000 0);
+  --_d:(var(--s) + var(--r));
+  mask: calc(var(--_d) + var(--x)) 0 var(--_m), 0 calc(var(--_d) + var(--y)) var(--_m), radial-gradient(var(--s) at 0 0,#0000 99%,#000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(var(--r) + var(--y)), var(--_g) calc(var(--_d) + var(--x)) 0, var(--_g) 0 calc(var(--_d) + var(--y));
+  mask-repeat: no-repeat;
 }

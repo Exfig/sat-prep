@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Line MQ: from M (top-left) through P (center) to Q (bottom-right) -->
+  <line x1="60" y1="50" x2="340" y2="250" stroke="black" stroke-width="2"/>
+
+  <!-- Line NR: from N (bottom-left) through P (center) to R (top-right) -->
+  <line x1="60" y1="250" x2="340" y2="50" stroke="black" stroke-width="2"/>
+
+  <!-- Point P (intersection at center) -->
+  <circle cx="200" cy="150" r="3" fill="black"/>
+
+  <!-- Angle arc for QPR (60 degrees) - arc in the region between PQ going down-right and PR going up-right -->
+  <!-- PQ direction: toward (340,250), angle ~55° below horizontal = ~325° from positive-x -->
+  <!-- PR direction: toward (340,50), angle ~55° above horizontal = ~35° from positive-x -->
+  <!-- Arc from PR direction to PQ direction (clockwise), 60° between them -->
+  <path d="M 224.5 131.8 A 30 30 0 0 1 224.5 168.2" fill="none" stroke="black" stroke-width="1.5"/>
+
+  <!-- Labels -->
+  <text x="38" y="44" font-family="Times, serif" font-size="18" font-style="italic" fill="black">M</text>
+  <text x="344" y="260" font-family="Times, serif" font-size="18" font-style="italic" fill="black">Q</text>
+  <text x="38" y="266" font-family="Times, serif" font-size="18" font-style="italic" fill="black">N</text>
+  <text x="344" y="50" font-family="Times, serif" font-size="18" font-style="italic" fill="black">R</text>
+  <text x="182" y="140" font-family="Times, serif" font-size="18" font-style="italic" fill="black">P</text>
+
+  <!-- 60° label near the arc -->
+  <text x="232" y="155" font-family="Times, serif" font-size="13" fill="black">60°</text>
+
+  <!-- Single tick marks for NP = QP -->
+  <!-- NP midpoint: (130, 200), line angle: -35.5° from horizontal -->
+  <line x1="126" y1="195" x2="134" y2="205" stroke="black" stroke-width="2"
+        transform="rotate(-35.5, 130, 200)"/>
+
+  <!-- QP midpoint: (270, 200), line angle: -35.5° from horizontal -->
+  <line x1="266" y1="195" x2="274" y2="205" stroke="black" stroke-width="2"
+        transform="rotate(-35.5, 270, 200)"/>
+
+  <!-- Double tick marks for MP = PR -->
+  <!-- MP midpoint: (130, 100), line angle: 35.5° from horizontal -->
+  <line x1="127" y1="95" x2="127" y2="105" stroke="black" stroke-width="2"
+        transform="rotate(35.5, 130, 100)"/>
+  <line x1="133" y1="95" x2="133" y2="105" stroke="black" stroke-width="2"
+        transform="rotate(35.5, 130, 100)"/>
+
+  <!-- PR midpoint: (270, 100), line angle: -35.5° from horizontal -->
+  <line x1="267" y1="95" x2="267" y2="105" stroke="black" stroke-width="2"
+        transform="rotate(-35.5, 270, 100)"/>
+  <line x1="273" y1="95" x2="273" y2="105" stroke="black" stroke-width="2"
+        transform="rotate(-35.5, 270, 100)"/>
+</svg>

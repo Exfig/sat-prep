@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="400" viewBox="0 0 440 400">
+  <rect width="440" height="400" fill="white"/>
+
+  <defs>
+    <clipPath id="plotArea">
+      <rect x="60" y="20" width="360" height="360"/>
+    </clipPath>
+  </defs>
+
+  <!-- Grid lines -->
+  <g stroke="#ddd" stroke-width="1">
+    <!-- Horizontal grid lines (y = 6 to 12) -->
+    <line x1="60" y1="20" x2="420" y2="20"/>   <!-- y=12 -->
+    <line x1="60" y1="80" x2="420" y2="80"/>   <!-- y=11 -->
+    <line x1="60" y1="140" x2="420" y2="140"/> <!-- y=10 -->
+    <line x1="60" y1="200" x2="420" y2="200"/> <!-- y=9 -->
+    <line x1="60" y1="260" x2="420" y2="260"/> <!-- y=8 -->
+    <line x1="60" y1="320" x2="420" y2="320"/> <!-- y=7 -->
+    <line x1="60" y1="380" x2="420" y2="380"/> <!-- y=6 -->
+
+    <!-- Vertical grid lines (x = 0 to 6) -->
+    <line x1="60" y1="20" x2="60" y2="380"/>   <!-- x=0 -->
+    <line x1="120" y1="20" x2="120" y2="380"/> <!-- x=1 -->
+    <line x1="180" y1="20" x2="180" y2="380"/> <!-- x=2 -->
+    <line x1="240" y1="20" x2="240" y2="380"/> <!-- x=3 -->
+    <line x1="300" y1="20" x2="300" y2="380"/> <!-- x=4 -->
+    <line x1="360" y1="20" x2="360" y2="380"/> <!-- x=5 -->
+    <line x1="420" y1="20" x2="420" y2="380"/> <!-- x=6 -->
+  </g>
+
+  <!-- Axes -->
+  <line x1="60" y1="380" x2="420" y2="380" stroke="black" stroke-width="2"/>
+  <line x1="60" y1="20" x2="60" y2="380" stroke="black" stroke-width="2"/>
+
+  <!-- X-axis labels -->
+  <text x="60" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">0</text>
+  <text x="120" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">1</text>
+  <text x="180" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">2</text>
+  <text x="240" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">3</text>
+  <text x="300" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">4</text>
+  <text x="360" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">5</text>
+  <text x="420" y="398" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">6</text>
+
+  <!-- Y-axis labels -->
+  <text x="48" y="384" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">6</text>
+  <text x="48" y="324" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">7</text>
+  <text x="48" y="264" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">8</text>
+  <text x="48" y="204" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">9</text>
+  <text x="48" y="144" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">10</text>
+  <text x="48" y="84" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">11</text>
+  <text x="48" y="24" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">12</text>
+
+  <!-- Axis labels -->
+  <text x="430" y="384" font-family="Arial, sans-serif" font-size="16" font-style="italic" fill="black">x</text>
+  <text x="55" y="12" font-family="Arial, sans-serif" font-size="16" font-style="italic" fill="black">y</text>
+
+  <!-- Data points (from image: approximate positions) -->
+  <g fill="black" clip-path="url(#plotArea)">
+    <circle cx="60" cy="20" r="5"/>    <!-- (0, 12) -->
+    <circle cx="120" cy="20" r="5"/>   <!-- (1, 12) -->
+    <circle cx="120" cy="80" r="5"/>   <!-- (1, 11) -->
+    <circle cx="150" cy="80" r="5"/>   <!-- (1.5, 11) -->
+    <circle cx="180" cy="110" r="5"/>  <!-- (2, 10.5) -->
+    <circle cx="180" cy="140" r="5"/>  <!-- (2, 10) -->
+    <circle cx="210" cy="140" r="5"/>  <!-- (2.5, 10) -->
+    <circle cx="240" cy="200" r="5"/>  <!-- (3, 9) -->
+    <circle cx="270" cy="200" r="5"/>  <!-- (3.5, 9) -->
+    <circle cx="300" cy="260" r="5"/>  <!-- (4, 8) -->
+    <circle cx="330" cy="260" r="5"/>  <!-- (4.5, 8) -->
+    <circle cx="360" cy="320" r="5"/>  <!-- (5, 7) -->
+    <circle cx="420" cy="380" r="5"/>  <!-- (6, 6) -->
+  </g>
+
+  <!-- Line of best fit: roughly from (0, 12) to (6, 6) -->
+  <line x1="60" y1="20" x2="420" y2="380" stroke="black" stroke-width="2" clip-path="url(#plotArea)"/>
+</svg>

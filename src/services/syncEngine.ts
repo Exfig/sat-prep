@@ -133,10 +133,15 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
       state.thinkPeriodEnabled !== prevState.thinkPeriodEnabled ||
       state.metacogEnabled !== prevState.metacogEnabled ||
       state.scaffoldingOverrides !== prevState.scaffoldingOverrides ||
+      state.themeMode !== prevState.themeMode ||
       state.hasSeenWelcome !== prevState.hasSeenWelcome ||
       state.strategyGuideCompleted !== prevState.strategyGuideCompleted ||
       state.strategyGuideSectionsCompleted !== prevState.strategyGuideSectionsCompleted ||
-      state.strategyGuideCurrentSection !== prevState.strategyGuideCurrentSection;
+      state.strategyGuideCurrentSection !== prevState.strategyGuideCurrentSection ||
+      state.hasVisitedProgress !== prevState.hasVisitedProgress ||
+      state.onboardingDismissed !== prevState.onboardingDismissed ||
+      state.psatScores !== prevState.psatScores ||
+      state.dismissedNotifications !== prevState.dismissedNotifications;
 
     if (hasGamChanges) {
       await syncGamificationState(userId, {
@@ -157,10 +162,15 @@ async function flushSync(state: ReturnType<typeof useAppStore.getState>) {
         thinkPeriodEnabled: state.thinkPeriodEnabled,
         metacogEnabled: state.metacogEnabled,
         scaffoldingOverrides: state.scaffoldingOverrides,
+        themeMode: state.themeMode,
         hasSeenWelcome: state.hasSeenWelcome,
         strategyGuideCompleted: state.strategyGuideCompleted,
         strategyGuideSectionsCompleted: state.strategyGuideSectionsCompleted,
         strategyGuideCurrentSection: state.strategyGuideCurrentSection,
+        hasVisitedProgress: state.hasVisitedProgress,
+        onboardingDismissed: state.onboardingDismissed,
+        psatScores: state.psatScores,
+        dismissedNotifications: state.dismissedNotifications,
       });
     }
 

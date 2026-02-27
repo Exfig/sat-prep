@@ -1,6 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+
+const IS_CALIBER = import.meta.env.VITE_THEME === 'caliber';
+const COOLDOWN_SECONDS = 60;
+
+function friendlyError(msg: string): string {
+  if (msg.toLowerCase().includes('rate limit')) {
+    return 'Too many requests. Please wait a minute before trying again.';
+  }
+  if (msg.toLowerCase().includes('invalid email')) {
+    return 'Please enter a valid email address.';
+  }
+  return msg;
+}
 
 export default function ForgotPassword() {
   const { resetPassword } = useAuth();
@@ -8,6 +21,27 @@ export default function ForgotPassword() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  const startCooldown = () => {
+    setCooldown(COOLDOWN_SECONDS);
+    timerRef.current = setInterval(() => {
+      setCooldown((prev) => {
+        if (prev <= 1) {
+          if (timerRef.current) clearInterval(timerRef.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,18 +50,29 @@ export default function ForgotPassword() {
 
     const { error: err } = await resetPassword(email);
     if (err) {
-      setError(err);
+      setError(friendlyError(err));
+      if (err.toLowerCase().includes('rate limit')) {
+        startCooldown();
+      }
     } else {
       setSuccess(true);
+      startCooldown();
     }
     setLoading(false);
   };
+
+  const btnClass = IS_CALIBER
+    ? 'bg-gradient-to-r from-[#c8a24e] to-[#e4c36e] text-[#08090d] hover:shadow-[0_4px_20px_rgba(200,162,78,0.35)]'
+    : 'bg-indigo-600 text-white hover:bg-indigo-700';
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-4xl">📝</span>
+          {IS_CALIBER
+            ? <img src={`${import.meta.env.BASE_URL}caliber-icon.png`} className="w-16 h-16 mx-auto rounded-xl" alt="Caliber" />
+            : <span className="text-4xl">📝</span>
+          }
           <h1 className="text-2xl font-bold text-slate-800 mt-2">Reset Password</h1>
           <p className="text-slate-500 mt-1">We'll send you a reset link</p>
         </div>
@@ -70,11 +115,10 @@ export default function ForgotPassword() {
 
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
-                  hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
+                disabled={loading || cooldown > 0}
+                className={`w-full py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] ${btnClass}`}
               >
-                {loading ? 'Sending...' : 'Send Reset Link'}
+                {loading ? 'Sending...' : cooldown > 0 ? `Wait ${cooldown}s` : 'Send Reset Link'}
               </button>
 
               <p className="text-center text-sm text-slate-500">

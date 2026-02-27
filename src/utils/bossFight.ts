@@ -13,7 +13,7 @@ export const BOSS_PASS_THRESHOLD = 0.8; // 80% to defeat boss
  * Returns the next domain eligible for a boss fight, or null if none are ready.
  * A domain is eligible when:
  * - The boss hasn't been defeated for that domain yet
- * - At least 60% of the domain's questions have been attempted
+ * - At least 10 questions in the domain have been attempted
  * - Accuracy in the domain is >= 50%
  */
 export function getBossDomain(
@@ -41,10 +41,9 @@ export function getBossDomain(
       }
     }
 
-    const attemptRate = attempted / domainQs.length;
     const accuracy = totalAttempts > 0 ? correct / totalAttempts : 0;
 
-    if (attemptRate >= 0.6 && accuracy >= 0.5) {
+    if (attempted >= 10 && accuracy >= 0.5) {
       return domainId;
     }
   }

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="420" viewBox="0 0 480 420">
+  <rect width="480" height="420" fill="white"/>
+
+  <defs>
+    <clipPath id="plotArea">
+      <rect x="60" y="10" width="390" height="380"/>
+    </clipPath>
+  </defs>
+
+  <!-- Grid lines -->
+  <g stroke="#ddd" stroke-width="1">
+    <!-- Horizontal grid lines (y = 2 to 20, step 2) -->
+    <line x1="60" y1="390" x2="450" y2="390"/> <!-- y=0 -->
+    <line x1="60" y1="352" x2="450" y2="352"/> <!-- y=2 -->
+    <line x1="60" y1="314" x2="450" y2="314"/> <!-- y=4 -->
+    <line x1="60" y1="276" x2="450" y2="276"/> <!-- y=6 -->
+    <line x1="60" y1="238" x2="450" y2="238"/> <!-- y=8 -->
+    <line x1="60" y1="200" x2="450" y2="200"/> <!-- y=10 -->
+    <line x1="60" y1="162" x2="450" y2="162"/> <!-- y=12 -->
+    <line x1="60" y1="124" x2="450" y2="124"/> <!-- y=14 -->
+    <line x1="60" y1="86" x2="450" y2="86"/>   <!-- y=16 -->
+    <line x1="60" y1="48" x2="450" y2="48"/>   <!-- y=18 -->
+    <line x1="60" y1="10" x2="450" y2="10"/>   <!-- y=20 -->
+
+    <!-- Vertical grid lines (x = 0 to 6) -->
+    <line x1="60" y1="10" x2="60" y2="390"/>   <!-- x=0 -->
+    <line x1="125" y1="10" x2="125" y2="390"/> <!-- x=1 -->
+    <line x1="190" y1="10" x2="190" y2="390"/> <!-- x=2 -->
+    <line x1="255" y1="10" x2="255" y2="390"/> <!-- x=3 -->
+    <line x1="320" y1="10" x2="320" y2="390"/> <!-- x=4 -->
+    <line x1="385" y1="10" x2="385" y2="390"/> <!-- x=5 -->
+    <line x1="450" y1="10" x2="450" y2="390"/> <!-- x=6 -->
+  </g>
+
+  <!-- Axes -->
+  <line x1="60" y1="390" x2="450" y2="390" stroke="black" stroke-width="2"/>
+  <line x1="60" y1="10" x2="60" y2="390" stroke="black" stroke-width="2"/>
+
+  <!-- Axis tick marks -->
+  <g stroke="black" stroke-width="1.5">
+    <line x1="125" y1="390" x2="125" y2="395"/>
+    <line x1="190" y1="390" x2="190" y2="395"/>
+    <line x1="255" y1="390" x2="255" y2="395"/>
+    <line x1="320" y1="390" x2="320" y2="395"/>
+    <line x1="385" y1="390" x2="385" y2="395"/>
+    <line x1="450" y1="390" x2="450" y2="395"/>
+  </g>
+
+  <!-- X-axis labels -->
+  <text x="60" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">0</text>
+  <text x="125" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">1</text>
+  <text x="190" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">2</text>
+  <text x="255" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">3</text>
+  <text x="320" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">4</text>
+  <text x="385" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">5</text>
+  <text x="450" y="410" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="black">6</text>
+
+  <!-- Y-axis labels -->
+  <text x="48" y="356" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">2</text>
+  <text x="48" y="318" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">4</text>
+  <text x="48" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">6</text>
+  <text x="48" y="242" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">8</text>
+  <text x="48" y="204" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">10</text>
+  <text x="48" y="166" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">12</text>
+  <text x="48" y="128" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">14</text>
+  <text x="48" y="90" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">16</text>
+  <text x="48" y="52" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">18</text>
+  <text x="48" y="14" font-family="Arial, sans-serif" font-size="14" text-anchor="end" fill="black">20</text>
+
+  <!-- Axis labels -->
+  <text x="458" y="394" font-family="Arial, sans-serif" font-size="16" font-style="italic" fill="black">x</text>
+  <text x="55" y="6" font-family="Arial, sans-serif" font-size="16" font-style="italic" fill="black">y</text>
+
+  <!-- Data points (U-shaped pattern from image) -->
+  <g fill="black" clip-path="url(#plotArea)">
+    <circle cx="93" cy="124" r="5"/>   <!-- (~0.5, 14) -->
+    <circle cx="125" cy="200" r="5"/>  <!-- (1, 10) -->
+    <circle cx="158" cy="276" r="5"/>  <!-- (1.5, 6) -->
+    <circle cx="190" cy="276" r="5"/>  <!-- (2, 6) -->
+    <circle cx="223" cy="257" r="5"/>  <!-- (2.5, 7) -->
+    <circle cx="255" cy="257" r="5"/>  <!-- (3, 7) -->
+    <circle cx="255" cy="238" r="5"/>  <!-- (3, 8) -->
+    <circle cx="288" cy="276" r="5"/>  <!-- (3.5, 6) -->
+    <circle cx="320" cy="238" r="5"/>  <!-- (4, 8) -->
+    <circle cx="320" cy="200" r="5"/>  <!-- (4, 10) -->
+    <circle cx="353" cy="238" r="5"/>  <!-- (4.5, 8) -->
+    <circle cx="385" cy="124" r="5"/>  <!-- (5, 14) -->
+    <circle cx="418" cy="48" r="5"/>   <!-- (5.5, 18) -->
+    <circle cx="450" cy="10" r="5"/>   <!-- (6, 20) -->
+    <circle cx="450" cy="29" r="5"/>   <!-- (6, 19) -->
+  </g>
+</svg>

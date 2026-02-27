@@ -93,7 +93,7 @@ export default function MultipleChoiceInput({
     }
 
     if (option === selectedAnswer) {
-      return `${base} border-indigo-500 bg-indigo-50 text-indigo-800`;
+      return `${base} border-indigo-500 bg-indigo-50 text-indigo-700`;
     }
 
     if (isCrossed(option)) {

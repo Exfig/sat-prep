@@ -3,6 +3,7 @@ import type { Question } from '../types';
 import { DOMAIN_NAMES, SECTION_NAMES } from '../types';
 import MultipleChoiceInput from './MultipleChoiceInput';
 import PassageViewer from './PassageViewer';
+import TableViewer from './TableViewer';
 import GridInInput from './GridInInput';
 import StrategyTipBanner from './StrategyTipBanner';
 import FlagQuestionButton from './FlagQuestionButton';
@@ -11,6 +12,8 @@ interface QuestionCardProps {
   question: Question;
   onAnswer: (answer: string | number) => void;
   disabled: boolean;
+  hidePassage?: boolean;
+  hideGraphics?: boolean;
 }
 
 const difficultyColors: Record<string, string> = {
@@ -19,7 +22,7 @@ const difficultyColors: Record<string, string> = {
   hard: 'bg-red-100 text-red-700',
 };
 
-export default function QuestionCard({ question, onAnswer, disabled }: QuestionCardProps) {
+export default function QuestionCard({ question, onAnswer, disabled, hidePassage, hideGraphics }: QuestionCardProps) {
   const [selectedMC, setSelectedMC] = useState<string | null>(null);
   const [gridInVal, setGridInVal] = useState('');
 
@@ -36,7 +39,7 @@ export default function QuestionCard({ question, onAnswer, disabled }: QuestionC
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6" role="region" aria-label="Question">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6" role="region" aria-label="Question" data-question-content>
       {/* Meta tags */}
       <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4" aria-label="Question metadata" role="group">
         <span className="px-2 py-0.5 sm:py-1 rounded text-xs font-medium bg-indigo-100 text-indigo-700">
@@ -57,28 +60,36 @@ export default function QuestionCard({ question, onAnswer, disabled }: QuestionC
         </span>
       </div>
 
-      {/* Passage */}
-      {question.passage && (
+      {/* Passage (hidden when shown in side-by-side layout) */}
+      {question.passage && !hidePassage && (
         <div className="mb-4">
           <PassageViewer passage={question.passage} />
         </div>
       )}
 
-      {/* Visual asset (graph/diagram) */}
-      {question.visualAsset && (
+      {/* Table data (hidden when shown in side-by-side layout) */}
+      {question.tableData && !hideGraphics && (
+        <div className="mb-4">
+          <TableViewer tableData={question.tableData} />
+        </div>
+      )}
+
+      {/* Visual asset (graph/diagram) (hidden when shown in side-by-side layout) */}
+      {question.visualAsset && !hideGraphics && (
         <div className="mb-4 flex justify-center">
           <img
-            src={`${import.meta.env.BASE_URL}${question.visualAsset.src.replace(/^\//, '')}`}
+            src={`${import.meta.env.BASE_URL}${question.visualAsset.src.replace(/^\//, '')}?v=4`}
             alt={question.visualAsset.altText}
             loading="lazy"
             decoding="async"
-            className="max-w-full sm:max-w-sm rounded-lg border border-slate-200"
+            style={question.visualAsset?.maxWidth ? { maxWidth: question.visualAsset.maxWidth } : undefined}
+            className={`max-w-full ${question.visualAsset?.maxWidth ? '' : 'sm:max-w-sm'} rounded-lg border border-slate-200`}
           />
         </div>
       )}
 
       {/* Question text */}
-      <p className="text-base sm:text-lg font-medium text-slate-800 mb-4 leading-relaxed">
+      <p className="text-base sm:text-lg font-medium text-slate-800 mb-4 leading-relaxed whitespace-pre-line">
         {question.question}
       </p>
 

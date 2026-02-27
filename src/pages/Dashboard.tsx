@@ -10,6 +10,7 @@ import { getBossDomain } from '../utils/bossFight';
 
 import type { StudyMode, DomainId, SectionId } from '../types';
 import { DOMAIN_NAMES, ALL_DOMAIN_IDS, getDomainSection } from '../types';
+import { rankDomainsByWeakness } from '../utils/psatParser';
 import StatsCard from '../components/StatsCard';
 import DomainBreakdownChart from '../components/DomainBreakdownChart';
 import SectionToggle from '../components/SectionToggle';
@@ -19,6 +20,7 @@ import XPBar from '../components/XPBar';
 import ReviewForecast from '../components/ReviewForecast';
 import QuestProgressBar from '../components/QuestProgressBar';
 import CalibrationGauge from '../components/CalibrationGauge';
+import OnboardingChecklist from '../components/OnboardingChecklist';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -38,6 +40,7 @@ export default function Dashboard() {
   const sectionQuests = useAppStore((s) => s.sectionQuests);
   const bossesDefeated = useAppStore((s) => s.bossesDefeated);
   const strategyGuideCompleted = useAppStore((s) => s.strategyGuideCompleted);
+  const psatScores = useAppStore((s) => s.psatScores);
 
   // Memoize expensive computations — only recalculate when dependencies change
   const stats = useMemo(
@@ -112,7 +115,7 @@ export default function Dashboard() {
     now.getHours() >= 18 && lastStudyDate !== todayStr && studyStreak > 0;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 py-8" data-page="dashboard">
       <h1 className="sr-only">SAT Prep Dashboard</h1>
 
       {/* Welcome message */}
@@ -120,7 +123,7 @@ export default function Dashboard() {
         <div className="bg-indigo-600 text-white rounded-xl p-6 mb-8 relative" role="region" aria-label="Welcome message">
           <button
             onClick={() => setWelcomeSeen()}
-            className="absolute top-4 right-4 text-indigo-200 hover:text-white"
+            className="absolute top-4 right-4 opacity-50 hover:opacity-100 transition-opacity"
             aria-label="Dismiss welcome message"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -148,6 +151,9 @@ export default function Dashboard() {
           </div>
         </div>
       )}
+
+      {/* Onboarding checklist */}
+      <OnboardingChecklist />
 
       {/* Stats cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8" role="region" aria-label="Study statistics">
@@ -192,7 +198,7 @@ export default function Dashboard() {
 
       {/* Strategy Guide review card */}
       {strategyGuideCompleted && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-5 mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="text-2xl" aria-hidden="true">{'\u{1F4D6}'}</span>
@@ -241,9 +247,60 @@ export default function Dashboard() {
         <ReviewForecast progress={questionProgress} />
       </div>
 
+      {/* Recommended focus areas — PSAT-based or practice-based */}
+      {(() => {
+        const hasPracticeWeakAreas = weakAreaStats.length > 0;
+        const hasPSAT = psatScores && Object.keys(psatScores.domainPerformance).length > 0;
+        const usePSAT = hasPSAT && !hasPracticeWeakAreas;
+        const psatWeakDomains = usePSAT ? rankDomainsByWeakness(psatScores).slice(0, 3) : [];
+
+        if (!hasPracticeWeakAreas && !usePSAT) return null;
+
+        return (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-6 mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-xl font-bold text-slate-800">Recommended Focus Areas</h2>
+              {usePSAT && (
+                <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">
+                  Based on PSAT
+                </span>
+              )}
+            </div>
+            <div className="space-y-2">
+              {usePSAT
+                ? psatWeakDomains.map((domainId) => {
+                    const band = psatScores.domainPerformance[domainId];
+                    return (
+                      <div
+                        key={domainId}
+                        className="flex items-center justify-between p-3 rounded-lg bg-amber-50 border border-amber-200"
+                      >
+                        <span className="font-medium text-slate-700">{DOMAIN_NAMES[domainId]}</span>
+                        <span className="text-sm text-amber-700 font-medium font-mono">
+                          {band ? `${band.low}-${band.high}` : ''}
+                        </span>
+                      </div>
+                    );
+                  })
+                : weakAreaStats.map((area) => (
+                    <div
+                      key={area.domainId}
+                      className="flex items-center justify-between p-3 rounded-lg bg-amber-50 border border-amber-200"
+                    >
+                      <span className="font-medium text-slate-700">{DOMAIN_NAMES[area.domainId as DomainId]}</span>
+                      <span className="text-sm text-amber-700 font-medium">
+                        {Math.round(area.accuracy)}% accuracy
+                      </span>
+                    </div>
+                  ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Recent badges */}
       {recentBadges.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-6 mb-8">
           <h2 className="text-xl font-bold text-slate-800 mb-3">Recent Badges</h2>
           <div className="flex gap-4 flex-wrap">
             {recentBadges.map((badge) => (
@@ -261,7 +318,7 @@ export default function Dashboard() {
 
       {/* Mock Test History */}
       {recentMockTests.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-slate-800">Mock Test History</h2>
             <button
@@ -275,7 +332,7 @@ export default function Dashboard() {
             {recentMockTests.map((test, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-4 rounded-lg bg-slate-50 border border-slate-200"
+                className="flex items-center justify-between p-4 rounded-lg bg-slate-50 border border-slate-300"
               >
                 <div>
                   <p className="text-sm font-semibold text-slate-700">
@@ -296,7 +353,7 @@ export default function Dashboard() {
       )}
 
       {/* Domain Quests */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-6 mb-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">Domain Quests</h2>
         {sectionQuests.satReady && (
           <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3 mb-4 text-center">
@@ -324,7 +381,7 @@ export default function Dashboard() {
       </div>
 
       {/* Domain breakdown */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-8">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-4 sm:p-6 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
           <h2 className="text-xl font-bold text-slate-800">Domain Performance</h2>
           <SectionToggle selected={sectionFilter} onChange={setSectionFilter} />
@@ -359,29 +416,9 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Recommended focus areas */}
-      {weakAreaStats.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Recommended Focus Areas</h2>
-          <div className="space-y-2">
-            {weakAreaStats.map((area) => (
-              <div
-                key={area.domainId}
-                className="flex items-center justify-between p-3 rounded-lg bg-amber-50 border border-amber-200"
-              >
-                <span className="font-medium text-slate-700">{DOMAIN_NAMES[area.domainId as DomainId]}</span>
-                <span className="text-sm text-amber-700 font-medium">
-                  {Math.round(area.accuracy)}% accuracy
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Recent activity */}
       {recentActivity.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-300 p-6">
           <h2 className="text-xl font-bold text-slate-800 mb-4">Recent Activity</h2>
           <div className="space-y-2">
             {recentActivity.map((activity, i) => {

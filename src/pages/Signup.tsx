@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+const IS_CALIBER = import.meta.env.VITE_THEME === 'caliber';
+
 export default function Signup() {
   const { signUp } = useAuth();
   const [email, setEmail] = useState('');
@@ -14,6 +16,12 @@ export default function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const referralCode = new URLSearchParams(window.location.search).get('ref') || undefined;
+
+  // Persist referral code so landing/pricing pages can append promo code to Stripe links
+  if (referralCode) {
+    try { localStorage.setItem('caliber_ref_code', referralCode); } catch { /* localStorage may be blocked */ }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +51,7 @@ export default function Signup() {
       school: sanitizedSchool || undefined,
       gradeLevel: validGrade,
       targetTestDate: targetTestDate || undefined,
+      referredBy: referralCode,
     });
 
     if (err) {
@@ -52,6 +61,10 @@ export default function Signup() {
       setEmailSent(true);
     }
   };
+
+  const btnClass = IS_CALIBER
+    ? 'bg-gradient-to-r from-[#c8a24e] to-[#e4c36e] text-[#08090d] hover:shadow-[0_4px_20px_rgba(200,162,78,0.35)]'
+    : 'bg-indigo-600 text-white hover:bg-indigo-700';
 
   if (emailSent) {
     return (
@@ -68,7 +81,7 @@ export default function Signup() {
             </p>
             <Link
               to="/login"
-              className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors min-h-[44px]"
+              className={`inline-block px-6 py-3 rounded-lg font-medium transition-colors min-h-[44px] ${btnClass}`}
             >
               Go to Sign In
             </Link>
@@ -82,9 +95,12 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-8">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="text-4xl">📝</span>
+          {IS_CALIBER
+            ? <img src={`${import.meta.env.BASE_URL}caliber-icon.png`} className="w-16 h-16 mx-auto rounded-xl" alt="Caliber" />
+            : <span className="text-4xl">📝</span>
+          }
           <h1 className="text-2xl font-bold text-slate-800 mt-2">Create Account</h1>
-          <p className="text-slate-500 mt-1">Start your SAT prep journey</p>
+          <p className="text-slate-500 mt-1">{IS_CALIBER ? 'Start your Caliber journey' : 'Start your SAT prep journey'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
@@ -200,6 +216,7 @@ export default function Signup() {
                     value={targetTestDate}
                     onChange={(e) => setTargetTestDate(e.target.value)}
                     className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    placeholder="Your school name"
                   />
                 </div>
               </div>
@@ -209,8 +226,7 @@ export default function Signup() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium
-              hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
+            className={`w-full py-3 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] ${btnClass}`}
           >
             {loading ? 'Creating account...' : 'Create Account'}
           </button>

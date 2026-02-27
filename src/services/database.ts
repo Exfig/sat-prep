@@ -10,6 +10,7 @@ import type {
   MockTestHistoryEntry,
   SectionQuests,
   Attempt,
+  PSATScoreData,
 } from '../types';
 
 // Shape returned by loadAllUserData, matching the Zustand state keys
@@ -32,12 +33,17 @@ export interface UserData {
   thinkPeriodEnabled: boolean;
   metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
+  themeMode: 'dark' | 'light';
   hasSeenWelcome: boolean;
   examWrappers: ExamWrapperEntry[];
   mockTestHistory: MockTestHistoryEntry[];
   strategyGuideCompleted: boolean;
   strategyGuideSectionsCompleted: string[];
   strategyGuideCurrentSection: string | null;
+  hasVisitedProgress: boolean;
+  onboardingDismissed: boolean;
+  psatScores: PSATScoreData | null;
+  dismissedNotifications: string[];
 }
 
 // ─── Load all user data (called on login) ───
@@ -100,10 +106,15 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
     thinkPeriodEnabled?: boolean;
     metacogEnabled?: boolean;
     scaffoldingOverrides?: Record<string, boolean>;
+    themeMode?: 'dark' | 'light';
     hasSeenWelcome?: boolean;
     strategyGuideCompleted?: boolean;
     strategyGuideSectionsCompleted?: string[];
     strategyGuideCurrentSection?: string | null;
+    hasVisitedProgress?: boolean;
+    onboardingDismissed?: boolean;
+    psatScores?: PSATScoreData | null;
+    dismissedNotifications?: string[];
   };
 
   // Parse exam wrappers
@@ -140,12 +151,17 @@ export async function loadAllUserData(userId: string): Promise<UserData> {
     thinkPeriodEnabled: settings.thinkPeriodEnabled ?? true,
     metacogEnabled: settings.metacogEnabled ?? true,
     scaffoldingOverrides: settings.scaffoldingOverrides ?? {},
+    themeMode: settings.themeMode ?? 'dark',
     hasSeenWelcome: settings.hasSeenWelcome ?? false,
     examWrappers,
     mockTestHistory,
     strategyGuideCompleted: settings.strategyGuideCompleted ?? false,
     strategyGuideSectionsCompleted: settings.strategyGuideSectionsCompleted ?? [],
     strategyGuideCurrentSection: settings.strategyGuideCurrentSection ?? null,
+    hasVisitedProgress: settings.hasVisitedProgress ?? false,
+    onboardingDismissed: settings.onboardingDismissed ?? false,
+    psatScores: settings.psatScores ?? null,
+    dismissedNotifications: settings.dismissedNotifications ?? [],
   };
 }
 
@@ -169,10 +185,15 @@ export async function syncGamificationState(userId: string, data: {
   thinkPeriodEnabled: boolean;
   metacogEnabled: boolean;
   scaffoldingOverrides: Record<string, boolean>;
+  themeMode: 'dark' | 'light';
   hasSeenWelcome: boolean;
   strategyGuideCompleted: boolean;
   strategyGuideSectionsCompleted: string[];
   strategyGuideCurrentSection: string | null;
+  hasVisitedProgress: boolean;
+  onboardingDismissed: boolean;
+  psatScores?: PSATScoreData | null;
+  dismissedNotifications?: string[];
 }) {
   const { error } = await supabase.from('gamification_state').update({
     xp: data.xp,
@@ -193,10 +214,15 @@ export async function syncGamificationState(userId: string, data: {
       thinkPeriodEnabled: data.thinkPeriodEnabled,
       metacogEnabled: data.metacogEnabled,
       scaffoldingOverrides: data.scaffoldingOverrides,
+      themeMode: data.themeMode,
       hasSeenWelcome: data.hasSeenWelcome,
       strategyGuideCompleted: data.strategyGuideCompleted,
       strategyGuideSectionsCompleted: data.strategyGuideSectionsCompleted,
       strategyGuideCurrentSection: data.strategyGuideCurrentSection,
+      hasVisitedProgress: data.hasVisitedProgress,
+      onboardingDismissed: data.onboardingDismissed,
+      psatScores: data.psatScores ?? null,
+      dismissedNotifications: data.dismissedNotifications ?? [],
     },
   }).eq('id', userId);
 
@@ -299,6 +325,41 @@ export async function updateProfile(userId: string, profile: Partial<ProfileData
     .eq('id', userId);
 
   if (error) console.error('updateProfile error:', error);
+}
+
+// ─── Email preferences ───
+
+export interface EmailPreferences {
+  digest_enabled: boolean;
+  digest_frequency: 'daily' | 'weekly';
+  streak_reminders: boolean;
+  milestone_emails: boolean;
+}
+
+export async function loadEmailPreferences(userId: string): Promise<EmailPreferences | null> {
+  const { data, error } = await supabase
+    .from('email_preferences')
+    .select('digest_enabled, digest_frequency, streak_reminders, milestone_emails')
+    .eq('id', userId)
+    .single();
+
+  if (error) {
+    console.error('loadEmailPreferences error:', error);
+    return null;
+  }
+  return data as EmailPreferences;
+}
+
+export async function updateEmailPreferences(
+  userId: string,
+  prefs: Partial<EmailPreferences>,
+): Promise<void> {
+  const { error } = await supabase
+    .from('email_preferences')
+    .update(prefs)
+    .eq('id', userId);
+
+  if (error) console.error('updateEmailPreferences error:', error);
 }
 
 // ─── Export all user data as JSON ───

@@ -162,12 +162,27 @@ export default function StrategyGuide() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 mb-2">SAT Strategy Guide</h1>
-        <p className="text-slate-600 mb-4">
-          {guideCompleted
-            ? 'Review test strategies anytime. Tap any chapter to revisit.'
-            : 'Complete all chapters to unlock the full app. Learn essential strategies before you start practicing.'}
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-800 mb-2">SAT Strategy Guide</h1>
+            <p className="text-slate-600 mb-4">
+              {guideCompleted
+                ? 'Review test strategies anytime. Tap any chapter to revisit.'
+                : 'Complete all chapters to unlock the full app. Learn essential strategies before you start practicing.'}
+            </p>
+          </div>
+          {!guideCompleted && (
+            <button
+              onClick={() => {
+                completeGuide();
+                navigate('/dashboard');
+              }}
+              className="text-sm text-slate-400 hover:text-slate-600 transition-colors whitespace-nowrap shrink-0 mt-2"
+            >
+              Skip for now &rarr;
+            </button>
+          )}
+        </div>
         <StrategyProgressBar completedCount={completedSections.length} />
       </div>
 

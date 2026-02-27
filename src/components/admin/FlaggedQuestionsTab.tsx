@@ -38,7 +38,7 @@ function QuestionPreview({ question }: { question: Question }) {
       {question.visualAsset && (
         <div className="flex justify-center">
           <img
-            src={`${import.meta.env.BASE_URL}${question.visualAsset.src.replace(/^\//, '')}`}
+            src={`${import.meta.env.BASE_URL}${question.visualAsset.src.replace(/^\//, '')}?v=4`}
             alt={question.visualAsset.altText}
             loading="lazy"
             decoding="async"

@@ -9,10 +9,19 @@ export interface QuizQuestion {
   explanation: string;
 }
 
+export interface ExampleQuestion {
+  passage: string;
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+}
+
 export interface Section {
   id: string;
   title: string;
   content: string[];       // paragraphs of teaching content
+  exampleQuestion?: ExampleQuestion; // optional inline example
   keyPoints: string[];     // callout box bullet points
   quiz: QuizQuestion[];
 }
@@ -289,6 +298,18 @@ export const STRATEGY_GUIDE_CHAPTERS: Chapter[] = [
           'To identify grammar questions quickly: look for answer choices that differ only in punctuation, verb tense, or word form. If the choices are short phrases that look similar, it is likely a conventions question. Get these done quickly and accurately first, then return to the passage-based questions.',
           'This strategy works because grammar rules are consistent and learnable. Once you know the rules, these questions become fast and reliable points.',
         ],
+        exampleQuestion: {
+          passage: 'The research team, led by Dr. Sarah Chen, _______ published their findings in a peer-reviewed journal last month.',
+          prompt: 'Which choice completes the text so that it conforms to the conventions of Standard English?',
+          options: [
+            'A) have recently',
+            'B) has recently',
+            'C) recently having',
+            'D) recently has',
+          ],
+          correctIndex: 1,
+          explanation: 'The subject is "team" (singular), so the verb must be "has." The parenthetical "led by Dr. Sarah Chen" doesn\'t change the subject. Notice how all four choices are short phrases that differ only in verb form — that\'s your clue it\'s a grammar question.',
+        },
         keyPoints: [
           'Answer all grammar/conventions questions FIRST in each module',
           'Grammar questions are faster (30-60 sec) and more predictable',
