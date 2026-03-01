@@ -226,14 +226,17 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     skill: "Central Ideas and Details",
     difficulty: "hard",
     type: "multiple-choice",
-    question: "To understand how temperature change affects microorganism-mediated cycling of soil nutrients in alpine ecosystems, Eva Ka\u0161tovsk\u00e1 et al. collected plant-soil cores in the Tatra Mountains at elevations around 2,100 meters and transplanted them to elevations of 1,700\u20131,800 meters, where the mean air temperature was warmer by 2\u00b0",
+    passage: {
+      text: "To understand how temperature change affects microorganism-mediated cycling of soil nutrients in alpine ecosystems, Eva Ka\u0161tovsk\u00e1 et al. collected plant-soil cores in the Tatra Mountains at elevations around 2,100 meters and transplanted them to elevations of 1,700\u20131,800 meters, where the mean air temperature was warmer by 2\u00b0C. Microorganism-mediated nutrient cycling was accelerated in the transplanted cores; crucially, microorganism community composition was unchanged, allowing Ka\u0161tovsk\u00e1 et al. to attribute the acceleration to temperature-induced increases in microorganism activity.",
+    },
+    question: "It can most reasonably be inferred from the text that the finding about the microorganism community composition was important for which reason?",
     options: [
-      "Microorganism-mediated nutrient cycling was accelerated in the transplanted cores; crucially, microorganism community composition was unchanged, allowing Ka\u0161tovsk\u00e1 et al. to attribute the acceleration to temperature-induced increases in microorganism activity. It can most reasonably be inferred from the text that the finding about the microorganism community composition was important for which reason?",
       "It provided preliminary evidence that microorganism-mediated nutrient cycling was accelerated in the transplanted cores.",
       "It suggested that temperature-induced changes in microorganism activity may be occurring at increasingly high elevations.",
       "It ruled out a potential alternative explanation for the acceleration in microorganism-mediated nutrient cycling.",
+      "It clarified that microorganism activity levels in the plant-soil cores varied depending on which microorganisms comprised the community.",
     ],
-    correctAnswer: "It suggested that temperature-induced changes in microorganism activity may be occurring at increasingly high elevations.",
+    correctAnswer: "It ruled out a potential alternative explanation for the acceleration in microorganism-mediated nutrient cycling.",
     explanation: "Choice C is the best answer because it accurately describes why the finding about the microorganism community composition was important. The text describes an experiment by Eva Ka\u0161tovsk\u00e1 and her team in which they collected plant-soil cores at one elevation and transplanted them to sites at a lower elevation, where the mean air temperature was warmer. Ka\u0161tovsk\u00e1 and her team observed that microorganism-mediated nutrient cycling was accelerated in the transplanted cores and that \"crucially, microorganism community composition was unchanged,\" which allowed the team to attribute the acceleration to changes in microorganism activity brought about by the difference in temperature.",
     relatedConcepts: ["Main Idea", "Supporting Details", "Reading Comprehension"],
   },
@@ -739,7 +742,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       "ethylene was associated with a greater absolute change in ripening time at 14\u00b0C, 16\u00b0C, and 18\u00b0C than at 20\u00b0C.",
     ],
     correctAnswer: "ethylene was associated with a greater absolute change in ripening time at 14\u00b0C, 16\u00b0C, and 18\u00b0C than at 20\u00b0C.",
-    explanation: "Choice D is the best answer because it most effectively uses data from the graph to complete the student\u2019s conclusion about banana ripening time with and without ethylene at different temperatures. The graph shows that at 20\u00b0C, the gap between the two bars showing ripening times for ethylene-treated bananas and untreated bananas crosses fewer than 2 gridlines (from about 4 days for ethylene-treated bananas to about 5.5 days for untreated bananas). Meanwhile, the graph shows that at 14\u00b0C, 16\u00b0C, and 18\u00b0C, the gap between the bars crosses more than 2 gridlines (from about 8 days for treated bananas to about 11 days for untreated bananas at 14\u00b0C; from about 6 days for treated bananas to about 9.5 days for untreated bananas at 16\u00b0C; and from about 5.5 days for treated bananas to about 8.",
+    explanation: "Choice D is the best answer because it most effectively uses data from the graph to complete the student\u2019s conclusion about banana ripening time with and without ethylene at different temperatures. The graph shows that at 20\u00b0C, the gap between the two bars showing ripening times for ethylene-treated bananas and untreated bananas crosses fewer than 2 gridlines (from about 4 days for ethylene-treated bananas to about 5.5 days for untreated bananas). Meanwhile, the graph shows that at 14\u00b0C, 16\u00b0C, and 18\u00b0C, the gap between the bars crosses more than 2 gridlines (from about 8 days for treated bananas to about 11 days for untreated bananas at 14\u00b0C; from about 6 days for treated bananas to about 9.5 days for untreated bananas at 16\u00b0C; and from about 5.5 days for treated bananas to about 8.5 days for untreated bananas at 18\u00b0C). Since the gap between the bars at each of these temperatures crosses more than 2 gridlines, and since each of these gaps is larger than the gap between the bars at 20\u00b0C, it can be concluded that ethylene was associated with a greater absolute change in ripening time at 14\u00b0C, 16\u00b0C, and 18\u00b0C than at 20\u00b0C.",
     relatedConcepts: ["Inferences", "Reading Comprehension", "Text Analysis", "Data Interpretation"],
   },
   {
@@ -1145,7 +1148,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       src: "/graphs/d5b9ed0d.png",
       altText: "Participants' Responses to Three Review Conditions",
     },
-    question: "Which choice best describes data from the graph that support the students\u2019 conclusion?",
+    question: "Which choice best describes data from the graph that support the student\u2019s conclusion?",
     options: [
       "On average, participants\u2019 ratings of the helpfulness of the review were substantially higher than were participants\u2019 ratings of the reviewed product regardless of which type of review participants had seen.",
       "Compared with participants who saw the control review, participants who saw the low-anger review rated the review as slightly more helpful, whereas participants who saw the high-anger review rated the review as less helpful.",
@@ -1297,8 +1300,9 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       "Under both temperature conditions, less than 10% of sites were in the up-to-25% group, but at the maximum plausible surface temperature, almost 80% of sites could have all their local heating needs met by thermal pollution.",
       "At current surface temperatures, more than 80% of the sites have no need for supplemental local home heating from subsurface thermal pollution, but at the maximum plausible surface temperature, more than 70% of sites exhibit significantly greater home heating needs.",
       "At current surface temperatures, more than 80% of sites can meet, at most, 25% of local home heating needs with subsurface thermal pollution, but at the maximum plausible surface temperature, more than 80% of sites can meet greater than 25% of local home heating needs.",
+      "At current surface temperatures, more than 80% of the sites cannot use subsurface thermal pollution to meet any portion of local home heating needs, but at the maximum plausible surface temperature, that percentage drops below 20%.",
     ],
-    correctAnswer: "At current surface temperatures, more than 80% of sites can meet, at most, 25% of local home heating needs with subsurface thermal pollution, but at the maximum plausible surface temperature, more than 80% of sites can meet greater than 25% of local home heating needs.",
+    correctAnswer: "At current surface temperatures, more than 80% of the sites cannot use subsurface thermal pollution to meet any portion of local home heating needs, but at the maximum plausible surface temperature, that percentage drops below 20%.",
     explanation: "Choice D is the best answer. The researchers concluded that as we approach maximum plausible surface temperatures, there will be a larger percentage of sites where thermal pollution could contribute to meeting home heating needs. By showing that only a small percentage of homes can currently use thermal pollution for home heating, and that this percentage would grow much larger at maximum plausible surface temperatures, this choice supports the researchers\u2019 conclusion.",
     relatedConcepts: ["Inferences", "Reading Comprehension", "Text Analysis", "Data Interpretation"],
   },
@@ -1448,10 +1452,15 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     passage: {
       text: "Electric companies that use wind turbines rely on weather forecasts to predict the maximum amount of power, in megawatt-hours (MWh), they can generate using wind so that they can determine how much they\u2019ll need to generate from other sources. When winds are stronger than they were forecast to be, however, the predicted maximum amount of electricity wind turbines could generate will be too low. For example, the graph shows that for the West region, the winds were ______",
     },
-    visualAsset: {
-      type: "graph",
-      src: "/graphs/a9040290.png",
-      altText: "Amount of Additional Electricity Wind Turbines Could Generate When Winds Were Stronger Than Forecast",
+    barChartData: {
+      title: "Amount of Additional Electricity Wind Turbines Could Generate When Winds Were Stronger Than Forecast",
+      yAxisLabel: "Electricity (in thousands of MWh)",
+      bars: [
+        { label: "West", value: 150, color: "#9ca3af" },
+        { label: "Midwest", value: 183, color: "#1f2937" },
+      ],
+      yMax: 200,
+      yStep: 25,
     },
     question: "Which choice most effectively uses data from the graph to complete the example?",
     options: [
@@ -1685,8 +1694,9 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       "at 24 hours, less than 10% of seeds treated with H\u2082S at a concentration of 10 micromoles per liter had germinated, whereas more than 90% of those seeds had germinated at 168 hours.",
       "at 48 hours, more than 70% of seeds treated with H\u2082S at a concentration of 10 micromoles per liter had germinated, whereas only approximately 50% of untreated seeds had germinated.",
       "at 168 hours, more than 90% of seeds treated with H\u2082S at concentrations of 10 or 500 micromoles per liter had germinated, whereas less than 70% of untreated seeds had germinated.",
+      "at 48 hours, approximately 50% of seeds treated with H\u2082S at a concentration of 10 micromoles per liter had germinated, whereas only approximately 30% of untreated seeds had germinated.",
     ],
-    correctAnswer: "at 24 hours, less than 10% of seeds treated with H\u2082S at a concentration of 10 micromoles per liter had germinated, whereas more than 90% of those seeds had germinated at 168 hours.",
+    correctAnswer: "at 48 hours, more than 70% of seeds treated with H\u2082S at a concentration of 10 micromoles per liter had germinated, whereas only approximately 50% of untreated seeds had germinated.",
     explanation: "Choice B is the best answer. The claim is that some concentrations of H\u2082S led to increased germination rates, and this choice accurately shows that seeds treated with 10 micromoles per liter of H\u2082S tended to germinate faster than untreated seeds.",
     relatedConcepts: ["Inferences", "Reading Comprehension", "Text Analysis", "Data Interpretation"],
   },
@@ -1771,7 +1781,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       "rather than undergoing changes resulting in the eventual elimination of a head region in their radial body plan, as previously assumed, sea stars\u2019 morphology evolved to completely lack a trunk and consist primarily of a head region.",
     ],
     correctAnswer: "rather than undergoing changes resulting in the eventual elimination of a head region in their radial body plan, as previously assumed, sea stars\u2019 morphology evolved to completely lack a trunk and consist primarily of a head region.",
-    explanation: "Choice D is the best answer because it most logically completes the text\u2019s discussion of the morphology (form and structure) of sea stars, a type of echinoderm. The text indicates that echinoderms have radially symmetrical body plans (symmetrical around a central point, usually in the form of a star), whereas most animals have bilaterally symmetrical body plans (symmetrical along an axis running from head to tail through a trunk). According to the text, sea stars are unusual echinoderms because, despite their radial body plan, they descended from known bilateral ancestors. This shift in body plan was thought to be a process of losing the genetic markers associated with the head region. The text explains that by comparing the genes of one sea star species (P.",
+    explanation: "Choice D is the best answer because it most logically completes the text\u2019s discussion of the morphology (form and structure) of sea stars, a type of echinoderm. The text indicates that echinoderms have radially symmetrical body plans (symmetrical around a central point, usually in the form of a star), whereas most animals have bilaterally symmetrical body plans (symmetrical along an axis running from head to tail through a trunk). According to the text, sea stars are unusual echinoderms because, despite their radial body plan, they descended from known bilateral ancestors. This shift in body plan was thought to be a process of losing the genetic markers associated with the head region. The text explains that by comparing the genes of one sea star species (P. miniata) to those of a close relative, the acorn worm, researchers determined that instead, anterior (head) genes are active across the sea star\u2019s entire body, posterior (tail) genes are active in limited, peripheral locations of the body, and no trunk-related genes are active. This finding strongly suggests that, rather than becoming \u2018headless\u2019 as they evolved from a bilateral ancestor, sea stars developed a body plan consisting almost entirely of a head region with a minimal tail region and no trunk region present.",
     relatedConcepts: ["Inferences", "Reading Comprehension", "Text Analysis"],
   },
   {
@@ -1965,7 +1975,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
       "\u201cOne experiences a certain sense of detachment from ordinary day and daylight duties that is exhilarating.\u201d",
     ],
     correctAnswer: "\u201cOne experiences a certain sense of detachment from ordinary day and daylight duties that is exhilarating.\u201d",
-    explanation: "Choice D is the best answer because. This quotation specifically describes a \"sense of detachment from ordinary day,\" which matches the claim\u2019s focus on \"escape from everyday life.\"",
+    explanation: "Choice D is the best answer because this quotation specifically describes a \"sense of detachment from ordinary day and daylight duties,\" which matches the claim\u2019s focus on \"escape from everyday life.\"",
     relatedConcepts: ["Evidence", "Data Analysis", "Textual Support"],
   },
   {
@@ -2369,7 +2379,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Laila Lalami\u2019s 2019 novel The Other Americans. The narrator is a member of her middle school\u2019s jazz band. One day the jazz band was invited to perform at the Summer Festival in Palm Springs. Walking across the stage to the piano, I did what my teacher had advised. Pretend you\u2019re only playing for one person. That way you won\u2019t be so nervous. I glanced at my father, who sat in the front row, leaning his head just so, waiting. Then I closed my eyes, and began to play. \u00a92019 by Laila Lalami",
+      text: "The following text is from Laila Lalami\u2019s 2019 novel The Other Americans. The narrator is a member of her middle school\u2019s jazz band. One day the jazz band was invited to perform at the Summer Festival in Palm Springs. Walking across the stage to the piano, I did what my teacher had advised. Pretend you\u2019re only playing for one person. That way you won\u2019t be so nervous. I glanced at my father, who sat in the front row, leaning his head just so, waiting. Then I closed my eyes, and began to play.",
     },
     question: "According to the text, what does the narrator do as she walks across the stage?",
     options: [
@@ -2788,7 +2798,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is adapted from Sylvia Acevedo\u2019s 2018 memoir Path to the Stars: My Journey from Girl Scout to Rocket Scientist. The narrator is traveling by car with her family to Mexico City. Mario and Laura are her brother and sister. Mario and I played games to see how many different license plates we could spot, and Laura liked to look for children in the back seats of the cars we passed. We were used to the forty-five-minute drive to El Paso and familiar with the six-hour ride to Chihuahua, but I wondered what the long journey to Mexico City would be like. \u00a92018 by Sylvia Acevedo",
+      text: "The following text is adapted from Sylvia Acevedo\u2019s 2018 memoir Path to the Stars: My Journey from Girl Scout to Rocket Scientist. The narrator is traveling by car with her family to Mexico City. Mario and Laura are her brother and sister. Mario and I played games to see how many different license plates we could spot, and Laura liked to look for children in the back seats of the cars we passed. We were used to the forty-five-minute drive to El Paso and familiar with the six-hour ride to Chihuahua, but I wondered what the long journey to Mexico City would be like.",
     },
     question: "According to the text, what did the narrator and Mario do while riding in the car?",
     options: [
@@ -3071,7 +3081,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from David Barclay Moore\u2019s 2022 novel Holler of the Fireflies. The narrator has just arrived at summer camp, which is far away from his home. This place was different than I thought it would be. I\u2019d never been somewhere like this before. I did feel scared, but also excited. \u00a92022 by David Barclay Moore",
+      text: "The following text is from David Barclay Moore\u2019s 2022 novel Holler of the Fireflies. The narrator has just arrived at summer camp, which is far away from his home. This place was different than I thought it would be. I\u2019d never been somewhere like this before. I did feel scared, but also excited.",
     },
     question: "According to the text, how does the narrator feel about being at summer camp?",
     options: [
@@ -4103,7 +4113,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     difficulty: "easy",
     type: "multiple-choice",
     passage: {
-      text: "The following text is adapted from Ann Petry\u2019s 1946 novel The Street. Lutie lives in an apartment in Harlem, New York. The glow from the sunset was making the street radiant. The street is nice in this light, [Lutie] thought. It was swarming with children who were playing ball and darting back and forth across the sidewalk in complicated games of tag. Girls were skipping double dutch rope, going tirelessly through the exact center of a pair of ropes, jumping first on one foot and then the other. \u00a91946 by Ann Petry",
+      text: "The following text is adapted from Ann Petry\u2019s 1946 novel The Street. Lutie lives in an apartment in Harlem, New York. The glow from the sunset was making the street radiant. The street is nice in this light, [Lutie] thought. It was swarming with children who were playing ball and darting back and forth across the sidewalk in complicated games of tag. Girls were skipping double dutch rope, going tirelessly through the exact center of a pair of ropes, jumping first on one foot and then the other.",
     },
     question: "Which choice best describes what is happening in the text?",
     options: [
@@ -4291,7 +4301,7 @@ export const cbRwInformationAndIdeasQuestions: Question[] = [
     difficulty: "hard",
     type: "multiple-choice",
     passage: {
-      text: "The following text is from Milan Kundera\u2019s 1984 novel The Unbearable Lightness of Being (translated by Michael Henry Heim in 1984). Karenin is a dog that belongs to Tomas and Tereza. Karenin was not overjoyed by the move to Switzerland [from Prague]. Karenin hated change. Dog time cannot be plotted along a straight line; it does not move on and on, from one thing to the next. It moves in a circle like the hands of a clock, which\u2014they, too, unwilling to dash madly ahead\u2014turn round and round the face, day in and day out following the same path. In Prague, when Tomas and Tereza bought a new chair or moved a flower pot, Karenin would look on in displeasure. It disturbed his sense of time. It was as though they were trying to dupe the hands of the clock by changing the numbers on its face. \u00a91984 by Milan Kundera. Translation \u00a91984 by Harper & Row, Publishers, Inc.",
+      text: "The following text is from Milan Kundera\u2019s 1984 novel The Unbearable Lightness of Being (translated by Michael Henry Heim in 1984). Karenin is a dog that belongs to Tomas and Tereza. Karenin was not overjoyed by the move to Switzerland [from Prague]. Karenin hated change. Dog time cannot be plotted along a straight line; it does not move on and on, from one thing to the next. It moves in a circle like the hands of a clock, which\u2014they, too, unwilling to dash madly ahead\u2014turn round and round the face, day in and day out following the same path. In Prague, when Tomas and Tereza bought a new chair or moved a flower pot, Karenin would look on in displeasure. It disturbed his sense of time. It was as though they were trying to dupe the hands of the clock by changing the numbers on its face.",
     },
     question: "Which choice best states the main idea of the text?",
     options: [

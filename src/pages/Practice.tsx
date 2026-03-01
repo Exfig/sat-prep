@@ -35,6 +35,10 @@ import SecondChanceCard from '../components/SecondChanceCard';
 import DesmosCalculator from '../components/DesmosCalculator';
 import PassageViewer from '../components/PassageViewer';
 import TableViewer from '../components/TableViewer';
+import BarChartViewer from '../components/BarChartViewer';
+import TutorialProvider, { useTutorial } from '../components/TutorialProvider';
+import TutorialPopover from '../components/TutorialPopover';
+import { tutorialQuestionIds } from '../data/tutorial-data';
 
 // ─── Practice page ───────────────────────────────────────────────────────────
 
@@ -88,6 +92,9 @@ export default function Practice() {
   const [bossCorrectCount, setBossCorrectCount] = useState(0);
   const [bossAnsweredCount, setBossAnsweredCount] = useState(0);
 
+  // Mark for review state (tutorial + timed-module modes)
+  const [markedQuestions, setMarkedQuestions] = useState<Set<string>>(new Set());
+
   // XP/Level/Badge notification state
   const [xpToast, setXpToast] = useState<{ amount: number; reason: string } | null>(null);
   const [levelUpInfo, setLevelUpInfo] = useState<ReturnType<typeof getLevelForXP> | null>(null);
@@ -97,6 +104,9 @@ export default function Practice() {
   // 2nd Chance state
   const [showSecondChance, setShowSecondChance] = useState(false);
   const [secondChanceQuestion, setSecondChanceQuestion] = useState<Question | null>(null);
+  const [shownSecondChanceTip, setShownSecondChanceTip] = useState(false);
+  const [shownConfidenceTip, setShownConfidenceTip] = useState(false);
+  const [shownNavTip, setShownNavTip] = useState(false);
 
   // Domain review filter state
   const [sectionFilter, setSectionFilter] = useState<SectionId | undefined>();
@@ -114,11 +124,15 @@ export default function Practice() {
   // Determine if think overlay should show when question changes
   useEffect(() => {
     if (!currentQuestion || !currentSession || submitted) return;
+    // Tutorial Q8 (index 8): force think overlay to demo the feature
+    const isTutorialThinkDemo = currentSession.mode === 'tutorial' && currentSession.currentIndex === 8;
     const needsThink =
-      (currentQuestion.requiresThinkPeriod || currentQuestion.difficulty === 'hard') &&
+      isTutorialThinkDemo ||
+      ((currentQuestion.requiresThinkPeriod || currentQuestion.difficulty === 'hard') &&
       thinkPeriodEnabled &&
       currentSession.mode !== 'timed-module' &&
-      currentSession.mode !== 'boss-fight';
+      currentSession.mode !== 'boss-fight' &&
+      currentSession.mode !== 'tutorial');
     if (needsThink) {
       setShowThinkOverlay(true);
     }
@@ -126,6 +140,7 @@ export default function Practice() {
 
   const isTimedModule = currentSession?.mode === 'timed-module';
   const isBossFight = currentSession?.mode === 'boss-fight';
+  const isTutorial = currentSession?.mode === 'tutorial';
 
   // Compute timer initial value from session start time (survives remounts)
   const [timerInitialRemaining] = useState(() => {
@@ -388,6 +403,7 @@ export default function Practice() {
     setBossDomain(null);
     setBossCorrectCount(0);
     setBossAnsweredCount(0);
+    setMarkedQuestions(new Set());
 
     if (wasSpacedReview) {
       navigate('/dashboard');
@@ -405,6 +421,12 @@ export default function Practice() {
   };
 
   const handleSelectMode = (mode: StudyMode) => {
+    if (mode === 'tutorial') {
+      startSession({ mode: 'tutorial' }, tutorialQuestionIds);
+      setMarkedQuestions(new Set());
+      return;
+    }
+
     if (mode === 'practice') {
       // Go back to default section picker view
       setShowAllModes(false);
@@ -515,6 +537,22 @@ export default function Practice() {
     );
     setShowDomainFilter(false);
   };
+
+  // Mark for Review handler (tutorial + timed-module modes)
+  const handleMarkForReview = useCallback(() => {
+    if (!currentSession || !currentQuestion) return;
+    const qId = currentSession.currentQuestionIds[currentSession.currentIndex];
+    setMarkedQuestions((prev) => {
+      const next = new Set(prev);
+      next.add(qId);
+      return next;
+    });
+    // Advance to next question if not last
+    if (currentSession.currentIndex < currentSession.currentQuestionIds.length - 1) {
+      nextQuestion();
+      resetQuestionState();
+    }
+  }, [currentSession, currentQuestion, nextQuestion, resetQuestionState]);
 
   // Boss fight intro dismiss
   const handleBossIntroBegin = () => {
@@ -677,6 +715,29 @@ export default function Practice() {
 
   // Current question not found (session complete)
   if (!currentQuestion) {
+    // Tutorial complete — special message
+    if (isTutorial) {
+      return (
+        <div className="max-w-lg mx-auto px-4 py-12 text-center">
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+            <span className="text-5xl block mb-4">&#127891;</span>
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Tutorial Complete!</h2>
+            <p className="text-slate-500 mb-6">
+              You&apos;ve explored every SAT question type and learned how to use the app.
+              Now it&apos;s time to practice for real!
+            </p>
+            <button
+              onClick={handleEndSession}
+              className="w-full py-3 bg-indigo-600 text-white rounded-lg font-semibold
+                hover:bg-indigo-700 transition-all duration-200 min-h-[44px]"
+            >
+              Start Practicing
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="max-w-6xl mx-auto px-4 py-8 text-center">
         <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4">Session Complete!</h2>
@@ -712,6 +773,11 @@ export default function Practice() {
       </div>
     );
   }
+
+  // Show mark-for-review and navigator in tutorial + timed-module modes
+  const showNavFeatures = isTutorial || isTimedModule;
+  const currentQId = currentSession.currentQuestionIds[currentIdx];
+  const isMarked = markedQuestions.has(currentQId);
 
   // ─── Determine hint/scaffolding/deep-dive state ────────────────────────────
 
@@ -810,8 +876,24 @@ export default function Practice() {
 
       {/* Confidence Slider (shown after submit, before SM2) */}
       {submitted && showConfidence && !isTimedModule && (
-        <div className="mt-6">
+        <div className="mt-6" data-tutorial-target="confidence-slider">
           <ConfidenceSlider onRate={handleConfidenceRate} />
+
+          {/* Tutorial: one-time confidence & self-rating tip (first question only) */}
+          {isTutorial && !shownConfidenceTip && currentIdx === 0 && (
+            <TutorialPopover
+              steps={[{
+                targetSelector: 'confidence-slider',
+                position: 'top',
+                title: 'Confidence & Self-Rating',
+                content: 'Rate how confident you felt, then how well you knew the material. These help us show you questions you need more review time with. You can turn them on & off in the Settings menu.',
+              }]}
+              stepIndex={0}
+              onNext={() => setShownConfidenceTip(true)}
+              onPrev={() => {}}
+              onDismiss={() => setShownConfidenceTip(true)}
+            />
+          )}
         </div>
       )}
 
@@ -843,9 +925,26 @@ export default function Practice() {
             onClick={handleStartSecondChance}
             className="w-full py-3 bg-amber-500 text-white rounded-lg font-semibold
               hover:bg-amber-600 transition-all duration-200 min-h-[44px]"
+            data-tutorial-target="second-chance-btn"
           >
             2nd Chance
           </button>
+
+          {/* Tutorial: one-time 2nd Chance tip */}
+          {isTutorial && !shownSecondChanceTip && currentIdx < 10 && (
+            <TutorialPopover
+              steps={[{
+                targetSelector: 'second-chance-btn',
+                position: 'top',
+                title: '2nd Chance',
+                content: 'Got this one wrong? Click "2nd Chance" to get a similar question on the same concept. It\'s a chance to prove you learned from your mistake and earn bonus XP.',
+              }]}
+              stepIndex={0}
+              onNext={() => setShownSecondChanceTip(true)}
+              onPrev={() => {}}
+              onDismiss={() => setShownSecondChanceTip(true)}
+            />
+          )}
         </div>
       )}
 
@@ -880,6 +979,22 @@ export default function Practice() {
             onComplete={handleDeepDiveComplete}
           />
         </div>
+      )}
+
+      {/* Tutorial: one-time Question Navigator tip (after answering Q10) */}
+      {isTutorial && submitted && !shownNavTip && currentIdx === 9 && (
+        <TutorialPopover
+          steps={[{
+            targetSelector: 'nav-strip',
+            position: 'bottom',
+            title: 'Question Navigator',
+            content: 'Use these numbered buttons to jump to any question. Color coding: gray = unanswered, indigo = answered, amber = marked for review. Now let\'s move on to Math!',
+          }]}
+          stepIndex={0}
+          onNext={() => setShownNavTip(true)}
+          onPrev={() => {}}
+          onDismiss={() => setShownNavTip(true)}
+        />
       )}
 
       {/* Next / End buttons */}
@@ -936,13 +1051,15 @@ export default function Practice() {
     </>
   );
 
-  return (
+  const content = (
     <div className={`mx-auto px-4 py-8 ${hasPassage ? 'max-w-7xl' : 'max-w-3xl'}`}>
       {/* Think Overlay */}
       {showThinkOverlay && (
         <ThinkOverlay
           duration={4}
-          onComplete={() => setShowThinkOverlay(false)}
+          onComplete={() => {
+            setShowThinkOverlay(false);
+          }}
         />
       )}
 
@@ -988,6 +1105,7 @@ export default function Practice() {
         aria-valuemin={0}
         aria-valuemax={totalQuestions}
         aria-label={`Question ${currentIdx + 1} of ${totalQuestions}`}
+        data-tutorial-target="progress-bar"
       >
         <div
           className="h-full bg-indigo-600 rounded-full transition-all duration-300"
@@ -995,15 +1113,75 @@ export default function Practice() {
         />
       </div>
 
+      {/* Navigator strip + Mark for Review (tutorial + timed-module) */}
+      {showNavFeatures && (
+        <>
+          {/* Question progress with mark label */}
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-slate-600">
+              {isMarked && <span className="text-xs text-amber-600 font-medium">Marked for Review</span>}
+            </span>
+          </div>
+
+          {/* Question navigator strip */}
+          <div className="flex flex-wrap gap-1.5 mb-4" role="navigation" aria-label="Question navigator" data-tutorial-target="nav-strip">
+            {currentSession.currentQuestionIds.map((qId, idx) => {
+              const isCurrent = idx === currentIdx;
+              const qp = questionProgress[qId];
+              const isAnswered = submitted && isCurrent ? true : (qp?.attempts?.length ?? 0) > 0;
+              const isQMarked = markedQuestions.has(qId);
+
+              let bgClass = 'bg-slate-100 text-slate-500';
+              if (isAnswered && !isQMarked) bgClass = 'bg-indigo-100 border-indigo-300 text-indigo-700';
+              if (isQMarked) bgClass = 'bg-amber-100 border-amber-300 text-amber-700';
+
+              return (
+                <div
+                  key={qId}
+                  className={`relative w-8 h-8 text-xs font-medium rounded border flex items-center justify-center ${bgClass} ${
+                    isCurrent ? 'ring-2 ring-indigo-500 ring-offset-1' : ''
+                  }`}
+                  aria-label={`Question ${idx + 1}${isAnswered ? ', answered' : ''}${isQMarked ? ', marked for review' : ''}`}
+                >
+                  {idx + 1}
+                  {isQMarked && (
+                    <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-amber-500 rounded-full" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mark for Review button */}
+          {!submitted && (
+            <div className="mb-4">
+              <button
+                onClick={handleMarkForReview}
+                className="py-2.5 px-4 rounded-lg font-medium transition-colors min-h-[44px]
+                  bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200"
+                data-tutorial-target="mark-review-btn"
+              >
+                Mark for Review
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
       {/* Side-by-side layout for passage questions (lg+), stacked on mobile */}
       {hasPassage ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left: Passage + table/graphic */}
-          <div className="lg:sticky lg:top-4 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+          <div className="lg:sticky lg:top-4 lg:self-start lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto" data-tutorial-target="passage">
             <PassageViewer passage={currentQuestion.passage!} />
             {currentQuestion.tableData && (
               <div className="mt-4" data-question-content>
                 <TableViewer tableData={currentQuestion.tableData} />
+              </div>
+            )}
+            {currentQuestion.barChartData && (
+              <div className="mt-4 flex justify-center" data-question-content>
+                <BarChartViewer data={currentQuestion.barChartData} />
               </div>
             )}
             {currentQuestion.visualAsset && (
@@ -1055,6 +1233,32 @@ export default function Practice() {
 
       {/* Desmos Calculator (math questions only) */}
       {currentQuestion.section === 'math' && <DesmosCalculator />}
+
+      {/* Tutorial popover overlay (suppressed during think overlay) */}
+      {isTutorial && !showThinkOverlay && <TutorialOverlay />}
     </div>
+  );
+
+  // Always wrap in TutorialProvider to keep component tree stable.
+  // When not in tutorial, questionIndex -1 yields no steps / inactive state.
+  return (
+    <TutorialProvider questionIndex={isTutorial ? currentIdx : -1}>
+      {content}
+    </TutorialProvider>
+  );
+}
+
+/** Renders the tutorial popover using the TutorialContext (must be inside TutorialProvider) */
+function TutorialOverlay() {
+  const tutorial = useTutorial();
+  if (!tutorial || !tutorial.isActive || tutorial.currentSteps.length === 0) return null;
+  return (
+    <TutorialPopover
+      steps={tutorial.currentSteps}
+      stepIndex={tutorial.stepIndex}
+      onNext={tutorial.nextStep}
+      onPrev={tutorial.prevStep}
+      onDismiss={tutorial.dismissSteps}
+    />
   );
 }

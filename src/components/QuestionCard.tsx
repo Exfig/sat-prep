@@ -4,6 +4,7 @@ import { DOMAIN_NAMES, SECTION_NAMES } from '../types';
 import MultipleChoiceInput from './MultipleChoiceInput';
 import PassageViewer from './PassageViewer';
 import TableViewer from './TableViewer';
+import BarChartViewer from './BarChartViewer';
 import GridInInput from './GridInInput';
 import StrategyTipBanner from './StrategyTipBanner';
 import FlagQuestionButton from './FlagQuestionButton';
@@ -62,7 +63,7 @@ export default function QuestionCard({ question, onAnswer, disabled, hidePassage
 
       {/* Passage (hidden when shown in side-by-side layout) */}
       {question.passage && !hidePassage && (
-        <div className="mb-4">
+        <div className="mb-4" data-tutorial-target="passage">
           <PassageViewer passage={question.passage} />
         </div>
       )}
@@ -71,6 +72,13 @@ export default function QuestionCard({ question, onAnswer, disabled, hidePassage
       {question.tableData && !hideGraphics && (
         <div className="mb-4">
           <TableViewer tableData={question.tableData} />
+        </div>
+      )}
+
+      {/* Bar chart (hidden when shown in side-by-side layout) */}
+      {question.barChartData && !hideGraphics && (
+        <div className="mb-4 flex justify-center">
+          <BarChartViewer data={question.barChartData} />
         </div>
       )}
 
@@ -89,7 +97,7 @@ export default function QuestionCard({ question, onAnswer, disabled, hidePassage
       )}
 
       {/* Question text */}
-      <p className="text-base sm:text-lg font-medium text-slate-800 mb-4 leading-relaxed whitespace-pre-line">
+      <p className="text-base sm:text-lg font-medium text-slate-800 mb-4 leading-relaxed whitespace-pre-line" data-tutorial-target="question-text">
         {question.question}
       </p>
 
@@ -116,11 +124,13 @@ export default function QuestionCard({ question, onAnswer, disabled, hidePassage
       )}
 
       {question.type === 'grid-in' && (
-        <GridInInput
-          value={gridInVal}
-          onChange={handleGridInChange}
-          disabled={disabled}
-        />
+        <div data-tutorial-target="grid-in-input">
+          <GridInInput
+            value={gridInVal}
+            onChange={handleGridInChange}
+            disabled={disabled}
+          />
+        </div>
       )}
     </div>
   );

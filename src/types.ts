@@ -78,6 +78,15 @@ export interface TableData {
   caption?: string;
 }
 
+// Bar chart data for native column/bar chart rendering
+export interface BarChartData {
+  title: string;
+  yAxisLabel: string;
+  bars: { label: string; value: number; color?: string }[];
+  yMax?: number;
+  yStep?: number;
+}
+
 // SAT Reading & Writing passage data
 export interface PassageData {
   text: string;
@@ -109,6 +118,7 @@ export interface Question {
   hints?: [string, string];
   visualAsset?: VisualAsset;
   tableData?: TableData;
+  barChartData?: BarChartData;
   formulaDisplay?: string;
   requiresThinkPeriod?: boolean;
 }
@@ -155,7 +165,8 @@ export type StudyMode =
   | 'mixed-practice'
   | 'spaced-review'
   | 'boss-fight'
-  | 'adaptive-mock-test';
+  | 'adaptive-mock-test'
+  | 'tutorial';
 
 export interface StudySession {
   mode: StudyMode;
