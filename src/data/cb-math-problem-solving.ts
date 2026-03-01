@@ -200,11 +200,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "The median mass of group 1 is greater than the median mass of group 2.",
     explanation: "From the box plots, the median of group 1 is 25 kg and the median of group 2 is 24 kg, so the median mass of group 1 is greater. The means cannot be determined from box plots alone.",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
-    visualAsset: {
-      type: 'graph' as const,
-      src: '/graphs/d3b9c8d8.png',
-      altText: 'Box plots comparing masses of two groups of gazelles',
-    },
   },
   {
     id: "math-ps-cb-65c49824",
@@ -277,7 +272,7 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     question: "Of the following, which is the best model for the data in the scatterplot?",
     options: ["y = 2x² - 11x - 20", "y = 2x² - 11x + 20", "y = 2x² - 5x - 3", "y = 2x² - 5x + 3"],
     correctAnswer: "y = 2x² - 11x + 20",
-    explanation: "Based on the scatterplot, the quadratic model y = 2x² - 11x + 20 best fits the data pattern shown.",
+    explanation: "Choice B is correct. The graphical model that most closely fits the data in the scatterplot is a model in which the number of data points above and below the model are approximately balanced. Fitting a graphical model to the data shown results in an upward-facing parabola with a y-intercept near (0, 20) and a vertex with an approximate x-value of 2.5. Of the given choices, only choice B gives an equation of an upward-facing parabola with a y-intercept at (0, 20). Furthermore, substituting 2.5 for x into the equation in choice B yields y = 5, which is approximately the y-value of the vertex of the model.",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
     visualAsset: {
       type: 'table',
@@ -592,11 +587,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "0.83",
     explanation: "The exponential model is decreasing, so the value of b must be between 0 and 1. Of the given choices, only 0.83 is greater than 0 but less than 1, making it the closest to the value of b.",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
-    visualAsset: {
-      type: 'table',
-      src: '/graphs/fb866265.png',
-      altText: 'Figure for this question',
-    },
   },
   {
     id: "math-ps-cb-bd90f87e",
@@ -851,11 +841,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: 0.5,
     explanation: "The graph shows that at x = 2, the corresponding y-value is 6, and at x = 6, the corresponding y-value is 8. The average rate of change is (8 - 6)/(6 - 2) = 2/4 = 0.5 newton-seconds per second.",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
-    visualAsset: {
-      type: 'table',
-      src: '/graphs/9bb4107c.png',
-      altText: 'Figure for this question',
-    },
   },
   {
     id: "math-ps-cb-3f2ee20a",
@@ -1048,11 +1033,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "y = 46.8 + 5.9x",
     explanation: "The line of best fit for data set E has a y-intercept at approximately (0, 12) and passes through approximately (12, 30), giving slope ≈ 1.5. For data set F, multiply y-values by 3.9: new y-intercept = 12 × 3.9 = 46.8, new slope = 1.5 × 3.9 ≈ 5.9. So y = 46.8 + 5.9x.",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
-    visualAsset: {
-      type: 'table',
-      src: '/graphs/2e8027b0.png',
-      altText: 'Figure for this question',
-    },
   },
   {
     id: "math-ps-cb-c178d4da",
@@ -2362,11 +2342,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: "7,067",
     explanation: "The median is shown by the vertical line segment within the box in the box plot, which is slightly greater than 7,000 and closest to 7,067 acres.",
     relatedConcepts: ["Mean","Median","Standard Deviation","Data Distribution"],
-    visualAsset: {
-      type: 'graph' as const,
-      src: '/graphs/374b18f9.png',
-      altText: 'Box plot showing acres of useful timberland in 13 California counties',
-    },
   },
   {
     id: "math-ps-cb-585de39a",
@@ -2560,11 +2535,6 @@ export const cbMathProblemSolvingQuestions: Question[] = [
     correctAnswer: 6,
     explanation: "The line of best fit predicts a greater y-value than the actual y-value for any data point that is located below the line of best fit. For the scatterplot shown, 6 of the data points are below the line of best fit.",
     relatedConcepts: ["Scatterplots","Line of Best Fit","Correlation","Regression"],
-    visualAsset: {
-      type: 'table',
-      src: '/graphs/ad7dbb22.png',
-      altText: 'Figure for this question',
-    },
   },
   {
     id: "math-ps-cb-85b33aa8",
